@@ -1,6 +1,6 @@
 % Handwriting recognition
 % Project AI, Januari 2011
-% Davide Modolo, (Tocho Tochev, Niels Out? ) Thijs Kooi
+% Davide Modolo, (Tocho Tochev, Niels Out?) Thijs Kooi
 
 %We can have this function take as input an images of a word, a sentence or
 %a document, depending on our approach
