@@ -1,0 +1,10 @@
+@Article{rabiner-89,
+  author =	"Lawrence R. Rabiner",
+  title =	"A Tutorial on Hidden {M}arkov Models and Selected
+		 Applications in Speech Recognition",
+  journal =	"Proceedings of the IEEE",
+  year = 	"1989",
+  volume =	"77",
+  number =	"2",
+  pages =	"257--286",
+}
