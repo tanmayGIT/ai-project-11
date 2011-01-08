@@ -8,12 +8,12 @@
                * The paper present a system for recognition of Devnagari numbers and characters. 
                * Interesting the feature extraction part: they extract histograms of direction chain of the contour of the characters as feature for recognition. The idea seems to be pretty similar to SIFT features, except that instead of using the orientation they uses the contour information.  
 
-* _"*Unrestricted Off-Line Handwriting Recognition. A preprocessing Approach*"_ (2009) by Ryan E. Leary
+      * _"*Unrestricted Off-Line Handwriting Recognition. A preprocessing Approach*"_ (2009) by Ryan E. Leary
                * The paper describes an implementation for the preprocessing of totally unconstrained handwritten text. 
                * The paper is pretty nice, and all the pre-processing steps are fully described. 
                * Surely and important paper for our project.
 
-* _"*Comparison of Different Preprocessing and Feature Extraction Methods for Off-line Recognition of Handwritten Arabic Words*"_ (2007) by Haikal El Abed
+        * _"*Comparison of Different Preprocessing and Feature Extraction Methods for Off-line Recognition of Handwritten Arabic Words*"_ (2007) by Haikal El Abed
               * The paper describes some pre-processing steps that seems to be interesting in general handwritten recognition, and not only on arabic. 
               * The paper will probably be useful
 
