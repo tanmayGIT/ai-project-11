@@ -2,7 +2,7 @@
 
 == 08/01/2011==
 
-    *  Started reading book:  _"* Digital Image Processing Using MATLAB*"_ by R. Gonzales, R. Woods and S. Eddins
+    *  Started reading book:  _"*Digital Image Processing Using MATLAB*"_ by R. Gonzales, R. Woods and S. Eddins
            * Chapter 9: A Morphological Image Processing
 
 == 07/01/2011==
