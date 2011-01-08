@@ -3,10 +3,11 @@
 == 07/01/2011==
 
 == 06/01/2011==
-     * Checked all the code from last year project: 
+     * Checked and reviewed the code from last year project: 
                * Out of all the functions maybe 3 or 4 are usable. 
                * The rest are either incomplete or a mess. 
                * No description is available.
+
      * Attended the meeting with Albert. Interesting points emerged:
                * Start with an easy pipeline
                * Have an HMM working
@@ -16,4 +17,3 @@
 
 == 04/01/2011==
     * Attended the meeting with Albert Salah 
-
