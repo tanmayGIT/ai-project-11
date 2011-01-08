@@ -4,16 +4,25 @@
 
 == 06/01/2011==
      * Checked and reviewed the code from last year project: 
-               * Out of all the functions maybe 3 or 4 are usable. 
-               * The rest are either incomplete or a mess. 
-               * No description is available.
+               * Out of all the functions maybe 3 or 4 are usable
+               * The rest are either incomplete or a mess 
+               * No description is available
 
      * Attended the meeting with Albert. Interesting points emerged:
                * Start with an easy pipeline
                * Have an HMM working
-               * Spend all the rest of the time on the pre-processing part of the project.
+               * Spend all the rest of the time on the pre-processing part of the project
 
 == 05/01/2011==
+    Read the following papers:
+    *  _"*An Off-Line Cursive Handwriting Recognition System*"_ of Andrew W. Senior and Anthony J. Robinson
+            * The paper describes a complete system for the recognition of off-line handwriting. Preprocessing techniques are described, including segmentation and normalization of word images to give invariance to scale, slant, slope and stroke thickness
+            * It is a good paper to start with, and it gives a really good overview of how a full system work.
+   *  _"*Off-line Cursive Handwriting Recognition*"_ from last year students 
+            * The paper describes more or less the same system described in the previous paper
+   * _"*Using Lexical Similarity in Handwritten Word Recognition*"_ of J. Park and V. Govindaraju
+            * The paper presents a method to capture lexical similarity of a lexicon and realiability of a character recognizer which serve to capture the dynamism of the environment
+           * I personally did not find the paper really interesting for what we have in mind
 
 == 04/01/2011==
     * Attended the meeting with Albert Salah 
