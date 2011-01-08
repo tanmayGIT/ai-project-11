@@ -1,5 +1,10 @@
 #summary Davide's research log
 
+== 08/01/2011==
+
+    *  Started reading book:  _"* Digital Image Processing Using MATLAB*"_ by R. Gonzales, R. Woods and S. Eddins
+           * Chapter 9: A Morphological Image Processing
+
 == 07/01/2011==
      * Searched on more paper, especially for those concerning the pre-processing and feature extraction part of the system.
 
