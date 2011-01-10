@@ -2,6 +2,8 @@
 // Hand writing recognition Januari project, MSc AI, University of Amsterdam
 // Thijs Kooi, 2011
 
+//To do: optimise, work on arrays rather than vectors
+
 #include "gmm.h"
 
 double PI = 4.0*atan(1.0);
@@ -10,34 +12,39 @@ int main()
 {
 	vector<vector<double> > A;
 	vector<double> b;
-	double test[3][3] = {{2.0,3.0,4.0},{3.0,4.0,5.0},{2.0,5.0,6.0}};
-	
+	vector<double> c;
+// 	double test[3][3] = {{2.0,3.0,4.0},{3.0,4.0,5.0},{2.0,5.0,6.0}};
+	double test[2][2] = {{1.0,2.0},{3.0,4.0}};
+
 	GMM testGMM;
-			
-	for(size_t i = 0; i < 3; ++i)
+// 	double test1[3] = {2.0,4.0,3.0};
+// 	double test2[3] = {4.0,3.0,2.0};
+	
+// 	for(size_t i = 0; i < 3; ++i)
+// 	{
+// 		b.push_back(test1[i]);
+// 		c.push_back(test2[i]);
+// 	}
+		
+	for(size_t i = 0; i < 2; ++i)
 	{
 		b.clear();
-		for(size_t j = 0; j < 3; ++j)
+		for(size_t j = 0; j < 2; ++j)
 			b.push_back(test[i][j]);
 		A.push_back(b);
 	}
 	
-	cout << "Determinant of matrix: " << endl;
-	for(size_t i = 0; i < 3; ++i)
-	{
-		for(size_t j = 0; j < 3; ++j)
-			cout << A[i][j] << " ";
-		cout << endl;
-	}
-	cout << testGMM.testDeterminant(A) << endl;
+	testGMM.testInverse(A);
 }
 
-//Constructor
-GMM::GMM(int) { }
+//Constructors
+GMM::GMM() { mixture_components = 1; }
+GMM::GMM(int n) { mixture_components = n; }
+//end constructors
 
 double GMM::gmmProb(vector<double> x)
 {
-	double product = 0.0;
+	double product = 1.0;
 	for(size_t k = 0; k < mixture_components; ++k)
 		product*=priors[k]*gmmProb(x,k);
 	return product;
@@ -77,43 +84,79 @@ double GMM::innerProduct(vector<double> a, vector<double> b)
 
 double GMM::determinant(vector<vector<double> > A)
 {
-	double det = 0.0;
-	if(A.size() == 2)
-		det = A[0][0]*A[1][1] - A[1][0]*A[0][1];
+	if(A.size() == 1)
+		return A[0][0];
+	else if(A.size() == 2)
+		return A[0][0]*A[1][1] - A[1][0]*A[0][1];
 	else
 	{
+		double det = 0.0;
 		for(size_t d = 0; d < A.size(); ++d)
 		{
-			double det = 0.0;	
 			if(d%2 == 0)
-				det+=A[1][d]*minor(A,1,d);
+				det+=A[0][d]*determinant(getMinor(A,0,d));
 			else
-				det-=A[1][d]*minor(A,1,d);
+				det-=A[0][d]*determinant(getMinor(A,0,d));
 		}
+		return det;
 	}	
-	return det;
 }
 
-vector<vector<double> > GMM::minor(vector<vector<double> > A, int m, int n)
+vector<vector<double> > GMM::getMinor(vector<vector<double> > mat, int m, int n)
 {
-	A.erase(A.begin()+m);
-	for(size_t j = 0; j < A.size(); ++j)
-		A[j].erase(A[j].begin()+n);
+	mat.erase(mat.begin()+m);
+	for(size_t j = 0; j < mat.size(); ++j)
+		mat[j].erase(mat[j].begin()+n);
 	
-	return A;
+	return mat;
 }
 
 vector<vector<double> > GMM::inverse(vector<vector<double> > A)
 {
-// 	double *B = new double[(data_dimension-1)*(data_dimension-1)];
-// 	double **minor = new double*[data_dimension-1];
-// 	for(size_t d = 0; d < data_dimension-1; ++d)
-// 		minor[d] = B+(d*(data_dimension-1));
-// 	
-// 	for(size_t d = 0; d < data_dimension; ++d)
-// 		for(size_t e = 0; e < data_dimension; ++e)
-	return A;
+	double detA = determinant(A);
+	if(detA == 0.0)//Matrix is singular
+		return A;
+	else
+	{
+		vector<vector<double> > AInverse;
+		vector<double> row;
+		for(size_t m = 0; m < A.size(); ++m)
+		{
+			row.clear();
+			for(size_t n = 0; n < A.size(); ++n)
+			{
+				if((m+n)%2 == 0)
+					row.push_back( (1.0/detA)*determinant(getMinor(A,m,n)));
+				else
+					row.push_back( (-1.0/detA)*determinant(getMinor(A,m,n)));
+			}
+			AInverse.push_back(row);
+		}
+		
+		return transpose(AInverse);
+	}
 }
+
+vector<vector<double> > GMM::transpose(vector<vector<double> > A)
+{
+	vector<vector<double> > Atranspose;
+	vector<double> row;
+	
+	for(size_t m = 0; m < A.size(); ++m)
+	{
+		row.clear();
+		for(size_t n = 0; n < A.size(); ++n)
+			Atranspose[m][n] = 0.0;
+		Atranspose.push_back(row);
+	}
+	for(size_t m = 0; m < A.size(); ++m)
+		for(size_t n = 0; n < A.size(); ++n)
+			Atranspose[m][n] = A[n][m];
+		
+	return Atranspose;
+	
+}
+
 //End math functions
 
 //Getters and setters
@@ -137,9 +180,14 @@ void GMM::setCovariance(int component_number, vector<vector<double> >covariance)
 // //end print functions
 
 // Testing and debugging
-void testMahalanobisDistance(vector<double>,vector<double>,vector<vector<double> >);
-void testInnerProduct(vector<double>,vector<double>);
-void GMM::testDeterminant(double** A)
+void GMM::testMahalanobisDistance(vector<double>,vector<double>,vector<vector<double> >)
+{
+}
+void GMM::testInnerProduct(vector<double> a,vector<double> b)
+{
+	cout << innerProduct(a,b) << endl;
+}
+void GMM::testDeterminant(vector<vector<double> > A)
 {
 	cout << "Determinant of matrix: " << endl;
 	for(size_t i = 0; i < A.size(); ++i)
@@ -150,7 +198,33 @@ void GMM::testDeterminant(double** A)
 	}
 	cout << "is: " << determinant(A) << endl;
 }
-void testInverse(vector<vector<double> >, vector<vector<double> >);
-void testMVNPDF(vector<double>);
-void testGMM(vector<double>);
+
+void GMM::testInverse(vector<vector<double> > A)
+{
+	vector<vector<double> > Ainverse = inverse(A);
+	cout << "Inverse of :" << endl;
+	printMatrix(A);
+	cout << "Is: " << endl;
+	printMatrix(Ainverse);
+}
+
+void GMM::testMVNPDF(vector<double>)
+{
+}
+void GMM::testGMM(vector<double>)
+{
+}
+void GMM::printMatrix(vector<vector<double> > A)
+{
+	for(size_t i = 0; i < A.size(); ++i)
+	{
+		for(size_t j = 0; j < A[i].size(); ++j)
+			cout << A[i][j] << " ";
+		cout << endl;
+	}
+}
+// vector<double> GMM::makeVector(double[] a)
+// {
+// 	
+// }
 // end 
