@@ -15,10 +15,12 @@ using namespace std;
 class GMM {
 	public:
 		//Constructors
-		GMM();
 		GMM(int);
+		GMM(int,int);
 		GMM(vector<double>,vector<vector<double> > );
 		//end constructors
+		
+		void initialiseParameters();
 		
 		//Testing and debugging, will be removed later
 		void testMahalanobisDistance(vector<double>);
@@ -59,6 +61,7 @@ class GMM {
 		void printPrior(int component_number);
 		void printMean(int component_number);
 		void printCovariance(int component_number);
+		void printParameters(int component_number);
 		//end print functions
 		
 	private:

@@ -3,8 +3,7 @@
 // Thijs Kooi, 2011
 
 //To do:
-//Work on elegant initialisation of the model for 1 or more mixture components (now you still have to set the prior)
-//Make constructors that set one 
+//Work on elegant initialisation of the model for 1 or more mixture components
 //optimise, work on arrays rather than vectors
 
 #include "gmm.h"
@@ -13,34 +12,64 @@ double PI = 4.0*atan(1.0);
 
 int main()
 {
-	double sigma_array[2][2] = {{2.0,0.0},{0.0,0.5}};
-	double mean_array[2] = {1.0,2.0};
+	double sigma_array1[2][2] = {{2.0,0.0},{0.0,0.5}};
+	double mean_array1[2] = {1.0,2.0};
+	
+	double sigma_array2[2][2] = {{1.0,0.0},{0.0,1.0}};
+	double mean_array2[2] = {-3.0,-5.0};
+
 	double data_point_array[2] = {3,4};
 	
-	vector<vector<double> > sigma;
-	vector<double> row;
-	vector<double> mean;
+	vector<vector<double> > sigma1;
+	vector<double> row1;
+	vector<double> mean1;
+	
+	vector<vector<double> > sigma2;
+	vector<double> row2;
+	vector<double> mean2;
+	
 	vector<double> data_point;
 		
 	for(size_t i = 0; i < 2; ++i)
 	{
-		row.clear();
+		row1.clear();
+		row2.clear();
+		
+		mean1.push_back(mean_array1[i]);
+		mean2.push_back(mean_array2[i]);
+		
 		data_point.push_back(data_point_array[i]);
-		mean.push_back(mean_array[i]);
 		
 		for(size_t j = 0; j < 2; ++j)
-			row.push_back(sigma_array[i][j]);
+		{
+			row1.push_back(sigma_array1[i][j]);
+			row2.push_back(sigma_array2[i][j]);
+		}
 		
-		sigma.push_back(row);
+		sigma1.push_back(row1);
+		sigma2.push_back(row2);
 	}
 	
-	GMM testGMM(mean,sigma);
-	testGMM.gmmProb(data_point);
-// 	testGMM.testMahalanobisDistance(data_point);
+	GMM testGMM(2,2);
+	
+	testGMM.setPrior(0,0.3);
+	testGMM.setPrior(1,0.7);
+	
+	testGMM.setMean(0,mean1);
+	testGMM.setMean(1,mean2);
+	
+	testGMM.setCovariance(0,sigma1);
+	testGMM.setCovariance(1,sigma2);
+
+	
+	cout << testGMM.gmmProb(data_point,0) << endl;
+	cout << testGMM.gmmProb(data_point,1) << endl;
+	cout << testGMM.gmmProb(data_point) << endl;
 }
 
 //Constructors
-GMM::GMM() { mixture_components = 1; }
+GMM::GMM(int d) { mixture_components = 1; data_dimension = d; initialiseParameters(); }
+GMM::GMM(int d, int n) { mixture_components = n; data_dimension = d; initialiseParameters(); }
 GMM::GMM(vector<double> mu,vector<vector<double> > sigma) 
 { 
 	mixture_components = 1;
@@ -54,15 +83,34 @@ GMM::GMM(vector<double> mu,vector<vector<double> > sigma)
 	means.push_back(mu);
 	covariances.push_back(sigma);
 }
-
-GMM::GMM(int n) { mixture_components = n; }
 //end constructors
+
+void GMM::initialiseParameters()
+{
+	vector<vector<double> > zero_matrix;
+	vector<double> zero_vector;
+	
+	zero_matrix.reserve(data_dimension);
+	zero_vector.reserve(data_dimension);
+	
+	for(size_t i = 0; i < data_dimension; ++i)
+		zero_vector.push_back(0.0);
+	for(size_t i = 0; i < data_dimension; ++i)
+		zero_matrix.push_back(zero_vector);
+	
+	for(size_t i = 0; i < mixture_components; ++i)
+	{
+		priors.push_back(0.0);
+		means.push_back(zero_vector);
+		covariances.push_back(zero_matrix);
+	}
+}
 
 double GMM::gmmProb(vector<double> x)
 {
-	double product = 1.0;
+	double product = 0.0;
 	for(size_t k = 0; k < mixture_components; ++k)
-		product*=priors[k]*gmmProb(x,k);
+		product+=priors[k]*gmmProb(x,k);
 	return product;
 }
 
@@ -191,11 +239,32 @@ vector<vector<double> > GMM::getCovariance(int component_number) { return covari
 void GMM::setCovariance(int component_number, vector<vector<double> >covariance) { covariances[component_number] = covariance; }
 //End getters and setters
 
-// //Print functions
-// void GMM::printPrior(int component_number);
-// void GMM::printMean(int component_number);
-// void GMM::printCovariance(int component_number);
-// //end print functions
+//Print functions
+void GMM::printPrior(int component_number)
+{
+	cout << "Prior for component " << component_number << endl;
+	cout << priors[component_number] << endl;
+}
+void GMM::printMean(int component_number)
+{
+	cout << "Mean of component " << component_number << endl;
+	printMatrix(means[component_number]);
+}
+void GMM::printCovariance(int component_number)
+{
+	cout << "Covariance of component " << component_number << endl;
+	printMatrix(covariances[component_number]);
+}
+void GMM::printParameters(int component_number)
+{
+	cout << "Parameters for component " << component_number << endl;
+	cout << "Prior: " << priors[component_number] << endl;
+	cout << "Means: " << endl;
+	printMatrix(means[component_number]);
+	cout << "Covariance: " << endl;
+	printMatrix(covariances[component_number]);
+}
+//end print functions
 
 // Testing and debugging
 void GMM::testMahalanobisDistance(vector<double> x)
