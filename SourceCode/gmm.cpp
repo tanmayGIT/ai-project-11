@@ -2,7 +2,10 @@
 // Hand writing recognition Januari project, MSc AI, University of Amsterdam
 // Thijs Kooi, 2011
 
-//To do: optimise, work on arrays rather than vectors
+//To do:
+//Work on elegant initialisation of the model for 1 or more mixture components (now you still have to set the prior)
+//Make constructors that set one 
+//optimise, work on arrays rather than vectors
 
 #include "gmm.h"
 
@@ -10,35 +13,48 @@ double PI = 4.0*atan(1.0);
 
 int main()
 {
-	vector<vector<double> > A;
-	vector<double> b;
-	vector<double> c;
-// 	double test[3][3] = {{2.0,3.0,4.0},{3.0,4.0,5.0},{2.0,5.0,6.0}};
-	double test[2][2] = {{1.0,2.0},{3.0,4.0}};
-
-	GMM testGMM;
-// 	double test1[3] = {2.0,4.0,3.0};
-// 	double test2[3] = {4.0,3.0,2.0};
+	double sigma_array[2][2] = {{2.0,0.0},{0.0,0.5}};
+	double mean_array[2] = {1.0,2.0};
+	double data_point_array[2] = {3,4};
 	
-// 	for(size_t i = 0; i < 3; ++i)
-// 	{
-// 		b.push_back(test1[i]);
-// 		c.push_back(test2[i]);
-// 	}
+	vector<vector<double> > sigma;
+	vector<double> row;
+	vector<double> mean;
+	vector<double> data_point;
 		
 	for(size_t i = 0; i < 2; ++i)
 	{
-		b.clear();
+		row.clear();
+		data_point.push_back(data_point_array[i]);
+		mean.push_back(mean_array[i]);
+		
 		for(size_t j = 0; j < 2; ++j)
-			b.push_back(test[i][j]);
-		A.push_back(b);
+			row.push_back(sigma_array[i][j]);
+		
+		sigma.push_back(row);
 	}
 	
-	testGMM.testInverse(A);
+	GMM testGMM(mean,sigma);
+	cout << testGMM.gmmProb(data_point) << endl;
+// 	testGMM.testMahalanobisDistance(data_point);
 }
 
 //Constructors
 GMM::GMM() { mixture_components = 1; }
+GMM::GMM(vector<double> mu,vector<vector<double> > sigma) 
+{ 
+	mixture_components = 1;
+	priors.push_back(1.0);
+	if(mu.size() != sigma.size())
+	{
+		cout << "Error: size of mean and covariance do not agree" << endl;
+		return;
+	}
+	data_dimension = mu.size();
+	means.push_back(mu);
+	covariances.push_back(sigma);
+}
+
 GMM::GMM(int n) { mixture_components = n; }
 //end constructors
 
@@ -63,13 +79,13 @@ double GMM::mahalanobisDistance(vector<double> x,vector<double> mean,vector<vect
 {
 	vector<double> difference;
 	for(size_t d = 0; d < data_dimension; ++d)
-		difference[d] = x[d]-mean[d];
+		difference.push_back(x[d]-mean[d]);
 	
 	vector<vector<double> > inverse_covariance = inverse(covariance);
 	
 	vector<double> distance ;
 	for(size_t d = 0; d < data_dimension; ++d)
-		distance[d]==innerProduct(difference,inverse_covariance[d]);
+		distance.push_back(innerProduct(difference,inverse_covariance[d]));
 	
 	return innerProduct(distance,difference);
 }
@@ -156,12 +172,14 @@ vector<vector<double> > GMM::transpose(vector<vector<double> > A)
 	return Atranspose;
 	
 }
-
 //End math functions
 
 //Getters and setters
 int GMM::getMixtureComponents() { return mixture_components; }
 void GMM::setMixtureComponents(int N) { mixture_components =  N; }
+
+int GMM::getDimension() { return data_dimension; }
+void GMM::setDimension(int d) { data_dimension = d; }
 
 int GMM::getPrior(int component_number) { return priors[component_number]; }
 void GMM::setPrior(int component_number,double probability) { priors[component_number] = probability; }
@@ -180,13 +198,16 @@ void GMM::setCovariance(int component_number, vector<vector<double> >covariance)
 // //end print functions
 
 // Testing and debugging
-void GMM::testMahalanobisDistance(vector<double>,vector<double>,vector<vector<double> >)
+void GMM::testMahalanobisDistance(vector<double> x)
 {
+	cout << mahalanobisDistance(x, means[0],covariances[0]) << endl;
 }
+
 void GMM::testInnerProduct(vector<double> a,vector<double> b)
 {
 	cout << innerProduct(a,b) << endl;
 }
+
 void GMM::testDeterminant(vector<vector<double> > A)
 {
 	cout << "Determinant of matrix: " << endl;
@@ -214,6 +235,14 @@ void GMM::testMVNPDF(vector<double>)
 void GMM::testGMM(vector<double>)
 {
 }
+void GMM::testTranspose(vector<vector<double> > A)
+{
+	vector<vector<double> > Atranspose = transpose(A);
+	cout << "Transpose of :" << endl;
+	printMatrix(A);
+	cout << "Is: " << endl;
+	printMatrix(Atranspose);
+}
 void GMM::printMatrix(vector<vector<double> > A)
 {
 	for(size_t i = 0; i < A.size(); ++i)
@@ -222,6 +251,12 @@ void GMM::printMatrix(vector<vector<double> > A)
 			cout << A[i][j] << " ";
 		cout << endl;
 	}
+}
+void GMM::printMatrix(vector<double> b)
+{
+	for(size_t i = 0; i < b.size(); ++i)
+		cout << b[i] << " ";
+	cout << endl;
 }
 // vector<double> GMM::makeVector(double[] a)
 // {
