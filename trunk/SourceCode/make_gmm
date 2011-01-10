@@ -1,0 +1,9 @@
+PROGRAM 	= gmm
+DESTINATION 	= gmm
+CC		= g++ -O7 -g
+
+gmm : gmm.o
+	$(CC) -o gmm gmm.o
+
+gmm.o : gmm.cpp gmm.h
+	$(CC) -c gmm.cpp

@@ -5,7 +5,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -23,24 +22,43 @@ class HMM {
 		int getObservations();
 		void setStates(int);
 		void setObservations(int);
+		//End getters and setters
 		
 		void trainModel(double*);
+		vector<int> viterbiSequence(double*);
+		
+		double likelihood();
+		
+		//Testing and debugging
+		void printObservations();
+		void printTransitionProbabilities();
+		void printObservationProbabilities();
+		//End testing and debugging
 		
 	private:
+		//HMM variables
 		int number_of_states,number_of_observations;
 		double *prior_probabilities;
 		map<int, map<int, double> > transition_probabilities;
 		map<int, map<int, double> > observation_probabilities;
 		
-		//Training functions
+		double *observations;
+		//End HMM variables
+		
+		//Baum-Welch functions
+		double current_likelihood;
 		void initialiseParameters();
-		void eStep(double*);
-			double forwardProbability(double*);
-			double backwardProbability(double*);
-		void mStep(double*);
-			void maximisePriors(double*);
-			void maximiseTransitions(double*);
-			void maximiseObservationDistribution(double*);
+		
+		void eStep();
+			double forwardProbability(int,int);
+			double backwardProbability(int,int);
+			
+		void mStep();
+			void maximisePriors();
+			void maximiseTransitions();
+				void updateTransition(int,int);
+			void maximiseObservationDistribution();
+		//End Baum-Welch functions
 			
 		//Viterbi Functions
 };
