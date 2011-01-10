@@ -17,16 +17,19 @@ class GMM {
 		//Constructors
 		GMM();
 		GMM(int);
+		GMM(vector<double>,vector<vector<double> > );
 		//end constructors
 		
-		//Testing and debugging
-		void testMahalanobisDistance(vector<double>,vector<double>,vector<vector<double> >);
+		//Testing and debugging, will be removed later
+		void testMahalanobisDistance(vector<double>);
 		void testInnerProduct(vector<double>,vector<double>);
 		void testDeterminant(vector<vector<double> >);
 		void testInverse(vector<vector<double> >);
+		void testTranspose(vector<vector<double> >);
 		void testMVNPDF(vector<double>);
 		void testGMM(vector<double>);
 		void printMatrix(vector<vector<double> >);
+		void printMatrix(vector<double>);
 		vector<double> makeVector(double[]);
 		//end 
 
@@ -37,13 +40,18 @@ class GMM {
 		int getMixtureComponents();
 		void setMixtureComponents(int);
 		
+		int getDimension();
+		void setDimension(int);
+		
 		int getPrior(int component_number);
 		void setPrior(int component_number,double probability);
 		
 		vector<double> getMean(int component_number);
+		void setMean(vector<double> mean);
 		void setMean(int component_number,vector<double> mean);
 		
 		vector<vector<double> > getCovariance(int component_number);
+		void setCovariance(vector<vector<double> >);
 		void setCovariance(int component_number, vector<vector<double> > covariance);
 		//End getters and setters
 		
@@ -67,8 +75,8 @@ class GMM {
 		double determinant(vector<vector<double> >);								//Tested
 		double innerProduct(vector<double>, vector<double>);							//Tested
 		vector<vector<double> > getMinor(vector<vector<double> >, int, int); 					//Tested
-		vector<vector<double> > inverse(vector<vector<double> >);
-		vector<vector<double> > transpose(vector<vector<double> >);
+		vector<vector<double> > inverse(vector<vector<double> >);						//Tested
+		vector<vector<double> > transpose(vector<vector<double> >);						//Tested
 		//end math functions
 };
 
