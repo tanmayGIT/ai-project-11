@@ -5,7 +5,7 @@ function [lines] = lineSegmentation(im)
 
     % CONSTANT DECLARATIONS:
     PEAK_DELTA_FACTOR = 10;
-    THRESHOLD = 1;
+    THRESHOLD = 2;
 
     % Generate a histogram
     bw = im2bw(im);

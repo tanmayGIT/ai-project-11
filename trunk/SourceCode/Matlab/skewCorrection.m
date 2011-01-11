@@ -1,4 +1,4 @@
-function [ outLine, baseline ] = skewCorrection(line)
+function [correctedLine, baseline] = skewCorrection(line)
 
 % SKEWCORRECT. This function takes a line as input and it returnes a new 
 % line with corrected skew and the baseline.
@@ -12,7 +12,7 @@ function [ outLine, baseline ] = skewCorrection(line)
 
     width = size(line,2);
 
-    % Debug output, display in image and angled baseline
+    % Show the image and baseline
     x_axis = (1:1:width);
     f = polyval(p, x_axis);
     figure(5), imshow(line);
@@ -29,23 +29,22 @@ function [ outLine, baseline ] = skewCorrection(line)
     [inverted_bw] = invertBwImage(bw);
     
     % Rotate image
-    invertedOutLine = imrotate(inverted_bw, slope);
+    invertedCorrectedLine = imrotate(inverted_bw, slope);
 
     % To avoid the black corners of rotation we now invert the image back
-    [outLine] = invertBwImage(invertedOutLine);
+    [correctedLine] = invertBwImage(invertedCorrectedLine);
     
     % Compute the new baseline
-    [x,y] = getLowerPixels(outLine);
+    [x,y] = getLowerPixels(correctedLine);
     p = polyfit(x, y, 1);
 
     % Display rotated image with baseline
     f = polyval(p, x_axis);
-    figure(6), imshow(outLine);
+    figure(6), imshow(correctedLine);
     hold on
     plot(x_axis, f, 'r');
     title('Line with skew corrected and baseline plotted');
-%     line([1,width],[p(2),p(2)],'Color','r');
-
+    
     baseline = p(2);
 
 end
