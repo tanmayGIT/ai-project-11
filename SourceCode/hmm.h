@@ -14,25 +14,39 @@ using namespace std;
 
 class HMM {
 	public:
-		HMM(int,int,map<int,map<int,double> >, map<int,map<int,double> >);//Constructor functions
+		//Constructor functions
+		HMM(int,int,map<int,map<int,double> >, map<int,map<int,double> >);
 		HMM();
+		//End constructor functions
 		
 		//Getters and setters
-		int getStates();
-		int getObservations();
-		void setStates(int);
-		void setObservations(int);
+		int getStates();								//Tested
+		void setStates(int);								//Tested
+			
+		int getObservations();								//Tested
+		void setObservations(int);							//Tested
+		
+		double* getTransitionProbabilities();						//Tested
+		void setTransitionProbabilities(double*);					//Tested
+		
+		double* getObservationProbabilities();						//Tested
+		void setObservationProbabilities(double*);					//Tested
 		//End getters and setters
 		
-		void trainModel(double*);
+		void initialiseUniform();							//Tested
+		
+		//Trains the model for the given observation vector
+		void trainModel(double*);					
+		double sequenceProbability(vector<int>);					//Tested
 		vector<int> viterbiSequence(double*);
 		
 		double likelihood();
 		
 		//Testing and debugging
-		void printObservations();
-		void printTransitionProbabilities();
-		void printObservationProbabilities();
+		void printObservations();							//Tested
+		void printPriorProbabilities();							//Tested
+		void printTransitionProbabilities();						//Tested
+		void printObservationProbabilities();						//Tested
 		//End testing and debugging
 		
 	private:
