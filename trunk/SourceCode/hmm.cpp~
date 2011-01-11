@@ -7,20 +7,45 @@
 
 #include "hmm.h"
 
-//To do:
-//So far it only works for discrete observation probabilities
-//Generalise to all topologies, for testing.
-//Have a good look at the E and M step, such that no values are computed twice (e.g. likelihood)
-
 int main()
 {
 	//Testing
 	HMM model;
-	model.setStates(2);
-	model.setObservations(5);
-	double observations[] = {2,3,4,5,3,1,4};
-	model.trainModel(observations);
-	model.printObservations();
+	model.setStates(4);
+	model.setObservations(4);
+	model.initialiseUniform();
+	
+	cout << "Observations: " << model.getObservations() << endl;
+	cout << "State: " << model.getStates() << endl;
+	
+	//Forward model initial probabilities
+	double A[4][4] = 	{
+				{0.5,0.5,0.0,0.0},
+				{0.0,0.5,0.5,0.0},
+				{0.0,0.0,0.5,0.5},
+				{0.0,0.0,0.0,1.0},
+				};
+				
+	//Test sequence, fully connected model
+	double test_sequence[6] = {0,3,2,1,2,2};
+	//Test sequence, forward model
+// 	double test_sequence[6] = {0,1,1,2,2,3};
+
+	model.printPriorProbabilities();
+	model.printTransitionProbabilities();
+	model.printObservationProbabilities();
+	
+	vector<int> test_sequence_vector;
+	for(size_t i = 0; i < 6; ++i)
+		test_sequence_vector.push_back(test_sequence[i]);
+	
+	cout << "Sequence probability: " << model.sequenceProbability(test_sequence_vector) << endl;
+	
+// 	double observations[] = {2,3,4,5,3,1,4};
+// 	model.trainModel(observations);
+// 	model.printObservations();
+
+	
 }
 
 //Constructors
@@ -58,19 +83,19 @@ void HMM::trainModel(double* o)
 	cout << "Done!" << endl;
 }
 
+void HMM::initialiseUniform() { initialiseParameters(); }
+
 void HMM::initialiseParameters()
 {
 	//Initialise elements of transition map
-	//The model is assumed to have only forward connections, therefore a sort of diagonal matrix with non-zero elements also above the diagonal
 	for(size_t i = 0; i < number_of_states; ++i)
-		for(size_t j = i; j < number_of_states; ++j)
+		for(size_t j = 0; j < number_of_states; ++j)
 			transition_probabilities[i][j] = 1.0;
 		
 	//Initialise uniform probabilities
-	//It can only transfer to either itself or the next state, therefore we do not need to do any calculations with the size of the matrix
 	for(map<int, map<int,double> >::iterator i = transition_probabilities.begin(); i != transition_probabilities.end(); ++i)
 		for(map<int, double>::iterator j = (*i).second.begin(); j != (*i).second.end(); ++j)
-			(*j).second/=2.0;
+			(*j).second/=(*i).second.size();
 		
 	prior_probabilities = new double[number_of_states];
 	//Initialise uniform prior probabilities
@@ -79,10 +104,10 @@ void HMM::initialiseParameters()
 	
 	//Initialise uniform probabilities for observations
 	for(size_t i = 0; i < number_of_states; ++i)
-		for(size_t j = i; j < number_of_observations; ++j)
+		for(size_t j = 0; j < number_of_observations; ++j)
 			observation_probabilities[i][j] = 1.0;
 		
-	for(map<int, map<int,double> >::iterator i = transition_probabilities.begin(); i != transition_probabilities.end(); ++i)
+	for(map<int, map<int,double> >::iterator i = observation_probabilities.begin(); i != observation_probabilities.end(); ++i)
 		for(map<int, double>::iterator j = (*i).second.begin(); j != (*i).second.end(); ++j)
 			(*j).second/=(*i).second.size();
 	
@@ -126,6 +151,9 @@ double HMM::backwardProbability(int state, int timestep)
 
 void HMM::mStep()
 {
+	maximisePriors();
+	maximiseTransitions();
+	maximiseObservationDistribution();
 }
 
 void HMM::maximisePriors()
@@ -164,7 +192,14 @@ void HMM::maximiseObservationDistribution()
 //Model properties
 //Returns the likelihood of the observation sequence
 double HMM::likelihood() { return current_likelihood; }
-
+double HMM::sequenceProbability(vector<int> sequence)
+{
+	double probability = prior_probabilities[sequence[0]];
+	for(size_t i = 1; i < sequence.size(); ++i)
+		probability*=transition_probabilities[sequence[i-1]][sequence[i]];
+	
+	return probability;
+}
 //End properties
 
 
@@ -178,13 +213,22 @@ void HMM::printObservations()
 		cout << observations[i] << " ";
 	cout << endl;
 }
+void HMM::printPriorProbabilities()
+{
+	cout << "Current prior probabilities: " << endl;
+	for(size_t i = 0; i < number_of_states; ++i)
+		cout << prior_probabilities[i] << " ";
+	cout << endl;
+}
 void HMM::printTransitionProbabilities()
 {
 	cout << "Current transition probabilities: " << endl;
 	for(map<int, map< int, double> >::iterator i = transition_probabilities.begin(); i != transition_probabilities.end(); ++i)
+	{
 		for(map<int, double>::iterator j = (*i).second.begin(); j != (*i).second.end(); ++j)
 			cout << (*j).second << " ";
 		cout << endl;
+	}
 }
 void HMM::printObservationProbabilities()
 {
