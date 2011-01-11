@@ -27,9 +27,9 @@ function output = main(input)
     %need some of these, but we can always add, substract. At least it
     %gives us something to work with
 
-    im = imread('a01-000u.png');
+    
     %Maybe we can do noise removal, etc depending on the method to use
-    pre_processed_input = preProcessing(input);
+    pre_processed_input = preProcessing;
     
     %Slant, skew, slope, vertical, horizontal normalisation, etc.
     normalised_input = normalisation(pre_processed_input);
