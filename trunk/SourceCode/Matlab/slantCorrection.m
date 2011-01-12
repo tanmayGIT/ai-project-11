@@ -8,7 +8,9 @@ function correctedLine = slantCorrection(line_bw, angle)
     tform = maketform('affine', tf);
     outLine = imtransform(line_wb, tform);
     
-    % To avoid the black corners of rotation we now invert the image back
+    % To avoid the black corners of rotation we now bring the image back
     [correctedLine] = invertBwImage(outLine);
+    
+    figure, imshow(correctedLine,[]);
 
 end

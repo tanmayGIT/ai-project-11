@@ -1,7 +1,6 @@
 function angle = slantDetection(im, baseline)
 
-    bw = im2bw(im);
-    bwTrans = (bw(:,2:end) - bw(:,1:end-1)) ~= 0 ;
+    bwTrans = (im(:,2:end) - im(:,1:end-1)) ~= 0 ;
 %     bwTrans = bwmorph(bwTrans,'clean');
 %     bwTrans = bwmorph(bwTrans,'hbreak') ;
     box = bwTrans ;
