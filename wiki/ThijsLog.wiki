@@ -6,3 +6,9 @@ Continued working on the HMM and started a GMM we can possibly use.
 
 Monday 10th
 Meeting to discuss what we have done, continue working on the implementation.
+
+Tuesday 11th 
+Finished GMM implementation yesterday evening, continued working on HMM.
+
+Wednesday 12th
+Finished Viterbi algorithm and training methods, started testing and debugging.
