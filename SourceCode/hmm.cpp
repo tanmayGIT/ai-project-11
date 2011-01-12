@@ -10,16 +10,21 @@
 // - check for possible underflow forward/backward probability, normalise/log probabilities
 // - Extend to higher dimensional observations
 // - Add Gaussian/mixture of Gaussians
+// - Check model with HMM toolkit available
 
 int main()
 {
 	//Testing
 	HMM markov_model(4,4);
-	GMM mixture_model(2,2);
+	int test_obs[6] = {3,1,2,1,0,2};
+	
+	markov_model.trainModel(test_obs,6);
 }
 
 //Constructors and initialisation functions
 //When no further model parameters are passed, the model is initialised uniform
+//In the case of discrete observations, no takes the number of possible observations
+//Please note that the observations should not be passed as actual values, but as indexes of the vocabulary.
 HMM::HMM(int ns, int no) 
 { 
 	number_of_states = ns;
@@ -36,10 +41,11 @@ HMM::HMM(int ns, int no, double* p, map<int, map<int, double> > t, map<int, map<
 	observation_probabilities = o;
 }
 
-HMM::HMM(int ns, GMM)
+//Initialise the HMM with ns states and a mixture of Guassians, corresponding to every state
+HMM::HMM(int ns, vector<GMM> mixture_models)
 {
 	number_of_states = ns;
-	number_of_observations = no;
+	observation_dimension = mixture_models[0].getDimension();
 }
 
 void HMM::initialiseUniform() 
@@ -67,21 +73,12 @@ void HMM::initialiseUniform()
 	for(map<int, map<int,double> >::iterator i = observation_probabilities.begin(); i != observation_probabilities.end(); ++i)
 		for(map<int, double>::iterator j = (*i).second.begin(); j != (*i).second.end(); ++j)
 			(*j).second/=(*i).second.size();
-
-}
-
-void HMM::initialiseParameters()
-{
-	
 }
 //End constructors and initialisation functions
 
 //Getters and setters
 int HMM::getStates(){ return number_of_states;  }
 int HMM::getNumberOfObservations(){ return number_of_observations; }
-
-
-
 //End getters and setters
 
 //Training functions
@@ -89,15 +86,24 @@ void HMM::trainModel(int* o, int l)
 {
 	observations = o;
 	observation_sequence_length = l;
+	
 	cout << "Training model..." << endl;
-	int converged=0;
-	while(!converged)
+	
+	double previous_likelihood = 0.0;
+	double current_likelihood = observationSequenceProbability(o,l);
+	int it = 0;
+	
+	while(current_likelihood - previous_likelihood > 0.000001)
 	{
 		eStep();
 		mStep();
-		converged =1;
+		previous_likelihood = current_likelihood;
+		current_likelihood = observationSequenceProbability(o,l);
+		cout << "Likelihood at iteration " << it << current_likelihood << endl;
+		++it;
 	}
-	cout << "Done!" << endl;
+	
+	cout << "Converged after " << it+1 << " iterations." << endl;
 }
 
 void HMM::eStep() 
@@ -126,9 +132,9 @@ double HMM::forwardProbability(int state, int timestep)
 	for(size_t i = 0; i < number_of_states; ++i)
 		sum+=forwardProbability(i,timestep-1)*transition_probabilities[i][state];
 		
-	return sum*observation_probabilities[state][observations[timestep]];
+	return sum*observation_probabilities[state][observations[timestep+1]];
 }
-
+//#805 0x0804a7a8 in HMM::backwardProbability (this=0xbffff218, state=0, timestep=56) at hmm.cpp:146
 //Generally denoted beta in the literature
 double HMM::backwardProbability(int state, int timestep)
 {
@@ -333,7 +339,7 @@ double HMM::maxValue(double* array, int index)
 
 
 
-//Testing and debugging
+//Print functions
 void HMM::printObservations()
 {
 	cout << "Training on observations: " << endl;
@@ -368,4 +374,4 @@ void HMM::printObservationProbabilities()
 		cout << endl;
 	}
 }
-//End testing and debugging
+//End print functions

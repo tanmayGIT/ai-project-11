@@ -17,41 +17,31 @@ using namespace std;
 class HMM {
 	public:
 		//Constructor functions
-		HMM(int number_of_states, int number_of_observations);
+		HMM(int number_of_states, int number_of_observations);				//Tested
 		HMM(int,int,double *prior_probabilities, map<int,map<int,double> > transition_probabilities, map<int,map<int,double> > observation_probabilities);
-		HMM(int,int,GMM);
+		HMM(int,int,vector<GMM>);
 		//End constructor functions
 		
 		//Getters and setters
 		int getStates();								//Tested
 		int getNumberOfObservations();							//Tested
-		
-// 		void setParameters();
-		
-// 		double* getTransitionProbabilities();						
-// 		void setTransitionProbabilities(double*);					
-// 		
-// 		double* getObservationProbabilities();						
-// 		void setObservationProbabilities(double*);					
 		//End getters and setters
-		
-		void initialiseUniform();							//Tested
 		
 		void trainModel(int*,int);					
 		double stateSequenceProbability(vector<int>);					//Tested
 		double observationSequenceProbability(int*,int);
 		int* viterbiSequence(int*,int);
 		
-		//Testing and debugging
+		//Print functions
 		void printObservations();							//Tested
 		void printPriorProbabilities();							//Tested
 		void printTransitionProbabilities();						//Tested
 		void printObservationProbabilities();						//Tested
-		//End testing and debugging
+		//Print functions
 		
 	private:
 		//HMM variables
-		int number_of_states,number_of_observations,observation_sequence_length;
+		int number_of_states,number_of_observations,observation_dimension,observation_sequence_length;
 		double *prior_probabilities;
 		map<int, map<int, double> > transition_probabilities;
 		map<int, map<int, double> > observation_probabilities;
@@ -59,9 +49,10 @@ class HMM {
 		int *observations;
 		//End HMM variables
 		
+		void initialiseUniform();							//Tested
+		
 		//Baum-Welch functions
 		double current_likelihood;
-		void initialiseParameters();
 		
 		void eStep();
 			double forwardProbability(int,int);
