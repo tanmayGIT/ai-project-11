@@ -1,5 +1,26 @@
 #summary Davide's research log
 
+== 12/01/2011==
+       Read the following papers:
+    * _"*Improving Offline Handwritten Text Recognition with Hybrid HMM/ANN Models*"_ (2010) by Boquera, Castro-Bleda, Gorbe-Moya and Zamora-Martinez
+         * The papers describes Hybrid HMM/ANN (Artificial Neural Network) models for recognizing unconstrained offline handwritten text.
+         * The paper presents new techniques to remove slop and slant from handwritten text and to normalize the size of the text images with supervised learning methods.
+         * The papers seems pretty interesting
+
+   * Continued with pre-processing implementation
+         *
+         * 
+
+== 11/01/2011==
+    * Continued with pre-processing implementation
+          * Skew and slope detection and correction finished
+          * Slant detection and correction almost finished
+
+== 10/01/2011==
+     * Started working on the implementation of pre-processing part 
+           * Line Segmentation finished
+           * Started skew and slope detection
+
 == 08/01/2011==
 
     *  Started reading book:  _"*Digital Image Processing Using MATLAB*"_ by R. Gonzales, R. Woods and S. Eddins
