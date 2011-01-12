@@ -11,4 +11,4 @@ Tuesday 11th
 Finished GMM implementation yesterday evening, continued working on HMM.
 
 Wednesday 12th
-Finished Viterbi algorithm and training methods, started testing and debugging. Started writing some formulas in Latex.
+Finished Viterbi algorithm and training methods, started testing and debugging for discrete scalar observations. Started writing some formulas in Latex. Started extending the model to higher dimensional observations, worked on adding the Gaussian mixture class to the code.
