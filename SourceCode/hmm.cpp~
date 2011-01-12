@@ -7,15 +7,21 @@
 
 #include "hmm.h"
 
+// To do:
+// - Do hand calculations on forward/backward probability and probability of observation sequences, for different models (2).
+// - Do hand calculations for viterbi sequence
+// - Make two clear example models, clear manual
+// - check for possible underflow forward/backward probability, normalise/log probabilities
+
 int main()
 {
 	//Testing
 	HMM model;
 	model.setStates(4);
-	model.setObservations(4);
+	model.setNumberOfObservations(4);
 	model.initialiseUniform();
 	
-	cout << "Observations: " << model.getObservations() << endl;
+	cout << "Observations: " << model.getNumberOfObservations() << endl;
 	cout << "State: " << model.getStates() << endl;
 	
 	//Forward model initial probabilities
@@ -26,26 +32,26 @@ int main()
 				{0.0,0.0,0.0,1.0},
 				};
 				
-	//Test sequence, fully connected model
-	double test_sequence[6] = {0,3,2,1,2,2};
-	//Test sequence, forward model
+	//Test state sequence, fully connected model
+// 	double test_sequence[6] = {0,3,2,1,2,2};
+	//Test state sequence, forward model
 // 	double test_sequence[6] = {0,1,1,2,2,3};
+
+	//Test observation sequence
+	int test_sequence[6] = {0,1,1,2,2,3};
 
 	model.printPriorProbabilities();
 	model.printTransitionProbabilities();
 	model.printObservationProbabilities();
 	
-	vector<int> test_sequence_vector;
-	for(size_t i = 0; i < 6; ++i)
-		test_sequence_vector.push_back(test_sequence[i]);
-	
-	cout << "Sequence probability: " << model.sequenceProbability(test_sequence_vector) << endl;
-	
+	cout << "Observation sequence probability: " << model.observationSequenceProbability(test_sequence,6) << endl;
+	int *seq = model.viterbiSequence(test_sequence,6);
+	for(int i = 0; i < 6; ++i)
+		cout << seq[i] << " ";
+	cout << endl;
 // 	double observations[] = {2,3,4,5,3,1,4};
 // 	model.trainModel(observations);
 // 	model.printObservations();
-
-	
 }
 
 //Constructors
@@ -62,13 +68,14 @@ HMM::HMM(int ns, int no, map<int, map<int, double> > t, map<int, map<int, double
 
 //Getters and setters
 int HMM::getStates(){ return number_of_states;  }
-int HMM::getObservations(){ return number_of_observations; }
 void HMM::setStates(int s){ number_of_states = s;  }
-void HMM::setObservations(int o){ number_of_observations = o; }
+
+int HMM::getNumberOfObservations(){ return number_of_observations; }
+void HMM::setNumberOfObservations(int o){ number_of_observations = o; }
 //End getters and setters
 
 //Training functions
-void HMM::trainModel(double* o)
+void HMM::trainModel(int* o)
 {
 	observations = o;
 	cout << "Training model..." << endl;
@@ -113,7 +120,7 @@ void HMM::initialiseParameters()
 	
 }
 
-//Find posterior distribution of the latent variables
+//To verify
 void HMM::eStep() { current_likelihood = forwardProbability(number_of_states,number_of_observations); }
 
 //Generally denoted alpha in the literature
@@ -124,27 +131,24 @@ double HMM::forwardProbability(int state, int timestep)
 	if(state == 0 && timestep == 0)
 		return 1.0;
 	else if(timestep == 0)
-		return transition_probabilities[0][state]*observation_probabilities[state][observations[0]];
+		return prior_probabilities[timestep]*observation_probabilities[state][observations[0]];
 	
-	//Sum over all N-1 states
 	double sum = 0.0;
-	for(size_t i = 1; i < number_of_states-1; ++i)
+	for(size_t i = 0; i < number_of_states; ++i)
 		sum+=forwardProbability(i,timestep-1)*transition_probabilities[i][state];
 		
-	return observation_probabilities[state][observations[timestep]];
+	return sum*observation_probabilities[state][observations[timestep]];
 }
 
 //Generally denoted beta in the literature
 double HMM::backwardProbability(int state, int timestep)
 {
-	double sum = 0.0;
+	if(timestep == observation_sequence_length-1)
+		return 1.0;
 	
-	if(timestep == number_of_observations)
-		for(size_t j = 1; j < number_of_states-1; ++j)
-			sum+=transition_probabilities[1][j]*observation_probabilities[j][observations[0]]*backwardProbability(j,timestep+1);
-	else
-		for(size_t j = 1; j < number_of_states-1; ++j)
-			sum+=transition_probabilities[1][j]*observation_probabilities[j][observations[timestep]]*backwardProbability(j,timestep+1);
+	double sum = 0.0;
+	for(size_t j = 0; j < number_of_states; ++j)
+		sum+=transition_probabilities[state][j]*observation_probabilities[j][observations[timestep+1]]*backwardProbability(j,timestep+1);
 	
 	return sum;
 }
@@ -192,13 +196,130 @@ void HMM::maximiseObservationDistribution()
 //Model properties
 //Returns the likelihood of the observation sequence
 double HMM::likelihood() { return current_likelihood; }
-double HMM::sequenceProbability(vector<int> sequence)
+double HMM::stateSequenceProbability(vector<int> sequence)
 {
 	double probability = prior_probabilities[sequence[0]];
 	for(size_t i = 1; i < sequence.size(); ++i)
 		probability*=transition_probabilities[sequence[i-1]][sequence[i]];
 	
 	return probability;
+}
+
+//Returns the probability of the sequence under the given model
+double HMM::observationSequenceProbability(int *sequence,int length)
+{
+	double probability = 0.0;
+	observation_sequence_length = length;
+	observations = sequence;
+	
+	for(size_t i = 0; i < number_of_states; ++i)
+	{
+		cout << i << " " << forwardProbability(i,observation_sequence_length-1) << endl;
+		probability+=forwardProbability(i,observation_sequence_length-1);
+	}
+	
+	return probability;
+}
+
+//These functions need some work in efficiency and readability
+int* HMM::viterbiSequence(int* observation_sequence, int l)
+{
+	observation_sequence_length = l;
+	observations = observation_sequence;
+	
+	//Declare and initialise dynammic programming table
+	//{delta,psi}[states,timesteps]
+	double **delta = new double*[number_of_states];
+	int **psi = new int*[number_of_states];
+	
+	for(size_t i = 0; i < number_of_states; ++i)
+	{
+		delta[i] = new double[observation_sequence_length];
+		psi[i] = new int[observation_sequence_length];
+	}
+	
+	for(size_t i = 0; i < number_of_states; ++i)
+	{
+		delta[i][0] = prior_probabilities[i]*observation_probabilities[i][observations[0]];
+		psi[i][0] = 0;
+	}
+	
+// 	for(int i = 0; i < number_of_states; ++i)
+// 	{
+// 		for(int j = 0; j < observation_sequence_length; ++j)
+// 			cout << delta[i][j] << " ";
+// 		cout << endl;
+// 	}
+// 		
+// 	for(int i = 0; i < number_of_states; ++i)
+// 	{
+// 		for(int j = 0; j < observation_sequence_length; ++j)
+// 			cout << psi[i][j] << " ";
+// 		cout << endl;
+// 	}
+
+
+	//Compute table
+	int index;
+	for(size_t t = 1; t < observation_sequence_length; ++t)
+	{
+		for(size_t i = 0; i < number_of_states; ++i)
+		{
+			delta[i][t] = highestPathProbability(i, t, delta, index);
+			psi[i][t] = index;
+		}
+	}
+	
+	//Termination
+	double max_probability = 0.0;
+	for(size_t i = 0; i < number_of_states; ++i)
+		if(delta[i][observation_sequence_length-1] > max_probability)
+		{
+			max_probability = delta[i][observation_sequence_length-1];
+			index = i;
+		}
+	
+	//Perform the back track
+	int *state_sequence = new int[observation_sequence_length];
+	for(size_t t = 0; t < observation_sequence_length-1; ++t)
+		state_sequence[t] = 0;
+	
+	state_sequence[observation_sequence_length-1] = index;
+	
+	for(size_t t = observation_sequence_length-2; t > 0; --t)
+		state_sequence[t] = psi[state_sequence[t+1]][t+1];
+
+	state_sequence[0] = psi[state_sequence[1]][1];
+	return state_sequence;
+	
+}
+
+double HMM::highestPathProbability(int state, int timestep, double **delta, int index)
+{
+	double *probabilities = new double[number_of_states];
+	for(size_t i = 0; i < number_of_states; ++i)
+		probabilities[i] = delta[i][timestep-1]*transition_probabilities[i][state];
+	
+	return maxValue(probabilities,index)*observation_probabilities[state][observations[timestep]];
+}
+
+double HMM::maxValue(double* array, int index)
+{
+// 	for(int i = 0; i < number_of_states; ++i)
+// 		cout << array[i] << endl;
+// 	
+	double value = 0.0;
+	index = 0;
+	for(size_t i = 0; i < number_of_states; ++i)
+		if(array[i] > value)
+		{
+			value = array[i];
+			index = i;
+			
+		}
+	
+// 	cout << index << endl;
+	return value;
 }
 //End properties
 
@@ -234,8 +355,10 @@ void HMM::printObservationProbabilities()
 {
 	cout << "Current observation probabilities: " << endl;
 	for(map<int, map< int, double> >::iterator i = observation_probabilities.begin(); i != observation_probabilities.end(); ++i)
+	{
 		for(map<int, double>::iterator j = (*i).second.begin(); j != (*i).second.end(); ++j)
 			cout << (*j).second << " ";
 		cout << endl;
+	}
 }
 //End testing and debugging

@@ -23,8 +23,8 @@ class HMM {
 		int getStates();								//Tested
 		void setStates(int);								//Tested
 			
-		int getObservations();								//Tested
-		void setObservations(int);							//Tested
+		int getNumberOfObservations();							//Tested
+		void setNumberOfObservations(int);						//Tested
 		
 		double* getTransitionProbabilities();						//Tested
 		void setTransitionProbabilities(double*);					//Tested
@@ -35,10 +35,10 @@ class HMM {
 		
 		void initialiseUniform();							//Tested
 		
-		//Trains the model for the given observation vector
-		void trainModel(double*);					
-		double sequenceProbability(vector<int>);					//Tested
-		vector<int> viterbiSequence(double*);
+		void trainModel(int*);					
+		double stateSequenceProbability(vector<int>);					//Tested
+		double observationSequenceProbability(int*,int);
+		int* viterbiSequence(int*,int);
 		
 		double likelihood();
 		
@@ -51,12 +51,12 @@ class HMM {
 		
 	private:
 		//HMM variables
-		int number_of_states,number_of_observations;
+		int number_of_states,number_of_observations,observation_sequence_length;
 		double *prior_probabilities;
 		map<int, map<int, double> > transition_probabilities;
 		map<int, map<int, double> > observation_probabilities;
 		
-		double *observations;
+		int *observations;
 		//End HMM variables
 		
 		//Baum-Welch functions
@@ -75,6 +75,9 @@ class HMM {
 		//End Baum-Welch functions
 			
 		//Viterbi Functions
+		double highestPathProbability(int, int, double**,int);
+		double maxValue(double*, int);
+		//End Viterbi functions
 };
 
 #endif
