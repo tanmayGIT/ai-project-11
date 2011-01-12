@@ -1,14 +1,16 @@
 function [lines] = lineSegmentation(im)
 
-% LINESEGMENTATION This function takes an image and separates lines by creating 
+% LINESEGMENTATION This function takes a black and white image and separates lines by creating 
 % horizontal cuts. This will not work if the lines have a large skew
 
     % CONSTANT DECLARATIONS:
     PEAK_DELTA_FACTOR = 10;
     THRESHOLD = 2;
 
-    % Generate a histogram
+    % Transform the image in black and white
     bw = im2bw(im);
+    
+    % Generate a histogram
     bw_trans = (bw(:,2:end) - bw(:,1:end-1)) ~= 0 ;
     im_hist = sum(bw_trans,2) ;
 
@@ -31,31 +33,39 @@ function [lines] = lineSegmentation(im)
     % Return a structure where every element is a line segmented
     lines = struct([]);
     
+    
+    prev = ones(size(min_peaks,1),2);
     % Loop over the lines
     for i = 1:size(min_peaks,1)
         
-        if i == 1
-            prev = 1; 
-        else
-            prev = min_peaks(i-1);
+        if i ~= 1
+            prev(i) = min_peaks(i-1);
         end
         
         % Extracted segment
-        current_segm = im(prev:min_peaks(i),:);
+        current_segm = bw(prev(i):min_peaks(i),:);
         
         % We eliminate an eventually white part
-        bw = im2bw(current_segm);
-        bw_trans = (bw(:,2:end) - bw(:,1:end-1)) ~= 0 ;
+        bw_trans = (current_segm(:,2:end) - current_segm(:,1:end-1)) ~= 0 ;
         segm_hist = sum(bw_trans,2) ;
         segm_logical_hist = segm_hist > THRESHOLD;
         points = find(segm_logical_hist);
+        
         ascender_cut_point = points(1)-1;
+        if ascender_cut_point == 0 
+            ascender_cut_point = 1;
+        end
         descender_cut_point = points(end) + 1; 
         
-        % New segment obtained reducing the previous one
-        new_box = current_segm(ascender_cut_point:descender_cut_point,:);
+        % New Y coordinates 
+        startY = prev(i) + ascender_cut_point;
+        endY = prev(i) + descender_cut_point - 1;
         
-        lines(i).im = new_box;
+        % Output of the function
+        lines(i).originalImage = im(startY:endY,:);
+        lines(i).bwImage = bw(startY:endY,:);
+        lines(i).startY = startY;
+        lines(i).endY = endY;
     end
 
 end
