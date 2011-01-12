@@ -10,37 +10,37 @@
 #include <math.h>
 #include <map>
 
+#include "gmm.h"
+
 using namespace std;
 
 class HMM {
 	public:
 		//Constructor functions
-		HMM(int,int,map<int,map<int,double> >, map<int,map<int,double> >);
-		HMM();
+		HMM(int number_of_states, int number_of_observations);
+		HMM(int,int,double *prior_probabilities, map<int,map<int,double> > transition_probabilities, map<int,map<int,double> > observation_probabilities);
+		HMM(int,int,GMM);
 		//End constructor functions
 		
 		//Getters and setters
 		int getStates();								//Tested
-		void setStates(int);								//Tested
-			
 		int getNumberOfObservations();							//Tested
-		void setNumberOfObservations(int);						//Tested
 		
-		double* getTransitionProbabilities();						//Tested
-		void setTransitionProbabilities(double*);					//Tested
+// 		void setParameters();
 		
-		double* getObservationProbabilities();						//Tested
-		void setObservationProbabilities(double*);					//Tested
+// 		double* getTransitionProbabilities();						
+// 		void setTransitionProbabilities(double*);					
+// 		
+// 		double* getObservationProbabilities();						
+// 		void setObservationProbabilities(double*);					
 		//End getters and setters
 		
 		void initialiseUniform();							//Tested
 		
-		void trainModel(int*);					
+		void trainModel(int*,int);					
 		double stateSequenceProbability(vector<int>);					//Tested
 		double observationSequenceProbability(int*,int);
-		int* viterbiSequence(int*);
-		
-		double likelihood();
+		int* viterbiSequence(int*,int);
 		
 		//Testing and debugging
 		void printObservations();							//Tested
@@ -66,12 +66,17 @@ class HMM {
 		void eStep();
 			double forwardProbability(int,int);
 			double backwardProbability(int,int);
+			double stateProbability(int,int);
+			double stateToStateProbability(int,int,int);
+			map<int, map<int, double> > gamma;
+			map<int, map<int, map<int, double> > > xi;
 			
 		void mStep();
 			void maximisePriors();
 			void maximiseTransitions();
 				void updateTransition(int,int);
 			void maximiseObservationDistribution();
+				void updateObservationDistribution(int,int);
 		//End Baum-Welch functions
 			
 		//Viterbi Functions

@@ -2,71 +2,15 @@
 // Hand writing recognition Januari project, MSc AI, University of Amsterdam
 // Thijs Kooi, 2011
 
+#include "gmm.h"
+
 //To do:
 //Work on elegant initialisation of the model for 1 or more mixture components
 //optimise, work on arrays rather than vectors
 
-#include "gmm.h"
-
 double PI = 4.0*atan(1.0);
 
-int main()
-{
-	double sigma_array1[2][2] = {{2.0,0.0},{0.0,0.5}};
-	double mean_array1[2] = {1.0,2.0};
-	
-	double sigma_array2[2][2] = {{1.0,0.0},{0.0,1.0}};
-	double mean_array2[2] = {-3.0,-5.0};
-
-	double data_point_array[2] = {3,4};
-	
-	vector<vector<double> > sigma1;
-	vector<double> row1;
-	vector<double> mean1;
-	
-	vector<vector<double> > sigma2;
-	vector<double> row2;
-	vector<double> mean2;
-	
-	vector<double> data_point;
-		
-	for(size_t i = 0; i < 2; ++i)
-	{
-		row1.clear();
-		row2.clear();
-		
-		mean1.push_back(mean_array1[i]);
-		mean2.push_back(mean_array2[i]);
-		
-		data_point.push_back(data_point_array[i]);
-		
-		for(size_t j = 0; j < 2; ++j)
-		{
-			row1.push_back(sigma_array1[i][j]);
-			row2.push_back(sigma_array2[i][j]);
-		}
-		
-		sigma1.push_back(row1);
-		sigma2.push_back(row2);
-	}
-	
-	GMM testGMM(2,2);
-	
-	testGMM.setPrior(0,0.3);
-	testGMM.setPrior(1,0.7);
-	
-	testGMM.setMean(0,mean1);
-	testGMM.setMean(1,mean2);
-	
-	testGMM.setCovariance(0,sigma1);
-	testGMM.setCovariance(1,sigma2);
-	
-	cout << testGMM.gmmProb(data_point,0) << endl;
-	cout << testGMM.gmmProb(data_point,1) << endl;
-	cout << testGMM.gmmProb(data_point) << endl;
-}
-
-//Constructors
+//Constructors and intialisation functions
 GMM::GMM(int d) { mixture_components = 1; data_dimension = d; initialiseParameters(); }
 GMM::GMM(int d, int n) { mixture_components = n; data_dimension = d; initialiseParameters(); }
 GMM::GMM(vector<double> mu,vector<vector<double> > sigma) 
@@ -75,14 +19,13 @@ GMM::GMM(vector<double> mu,vector<vector<double> > sigma)
 	priors.push_back(1.0);
 	if(mu.size() != sigma.size())
 	{
-		cout << "Error: size of mean and covariance do not agree" << endl;
+		cout << "Error: size of mean and covariance do not agree." << endl;
 		return;
 	}
 	data_dimension = mu.size();
 	means.push_back(mu);
 	covariances.push_back(sigma);
 }
-//end constructors
 
 void GMM::initialiseParameters()
 {
@@ -104,6 +47,7 @@ void GMM::initialiseParameters()
 		covariances.push_back(zero_matrix);
 	}
 }
+//end constructors and initialisation functions
 
 double GMM::gmmProb(vector<double> x)
 {

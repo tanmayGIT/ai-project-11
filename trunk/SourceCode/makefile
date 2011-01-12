@@ -2,8 +2,11 @@ PROGRAM 	= hmm
 DESTINATION 	= hmm
 CC		= g++ -O7 -g
 
-hmm : hmm.o
-	$(CC) -o hmm hmm.o
+hmm : hmm.o gmm.o
+	$(CC) -o hmm hmm.o gmm.o
 
 hmm.o : hmm.cpp hmm.h
 	$(CC) -c hmm.cpp
+
+gmm.o : gmm.cpp gmm.h
+	$(CC) -c gmm.cpp

@@ -74,7 +74,7 @@ class GMM {
 		//End GMM variables
 		
 		//math functions
-		double mahalanobisDistance(vector<double> x,vector<double> mean,vector<vector<double> > covariance);
+		double mahalanobisDistance(vector<double> x,vector<double> mean,vector<vector<double> > covariance);	//Tested
 		double determinant(vector<vector<double> >);								//Tested
 		double innerProduct(vector<double>, vector<double>);							//Tested
 		vector<vector<double> > getMinor(vector<vector<double> >, int, int); 					//Tested
