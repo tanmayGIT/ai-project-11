@@ -8,8 +8,10 @@
          * The papers seems pretty interesting
 
    * Continued with pre-processing implementation
-         *
-         * 
+         * Functions for upper and lower baselines estimation finished
+         * Optimized skew detection based on the new baseline
+         * Changed the entire structure of the system to make it more readable and easier to be understood
+         * Skeleton of the words almost finished 
 
 == 11/01/2011==
     * Continued with pre-processing implementation
