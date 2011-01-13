@@ -16,9 +16,19 @@ int main()
 {
 	//Testing
 	HMM markov_model(3,3,1);
-	int test_obs[3] = {0,2,1};
+// 	int test_obs[3][1] = {{0},{2},{1}};
+
+	int **test_obs = new int*[3];
+	for(size_t t = 0; t < 3; ++t)
+		test_obs[t] = new int[1];
 	
-// 	cout << "Observation probability " << markov_model.observationSequenceProbability(test_obs,3) << endl;
+	test_obs[0][0] = 0;
+	test_obs[1][0] = 2;
+	test_obs[2][0] = 1;
+	
+// 	markov_model.printObservationProbabilities();
+	
+	cout << "Observation probability " << markov_model.observationSequenceProbability(test_obs,3) << endl;
 	markov_model.trainModel(test_obs,3);
 }
 
@@ -75,9 +85,9 @@ void HMM::initialiseUniform()
 				observation_probabilities[i][j][d] = 1.0;
 		
 	for(map<int, map<int, map<int,double> > >::iterator i = observation_probabilities.begin(); i != observation_probabilities.end(); ++i)
-		for(map<int, map<int, double> >::iterator j = (*i).second.begin(); j != (*i).second.end(); ++j)
-			for(map<int,double>::iterator d = (*j).second.begin(); d != (*j).second.end(); ++d)
-				(*d).second/=(*j).second.size();
+		for(map<int, map<int, double> >::iterator j = i->second.begin(); j != i->second.end(); ++j)
+			for(map<int,double>::iterator d = j->second.begin(); d != j->second.end(); ++d)
+				d->second = pow(1.0/i->second.size(), 1.0/observation_dimension);
 }
 //End constructors and initialisation functions
 
@@ -88,12 +98,13 @@ int HMM::getObservationDimension(){ return observation_dimension; }
 //End getters and setters
 
 //Training functions
-void HMM::trainModel(int* o, int l)
+void HMM::trainModel(int** o, int l)
 {
 	observations = o;
 	observation_sequence_length = l;
 	
 	cout << "Training model..." << endl;
+	printObservations();
 	
 	double previous_likelihood = 0.0;
 	double current_likelihood = observationSequenceProbability(o,l);
@@ -225,22 +236,25 @@ void HMM::maximiseObservationDistribution()
 {
 	for(size_t i = 0; i < number_of_states; ++i)
 		for(size_t m = 0; m < number_of_observations; ++m)
-			updateObservationDistribution(i,m);
+			for(size_t d = 0; d < observation_dimension; ++d)
+				updateObservationDistribution(i,m,d);
+	
+	printObservationProbabilities();
 }
 
-void HMM::updateObservationDistribution(int state, int observation_index)
+void HMM::updateObservationDistribution(int state, int observation_index, int dimension)
 {
 	double numerator = 0.0;
 	double denominator = 0.0;
 	
 	for(size_t t = 0; t < observation_sequence_length; ++t)
 	{
-		if(observations[t] == observation_index)
+		if(observations[t][dimension] == observation_index)
 			numerator+=gamma[state][t];
 		denominator+=gamma[state][t];
 	}
 	
-	observation_probabilities[state][observation_index]= numerator/denominator;
+	observation_probabilities[state][observation_index][dimension] = numerator/denominator;
 }
 //End training functions
 
@@ -255,7 +269,7 @@ double HMM::stateSequenceProbability(vector<int> sequence)
 }
 
 //Returns the probability of the sequence under the given model
-double HMM::observationSequenceProbability(int *sequence,int length)
+double HMM::observationSequenceProbability(int **sequence,int length)
 {
 	double probability = 0.0;
 	observation_sequence_length = length;
@@ -265,14 +279,14 @@ double HMM::observationSequenceProbability(int *sequence,int length)
 	{
 // 		cout << i << " " << forwardProbability(i,observation_sequence_length-1) << endl;
 		probability+=forwardProbability(i,observation_sequence_length-1);
-// 		probability+=backwardProbability(i,0);
+// 		probability+=prior_probabilities[i]*backwardProbability(i,0);
 	}
 	
 	return probability;
 }
 
 //These functions need some work in efficiency and readability
-int* HMM::viterbiSequence(int* observation_sequence, int l)
+int* HMM::viterbiSequence(int** observation_sequence, int l)
 {
 	observation_sequence_length = l;
 	observations = observation_sequence;
@@ -290,7 +304,7 @@ int* HMM::viterbiSequence(int* observation_sequence, int l)
 	
 	for(size_t i = 0; i < number_of_states; ++i)
 	{
-		delta[i][0] = prior_probabilities[i]*observation_probabilities[i][observations[0]];
+		delta[i][0] = prior_probabilities[i]*observationProbability(i,0);
 		psi[i][0] = 0;
 	}
 	
@@ -335,7 +349,7 @@ double HMM::highestPathProbability(int state, int timestep, double **delta, int 
 	for(size_t i = 0; i < number_of_states; ++i)
 		probabilities[i] = delta[i][timestep-1]*transition_probabilities[i][state];
 	
-	return maxValue(probabilities,index)*observation_probabilities[state][observations[timestep]];
+	return maxValue(probabilities,index)*observationProbability(state,timestep);
 }
 
 double HMM::maxValue(double* array, int index)
@@ -353,16 +367,16 @@ double HMM::maxValue(double* array, int index)
 }
 //End properties
 
-
-
-
 //Print functions
 void HMM::printObservations()
 {
 	cout << "Training on observations: " << endl;
 	for(size_t i = 0; i < number_of_observations; ++i)
-		cout << observations[i] << " ";
-	cout << endl;
+	{
+		for(size_t d = 0; d < observation_dimension; ++d)
+			cout << observations[i][d] << " ";
+		cout << endl;
+	}
 }
 void HMM::printPriorProbabilities()
 {
@@ -384,10 +398,12 @@ void HMM::printTransitionProbabilities()
 void HMM::printObservationProbabilities()
 {
 	cout << "Current observation probabilities: " << endl;
-	for(map<int, map< int, double> >::iterator i = observation_probabilities.begin(); i != observation_probabilities.end(); ++i)
+	for(map<int, map<int, map< int, double> > >::iterator i = observation_probabilities.begin(); i != observation_probabilities.end(); ++i)
 	{
-		for(map<int, double>::iterator j = (*i).second.begin(); j != (*i).second.end(); ++j)
-			cout << (*j).second << " ";
+		cout << "State " << i->first << endl;
+		for(map<int,map<int,double> >::iterator j = i->second.begin(); j != i->second.end(); ++j)
+			for(map<int, double>::iterator d = j->second.begin(); d != j->second.end(); ++d)
+				cout << d->second << " ";
 		cout << endl;
 	}
 }

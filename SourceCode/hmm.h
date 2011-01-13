@@ -28,10 +28,10 @@ class HMM {
 		int getObservationDimension();
 		//End getters and setters
 		
-		void trainModel(int*,int);					
+		void trainModel(int**,int);					
 		double stateSequenceProbability(vector<int>);					//Tested
-		double observationSequenceProbability(int*,int);				//Tested for uniform model
-		int* viterbiSequence(int*,int);
+		double observationSequenceProbability(int**,int);				//Tested for uniform model
+		int* viterbiSequence(int**,int);
 		
 		//Print functions
 		void printObservations();							//Tested
@@ -70,7 +70,7 @@ class HMM {
 			void maximiseTransitions();
 				void updateTransition(int,int);
 			void maximiseObservationDistribution();
-				void updateObservationDistribution(int,int);
+				void updateObservationDistribution(int,int,int);
 		//End Baum-Welch functions
 			
 		//Viterbi Functions

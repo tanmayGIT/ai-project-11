@@ -2,11 +2,12 @@
 // Hand writing recognition Januari project, MSc AI, University of Amsterdam
 // Thijs Kooi, 2011
 
+#include "gmm.h"
+
 //To do:
+// Add EM to train priors
 //Work on elegant initialisation of the model for 1 or more mixture components
 //optimise, work on arrays rather than vectors
-
-#include "gmm.h"
 
 double PI = 4.0*atan(1.0);
 
