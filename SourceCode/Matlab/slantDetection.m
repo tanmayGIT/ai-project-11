@@ -41,10 +41,10 @@ function angle = slantDetection(im, baseline)
             degree = radian * 180 / pi ;
             degree = 90 + degree ;
             degrees = [degrees,degree] ;
-            plot([size(box,2)-ob,size(box,2)-(oa*size(box,1)+ob)],[size(box,1),0],'r','LineWidth',2);
+            plot([size(box,2)-ob,size(box,2)-(oa*size(box,1)+ob)],[size(box,1),0],'b');
 %             degree
             hold on ;
-            plot(VX,size(box,1)-VY,'.g') ;
+            plot(VX,size(box,1)-VY,'r') ;
             hold on ;
         end
         

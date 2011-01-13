@@ -7,7 +7,7 @@ function [correctedLine, slope, baseline] = skewCorrection(line)
     [x, y] = getLowerPixels(bw);
       
     % Filter irrelevant pixels (those could create noise)
-    [x, y] = filterPixels(x, y, line);
+%     [x, y] = filterPixels(x, y, line);
 
     % Linear regression
     p = polyfit(x, y, 1);
@@ -38,7 +38,7 @@ function [correctedLine, slope, baseline] = skewCorrection(line)
     
     % Compute the new baseline
     [x,y] = getLowerPixels(correctedLine);
-    [x, y] = filterPixels(x, y, correctedLine);
+%     [x, y] = filterPixels(x, y, correctedLine);
     p = polyfit(x, y, 1);
     f = polyval(p, x_axis);
     

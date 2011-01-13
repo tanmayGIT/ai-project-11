@@ -44,11 +44,12 @@ for i = 1:size(lines,2)
     
     % Slant correction
     lines(i).angleSlant = slantDetection(lines(i).skewImage, baseline);
-    lines(i).slant = slantCorrection(lines(i).skew, lines(i).angleSlant);
+    lines(i).slant = slantCorrection(lines(i).skewImage, lines(i).angleSlant);
+    
     
     
     % Skeleton 
-    lines(i).skeleton = skeleton(lines(i).slant);
+    lines(i).skeleton = skeleton(lines(i).originalImage);
     
 end
 
