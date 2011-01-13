@@ -17,19 +17,20 @@ using namespace std;
 class HMM {
 	public:
 		//Constructor functions
-		HMM(int number_of_states, int number_of_observations);				//Tested
-		HMM(int,int,double *prior_probabilities, map<int,map<int,double> > transition_probabilities, map<int,map<int,double> > observation_probabilities);
-		HMM(int,int,vector<GMM>);
+		HMM(int number_of_states, int number_of_observations, int observation_dimension);//Tested
+		HMM(int,int,int,double *prior_probabilities, map<int,map<int,double> > transition_probabilities, map<int,map<int,map<int,double> > > observation_probabilities);
+		HMM(int,vector<GMM>);
 		//End constructor functions
 		
 		//Getters and setters
 		int getStates();								//Tested
 		int getNumberOfObservations();							//Tested
+		int getObservationDimension();
 		//End getters and setters
 		
 		void trainModel(int*,int);					
 		double stateSequenceProbability(vector<int>);					//Tested
-		double observationSequenceProbability(int*,int);
+		double observationSequenceProbability(int*,int);				//Tested for uniform model
 		int* viterbiSequence(int*,int);
 		
 		//Print functions
@@ -44,7 +45,9 @@ class HMM {
 		int number_of_states,number_of_observations,observation_dimension,observation_sequence_length;
 		double *prior_probabilities;
 		map<int, map<int, double> > transition_probabilities;
-		map<int, map<int, double> > observation_probabilities;
+		map<int, map<int, map<int, double> > > observation_probabilities;
+		
+		double observationProbability(int,int);
 		
 		int *observations;
 		//End HMM variables
@@ -55,7 +58,7 @@ class HMM {
 		double current_likelihood;
 		
 		void eStep();
-			double forwardProbability(int,int);
+			double forwardProbability(int,int);					//Tested
 			double backwardProbability(int,int);
 			double stateProbability(int,int);
 			double stateToStateProbability(int,int,int);

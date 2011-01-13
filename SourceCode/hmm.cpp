@@ -15,27 +15,30 @@
 int main()
 {
 	//Testing
-	HMM markov_model(4,4);
-	int test_obs[6] = {3,1,2,1,0,2};
+	HMM markov_model(3,3,1);
+	int test_obs[3] = {0,2,1};
 	
-	markov_model.trainModel(test_obs,6);
+// 	cout << "Observation probability " << markov_model.observationSequenceProbability(test_obs,3) << endl;
+	markov_model.trainModel(test_obs,3);
 }
 
 //Constructors and initialisation functions
 //When no further model parameters are passed, the model is initialised uniform
 //In the case of discrete observations, no takes the number of possible observations
 //Please note that the observations should not be passed as actual values, but as indexes of the vocabulary.
-HMM::HMM(int ns, int no) 
+HMM::HMM(int ns, int no, int od) 
 { 
 	number_of_states = ns;
 	number_of_observations = no;
+	observation_dimension = od;
 	initialiseUniform();
 }
 
-HMM::HMM(int ns, int no, double* p, map<int, map<int, double> > t, map<int, map<int, double> > o)
+HMM::HMM(int ns, int no, int od, double* p, map<int, map<int, double> > t, map<int, map<int, map<int, double> > > o)
 {
 	number_of_states = ns;
 	number_of_observations = no;
+	observation_dimension = od;
 	prior_probabilities = p;
 	transition_probabilities = t;
 	observation_probabilities = o;
@@ -68,17 +71,20 @@ void HMM::initialiseUniform()
 	//Initialise uniform probabilities for observations
 	for(size_t i = 0; i < number_of_states; ++i)
 		for(size_t j = 0; j < number_of_observations; ++j)
-			observation_probabilities[i][j] = 1.0;
+			for(size_t d = 0; d < observation_dimension; ++d)
+				observation_probabilities[i][j][d] = 1.0;
 		
-	for(map<int, map<int,double> >::iterator i = observation_probabilities.begin(); i != observation_probabilities.end(); ++i)
-		for(map<int, double>::iterator j = (*i).second.begin(); j != (*i).second.end(); ++j)
-			(*j).second/=(*i).second.size();
+	for(map<int, map<int, map<int,double> > >::iterator i = observation_probabilities.begin(); i != observation_probabilities.end(); ++i)
+		for(map<int, map<int, double> >::iterator j = (*i).second.begin(); j != (*i).second.end(); ++j)
+			for(map<int,double>::iterator d = (*j).second.begin(); d != (*j).second.end(); ++d)
+				(*d).second/=(*j).second.size();
 }
 //End constructors and initialisation functions
 
 //Getters and setters
 int HMM::getStates(){ return number_of_states;  }
 int HMM::getNumberOfObservations(){ return number_of_observations; }
+int HMM::getObservationDimension(){ return observation_dimension; }
 //End getters and setters
 
 //Training functions
@@ -91,6 +97,7 @@ void HMM::trainModel(int* o, int l)
 	
 	double previous_likelihood = 0.0;
 	double current_likelihood = observationSequenceProbability(o,l);
+	cout << "Initial likelihood: " << current_likelihood << endl;
 	int it = 0;
 	
 	while(current_likelihood - previous_likelihood > 0.000001)
@@ -99,11 +106,11 @@ void HMM::trainModel(int* o, int l)
 		mStep();
 		previous_likelihood = current_likelihood;
 		current_likelihood = observationSequenceProbability(o,l);
-		cout << "Likelihood at iteration " << it << current_likelihood << endl;
+		cout << "Likelihood at iteration " << it+1 << ": " << current_likelihood << endl;
 		++it;
 	}
 	
-	cout << "Converged after " << it+1 << " iterations." << endl;
+	cout << "Converged after " << it << " iterations, with likelihood " << current_likelihood << endl;
 }
 
 void HMM::eStep() 
@@ -114,8 +121,18 @@ void HMM::eStep()
 	
 	for(size_t i = 0; i < number_of_states; ++i)
 		for(size_t j = 0; j < number_of_states; ++j)
-			for(size_t t = 0; t < observation_sequence_length; ++t)
+			for(size_t t = 0; t < observation_sequence_length-1; ++t)
 				xi[i][j][t] = stateToStateProbability(i,j,t);
+}
+
+//Generally denoted b_j(o_{t}) in the literature
+double HMM::observationProbability(int state, int timestep)
+{
+	double probability = 1.0;
+	for(size_t d = 0; d < observation_dimension; ++d)
+		probability*=observation_probabilities[state][observations[timestep][d]][d];
+	
+	return probability;
 }
 
 //Generally denoted alpha in the literature
@@ -123,18 +140,16 @@ void HMM::eStep()
 //whereas the programming language starts enumerating at 0
 double HMM::forwardProbability(int state, int timestep)
 {
-	if(state == 0 && timestep == 0)
-		return 1.0;
-	else if(timestep == 0)
-		return prior_probabilities[timestep]*observation_probabilities[state][observations[0]];
+	if(timestep == 0)
+		return prior_probabilities[state]*observationProbability(state,timestep);
 	
 	double sum = 0.0;
 	for(size_t i = 0; i < number_of_states; ++i)
 		sum+=forwardProbability(i,timestep-1)*transition_probabilities[i][state];
 		
-	return sum*observation_probabilities[state][observations[timestep+1]];
+	return sum*observationProbability(state,timestep);
 }
-//#805 0x0804a7a8 in HMM::backwardProbability (this=0xbffff218, state=0, timestep=56) at hmm.cpp:146
+
 //Generally denoted beta in the literature
 double HMM::backwardProbability(int state, int timestep)
 {
@@ -143,7 +158,7 @@ double HMM::backwardProbability(int state, int timestep)
 	
 	double sum = 0.0;
 	for(size_t j = 0; j < number_of_states; ++j)
-		sum+=transition_probabilities[state][j]*observation_probabilities[j][observations[timestep+1]]*backwardProbability(j,timestep+1);
+		sum+=transition_probabilities[state][j]*observationProbability(j,timestep+1)*backwardProbability(j,timestep+1);
 	
 	return sum;
 }
@@ -160,15 +175,16 @@ double HMM::stateProbability(int state, int timestep)
 }
 
 //Generally denoted xi in the literature
+//Normalisation constant can probably be replaced by P(O\model) = \sum_{i = 1}^{k} \alpha_{T}(i)
 double HMM::stateToStateProbability(int state_i, int state_j, int timestep)
 {
 	double normalisation_constant = 0.0;
 	
 	for(size_t k = 0; k < number_of_states; ++k)
 		for(size_t l = 0; l < number_of_states; ++l)
-			normalisation_constant+= forwardProbability(k,timestep)*transition_probabilities[k][l]*observation_probabilities[k][observations[timestep+1]]*backwardProbability(l,timestep+1);
-		
-	return (forwardProbability(state_i, timestep)*observation_probabilities[state_j][observations[timestep+1]]*backwardProbability(state_j,timestep+1))/normalisation_constant;
+			normalisation_constant+= forwardProbability(k,timestep)*transition_probabilities[k][l]*observationProbability(l,timestep+1)*backwardProbability(l,timestep+1);
+	
+	return (forwardProbability(state_i, timestep)*transition_probabilities[state_i][state_j]*observationProbability(state_j,timestep+1)*backwardProbability(state_j,timestep+1))/normalisation_constant;
 }
 
 void HMM::mStep()
@@ -247,8 +263,9 @@ double HMM::observationSequenceProbability(int *sequence,int length)
 	
 	for(size_t i = 0; i < number_of_states; ++i)
 	{
-		cout << i << " " << forwardProbability(i,observation_sequence_length-1) << endl;
+// 		cout << i << " " << forwardProbability(i,observation_sequence_length-1) << endl;
 		probability+=forwardProbability(i,observation_sequence_length-1);
+// 		probability+=backwardProbability(i,0);
 	}
 	
 	return probability;
