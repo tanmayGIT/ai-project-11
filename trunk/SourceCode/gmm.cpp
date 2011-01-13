@@ -5,8 +5,9 @@
 #include "gmm.h"
 
 //To do:
-//Work on elegant initialisation of the model for 1 or more mixture components
-//optimise, work on arrays rather than vectors
+// Add EM to train priors
+// Work on elegant initialisation of the model for 1 or more mixture components
+// optimise, work on arrays rather than vectors
 
 double PI = 4.0*atan(1.0);
 
