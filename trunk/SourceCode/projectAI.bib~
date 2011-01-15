@@ -8,3 +8,13 @@
   number =	"2",
   pages =	"257--286",
 }
+@Article{Rabiner86Z27,
+  author =	"L. R. Rabiner and B. H. Juang",
+  title =	"An Introduction to Hidden Markov Models",
+  journal =	"ASSP Magazine",
+  year = 	"1986",
+  month =	jan,
+  pages =	"4--16",
+  keywords =	"speech | pattern recognition | markov models",
+  ref =  	"Z27",
+}

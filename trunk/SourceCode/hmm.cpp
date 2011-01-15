@@ -8,9 +8,10 @@
 // - Do hand calculations on forward/backward probability and probability of observation sequences, for different models (2).
 // - Do hand calculations for viterbi sequence
 // - check for possible underflow forward/backward probability, normalise/log probabilities
-// - Extend to higher dimensional observations
+// - Test to higher dimensional observations
 // - Add Gaussian/mixture of Gaussians
 // - Check model with HMM toolkit available
+// - In time, make a seperate LA libraru, such that the HMM doesnt need to call the GMM for math functions
 
 int main()
 {
@@ -18,9 +19,9 @@ int main()
 	HMM markov_model(3,3,1);
 // 	int test_obs[3][1] = {{0},{2},{1}};
 
-	int **test_obs = new int*[3];
+	double **test_obs = new double*[3];
 	for(size_t t = 0; t < 3; ++t)
-		test_obs[t] = new int[1];
+		test_obs[t] = new double[1];
 	
 	test_obs[0][0] = 0;
 	test_obs[1][0] = 2;
@@ -59,6 +60,7 @@ HMM::HMM(int ns, vector<GMM> mixture_models)
 {
 	number_of_states = ns;
 	observation_dimension = mixture_models[0].getDimension();
+	gaussian = 1;
 }
 
 void HMM::initialiseUniform() 
@@ -98,16 +100,16 @@ int HMM::getObservationDimension(){ return observation_dimension; }
 //End getters and setters
 
 //Training functions
-void HMM::trainModel(int** o, int l)
+void HMM::trainModel(double** observation_sequence, int length)
 {
-	observations = o;
-	observation_sequence_length = l;
+	observations = observation_sequence;
+	observation_sequence_length = length;
 	
 	cout << "Training model..." << endl;
 	printObservations();
 	
 	double previous_likelihood = 0.0;
-	double current_likelihood = observationSequenceProbability(o,l);
+	double current_likelihood = observationSequenceProbability(observation_sequence,length);
 	cout << "Initial likelihood: " << current_likelihood << endl;
 	int it = 0;
 	
@@ -116,7 +118,7 @@ void HMM::trainModel(int** o, int l)
 		eStep();
 		mStep();
 		previous_likelihood = current_likelihood;
-		current_likelihood = observationSequenceProbability(o,l);
+		current_likelihood = observationSequenceProbability(observation_sequence,length);
 		cout << "Likelihood at iteration " << it+1 << ": " << current_likelihood << endl;
 		++it;
 	}
@@ -175,6 +177,7 @@ double HMM::backwardProbability(int state, int timestep)
 }
 
 //Generally denoted gamma in the literature
+//Probability of being in state at timestep, given the model parameters and observation sequence.
 double HMM::stateProbability(int state, int timestep)
 {
 	double normalisation_constant = 0.0;
@@ -186,6 +189,7 @@ double HMM::stateProbability(int state, int timestep)
 }
 
 //Generally denoted xi in the literature
+//Probability of being in state i at timestep and transfering to state j, given observation sequence and model parameters
 //Normalisation constant can probably be replaced by P(O\model) = \sum_{i = 1}^{k} \alpha_{T}(i)
 double HMM::stateToStateProbability(int state_i, int state_j, int timestep)
 {
@@ -234,12 +238,85 @@ void HMM::updateTransition(int i, int j)
 
 void HMM::maximiseObservationDistribution()
 {
-	for(size_t i = 0; i < number_of_states; ++i)
-		for(size_t m = 0; m < number_of_observations; ++m)
-			for(size_t d = 0; d < observation_dimension; ++d)
-				updateObservationDistribution(i,m,d);
+	vector<double> new_mean;
+	vector<vector<double> > new_covariance;
 	
-	printObservationProbabilities();
+	//If we are using a single Gaussian
+	if(gaussian == 1)
+	{
+		for(size_t i = 0; i < number_of_states; ++i)
+		{
+			new_mean.clear();
+			new_covariance.clear();
+			for(size_t d = 0; d < observation_dimension; ++d)
+				new_mean.push_back(updateGaussianMean(i,d));
+			
+			new_covariance = updateGaussianCovariance(i,new_mean);
+			
+			mixture_model[i].setMean(new_mean);
+			mixture_model[i].setCovariance(new_covariance);
+		}	
+	}
+	else if(gaussian == 2)//or we use a Gaussian mixture model
+		for(size_t i = 0; i < number_of_states; ++i)
+			mixture_model[i].EM(observations);
+	else//or a discrete observation distribution
+		for(size_t i = 0; i < number_of_states; ++i)
+			for(size_t m = 0; m < number_of_observations; ++m)
+				for(size_t d = 0; d < observation_dimension; ++d)
+					updateObservationDistribution(i,m,d);
+	
+// 	printObservationProbabilities();
+}
+
+//Update rule for a single Guassian
+double HMM::updateGaussianMean(int state, int dimension)
+{
+	double numerator = 0.0;
+	double denominator = 0.0;
+	
+	//Update mean of current dimension
+	for(size_t t = 0; t < observation_sequence_length; ++t)
+	{
+		numerator = gamma[state][t]*observations[t][dimension];
+		denominator = gamma[state][t];
+	}
+	
+	return numerator/denominator;
+}
+
+//Update covariance matrix of state
+//This needs some work, maybe a seperate math class, such that we dont have to address the gmm class for linear algebra functions
+vector<vector<double> > HMM::updateGaussianCovariance(int state, vector<double> mean)
+{
+	vector<double> obs_timestep;
+	vector<double> difference;
+	obs_timestep.reserve(observation_dimension);
+	
+	vector<vector<double> > covariance_matrix;
+	vector<vector<double> > current_mat;
+	
+	//Initialise covariance
+	difference.assign(observation_dimension,0.0);
+	covariance_matrix.assign(observation_dimension,difference);
+	difference.clear();
+	
+	double normalisation_constant = 0.0;
+
+	
+	for(size_t t = 0; t < observation_sequence_length; ++t)
+	{
+		obs_timestep = mixture_model[0].arrayToVector(observations[t],observation_dimension);
+		difference = mixture_model[0].vectorSubtract(obs_timestep,mean);
+		
+		current_mat = mixture_model[0].outerProduct(difference,difference);
+		current_mat = mixture_model[0].vectorScalarProduct(covariance_matrix,gamma[state][t]);
+		
+		covariance_matrix = mixture_model[0].vectorAdd(covariance_matrix,current_mat);
+		normalisation_constant+= gamma[state][t];
+	}
+	
+	return mixture_model[0].vectorScalarProduct(covariance_matrix,1.0/normalisation_constant);
 }
 
 void HMM::updateObservationDistribution(int state, int observation_index, int dimension)
@@ -269,26 +346,22 @@ double HMM::stateSequenceProbability(vector<int> sequence)
 }
 
 //Returns the probability of the sequence under the given model
-double HMM::observationSequenceProbability(int **sequence,int length)
+double HMM::observationSequenceProbability(double **observation_sequence,int length)
 {
 	double probability = 0.0;
 	observation_sequence_length = length;
-	observations = sequence;
+	observations = observation_sequence;
 	
 	for(size_t i = 0; i < number_of_states; ++i)
-	{
-// 		cout << i << " " << forwardProbability(i,observation_sequence_length-1) << endl;
 		probability+=forwardProbability(i,observation_sequence_length-1);
-// 		probability+=prior_probabilities[i]*backwardProbability(i,0);
-	}
 	
 	return probability;
 }
 
 //These functions need some work in efficiency and readability
-int* HMM::viterbiSequence(int** observation_sequence, int l)
+int* HMM::viterbiSequence(double** observation_sequence, int length)
 {
-	observation_sequence_length = l;
+	observation_sequence_length = length;
 	observations = observation_sequence;
 	
 	//Declare and initialise dynammic programming table
