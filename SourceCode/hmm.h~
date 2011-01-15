@@ -30,8 +30,8 @@ class HMM {
 		
 		void trainModel(int**,int);					
 		double stateSequenceProbability(vector<int>);					//Tested
-		double observationSequenceProbability(int**,int);				//Tested for uniform model
-		int* viterbiSequence(int**,int);
+		double observationSequenceProbability(double**,int);				//Tested for uniform model
+		int* viterbiSequence(double**,int);
 		
 		//Print functions
 		void printObservations();							//Tested
@@ -49,7 +49,11 @@ class HMM {
 		
 		double observationProbability(int,int);
 		
-		int **observations;
+		double **observations;
+		
+		//0: discrete observation distribution, 1: Gaussian distributition, 2: mixture of Gaussians
+		int gaussian;
+		vector<GMM> mixture_model;
 		//End HMM variables
 		
 		void initialiseUniform();							//Tested
@@ -70,7 +74,9 @@ class HMM {
 			void maximiseTransitions();
 				void updateTransition(int,int);
 			void maximiseObservationDistribution();
-				void updateObservationDistribution(int,int);
+				void updateObservationDistribution(int,int,int);
+				double updateGaussianMean(int,int);
+				vector<vector<double> > updateGaussianCovariance(int,vector<double>);
 		//End Baum-Welch functions
 			
 		//Viterbi Functions

@@ -23,8 +23,10 @@ class GMM {
 		void initialiseParameters();
 		
 		//Testing and debugging, will be removed later
+		vector<double> arrayToVector(double*, int);								//Tested
 		void testMahalanobisDistance(vector<double>);
 		void testInnerProduct(vector<double>,vector<double>);
+		void testOuterProduct(vector<double>,vector<double>);
 		void testDeterminant(vector<vector<double> >);
 		void testInverse(vector<vector<double> >);
 		void testTranspose(vector<vector<double> >);
@@ -32,11 +34,21 @@ class GMM {
 		void testGMM(vector<double>);
 		void printMatrix(vector<vector<double> >);
 		void printMatrix(vector<double>);
-		vector<double> makeVector(double[]);
 		//end 
+		
+		vector<double> vectorAdd(vector<double>, vector<double>);
+		vector<vector<double> > vectorAdd(vector<vector<double> >, vector<vector<double> >);
+		vector<double> vectorSubtract(vector<double>, vector<double>);
+		vector<double> vectorScalarProduct(vector<double>, double);
+		vector<vector<double> > vectorScalarProduct(vector<vector<double> >, double);
+		double innerProduct(vector<double>, vector<double>);							//Tested
+		vector<vector<double> > outerProduct(vector<double>, vector<double>);					//Tested
+		
+		void EM(double** observations);
 
 		double gmmProb(vector<double> x);			//returns the probability of x under the current mixture model
 		double gmmProb(vector<double> x, int component_number); //returns the probability of x under the given mixture component
+		double likelihood();
 
 		//Getters and setters
 		int getMixtureComponents();
@@ -76,7 +88,9 @@ class GMM {
 		//math functions
 		double mahalanobisDistance(vector<double> x,vector<double> mean,vector<vector<double> > covariance);	//Tested
 		double determinant(vector<vector<double> >);								//Tested
-		double innerProduct(vector<double>, vector<double>);							//Tested
+		
+		
+
 		vector<vector<double> > getMinor(vector<vector<double> >, int, int); 					//Tested
 		vector<vector<double> > inverse(vector<vector<double> >);						//Tested
 		vector<vector<double> > transpose(vector<vector<double> >);						//Tested
