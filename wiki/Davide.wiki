@@ -11,10 +11,13 @@
            * For every word:
               * We correct skew and slant
               * We estimate the baselines (upper and lower)
+       * Resulting words seems pretty good
 
 == 14/01/2011==
-       * Modified word segmentation (small bug)
-       * Modified skew and slant functions. Now instead of a black and white picture they work with the original one. I avoided the problem of the black pixels created by matlab transformation functions increasing the dimension of the images before using transformations
+       * Continued with pre-processing implementation
+             * Modified word segmentation (small bug)
+             * Modified skew and slant functions. Now instead of a black and white picture they work with the original one. I avoided the problem of the black pixels created by matlab transformation functions increasing the dimension of the images before using transformations
+            * Skeleton estimation finished 
 
 == 13/01/2011==
        * Continued with pre-processing implementation
