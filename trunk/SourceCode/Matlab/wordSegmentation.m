@@ -13,16 +13,14 @@ function [words] = wordSegmentation(line)
     
     % Extract the words
     for i = 1:size(cut_points,1)
-        words(i).bwImage = line(:, cut_points(i,1):cut_points(i,2));
+        words(i).originalImage = line(:, cut_points(i,1):cut_points(i,2));
+        words(i).bwImage = bw(:, cut_points(i,1):cut_points(i,2));
     end
     
     % Display the segmented words
     figure;
-    for i = 1:9
-        subplot(3, 3, i), imshow(words(i).bwImage); 
+    for i = 1:8
+        subplot(2, 4, i), imshow(words(i).originalImage); 
     end 
 
 end
-
-
-% [words] = wordSegmentation(lines(10).originalImage);

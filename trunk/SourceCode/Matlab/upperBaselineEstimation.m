@@ -2,7 +2,7 @@ function [baseline] = upperBaselineEstimation(line)
 
 
     [x, y] = getUpperPixels(line);
-    [x, y] = filterPixels(x, y, line);
+%     [x, y] = filterPixels(x, y, line);
     
     % Linear regression
     p = polyfit(x, y, 1);

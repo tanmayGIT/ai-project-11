@@ -4,7 +4,7 @@ function [cut_points] = findWordsCutPoints(hist_line, line)
 % really close to the border
 
     % Maximum length accepted
-    MAX_WS = 200; 
+    MAX_WS = 0.05 * size(line,2); 
 
     % Find white spaces
     white_spaces = [];
@@ -51,19 +51,36 @@ function [cut_points] = findWordsCutPoints(hist_line, line)
     spaces = find(clusters(:) == num_cluster);
     
     % Extract cut points for words
-    cut_points = zeros(length(spaces), 2);
+%     cut_points = zeros(length(spaces) + 1, 2);
     for i = 1:length(spaces)
             
             % Start X
-                prev_discarded = white_spaces( accepted_ws_indx(spaces(i)) - 1, 3) > MAX_WS;
-                if prev_discarded
-                    cut_points(i,1) = white_spaces( accepted_ws_indx(spaces(i)) - 1, 2) - 1;
+                if i == 1
+                    for j = 1:spaces(1) 
+                        prev_discarded = white_spaces(j, 3) > MAX_WS;
+                        if prev_discarded
+                            cut_points(1,1) = white_spaces(j, 2) - 1;
+                        end
+                    end
                 else
-                    cut_points(i,1) = white_spaces( accepted_ws_indx(spaces(i-1)), 2) - 1;
+                    if prev_discarded
+                        cut_points(i,1) = white_spaces( accepted_ws_indx(spaces(i)) - 1, 2 ) - 1;
+                    else
+                        cut_points(i,1) = white_spaces( accepted_ws_indx(spaces(i-1)), 2 ) - 1;
+                    end
                 end
             
             % End X
             cut_points(i,2) = white_spaces( accepted_ws_indx(spaces(i)), 1) + 1;
+    end
+    
+    for j = max(spaces)+1:size(white_spaces,1)
+        next_discard = white_spaces(j,3) > MAX_WS;
+        if next_discard 
+            cut_points(i+1,1) = accepted_ws(end - 1, 2);
+            cut_points(i+1,2) = white_spaces(j, 1);
+            break
+        end
     end
     
 end
