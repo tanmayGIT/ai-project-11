@@ -1,5 +1,5 @@
 Friday 7th
-Reader papers, started working on HMM and pipeline
+Reading papers, started working on HMM and pipeline
 
 Saturday 8th
 Continued working on the HMM and started a GMM we can possibly use.
