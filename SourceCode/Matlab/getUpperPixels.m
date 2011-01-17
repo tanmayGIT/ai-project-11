@@ -4,6 +4,10 @@ function [x,y] = getUpperPixels(line)
 % the first black pixel found for every column. This black pixel correspond
 % to the lowest one in the column.
 
+    if ~islogical(line)
+        line = im2bw(line);
+    end
+
     x = [];
     y = [];
 

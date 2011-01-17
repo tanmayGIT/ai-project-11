@@ -30,20 +30,21 @@ function [lines] = lineSegmentation(im)
     hold on
     plot(x, repmat(min_peaks(:,1), [1, size(im,2)]), '-r');
 
+    cut_points = [min_peaks(:,1); size(im,1)];
+    
     % Return a structure where every element is a line segmented
     lines = struct([]);
     
-    
-    prev = ones(size(min_peaks,1),2);
+    prev = ones(size(min_peaks,1),1);
     % Loop over the lines
-    for i = 1:size(min_peaks,1)
+    for i = 1:size(cut_points,1)
         
         if i ~= 1
-            prev(i) = min_peaks(i-1);
+            prev(i) = cut_points(i-1);
         end
         
         % Extracted segment
-        current_segm = bw(prev(i):min_peaks(i),:);
+        current_segm = bw(prev(i):cut_points(i),:);
         
         % We eliminate an eventually white part
         bw_trans = (current_segm(:,2:end) - current_segm(:,1:end-1)) ~= 0 ;
@@ -62,8 +63,8 @@ function [lines] = lineSegmentation(im)
         endY = prev(i) + descender_cut_point - 1;
         
         % Output of the function
-        lines(i).originalImage = im(startY:endY,:);
-        lines(i).bwImage = bw(startY:endY,:);
+        lines(i).originalImage = im(startY:endY, :, :);
+        lines(i).bwImage = bw(startY:endY, :);
         lines(i).startY = startY;
         lines(i).endY = endY;
     end

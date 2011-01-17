@@ -1,13 +1,12 @@
-function [correctedLine, slope, baseline] = skewCorrection(line)
+function [final_line, slope, baseline] = skewCorrection(line)
 
 % SKEWCORRECT. This function takes a line as input and it returnes a new 
 % line with corrected skew and the baseline.
 
-    bw = im2bw(line);
-    [x, y] = getLowerPixels(bw);
+    [x, y] = getLowerPixels(line);
       
     % Filter irrelevant pixels (those could create noise)
-%     [x, y] = filterPixels(x, y, line);
+    [x, y] = filterPixels(x, y, line);
 
     % Linear regression
     p = polyfit(x, y, 1);
@@ -27,31 +26,34 @@ function [correctedLine, slope, baseline] = skewCorrection(line)
     slope = atan(p(1))*180/pi;
     
    
-    % To avoid the black corners of rotation we first invert the image
-    [inverted_bw] = invertBwImage(line);
+    % To avoid the black corners of rotation make the image bigger
+    [h w d] = size(line);
+    new_line = uint8(zeros(h*2, w*2, d));
+    new_line(:) = 255;
+    new_line(floor(h/2):3*floor(h/2)-1,floor(w/2):3*floor(w/2)-1, :) = line(:,:,:);
+    
     
     % Rotate image
-    invertedCorrectedLine = imrotate(inverted_bw, slope);
+    corrected_line = imrotate(new_line, slope);
+    
+%     close all,
+    stepX = floor(0.20 * w);
+    stepY = floor(0.20 * h);
+    final_line = corrected_line(floor(h/2) - stepY : 3*floor(h/2)-1 + stepY, floor(w/2) - stepX : 3*floor(w/2)-1 + stepX, :);
+%     imshow(final_line);
 
-    % To avoid the black corners of rotation we now invert the image back
-    [correctedLine] = invertBwImage(invertedCorrectedLine);
     
     % Compute the new baseline
-    [x,y] = getLowerPixels(correctedLine);
-%     [x, y] = filterPixels(x, y, correctedLine);
+    [x,y] = getLowerPixels(final_line);
+    [x, y] = filterPixels(x, y, final_line);
     p = polyfit(x, y, 1);
     f = polyval(p, x_axis);
     
     baseline = f(ceil(size(f,2) / 2));
-       
-    % Display rotated image with baseline
-%     
-%     figure(6), imshow(correctedLine);
-%     hold on
-%     plot(x_axis, f, 'r');
-%     title('Line with skew corrected and baseline plotted');
-%     
-    figure(6), imshow(correctedLine);
+         
+    % Show the image and baseline
+    x_axis = (1:1:size(final_line,2));
+    figure(6), imshow(final_line);
     hold on, plot(x_axis, baseline, 'r');
     title('Line with skew corrected and baseline plotted'); 
 

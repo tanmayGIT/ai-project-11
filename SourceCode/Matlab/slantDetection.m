@@ -1,4 +1,4 @@
-function angle = slantDetection(im, baseline)
+function angle = slantDetection(im)
 
     bwTrans = (im(:,2:end) - im(:,1:end-1)) ~= 0 ;
 %     bwTrans = bwmorph(bwTrans,'clean');
@@ -52,7 +52,11 @@ function angle = slantDetection(im, baseline)
         
         a = histc(degrees,0:step_size:180) ;
         [maxa,idx] = max(a) ;
-        degrees(degrees<(idx-1)*step_size|degrees>idx*step_size) = [] ;
-        angle = mean(degrees) ;
+        if ~isempty(idx)
+            degrees(degrees<(idx-1)*step_size|degrees>idx*step_size) = [] ;
+            angle = mean(degrees) ;
+        else
+            angle = 0;
+        end
         
 end
