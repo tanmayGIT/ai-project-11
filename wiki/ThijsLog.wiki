@@ -23,4 +23,4 @@ Saturday 15th
 Worked a bit further on some LA functions and the GMM update steps.
 
 Monday 16th
-Hope to have finished the complete implementation of the HMM and GMM, but still needs debugging, testing and optimising, hope to do that tomorrow. Started working on a filereader that reads observations, and transition functions for testing. I plan to study the use of C++ within matlab tomorrow and start helping with feature extraction on friday.
+Hope to have finished the complete implementation of the HMM and GMM, but still needs debugging, testing and optimising, hope to do that tomorrow. Started working on a filereader that reads observations, and transition functions for testing. I plan to study the use of C++ within matlab tomorrow and start helping with feature extraction on Thursday.
