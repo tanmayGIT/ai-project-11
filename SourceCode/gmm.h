@@ -24,14 +24,6 @@ class GMM {
 		
 		//Testing and debugging, will be removed later
 		vector<double> arrayToVector(double*, int);								//Tested
-		void testMahalanobisDistance(vector<double>);
-		void testInnerProduct(vector<double>,vector<double>);
-		void testOuterProduct(vector<double>,vector<double>);
-		void testDeterminant(vector<vector<double> >);
-		void testInverse(vector<vector<double> >);
-		void testTranspose(vector<vector<double> >);
-		void testMVNPDF(vector<double>);
-		void testGMM(vector<double>);
 		void printMatrix(vector<vector<double> >);
 		void printMatrix(vector<double>);
 		//end 
@@ -44,11 +36,11 @@ class GMM {
 		double innerProduct(vector<double>, vector<double>);							//Tested
 		vector<vector<double> > outerProduct(vector<double>, vector<double>);					//Tested
 		
-		void EM(double** observations);
+// 		void EM(double** observations);
 
 		double gmmProb(vector<double> x);			//returns the probability of x under the current mixture model
 		double gmmProb(vector<double> x, int component_number); //returns the probability of x under the given mixture component
-		double likelihood();
+// 		double likelihood();
 
 		//Getters and setters
 		int getMixtureComponents();
@@ -86,11 +78,9 @@ class GMM {
 		//End GMM variables
 		
 		//math functions
+		double gausianProb(vector<double> x, vector<double> mean, vector<vector<double> > covariance);
 		double mahalanobisDistance(vector<double> x,vector<double> mean,vector<vector<double> > covariance);	//Tested
 		double determinant(vector<vector<double> >);								//Tested
-		
-		
-
 		vector<vector<double> > getMinor(vector<vector<double> >, int, int); 					//Tested
 		vector<vector<double> > inverse(vector<vector<double> >);						//Tested
 		vector<vector<double> > transpose(vector<vector<double> >);						//Tested

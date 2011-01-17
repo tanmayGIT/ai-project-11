@@ -28,7 +28,7 @@ class HMM {
 		int getObservationDimension();
 		//End getters and setters
 		
-		void trainModel(int**,int);					
+		void trainModel(double**,int);					
 		double stateSequenceProbability(vector<int>);					//Tested
 		double observationSequenceProbability(double**,int);				//Tested for uniform model
 		int* viterbiSequence(double**,int);
@@ -39,6 +39,8 @@ class HMM {
 		void printTransitionProbabilities();						//Tested
 		void printObservationProbabilities();						//Tested
 		//Print functions
+		
+		readTestFile();
 		
 	private:
 		//HMM variables
@@ -56,17 +58,22 @@ class HMM {
 		vector<GMM> mixture_model;
 		//End HMM variables
 		
+		//Initialisation functions
 		void initialiseUniform();							//Tested
+		void initialiseUniformObservations();
+		//end initialisation functions
 		
 		//Baum-Welch functions
 		double current_likelihood;
 		
 		void eStep();
 			double forwardProbability(int,int);					//Tested
-			double backwardProbability(int,int);
+			double backwardProbability(int,int);					//Tested
 			double stateProbability(int,int);
+			double stateProbability(int,int,int);
 			double stateToStateProbability(int,int,int);
 			map<int, map<int, double> > gamma;
+			map<int, map<int, map<int, double> > > gmm_gamma;
 			map<int, map<int, map<int, double> > > xi;
 			
 		void mStep();
@@ -77,6 +84,10 @@ class HMM {
 				void updateObservationDistribution(int,int,int);
 				double updateGaussianMean(int,int);
 				vector<vector<double> > updateGaussianCovariance(int,vector<double>);
+				void updateGMMparameters();
+					void updateGMMweights(int);
+					void updateGMMmean(int);
+					void updateGMMcovariance(int);
 		//End Baum-Welch functions
 			
 		//Viterbi Functions
