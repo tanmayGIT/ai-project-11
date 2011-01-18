@@ -206,13 +206,9 @@ double GMM::mahalanobisDistance(vector<double> x,vector<double> mean,vector<vect
 
 vector<double> GMM::vectorAdd(vector<double> a, vector<double> b)
 {
-	vector<double> sum;
-	sum.reserve(a.size());
-	
 	for(size_t d = 0; d < a.size(); ++d)
-		sum.push_back(a[d]+b[d]);
-	
-	return sum;
+		a[d]+=b[d];
+	return a;
 }
 
 vector<vector<double> > GMM::vectorAdd(vector<vector<double> > A, vector<vector<double> > B)
@@ -220,19 +216,14 @@ vector<vector<double> > GMM::vectorAdd(vector<vector<double> > A, vector<vector<
 	for(size_t d1 = 0; d1 < A.size(); ++d1)
 		for(size_t d2 = 0; d2 < A[d1].size(); ++d2)
 			A[d1][d2]+=B[d1][d2];
-		
 	return A;
 }
 
 vector<double> GMM::vectorSubtract(vector<double> a, vector<double> b)
 {
-	vector<double> difference;
-	difference.reserve(a.size());
-	
 	for(size_t d = 0; d < a.size(); ++d)
-		difference.push_back(a[d]-b[d]);
-	
-	return difference;
+		a[d]-=b[d];
+	return a;
 }
 
 //Multiplies vector a with scalar \alpha
@@ -310,7 +301,10 @@ vector<vector<double> > GMM::inverse(vector<vector<double> > A)
 {
 	double detA = determinant(A);
 	if(detA == 0.0)//Matrix is singular
+	{
+		cout << "Matrix is singular" << endl;
 		return A;
+	}
 	else
 	{
 		vector<vector<double> > AInverse;
@@ -411,63 +405,6 @@ vector<double> GMM::arrayToVector(double *array, int array_size)
 	return output;
 }
 
-void GMM::testMahalanobisDistance(vector<double> x)
-{
-	cout << mahalanobisDistance(x, means[0],covariances[0]) << endl;
-}
-
-void GMM::testInnerProduct(vector<double> a,vector<double> b)
-{
-	cout << innerProduct(a,b) << endl;
-}
-
-void GMM::testOuterProduct(vector<double> a, vector<double> b)
-{
-	vector<vector<double> > output = outerProduct(a,b);
-	
-	for(size_t i = 0; i < a.size(); ++i)
-	{
-		for(size_t j = 0; j < b.size(); ++j)
-			cout << output[i][j] << " ";
-		cout << endl;
-	}		
-}
-
-void GMM::testDeterminant(vector<vector<double> > A)
-{
-	cout << "Determinant of matrix: " << endl;
-	for(size_t i = 0; i < A.size(); ++i)
-	{
-		for(size_t j = 0; j < A[i].size(); ++j)
-			cout << A[i][j] << " ";
-		cout << endl;
-	}
-	cout << "is: " << determinant(A) << endl;
-}
-
-void GMM::testInverse(vector<vector<double> > A)
-{
-	vector<vector<double> > Ainverse = inverse(A);
-	cout << "Inverse of :" << endl;
-	printMatrix(A);
-	cout << "Is: " << endl;
-	printMatrix(Ainverse);
-}
-
-void GMM::testMVNPDF(vector<double>)
-{
-}
-void GMM::testGMM(vector<double>)
-{
-}
-void GMM::testTranspose(vector<vector<double> > A)
-{
-	vector<vector<double> > Atranspose = transpose(A);
-	cout << "Transpose of :" << endl;
-	printMatrix(A);
-	cout << "Is: " << endl;
-	printMatrix(Atranspose);
-}
 void GMM::printMatrix(vector<vector<double> > A)
 {
 	for(size_t i = 0; i < A.size(); ++i)

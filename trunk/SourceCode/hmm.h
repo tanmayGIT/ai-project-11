@@ -40,7 +40,8 @@ class HMM {
 		void printObservationProbabilities();						//Tested
 		//Print functions
 		
-		double** readTestFile();
+		double** readTestFile(int,int);
+		double* processLine(string,int);
 		
 	private:
 		//HMM variables
