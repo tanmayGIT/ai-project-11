@@ -1,6 +1,6 @@
 % Handwriting recognition
 % Project AI, Januari 2011
-% Davide Modolo, Niels Out?) Thijs Kooi
+% Davide Modolo, Niels Out(?), Thijs Kooi
 
 %We can have this function take as input an images of a word, a sentence or
 %a document, depending on our approach
@@ -29,10 +29,12 @@ function output = main(input)
 
     
     %Maybe we can do noise removal, etc depending on the method to use
-    pre_processed_input = preProcessing;
+    lines = preProcessing;
     
     %Slant, skew, slope, vertical, horizontal normalisation, etc.
     normalised_input = normalisation(pre_processed_input);
+    
+    featureExtraction();
     
     %Segmentation?
     segmented_letters = segmentation(normalised_input);
