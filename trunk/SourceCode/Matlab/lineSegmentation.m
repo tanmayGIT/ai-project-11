@@ -5,7 +5,7 @@ function [lines] = lineSegmentation(im)
 
     % CONSTANT DECLARATIONS:
     PEAK_DELTA_FACTOR = 10;
-    THRESHOLD = 2;
+    THRESHOLD = 1;
 
     % Transform the image in black and white
     bw = im2bw(im);

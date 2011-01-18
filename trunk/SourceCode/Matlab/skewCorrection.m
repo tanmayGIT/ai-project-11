@@ -30,17 +30,21 @@ function [final_line, slope, baseline] = skewCorrection(line)
     [h w d] = size(line);
     new_line = uint8(zeros(h*2, w*2, d));
     new_line(:) = 255;
-    new_line(floor(h/2):3*floor(h/2)-1,floor(w/2):3*floor(w/2)-1, :) = line(:,:,:);
+    new_line(floor(h/2) : floor(h/2) + h - 1, floor(w/2) : floor(w/2) + w - 1, :) = line(:,:,:);
     
     
     % Rotate image
     corrected_line = imrotate(new_line, slope);
     
 %     close all,
-    stepX = floor(0.20 * w);
-    stepY = floor(0.20 * h);
-    final_line = corrected_line(floor(h/2) - stepY : 3*floor(h/2)-1 + stepY, floor(w/2) - stepX : 3*floor(w/2)-1 + stepX, :);
-%     imshow(final_line);
+%     stepX = floor(0.15 * w);
+%     stepY = floor(0.15 * h);
+%     final_line = corrected_line(floor(h/2) - stepY : 3*floor(h/2)-1 + stepY, floor(w/2) - stepX : 3*floor(w/2)-1 + stepX, :);
+% %     imshow(final_line);
+
+    
+    borders = extractBoundingBox(corrected_line);
+    final_line = corrected_line(borders(3):borders(4), borders(1):borders(2));
 
     
     % Compute the new baseline
@@ -56,5 +60,6 @@ function [final_line, slope, baseline] = skewCorrection(line)
     figure(6), imshow(final_line);
     hold on, plot(x_axis, baseline, 'r');
     title('Line with skew corrected and baseline plotted'); 
+    scatter(x,y,'x');
 
 end
