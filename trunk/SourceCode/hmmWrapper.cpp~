@@ -6,11 +6,11 @@
 
 #include "mex.h"
 // #include "hmm.h"
-#include <string>
-#include <map>
 
-map<char*, HMM> dictionary;
+// map<string, int> dictionary;
+// vector<HMM> word_models;
 double** convertObservations(double*,int,int);
+int findWord(char* word);
 
 using namespace std;
 
@@ -22,7 +22,7 @@ using namespace std;
 void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
 	double *input_observations;
-	char *train_word;
+	char* train_word;
 	mwSize number_of_observations,observation_dimension;
 
 	//We need one or two input arguments, as stated above
@@ -38,7 +38,7 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 	if(nrhs == 2)
 		if ( mxIsChar(prhs[1]) != 1) { mexErrMsgTxt("Input must be a string."); } 
 	
-	input_observations = mxGetPr(plhs[0]);
+	input_observations = mxGetPr(prhs[0]);
 	
 	//Get the number of observations and the observation dimension
 	number_of_observations = mxGetM(prhs[0]);
@@ -53,11 +53,11 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 		//Convert observations to multidimensional array
 		double** observations = convertObservations(input_observations,number_of_observations,observation_dimension);
 		
-		//Look for the word in the dictionary, if it doesn't exist, add it, else give the entry
+		//Look for the word in the dictionary, if it doesn't exist, add it and create an HMM at the appropriate place in the dictionary, else give the entry
 		//int entry_number = findWord(train_word);
 		
 		//Train the Markov model for the given observation
-		//dictionary[entry_number].trainModel(train_word);
+		//word_models[entry_number].trainModel(train_word);
 	}
 // 	else
 // 	{
