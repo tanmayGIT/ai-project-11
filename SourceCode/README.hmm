@@ -1,0 +1,2 @@
+[1] Initialisation
+There are two ways to initialise the model (1): make a new HMM object and only pass the number of states and number of different observations (discrete case) (2): pass the full set of parameters. Once the model has been initialised, the number of states and number of different observations can no longer be changed, for obvious reasons.

@@ -1,0 +1,124 @@
+vector<vector<double> > A;
+vector<double> b;
+vector<double> c;
+double test[3][3] = {{2.0,3.0,4.0},{3.0,4.0,5.0},{2.0,5.0,6.0}};
+double test[2][2] = {{1.0,2.0},{3.0,4.0}};
+double test1[3] = {2.0,4.0,3.0};
+double test2[3] = {4.0,3.0,2.0};
+double test[4][4] = 	{
+			{2.0,3.0,4.0,5.0},
+			{1.0,5.0,5.0,2.0},
+			{2.0,7.0,3.0,1.0},
+			{4.0,5.0,9.0,4.0},
+			};
+for(size_t i = 0; i < 3; ++i)
+{
+	b.push_back(test1[i]);
+	c.push_back(test2[i]);
+}
+
+for(size_t i = 0; i < N-priors.size(); ++i)
+	priors.push_back(0.0);
+	
+cout << means.size() << N << endl;
+if(means.size() < N)
+{
+	vector<double> new_mean;
+	for(size_t i = 0; i < data_dimension; ++i)
+		new_mean.push_back(0.0);
+	
+	for(size_t i = 0; i < N-means.size(); ++i)
+		means.push_back(new_mean);
+}
+
+if(covariances.size() < N)
+{
+	vector<vector<double> > new_covariance;
+	vector<double> row;
+	for(size_t i = 0; i < data_dimension; ++i)
+	{
+		for(size_t j = 0; j < data_dimension; ++j)
+			row.push_back(0.0);
+		new_covariance.push_back(row);
+	}
+	
+	cout << "N min size " << N-covariances.size() << endl;
+	
+	for(size_t i = 0; i < N-covariances.size(); ++i)
+		covariances.push_back(new_covariance);
+}
+
+	vector<int> test_sequence_vector;
+	for(size_t i = 0; i < 6; ++i)
+		test_sequence_vector.push_back(test_sequence[i]);
+
+double HMM::maxValue(double *array)
+{
+	double max = 0.0;
+	for(size_t i = 0; i < number_of_states; ++i)
+		if(array[i] > max)
+			max = array[i];
+	return max;
+}
+
+int HMM::maxIndex(double *array)
+{
+	int max = 0;
+	for(size_t i = 0; i < number_of_states; ++i)
+		if(array[i] > max)
+			max = i;
+	return max;
+}
+
+
+
+
+
+	cout << "Observations: " << model.getNumberOfObservations() << endl;
+	cout << "State: " << model.getStates() << endl;
+	
+	//Forward model initial probabilities
+	double A[4][4] = 	{
+				{0.5,0.5,0.0,0.0},
+				{0.0,0.5,0.5,0.0},
+				{0.0,0.0,0.5,0.5},
+				{0.0,0.0,0.0,1.0},
+				};
+				
+	//Test state sequence, fully connected model
+// 	double test_sequence[6] = {0,3,2,1,2,2};
+	//Test state sequence, forward model
+// 	double test_sequence[6] = {0,1,1,2,2,3};
+
+	//Test observation sequence
+	int test_sequence[6] = {0,1,1,2,2,3};
+
+	model.printPriorProbabilities();
+	model.printTransitionProbabilities();
+	model.printObservationProbabilities();
+	
+	cout << "Observation sequence probability: " << model.observationSequenceProbability(test_sequence,6) << endl;
+	int *seq = model.viterbiSequence(test_sequence,6);
+	for(int i = 0; i < 6; ++i)
+		cout << seq[i] << " ";
+	cout << endl;
+// 	double observations[] = {2,3,4,5,3,1,4};
+// 	model.trainModel(observations);
+// 	model.printObservations();
+
+
+
+
+
+
+
+
+
+
+// 		void setParameters();
+		
+// 		double* getTransitionProbabilities();						
+// 		void setTransitionProbabilities(double*);					
+// 		
+// 		double* getObservationProbabilities();						
+// 		void setObservationProbabilities(double*);					
