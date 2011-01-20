@@ -5,6 +5,7 @@ function [cut_points] = findWordsCutPoints(hist_line, line)
 
     % Maximum length accepted
     MAX_WS = 0.1 * size(line,2); 
+    THRESHOLD = 10;
 
     % Find white spaces
     white_spaces = [];
@@ -49,10 +50,27 @@ function [cut_points] = findWordsCutPoints(hist_line, line)
     % white spaces between letters
     clusters = kmeans(accepted_ws(:,3), 2, 'emptyaction', 'drop');
     
+    
     % Extract the white spaces between words
     largest_white_space = max(accepted_ws(:,3));
     num_cluster = clusters(accepted_ws(:,3) == largest_white_space);
-    spaces = find(clusters(:) == num_cluster);
+    temporary_rejected = accepted_ws(clusters ~= num_cluster(1), :);
+    
+    % Add some miss-clustered
+    if (max(temporary_rejected(:,3)) - min(temporary_rejected(:,3))) > THRESHOLD
+        new_clusters = kmeans(temporary_rejected(:,3), 2, 'emptyaction', 'drop');
+        if sum(new_clusters) > length(new_clusters)
+            maxim = max(temporary_rejected(:,3));
+            num_new_cluster = new_clusters(temporary_rejected(:,3) == maxim);
+            new_accepted = temporary_rejected(new_clusters == num_new_cluster(1), :);
+            for i = 1:size(new_accepted,1)
+                indx = find(accepted_ws(:,1) == new_accepted(i,1));
+                clusters(indx) = num_cluster(1); %#ok<FNDSB>
+            end
+        end
+    end
+    
+    spaces = find(clusters(:) == num_cluster(1));
     
     cut = 0;
     % Extract cut points for words
@@ -79,7 +97,9 @@ function [cut_points] = findWordsCutPoints(hist_line, line)
             cut_points(i,2) = white_spaces( accepted_ws_indx(spaces(i)), 1) + 1;
     end
     
-    % Add last word
+    
+%     cut_points(i + 1) = accepted_ws_indx(
+    % Add (eventually) last word
     for j = max(spaces)+1:size(white_spaces,1)
         next_discard = white_spaces(j,3) > MAX_WS;
         if next_discard 
