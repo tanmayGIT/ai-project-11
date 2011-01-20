@@ -5,6 +5,7 @@
 #include "hmm.h"
 
 // To do:
+
 // - Do hand calculations on forward/backward probability and probability of observation sequences, for different models (2).
 // - Do hand calculations for viterbi sequence
 // - check for possible underflow forward/backward probability, normalise/log probabilities
@@ -25,11 +26,11 @@ int main()
 	
 	HMM markov_model(3,mixture_models);
 
-	double **test_obs = markov_model.readTestFile(4,4);
+	double **test_obs = markov_model.readTestFile(8,4);
 
-	cout << "Observation sequence probability " << markov_model.observationSequenceProbability(test_obs,4) << endl;
+// 	cout << "Observation sequence probability " << markov_model.observationSequenceProbability(test_obs,8) << endl;
 // 	markov_model.printTransitionProbabilities();
-	markov_model.trainModel(test_obs,4);
+	markov_model.trainModel(test_obs,8);
 }
 
 //Reads a file of observations
@@ -163,9 +164,7 @@ void HMM::trainModel(double** observation_sequence, int length)
 	printObservations();
 	
 	double previous_likelihood = 0.0;
-	current_likelihood = observationSequenceProbability(observation_sequence,length);
-// 	double current_likelihood = 0.001;
-	cout << "Initial likelihood: " << current_likelihood << endl;
+	current_likelihood = 1.0;
 	int it = 0;
 	
 	while(current_likelihood - previous_likelihood > 0.0)
@@ -182,7 +181,18 @@ void HMM::trainModel(double** observation_sequence, int length)
 }
 
 void HMM::eStep() 
-{ 
+{
+	//Pre compute forward/backward probability
+	for(size_t t = 0; t < observation_sequence_length; ++t)
+	{
+		cout << "t " << t << endl;
+		for(size_t i = 0; i < number_of_states; ++i)
+		{
+			alpha[i][t] = forwardProbability(i,t);
+			beta[i][observation_sequence_length-t-1] = backwardProbability(i,observation_sequence_length-t-1);
+		}
+	}
+	
 	for(size_t i = 0; i < number_of_states; ++i)
 			for(size_t t = 0; t < observation_sequence_length; ++t)
 				gamma[i][t] = stateProbability(i,t);
@@ -226,7 +236,8 @@ double HMM::forwardProbability(int state, int timestep)
 	
 	double sum = 0.0;
 	for(size_t i = 0; i < number_of_states; ++i)
-		sum+=forwardProbability(i,timestep-1)*transition_probabilities[i][state];
+// 		sum+=forwardProbability(i,timestep-1)*transition_probabilities[i][state];
+		sum+=alpha[i][timestep-1]*transition_probabilities[i][state];
 		
 	return sum*observationProbability(state,timestep);
 }
@@ -239,7 +250,8 @@ double HMM::backwardProbability(int state, int timestep)
 	
 	double sum = 0.0;
 	for(size_t j = 0; j < number_of_states; ++j)
-		sum+=transition_probabilities[state][j]*observationProbability(j,timestep+1)*backwardProbability(j,timestep+1);
+// 		sum+=transition_probabilities[state][j]*observationProbability(j,timestep+1)*backwardProbability(j,timestep+1);
+		sum+=transition_probabilities[state][j]*observationProbability(j,timestep+1)*beta[j][timestep+1];
 	
 	return sum;
 }
@@ -251,16 +263,11 @@ double HMM::stateProbability(int state, int timestep)
 	double normalisation_constant = 0.0;
 	
 	for(size_t i = 0; i < number_of_states; ++i)
-		normalisation_constant+= forwardProbability(i,timestep)*backwardProbability(i,timestep);
-	
-// 	cout << "Gamma, state " << state << " timestep: " << timestep << endl;
-// 	cout << "Forward prob: " << forwardProbability(state,timestep) << endl;
-// 	cout << "Backward prob: " << backwardProbability(state,timestep) << endl;
-// 	cout << "Numerator: " << forwardProbability(state,timestep)*backwardProbability(state,timestep) << endl;
-// 	cout << "Normalisation constant " << normalisation_constant << endl;
-// 	cout << (forwardProbability(state,timestep)*backwardProbability(state,timestep))/normalisation_constant << endl;
-	
-	return (forwardProbability(state,timestep)*backwardProbability(state,timestep))/normalisation_constant;
+// 		normalisation_constant+= forwardProbability(i,timestep)*backwardProbability(i,timestep);
+		normalisation_constant+= alpha[i][timestep]*beta[i][timestep];	
+		
+// 	return (forwardProbability(state,timestep)*backwardProbability(state,timestep))/normalisation_constant;
+	return (alpha[state][timestep]*beta[state][timestep])/normalisation_constant;
 }
 
 //Generally denoted gamma in the literature
@@ -285,9 +292,11 @@ double HMM::stateToStateProbability(int state_i, int state_j, int timestep)
 	double normalisation_constant = 0.0;
 	for(size_t k = 0; k < number_of_states; ++k)
 		for(size_t l = 0; l < number_of_states; ++l)
-			normalisation_constant+= forwardProbability(k,timestep)*transition_probabilities[k][l]*observationProbability(l,timestep+1)*backwardProbability(l,timestep+1);
+// 			normalisation_constant+= forwardProbability(k,timestep)*transition_probabilities[k][l]*observationProbability(l,timestep+1)*backwardProbability(l,timestep+1);
+			normalisation_constant+=alpha[k][timestep]*transition_probabilities[k][l]*observationProbability(l,timestep+1)*beta[l][timestep+1];
 	
-	return (forwardProbability(state_i, timestep)*transition_probabilities[state_i][state_j]*observationProbability(state_j,timestep+1)*backwardProbability(state_j,timestep+1))/normalisation_constant;
+// 	return (forwardProbability(state_i, timestep)*transition_probabilities[state_i][state_j]*observationProbability(state_j,timestep+1)*backwardProbability(state_j,timestep+1))/normalisation_constant;
+	return (alpha[state_i][timestep]*transition_probabilities[state_i][state_j]*observationProbability(state_j,timestep+1)*beta[state_j][timestep+1])/normalisation_constant;
 }
 
 void HMM::mStep()
@@ -309,15 +318,14 @@ void HMM::maximiseTransitions()
 		for(map<int,double>::iterator j = i->second.begin(); j != i->second.end(); ++j)
 			updateTransition(i->first,j->first);
 		
-	double test;
-	for(size_t i = 0; i < number_of_states; ++i)
-	{
-		test = 0.0;
-		for(size_t j = 0; j < number_of_states; ++j)
-			test+=transition_probabilities[i][j];
-		cout << "Test, should be 1: " << test << endl;
-	}
-
+// 	double test;
+// 	for(size_t i = 0; i < number_of_states; ++i)
+// 	{
+// 		test = 0.0;
+// 		for(size_t j = 0; j < number_of_states; ++j)
+// 			test+=transition_probabilities[i][j];
+// 		cout << "Test, should be 1: " << test << endl;
+// 	}
 	printTransitionProbabilities();
 }
 
@@ -383,7 +391,6 @@ double HMM::updateGaussianMean(int state, int dimension)
 	//Update mean of current dimension
 	for(size_t t = 0; t < observation_sequence_length; ++t)
 	{
-		cout << "Mean, timestep: " << t << " gamma " << gamma[state][t] << endl;
 		numerator+= gamma[state][t]*observations[t][dimension];
 		denominator+= gamma[state][t];
 	}
@@ -488,13 +495,11 @@ vector<vector<double> > HMM::updateGaussianCovariance(int state, vector<double> 
 		difference = mixture_model[0].vectorSubtract(obs_timestep,mean);
 		
 		current_mat = mixture_model[0].outerProduct(difference,difference);
-		cout << "Covariance, timestep : " << t << " gamma " << gamma[state][t] << endl;
 		current_mat = mixture_model[0].vectorScalarProduct(current_mat,gamma[state][t]);
 		
 		covariance_matrix = mixture_model[0].vectorAdd(covariance_matrix,current_mat);
 		normalisation_constant+= gamma[state][t];
 	}
-	cout << "Normalisation constant: " << normalisation_constant << endl;
 	
 	return mixture_model[0].vectorScalarProduct(covariance_matrix,1.0/normalisation_constant);
 }
@@ -630,7 +635,7 @@ void HMM::printObservations()
 	cout << "Training on observations: " << endl;
 	for(size_t t = 0; t < observation_sequence_length; ++t)
 	{
-		cout << "O" << t << " ";
+		cout << "O_" << t << " ";
 		for(size_t d = 0; d < observation_dimension; ++d)
 			cout << observations[t][d] << " ";
 		cout << endl;
