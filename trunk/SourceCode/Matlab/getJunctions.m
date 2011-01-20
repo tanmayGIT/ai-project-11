@@ -1,6 +1,6 @@
 function [junctions] = getJunctions(im)
  
-% GETJUNCTIONS. Return the number of junctions presents in the image
+% GETJUNCTIONS returns the number of junctions present in the image
 
     % junction points less than THRESHOLD will be ignored
     THRESHOLD = 3 ;  

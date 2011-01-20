@@ -13,9 +13,4 @@ function [sk_im] = skeleton(im)
     subplot(1,2,1), imshow(inv_g);
     subplot(1,2,2), imshow(sk_im);
     
-%     for k = 1:2
-%         sk_im = sk_im & ~endpoints(sk_im);
-%     end
-%     subplot(1,3,3), imshow(sk_im);
-%     
 end

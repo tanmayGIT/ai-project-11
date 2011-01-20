@@ -1,6 +1,6 @@
 function [endpoints] = getEndpoints(im)
     
-% GETENDPOINTS. Return the number of endpoints presents in the image
+% GETENDPOINTS returns the number of endpoints present in the image
 
     % Removes spur (isolated) pixels
     im = bwmorph(im,'spur');
