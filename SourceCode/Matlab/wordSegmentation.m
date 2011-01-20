@@ -4,10 +4,13 @@ function [words] = wordSegmentation(line)
 % horizontal cuts. 
 
     % Generate a histogram
-    bw = im2bw(line);
-    bw_trans = (bw(2:end,:) - bw(1:end-1,:)) ~= 0 ;
-    hist_line = sum(bw_trans, 1) ;
-
+    bw = im2bw(line, 0.7);
+%     bw_trans = (bw(2:end,:) - bw(1:end-1,:)) ~= 0 ;
+    inv_bw = invertBwImage(bw);
+    hist_line = sum(inv_bw, 1) ;
+% close all
+%     imshow(inv_bw);
+    
     % Find cut points
     cut_points = findWordsCutPoints(hist_line, line);
     
@@ -18,9 +21,10 @@ function [words] = wordSegmentation(line)
     end
     
     % Display the segmented words
+    close all 
     figure;
-    for i = 1:8
-        subplot(2, 4, i), imshow(words(i).originalImage); 
+    for i = 1:9
+        subplot(3, 3, i), imshow(words(i).originalImage); 
     end 
 
 end

@@ -68,14 +68,13 @@ for i = 1:size(lines,2)
         lines(i).words(j).angleSlant = slantDetection(lines(i).words(j).skewImage);
         if lines(i).words(j).angleSlant ~= 0
             lines(i).words(j).slantImage = slantCorrection(lines(i).words(j).skewImage, lines(i).words(j).angleSlant);
-            
         else 
             lines(i).words(j).slantImage = lines(i).words(j).skewImage;
         end
         
         % Compute upper, ascender and descender baselines
-        lines(i).words(j).upperBaseline = upperBaselineEstimation(lines(i).words(j).skewImage);
-        [asc, desc] = getBB(lines(i).words(j).slantImage);
+        [upp, asc, desc] = getBaselines(lines(i).words(j).slantImage);
+        lines(i).words(j).upperBaseline = upp;
         lines(i).words(j).ascenderBaseline = asc;
         lines(i).words(j).descenderBaseline = desc;
         
@@ -88,7 +87,7 @@ for i = 1:size(lines,2)
         hold on, plot(x, lines(i).words(j).descenderBaseline, '-g');
         
 %         baselines=[asc lines(i).words(j).upperBaseline  lines(i).words(j).lowerBaseline  desc];
-         
+%                   
         % Skeleton 
         lines(i).words(j).skeleton = skeleton(lines(i).words(j).slantImage);
     end

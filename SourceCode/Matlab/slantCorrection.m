@@ -12,7 +12,7 @@ function final_line = slantCorrection(line, angle)
     tform = maketform('affine', tf);
     corrected_line = imtransform(new_line, tform);
         
-    borders = extractBoundingBox(corrected_line);
+    borders = extractBoundingBox(corrected_line, 1);
     final_line = corrected_line(borders(3):borders(4), borders(1):borders(2));
     
 %     % We extract the final line from the increased image
