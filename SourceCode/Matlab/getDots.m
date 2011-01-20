@@ -1,6 +1,6 @@
 function [dots] = getDots(im)
 
-% GETDOTS. Return the number of dots presents in the image
+% GETDOTS returns the number of dots present in the image
 
     % Number of pixels for dots
     STROKE_MAX_LEN = 15;
