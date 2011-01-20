@@ -68,14 +68,20 @@ class HMM {
 		double current_likelihood;
 		
 		void eStep();
+			//A postiori probability tables
+			map<int, map<int, double> > gamma;
+			map<int, map<int, double> > alpha;
+			map<int, map<int, double> > beta;
+			map<int, map<int, map<int, double> > > gmm_gamma;
+			map<int, map<int, map<int, double> > > xi;
+
+			//A postiori probability funtions
 			double forwardProbability(int,int);					//Tested
 			double backwardProbability(int,int);					//Tested
 			double stateProbability(int,int);
 			double stateProbability(int,int,int);
 			double stateToStateProbability(int,int,int);
-			map<int, map<int, double> > gamma;
-			map<int, map<int, map<int, double> > > gmm_gamma;
-			map<int, map<int, map<int, double> > > xi;
+			
 			
 		void mStep();
 			void maximisePriors();
