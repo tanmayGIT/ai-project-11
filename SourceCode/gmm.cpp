@@ -302,7 +302,7 @@ vector<vector<double> > GMM::inverse(vector<vector<double> > A)
 	double detA = determinant(A);
 	if(detA == 0.0)//Matrix is singular
 	{
-		cout << "Matrix is singular" << endl;
+		cout << "Matrix is singular, can not take inverse!" << endl;
 		return A;
 	}
 	else
@@ -354,7 +354,7 @@ void GMM::setMixtureComponents(int N) { mixture_components =  N; }
 int GMM::getDimension() { return data_dimension; }
 void GMM::setDimension(int d) { data_dimension = d; }
 
-int GMM::getPrior(int component_number) { return priors[component_number]; }
+double GMM::getPrior(int component_number) { return priors[component_number]; }
 void GMM::setPrior(int component_number,double probability) { priors[component_number] = probability; }
 
 vector<double> GMM::getMean(int component_number) { return means[component_number]; }

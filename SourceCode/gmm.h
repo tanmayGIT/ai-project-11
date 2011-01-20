@@ -49,7 +49,7 @@ class GMM {
 		int getDimension();
 		void setDimension(int);
 		
-		int getPrior(int component_number);
+		double getPrior(int component_number);
 		void setPrior(int component_number,double probability);
 		
 		vector<double> getMean(int component_number);

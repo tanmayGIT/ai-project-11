@@ -18,18 +18,17 @@ int main()
 {
 	//Testing
 	//GMM(data_dimension, mixture_components)
-	GMM mog(4,1);
+	
+	GMM mog(4,3);
 	
 	vector<GMM> mixture_models;
 	for(size_t i = 0; i < 3; ++i)
 		mixture_models.push_back(mog);
 	
+	//number of states, mixture model
 	HMM markov_model(3,mixture_models);
-
 	double **test_obs = markov_model.readTestFile(8,4);
 
-// 	cout << "Observation sequence probability " << markov_model.observationSequenceProbability(test_obs,8) << endl;
-// 	markov_model.printTransitionProbabilities();
 	markov_model.trainModel(test_obs,8);
 }
 
@@ -164,14 +163,14 @@ void HMM::trainModel(double** observation_sequence, int length)
 	printObservations();
 	
 	double previous_likelihood = 0.0;
-	current_likelihood = 1.0;
+	current_likelihood = 0.1;
 	int it = 0;
 	
 	while(current_likelihood - previous_likelihood > 0.0)
 	{
 		eStep();
+		previous_likelihood = observationSequenceProbability(observation_sequence,length);
 		mStep();
-		previous_likelihood = current_likelihood;
 		current_likelihood = observationSequenceProbability(observation_sequence,length);
 		cout << "Likelihood at iteration " << it+1 << ": " << current_likelihood << endl;
 		++it;
@@ -184,18 +183,16 @@ void HMM::eStep()
 {
 	//Pre compute forward/backward probability
 	for(size_t t = 0; t < observation_sequence_length; ++t)
-	{
-		cout << "t " << t << endl;
 		for(size_t i = 0; i < number_of_states; ++i)
 		{
 			alpha[i][t] = forwardProbability(i,t);
 			beta[i][observation_sequence_length-t-1] = backwardProbability(i,observation_sequence_length-t-1);
 		}
-	}
 	
 	for(size_t i = 0; i < number_of_states; ++i)
-			for(size_t t = 0; t < observation_sequence_length; ++t)
-				gamma[i][t] = stateProbability(i,t);
+		for(size_t t = 0; t < observation_sequence_length; ++t)
+			gamma[i][t] = stateProbability(i,t);
+			
 	if(gaussian == 2)
 		for(size_t i = 0; i < number_of_states; ++i)
 			for(size_t t = 0; t < observation_sequence_length; ++t)
@@ -220,10 +217,7 @@ double HMM::observationProbability(int state, int timestep)
 		return probability;	
 	}
 	else
-	{
-// 		cout << "Timestep " << timestep << " prob: " << mixture_model[state].gmmProb(mixture_model[state].arrayToVector(observations[timestep],observation_dimension)) << endl;
 		return mixture_model[state].gmmProb(mixture_model[state].arrayToVector(observations[timestep],observation_dimension));
-	}
 }
 
 //Generally denoted alpha in the literature
@@ -236,9 +230,8 @@ double HMM::forwardProbability(int state, int timestep)
 	
 	double sum = 0.0;
 	for(size_t i = 0; i < number_of_states; ++i)
-// 		sum+=forwardProbability(i,timestep-1)*transition_probabilities[i][state];
 		sum+=alpha[i][timestep-1]*transition_probabilities[i][state];
-		
+	
 	return sum*observationProbability(state,timestep);
 }
 
@@ -250,7 +243,6 @@ double HMM::backwardProbability(int state, int timestep)
 	
 	double sum = 0.0;
 	for(size_t j = 0; j < number_of_states; ++j)
-// 		sum+=transition_probabilities[state][j]*observationProbability(j,timestep+1)*backwardProbability(j,timestep+1);
 		sum+=transition_probabilities[state][j]*observationProbability(j,timestep+1)*beta[j][timestep+1];
 	
 	return sum;
@@ -263,10 +255,8 @@ double HMM::stateProbability(int state, int timestep)
 	double normalisation_constant = 0.0;
 	
 	for(size_t i = 0; i < number_of_states; ++i)
-// 		normalisation_constant+= forwardProbability(i,timestep)*backwardProbability(i,timestep);
 		normalisation_constant+= alpha[i][timestep]*beta[i][timestep];	
 		
-// 	return (forwardProbability(state,timestep)*backwardProbability(state,timestep))/normalisation_constant;
 	return (alpha[state][timestep]*beta[state][timestep])/normalisation_constant;
 }
 
@@ -275,9 +265,9 @@ double HMM::stateProbability(int state, int timestep)
 double HMM::stateProbability(int state, int timestep, int component)
 {
 	vector<double> x = mixture_model[state].arrayToVector(observations[timestep],observation_dimension);
-	double observation_component_probability = mixture_model[state].gmmProb(x,component);
+	double observation_component_probability = mixture_model[state].gmmProb(x,component)*mixture_model[state].getPrior(component);
 	double normalisation_constant = mixture_model[state].gmmProb(x);
-	
+
 	return gamma[state][timestep]*(observation_component_probability/normalisation_constant);
 }
 
@@ -292,10 +282,8 @@ double HMM::stateToStateProbability(int state_i, int state_j, int timestep)
 	double normalisation_constant = 0.0;
 	for(size_t k = 0; k < number_of_states; ++k)
 		for(size_t l = 0; l < number_of_states; ++l)
-// 			normalisation_constant+= forwardProbability(k,timestep)*transition_probabilities[k][l]*observationProbability(l,timestep+1)*backwardProbability(l,timestep+1);
 			normalisation_constant+=alpha[k][timestep]*transition_probabilities[k][l]*observationProbability(l,timestep+1)*beta[l][timestep+1];
 	
-// 	return (forwardProbability(state_i, timestep)*transition_probabilities[state_i][state_j]*observationProbability(state_j,timestep+1)*backwardProbability(state_j,timestep+1))/normalisation_constant;
 	return (alpha[state_i][timestep]*transition_probabilities[state_i][state_j]*observationProbability(state_j,timestep+1)*beta[state_j][timestep+1])/normalisation_constant;
 }
 
@@ -317,16 +305,6 @@ void HMM::maximiseTransitions()
 	for(map<int, map<int,double> >::iterator i = transition_probabilities.begin(); i != transition_probabilities.end(); ++i)
 		for(map<int,double>::iterator j = i->second.begin(); j != i->second.end(); ++j)
 			updateTransition(i->first,j->first);
-		
-// 	double test;
-// 	for(size_t i = 0; i < number_of_states; ++i)
-// 	{
-// 		test = 0.0;
-// 		for(size_t j = 0; j < number_of_states; ++j)
-// 			test+=transition_probabilities[i][j];
-// 		cout << "Test, should be 1: " << test << endl;
-// 	}
-	printTransitionProbabilities();
 }
 
 void HMM::updateTransition(int i, int j)
@@ -358,28 +336,19 @@ void HMM::maximiseObservationDistribution()
 			for(size_t d = 0; d < observation_dimension; ++d)
 				new_mean.push_back(updateGaussianMean(i,d));
 			
-			cout << "State " << i << endl;
-			cout << "New mean: " << endl;
-			mixture_model[i].printMatrix(new_mean);
-		
 			new_covariance = updateGaussianCovariance(i,new_mean);
-			cout << "New covariance: " << endl;
-			mixture_model[i].printMatrix(new_covariance);
 			mixture_model[i].setMean(new_mean);
 			mixture_model[i].setCovariance(new_covariance);
 		}	
 	}
 	else if(gaussian == 2)//if we use a Gaussian mixture model
 		for(size_t i = 0; i < number_of_states; ++i)
-// 			mixture_model[i].EM(observations);
 			updateGMMparameters();
 	else//or a discrete observation distribution
 		for(size_t i = 0; i < number_of_states; ++i)
 			for(size_t m = 0; m < number_of_observations; ++m)
 				for(size_t d = 0; d < observation_dimension; ++d)
 					updateObservationDistribution(i,m,d);
-	
-// 	printObservationProbabilities();
 }
 
 //Update rule for a single Guassian
@@ -429,6 +398,8 @@ void HMM::updateGMMmean(int state)
 	double normalisation_constant,numerator;
 	vector<double> new_mean;
 	
+// 	cout << "Updating GMM mean" << endl;
+	
 	for(size_t k = 0; k < mixture_model[state].getMixtureComponents(); ++k)
 	{
 		new_mean.clear();
@@ -438,11 +409,16 @@ void HMM::updateGMMmean(int state)
 			normalisation_constant = 0.0;
 			for(size_t t = 0; t < observation_sequence_length; ++t)
 			{
-				numerator+=(gmm_gamma[state][t][k]*observations[state][d]);
+				numerator+=(gmm_gamma[state][t][k]*observations[t][d]);
+// 				cout << "gamma " << gmm_gamma[state][t][k] << endl;
+// 				cout << "Observations " << observations[t][d] << endl;
+// 				cout << "Numerator " << numerator << endl;
 				normalisation_constant+=gmm_gamma[state][t][k];
+// 				cout << "Normalisation constant " << normalisation_constant << endl;
 			}
 			new_mean.push_back(numerator/normalisation_constant);
 		}
+// 		mixture_model[state].printMatrix(new_mean);
 		mixture_model[state].setMean(k,new_mean);
 	}
 }
@@ -458,16 +434,32 @@ void HMM::updateGMMcovariance(int state)
 		normalisation_constant = 0.0;
 		for(size_t t = 0; t < observation_sequence_length; ++t)
 		{
-			obs_vector = mixture_model[state].arrayToVector(observations[t],observation_sequence_length);
+// 			cout << endl << endl << "Entering inner loop:" << endl;
+			obs_vector = mixture_model[state].arrayToVector(observations[t],observation_dimension);
 			mixture_mean = mixture_model[state].getMean(k);
+			
+// 			cout << "mixture mean " << endl;
+// 			mixture_model[state].printMatrix(mixture_mean);
+			
 			difference = mixture_model[state].vectorSubtract(obs_vector,mixture_mean);
+// 			cout << "Difference: " << endl;
+// 			mixture_model[state].printMatrix(difference);
+			
 			new_covariance = mixture_model[state].outerProduct(difference,difference);
+			
 			new_covariance = mixture_model[state].vectorScalarProduct(new_covariance,gmm_gamma[state][t][k]);
+// 			cout << "New covariance " << endl;
+// 			mixture_model[state].printMatrix(new_covariance);
+			
 			normalisation_constant+=gmm_gamma[state][t][k];
+// 			cout << "Normalisation constant" << normalisation_constant << endl;
+// 			cout << "Exit inner loop" << endl << endl;
 		}
 		
 		new_covariance = mixture_model[state].vectorScalarProduct(new_covariance,1.0/normalisation_constant);
 		mixture_model[state].setCovariance(k,new_covariance);
+// 		cout << "New covariance at state " << state << " and component " << k << endl;
+// 		mixture_model[state].printMatrix(new_covariance);
 	}
 }
 
