@@ -302,7 +302,7 @@ vector<vector<double> > GMM::inverse(vector<vector<double> > A)
 	double detA = determinant(A);
 	if(detA == 0.0)//Matrix is singular
 	{
-		
+		cout << "Matrix is singular, can not take inverse!" << endl;
 		return A;
 	}
 	else

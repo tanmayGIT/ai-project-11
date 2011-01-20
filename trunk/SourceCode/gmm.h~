@@ -24,14 +24,6 @@ class GMM {
 		
 		//Testing and debugging, will be removed later
 		vector<double> arrayToVector(double*, int);								//Tested
-		void testMahalanobisDistance(vector<double>);
-		void testInnerProduct(vector<double>,vector<double>);
-		void testOuterProduct(vector<double>,vector<double>);
-		void testDeterminant(vector<vector<double> >);
-		void testInverse(vector<vector<double> >);
-		void testTranspose(vector<vector<double> >);
-		void testMVNPDF(vector<double>);
-		void testGMM(vector<double>);
 		void printMatrix(vector<vector<double> >);
 		void printMatrix(vector<double>);
 		//end 
