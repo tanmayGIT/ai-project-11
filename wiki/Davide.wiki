@@ -9,7 +9,7 @@
           * Loops detection finished
 
 == 19/01/2011==
-       * Didn't work because attended the all-day-long congress called: "crime & punishment - a case of biology) (http://www.congocongres.nl/)
+       * Didn't work because attended the all-day-long congress called: "crime & punishment - a case of biology" (http://www.congocongres.nl/)
 
 == 18/01/2011==
        * Optimized word segmentation 
