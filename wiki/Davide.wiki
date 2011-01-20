@@ -15,7 +15,7 @@
        * Optimized word segmentation 
            * Added an extra 2-means clustering step in order to be able to segment words with a small white space between them
        * Wrote a function to extract the word from the entire image. In this way we have more control of the words, of its position and its length and high.
-       * Read again *  _"*An Off-Line Cursive Handwriting Recognition System*"_, focusing mainly on the feature extraction part. 
+       * Read again  _"*An Off-Line Cursive Handwriting Recognition System*"_, focusing mainly on the feature extraction part. 
 
 == 17/01/2011==
         *Continued with pre-processing implementation
