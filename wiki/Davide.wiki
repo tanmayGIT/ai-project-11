@@ -18,7 +18,7 @@
        * Read again  _"*An Off-Line Cursive Handwriting Recognition System*"_, focusing mainly on the feature extraction part. 
 
 == 17/01/2011==
-        *Continued with pre-processing implementation
+        * Continued with pre-processing implementation
             * Modified upperBaselineEstimation function  (even though I am still not really satisfied) 
             * Created a new function for ascender and descender Baselines
 
