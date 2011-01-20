@@ -27,3 +27,6 @@ Hope to have finished the complete implementation of the HMM and GMM, but still 
 
 Tuesday 17th
 Still stuck on the update step of Gaussian function, something strange is happening and havent been able to figure it out by the end of the day.
+
+Wednesday 18th 
+Did a tutorial on mex funtions in Matlab and worked on a wrapper function to include the C++ code in the Matlab pipeline. Read articles on how to extract features and how to use the features in the HMM. Hopefully fixed the bug for the covariance update.
