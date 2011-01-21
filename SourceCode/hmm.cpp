@@ -2,53 +2,74 @@
 // Hand writing recognition Januari project, MSc AI, University of Amsterdam
 // Thijs Kooi, 2011
 
+//The code supports the following:
+// - different topologies, currently only ergodic and left-to-right
+// - discrete/continuous/semi-continuous scalar/vector observations
+
 #include "hmm.h"
 
 // To do:
 
-// - Do hand calculations on forward/backward probability and probability of observation sequences, for different models (2).
-// - Do hand calculations for viterbi sequence
-// - check for possible underflow forward/backward probability, normalise/log probabilities
-// - Test to higher dimensional observations
-// - Test Gaussian/MOG
 // - Check model with HMM toolkit available
 // - In time, make a seperate LA library, such that the HMM doesnt need to call the GMM for math functions
 
 int main()
 {
 	//Testing
-	//GMM(data_dimension, mixture_components)
+	int states = 5;
+	int obs = 8;
+	int obs_dim = 4;
+	int mix_comp = 1;
+	int top = 1; 
 	
-	GMM mog(4,3);
-	
-	vector<GMM> mixture_models;
-	for(size_t i = 0; i < 3; ++i)
-		mixture_models.push_back(mog);
-	
-	//number of states, mixture model
-	HMM markov_model(3,mixture_models);
-	double **test_obs = markov_model.readTestFile(8,4);
+// 	//GMM(data_dimension, mixture_components)
+// 	GMM mog(obs_dim,mix_comp);
+// 	
+// 	
+// 	//number of states, mixture model, topology
+// 	HMM markov_model(states,mixture_models,top);
+// 	
+// 	double **test_obs = markov_model.readTestFile(obs,obs_dim);
+// 	
+// 	markov_model.trainModel(test_obs,obs);
 
-	markov_model.trainModel(test_obs,8);
+	GMM gaussian(obs_dim,1);
+	vector<GMM> gaussian_obs;
+	for(size_t i = 0; i < states; ++i)
+		gaussian_obs.push_back(gaussian);
+	
+	//Initialise markov model of 6 states, for the word number, left-to-right topology
+	HMM number(6,gaussian_obs,1);
+	HMM letter(6,gaussian_obs,1);
+	
+	double **number_observations = number.readTestFile(obs,obs_dim,0);
+	double **letter_observations = number.readTestFile(obs,obs_dim,1);
 }
 
 //Reads a file of observations
 //Assumes every line has one observation
 //Takes as argument the dimension of the observation
-double** HMM::readTestFile(int sequence_length, int dimension)
+double** HMM::readTestFile(int sequence_length, int dimension, int word)
 {
 	string line;
 	observation_sequence_length = sequence_length;
 	double** output = new double*[sequence_length];
 	double* observation;
 	int obs_count = 0;
-	ifstream observations ("test_observations");
-	if(!observations.is_open()) cout << "Unable to open file test_observations" << endl;
+	const char* filename;
+		
+	if(!word)
+		filename = "number_observations";
+	else
+		filename = "letter_observations";
+	
+	ifstream observation_stream(filename);
+	if(!observation_stream.is_open()) cout << "Unable to open file test_observations" << endl;
 	else
 	{
-		while(!observations.eof())
+		while(!observation_stream.eof())
 		{
-			getline(observations,line);
+			getline(observation_stream,line);
 			output[obs_count] = processLine(line,dimension);
 			++obs_count;
 		}
@@ -87,6 +108,20 @@ HMM::HMM(int ns, int no, int od)
 	initialiseUniform();
 }
 
+//Initialise with given topology
+//Currently supported: 0 = ergodic, 1 = left to right for language modelling (prior of entering first state is 1
+HMM::HMM(int ns, int no, int od,int topology) 
+{ 
+	number_of_states = ns;
+	number_of_observations = no;
+	observation_dimension = od;
+	if(!topology)
+		initialiseUniform();
+	else
+		initialiseLanguageModel();
+}
+
+
 HMM::HMM(int ns, int no, int od, double* p, map<int, map<int, double> > t, map<int, map<int, map<int, double> > > o)
 {
 	number_of_states = ns;
@@ -111,6 +146,42 @@ HMM::HMM(int ns, vector<GMM> MOG)
 	initialiseUniform();
 }
 
+HMM::HMM(int ns, vector<GMM> MOG, int topology)
+{
+	number_of_states = ns;
+	mixture_model = MOG;
+	observation_dimension = mixture_model[0].getDimension();
+	if(mixture_model[0].getMixtureComponents() == 1)
+		gaussian = 1;
+	else 
+		gaussian = 2;
+	if(!topology)
+		initialiseUniform();
+	else
+		initialiseLanguageModel();
+}
+
+//Initialise the model for language modelling
+void HMM::initialiseLanguageModel()
+{
+	//Initialise elements of transition map uniformly
+	for(size_t i = 0; i < number_of_states; ++i)
+	{
+		transition_probabilities[i][i] = 0.5;
+		transition_probabilities[i][i+1] = 0.5;
+	}
+	
+	//Initialise uniform prior probabilities
+	prior_probabilities = new double[number_of_states];
+	prior_probabilities[0] = 1.0;
+	for(size_t i = 1; i < number_of_states; ++i)
+		prior_probabilities[i] = 0.0;
+	
+	if(!gaussian)
+		initialiseUniformObservations();
+}
+
+//Initialise a completely connected model with uniform distribution
 void HMM::initialiseUniform() 
 { 
 	//Initialise elements of transition map
@@ -158,6 +229,13 @@ void HMM::trainModel(double** observation_sequence, int length)
 {
 	observations = observation_sequence;
 	observation_sequence_length = length;
+	
+	if(observation_sequence_length < number_of_states)
+	{
+		cout << "ERROR: Number of observations has to be larger than or equal to the number of states." << endl;
+		cout << "Terminating execution." << endl;
+		exit(0);
+	}
 	
 	cout << "Training model..." << endl;
 	printObservations();
@@ -338,12 +416,21 @@ void HMM::maximiseObservationDistribution()
 			
 			new_covariance = updateGaussianCovariance(i,new_mean);
 			mixture_model[i].setMean(new_mean);
+			cout << "New mean for state " << i << endl;
+			mixture_model[i].printMatrix(new_mean);
+			
 			mixture_model[i].setCovariance(new_covariance);
+			for(size_t m = 0; m < observation_dimension; ++m)
+				for(size_t n = 0; n < observation_dimension; ++n)
+					if(m!=n)
+						new_covariance[m][n] = 0.0;
+			
+			cout << "New covariance for state " << i << endl;
+			mixture_model[i].printMatrix(new_covariance);
 		}	
 	}
 	else if(gaussian == 2)//if we use a Gaussian mixture model
-		for(size_t i = 0; i < number_of_states; ++i)
-			updateGMMparameters();
+		updateGMMparameters();
 	else//or a discrete observation distribution
 		for(size_t i = 0; i < number_of_states; ++i)
 			for(size_t m = 0; m < number_of_observations; ++m)
@@ -458,8 +545,8 @@ void HMM::updateGMMcovariance(int state)
 		
 		new_covariance = mixture_model[state].vectorScalarProduct(new_covariance,1.0/normalisation_constant);
 		mixture_model[state].setCovariance(k,new_covariance);
-// 		cout << "New covariance at state " << state << " and component " << k << endl;
-// 		mixture_model[state].printMatrix(new_covariance);
+		cout << "New covariance at state " << state << " and component " << k << endl;
+		mixture_model[state].printMatrix(new_covariance);
 	}
 }
 
@@ -492,7 +579,6 @@ vector<vector<double> > HMM::updateGaussianCovariance(int state, vector<double> 
 		covariance_matrix = mixture_model[0].vectorAdd(covariance_matrix,current_mat);
 		normalisation_constant+= gamma[state][t];
 	}
-	
 	return mixture_model[0].vectorScalarProduct(covariance_matrix,1.0/normalisation_constant);
 }
 
@@ -643,10 +729,16 @@ void HMM::printPriorProbabilities()
 void HMM::printTransitionProbabilities()
 {
 	cout << "Current transition probabilities: " << endl;
-	for(map<int, map< int, double> >::iterator i = transition_probabilities.begin(); i != transition_probabilities.end(); ++i)
+// 	for(map<int, map< int, double> >::iterator i = transition_probabilities.begin(); i != transition_probabilities.end(); ++i)
+// 	{
+// 		for(map<int, double>::iterator j = (*i).second.begin(); j != (*i).second.end(); ++j)
+// 			cout << (*j).second << " ";
+// 		cout << endl;
+// 	}
+	for(size_t i = 0; i < number_of_states; ++i)
 	{
-		for(map<int, double>::iterator j = (*i).second.begin(); j != (*i).second.end(); ++j)
-			cout << (*j).second << " ";
+		for(size_t j = 0; j < number_of_states; ++j)
+			cout << transition_probabilities[i][j] << " ";
 		cout << endl;
 	}
 }

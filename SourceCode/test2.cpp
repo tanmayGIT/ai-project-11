@@ -7,34 +7,11 @@ using namespace std;
 
 int main()
 {
-	double a[3] = {1,2,3};
-	double b[3] = {1,2,3};
-	
-	vector<double> av,bv;
-	
-	for(size_t d = 0; d < 3; ++d)
-	{
-		av.push_back(a[d]);
-		bv.push_back(b[d]);
-	}
-	
-	vector<double> c;
-	c.assign(10,3);
-	for(size_t d = 0; d < c.size(); ++d)
-		cout << c[d] << " ";
-	cout << endl;
-	
-	vector<vector<double> > D;
-	D.assign(10,c);
-	
-	cout << c.size() << endl;
-	cout << D[0].size() << endl;
-	for(size_t d1 = 0; d1 < D.size(); ++d1)
-	{
-		for(size_t d2 = 0; d2 < D[d1].size(); ++d2)
-			cout << D[d1][d2] << " ";
-		cout << endl;
-	}
+	char* filename = "test_observations";
+	ifstream test(filename);
+	string line;
+	getline(test,line);
+	cout << line << endl;
 	
 // 	av+bv;
 }

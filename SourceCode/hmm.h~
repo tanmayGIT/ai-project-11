@@ -18,8 +18,10 @@ class HMM {
 	public:
 		//Constructor functions
 		HMM(int number_of_states, int number_of_observations, int observation_dimension);//Tested
+		HMM(int number_of_states, int number_of_observations, int observation_dimension, int topology);
 		HMM(int,int,int,double *prior_probabilities, map<int,map<int,double> > transition_probabilities, map<int,map<int,map<int,double> > > observation_probabilities);
 		HMM(int,vector<GMM>);
+		HMM(int,vector<GMM>,int topology);
 		//End constructor functions
 		
 		//Getters and setters
@@ -61,7 +63,8 @@ class HMM {
 		
 		//Initialisation functions
 		void initialiseUniform();							//Tested
-		void initialiseUniformObservations();
+		void initialiseLanguageModel();							//Tested
+		void initialiseUniformObservations();						//Tested
 		//end initialisation functions
 		
 		//Baum-Welch functions
@@ -70,6 +73,8 @@ class HMM {
 		void eStep();
 			//A postiori probability tables
 			map<int, map<int, double> > gamma;
+			map<int, map<int, double> > alpha;
+			map<int, map<int, double> > beta;
 			map<int, map<int, map<int, double> > > gmm_gamma;
 			map<int, map<int, map<int, double> > > xi;
 
