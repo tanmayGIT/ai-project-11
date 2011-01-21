@@ -8,7 +8,7 @@ function [lines] = lineSegmentation(im)
     THRESHOLD = 1;
 
     % Transform the image in black and white
-    bw = im2bw(im);
+    bw = im2bw(im, 0.9);
     
     % Generate a histogram
     bw_trans = (bw(:,2:end) - bw(:,1:end-1)) ~= 0 ;

@@ -1,4 +1,4 @@
-function [endpoints] = getEndpoints(im)
+function [endpoints, pixels] = getEndpoints(im)
     
 % GETENDPOINTS returns the number of endpoints present in the image
 
@@ -7,6 +7,8 @@ function [endpoints] = getEndpoints(im)
 
     % Compute endpoints
     im_endpoints = bwmorph(im,'endpoints');
-    endpoints = sum(sum(im_endpoints));
-
+    [row, col] = find(im_endpoints == 1);
+    pixels = [row, col];
+    endpoints = size(row,1);
+    
 end

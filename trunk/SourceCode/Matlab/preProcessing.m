@@ -33,6 +33,7 @@
 % im = imread('a01-000u.png');
 % im = medfilt2(im);
 im = imread('sentence.png');
+% im_bw = im2bw(im, 0.9);
 lines = lineSegmentation(im);
 
 for i = 1:size(lines,2)
@@ -81,10 +82,10 @@ for i = 1:size(lines,2)
         % Display word and baselines
         imshow(lines(i).words(j).slantImage);
         x = 1:1:size(lines(i).words(j).slantImage,2);
-        hold on, plot(x, lines(i).words(j).lowerBaseline, '-b');
-        hold on, plot(x, lines(i).words(j).upperBaseline, '-r');
-        hold on, plot(x, lines(i).words(j).ascenderBaseline, '-y');
-        hold on, plot(x, lines(i).words(j).descenderBaseline, '-g');
+        hold on, plot(x, lines(i).words(j).lowerBaseline, 'b');
+        hold on, plot(x, lines(i).words(j).upperBaseline, 'r');
+        hold on, plot(x, lines(i).words(j).ascenderBaseline, 'm');
+        hold on, plot(x, lines(i).words(j).descenderBaseline, 'g');
         
 %         baselines=[asc lines(i).words(j).upperBaseline  lines(i).words(j).lowerBaseline  desc];
 %                   

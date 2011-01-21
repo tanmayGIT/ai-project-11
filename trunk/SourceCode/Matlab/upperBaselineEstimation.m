@@ -13,7 +13,7 @@ function [baseline] = upperBaselineEstimation(line)
     x_axis = (1:1:width);
     f = polyval(p, x_axis);
     
-    baseline = f(ceil(size(f,2) / 2));
+    baseline = f(ceil(size(f,2) / 2)) - 3;
     
     
     figure(5), imshow(line);

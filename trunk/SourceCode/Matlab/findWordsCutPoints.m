@@ -4,7 +4,7 @@ function [cut_points] = findWordsCutPoints(hist_line, line)
 % really close to the border
 
     % Maximum length accepted
-    MAX_WS = 0.1 * size(line,2); 
+    MAX_WS = 0.05 * size(line,2); 
     THRESHOLD = 10;
 
     % Find white spaces
