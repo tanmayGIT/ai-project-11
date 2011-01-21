@@ -1,7 +1,6 @@
 function features = slidingWindow(image, width,interval)
 
-feature_dimension = 40;
-features = zeros(size(image,2)-width,feature_dimension);
+features = zeros(size(image,2)-width,width);
 
     for i=1:interval:size(image,2)-width
         frame = image(:,i:i+width-1);
