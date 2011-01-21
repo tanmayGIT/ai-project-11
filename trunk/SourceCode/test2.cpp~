@@ -26,6 +26,9 @@ int main()
 	
 	vector<vector<double> > D;
 	D.assign(10,c);
+	
+	cout << c.size() << endl;
+	cout << D[0].size() << endl;
 	for(size_t d1 = 0; d1 < D.size(); ++d1)
 	{
 		for(size_t d2 = 0; d2 < D[d1].size(); ++d2)
