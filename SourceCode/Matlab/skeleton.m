@@ -9,8 +9,8 @@ function [sk_im] = skeleton(im)
     inv_g = invertBwImage(g);
     
     sk_im = bwmorph(inv_g, 'skel', Inf);
-    figure
-    subplot(1,2,1), imshow(inv_g);
-    subplot(1,2,2), imshow(sk_im);
-    
+%     figure
+%     subplot(1,2,1), imshow(inv_g);
+%     subplot(1,2,2), imshow(sk_im);
+%     
 end
