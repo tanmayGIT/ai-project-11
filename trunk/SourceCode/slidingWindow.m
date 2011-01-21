@@ -1,9 +1,9 @@
-function features = slidingWindow(image, width)
+function features = slidingWindow(image, width,interval)
 
 feature_dimension = 40;
 features = zeros(size(image,2)-width,feature_dimension);
 
-    for i=1:size(image,2)-width
+    for i=1:interval:size(image,2)-width
         frame = image(:,i:i+width-1);
         features(i,:) = extractFeatures(frame);
     end
