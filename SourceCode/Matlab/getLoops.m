@@ -1,4 +1,4 @@
-function [loops] = getLoops(im)
+function [loops, pixels] = getLoops(im)
 
 % GETLOOPS returns the number of loops present in the image
 
@@ -6,7 +6,7 @@ function [loops] = getLoops(im)
     inv_im = double(inv_im);
     
     % Convolve with a gaussian kernel
-    size = [3, 3];
+    size = [4 4];
     sigma = 1;
     filter = fspecial('gaussian', size, sigma);
     conv_im = imfilter(inv_im, filter, 'replicate');
@@ -21,6 +21,7 @@ function [loops] = getLoops(im)
     
     % Number of loops
     loops = length(B) - N;
+    pixels = [];
     
     % Display loops in green and the rest in red
     figure; imshow(im); hold on;
@@ -28,6 +29,7 @@ function [loops] = getLoops(im)
         boundary = B{k};
         if(k > N)
             plot(boundary(:,2), boundary(:,1), 'g','LineWidth',2);
+            pixels = [pixels; B{k}];
             
         else
             plot(boundary(:,2), boundary(:,1),'r','LineWidth',2);
