@@ -4,7 +4,7 @@ function [lines] = lineSegmentation(im)
 % horizontal cuts. This will not work if the lines have a large skew
 
     % CONSTANT DECLARATIONS:
-    PEAK_DELTA_FACTOR = 10;
+    PEAK_DELTA_FACTOR = 2;
     THRESHOLD = 1;
 
     % Transform the image in black and white
