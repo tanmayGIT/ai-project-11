@@ -1,40 +1,165 @@
+% This text is proprietary.
+% It's a part of presentation made by myself.
+% It may not used commercial.
+% The noncommercial use such as private and study is free
+% Sep. 2005 
+% Author: Sascha Frank 
+% University Freiburg 
+% www.informatik.uni-freiburg.de/~frank/
+%
+% additional usepackage{beamerthemeshadow} is used
+%  
+%  \beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+%  with this the elements which were coming soon were only hinted
 \documentclass{beamer}
-
-\usepackage[utf8x]{inputenc}
-\usepackage{default}
-
+\usepackage{beamerthemeshadow}
 \begin{document}
+\title{Handritting Word Recognition}  
+\author{Thijs Kooi, Davide Modolo}
+\date{\today} 
 
-\begin{frame}{A sample slide}
+\frame{\titlepage} 
 
-A displayed formula:
+\frame{\frametitle{Table of contents}\tableofcontents} 
 
-\[
-  \int_{-\infty}^\infty e^{-x^2} \, dx = \sqrt{\pi}
-\]
 
-An itemized list:
 
 \section{Overview of the project and Motivations}
 \frame{\frametitle{AI Project}  
 Our project focused on explorative research on the analysis of hwr.\\The research touched different fields:
 \begin{itemize}
-  \item itemized item 1
-  \item itemized item 2
-  \item itemized item 3
+\item Data Collection\item Image Processing\item Features extraction \item Recognition using HMM 
 \end{itemize}
-
-\begin{theorem}
-  In a right triangle, the square of hypotenuse equals
-  the sum of squares of two other sides.
-\end{theorem}
-
-\end{frame}
-
-\begin{frame}{blabalbalbal}
-this is a new frame 
-
-\end{frame}
+}
 
 
+\section{Implementation}
+
+\subsection{Pre-Process}
+\frame{\frametitle{Pipeline}  
+image
+}
+\frame{\frametitle{Line Segmentation}  
+blabla
+}
+\frame{\frametitle{Skew and Slope Correction}  
+blabla
+}
+
+
+\subsection{Feature Extraction}
+\frame{\frametitle{Features}  
+list
+}
+
+\subsection{Hidden-Markov Model}
+\frame{\frametitle{HMM}  
+blabla
+}
+
+
+\section{Results}
+\frame{\frametitle{Results}  
+blabla
+}
+
+
+
+\section{Conclusions}
+\frame{\frametitle{Conclusions}  
+blabla
+}
+
+
+
+%\section{Pre-Processing} 
+%\frame{\frametitle{Title} 
+%Each frame should have a title.
+%}
+%
+%\frame{ 
+%Without title somethink is missing. 
+%}
+%
+%
+%\section{Feature Extraction} 
+%\subsection{Lists I}
+%\frame{\frametitle{unnumbered lists}
+%\begin{itemize}
+%\item Introduction to  \LaTeX  
+%\item Course 2 
+%\item Termpapers and presentations with \LaTeX 
+%\item Beamer class
+%\end{itemize} 
+%}
+%
+%\frame{\frametitle{lists with pause}
+%\begin{itemize}
+%\item Introduction to  \LaTeX \pause 
+%\item Course 2 \pause 
+%\item Termpapers and presentations with \LaTeX \pause 
+%\item Beamer class
+%\end{itemize} 
+%}
+%
+%\subsection{Lists II}
+%\frame{\frametitle{numbered lists}
+%\begin{enumerate}
+%\item Introduction to  \LaTeX  
+%\item Course 2 
+%\item Termpapers and presentations with \LaTeX 
+%\item Beamer class
+%\end{enumerate}
+%}
+%\frame{\frametitle{numbered lists with pause}
+%\begin{enumerate}
+%\item Introduction to  \LaTeX \pause 
+%\item Course 2 \pause 
+%\item Termpapers and presentations with \LaTeX \pause 
+%\item Beamer class
+%\end{enumerate}
+%}
+%
+%\section{Section no.3} 
+%\subsection{Tables}
+%\frame{\frametitle{Tables}
+%\begin{tabular}{|c|c|c|}
+%\hline
+%\textbf{Date} & \textbf{Instructor} & \textbf{Title} \\
+%\hline
+%WS 04/05 & Sascha Frank & First steps with  \LaTeX  \\
+%\hline
+%SS 05 & Sascha Frank & \LaTeX \ Course serial \\
+%\hline
+%\end{tabular}}
+%
+%
+%\frame{\frametitle{Tables with pause}
+%\begin{tabular}{c c c}
+%A & B & C \\ 
+%\pause 
+%1 & 2 & 3 \\  
+%\pause 
+%A & B & C \\ 
+%\end{tabular} }
+%
+%
+%\section{Section no. 4}
+%\subsection{blocs}
+%\frame{\frametitle{blocs}
+%
+%\begin{block}{title of the bloc}
+%bloc text
+%\end{block}
+%
+%\begin{exampleblock}{title of the bloc}
+%bloc text
+%\end{exampleblock}
+%
+%
+%\begin{alertblock}{title of the bloc}
+%bloc text
+%\end{alertblock}
+%}
 \end{document}
+
