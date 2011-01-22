@@ -20,7 +20,7 @@ using namespace std;
 void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
 	double *input_observations;
-	char* train_word;
+	const char* train_word;
 	mwSize number_of_observations,observation_dimension;
 
 	//We need one or two input arguments, as stated above

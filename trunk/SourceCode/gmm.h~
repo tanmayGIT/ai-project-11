@@ -21,6 +21,7 @@ class GMM {
 		//end constructors
 		
 		void initialiseParameters();
+		void initialiseRandomMean(double **data, int number_of_datapoints, int data_dimension)
 		
 		//Testing and debugging, will be removed later
 		vector<double> arrayToVector(double*, int);								//Tested
@@ -49,7 +50,7 @@ class GMM {
 		int getDimension();
 		void setDimension(int);
 		
-		int getPrior(int component_number);
+		double getPrior(int component_number);
 		void setPrior(int component_number,double probability);
 		
 		vector<double> getMean(int component_number);

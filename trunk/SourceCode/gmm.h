@@ -21,6 +21,9 @@ class GMM {
 		//end constructors
 		
 		void initialiseParameters();
+		void initialiseRandomMean(double **data, int number_of_datapoints, int data_dimension);
+		double getDataMaximum(double**,int,int);
+		double getDataMinimum(double**,int,int);
 		
 		//Testing and debugging, will be removed later
 		vector<double> arrayToVector(double*, int);								//Tested

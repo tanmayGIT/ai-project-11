@@ -9,62 +9,49 @@
 #include "hmm.h"
 
 // To do:
-
-// - Check model with HMM toolkit available
-// - In time, make a seperate LA library, such that the HMM doesnt need to call the GMM for math functions
+//- Optimise GMM class
+//- check for singularities
+//- work on 
 
 int main()
 {
+	time_t t;
+	srand48((unsigned) time(&t));
+	
 	//Testing
-	int states = 5;
-	int obs = 8;
-	int obs_dim = 4;
+	int states = 6;
+	int obs_dim = 3;
 	int mix_comp = 1;
 	int top = 1; 
-	
-// 	//GMM(data_dimension, mixture_components)
-// 	GMM mog(obs_dim,mix_comp);
-// 	
-// 	
-// 	//number of states, mixture model, topology
-// 	HMM markov_model(states,mixture_models,top);
-// 	
-// 	double **test_obs = markov_model.readTestFile(obs,obs_dim);
-// 	
-// 	markov_model.trainModel(test_obs,obs);
 
 	GMM gaussian(obs_dim,1);
 	vector<GMM> gaussian_obs;
 	for(size_t i = 0; i < states; ++i)
 		gaussian_obs.push_back(gaussian);
+
+	double **number_observations = readTestFile(128,obs_dim,"number1.txt");
+	double **letter_observations = readTestFile(64,obs_dim,"letter1.txt");
 	
 	//Initialise markov model of 6 states, for the word number, left-to-right topology
-	HMM number(6,gaussian_obs,1);
-	HMM letter(6,gaussian_obs,1);
-	
-	double **number_observations = number.readTestFile(obs,obs_dim,0);
-	double **letter_observations = number.readTestFile(obs,obs_dim,1);
+	HMM number(states,gaussian_obs,1,number_observations,128,3);
+	HMM letter(states,gaussian_obs,1,letter_observations,64,3);
+
+	number.trainModel(number_observations,128);
+// 	letter.trainModel(letter_observations,64);
 }
 
 //Reads a file of observations
 //Assumes every line has one observation
 //Takes as argument the dimension of the observation
-double** HMM::readTestFile(int sequence_length, int dimension, int word)
+double** readTestFile(int sequence_length, int dimension, const char* filename)
 {
 	string line;
-	observation_sequence_length = sequence_length;
 	double** output = new double*[sequence_length];
 	double* observation;
 	int obs_count = 0;
-	const char* filename;
-		
-	if(!word)
-		filename = "number_observations";
-	else
-		filename = "letter_observations";
-	
-	ifstream observation_stream(streamname);
-	if(!observation_stream.is_open()) cout << "Unable to open file test_observations" << endl;
+
+	ifstream observation_stream(filename);
+	if(!observation_stream.is_open()) cout << "Unable to open file " << filename << endl;
 	else
 	{
 		while(!observation_stream.eof())
@@ -77,7 +64,7 @@ double** HMM::readTestFile(int sequence_length, int dimension, int word)
 	return output;
 }
 
-double* HMM::processLine(string line, int dim)
+double* processLine(string line, int dim)
 {
 	double *obs = new double[dim];
 	int i = 0;
@@ -134,22 +121,40 @@ HMM::HMM(int ns, int no, int od, double* p, map<int, map<int, double> > t, map<i
 
 //Initialise the HMM with ns states and a mixture of Gaussians, corresponding to every state
 //Note that this can also be a mixture of just 1 Gaussian
-HMM::HMM(int ns, vector<GMM> MOG)
+HMM::HMM(int ns, vector<GMM> MOG, double **data, int number_of_observations, int observation_dim)
 {
 	number_of_states = ns;
 	mixture_model = MOG;
+	if(observation_dim != mixture_model[0].getDimension())
+	{
+		cout << "ERROR: Observations dimension does not correspond to dimension of mixture model" << endl;
+		exit(0);
+	}
 	observation_dimension = mixture_model[0].getDimension();
 	if(mixture_model[0].getMixtureComponents() == 1)
 		gaussian = 1;
 	else 
 		gaussian = 2;
 	initialiseUniform();
+	
+	//initiliase the means of every state of every mixture component randomly
+	for(size_t i = 0; i < number_of_states; ++i)
+	{
+		mixture_model[i].initialiseRandomMean(data,number_of_observations,observation_dimension);
+		mixture_model[i].printMean(0);
+	}
 }
 
-HMM::HMM(int ns, vector<GMM> MOG, int topology)
+HMM::HMM(int ns, vector<GMM> MOG, int topology,double **data, int number_of_observations, int observation_dim)
 {
 	number_of_states = ns;
 	mixture_model = MOG;
+	if(observation_dim != mixture_model[0].getDimension())
+	{
+		cout << "ERROR: Observations dimension does not correspond to dimension of mixture model" << endl;
+		exit(0);
+	}
+	
 	observation_dimension = mixture_model[0].getDimension();
 	if(mixture_model[0].getMixtureComponents() == 1)
 		gaussian = 1;
@@ -159,6 +164,13 @@ HMM::HMM(int ns, vector<GMM> MOG, int topology)
 		initialiseUniform();
 	else
 		initialiseLanguageModel();
+	
+	//initiliase the means of every state of every mixture component randomly
+	for(size_t i = 0; i < number_of_states; ++i)
+	{
+		mixture_model[i].initialiseRandomMean(data,number_of_observations,observation_dimension);
+		mixture_model[i].printMean(0);
+	}
 }
 
 //Initialise the model for language modelling
@@ -170,6 +182,7 @@ void HMM::initialiseLanguageModel()
 		transition_probabilities[i][i] = 0.5;
 		transition_probabilities[i][i+1] = 0.5;
 	}
+	transition_probabilities[number_of_states-1][number_of_states-1] = 1.0;
 	
 	//Initialise uniform prior probabilities
 	prior_probabilities = new double[number_of_states];
@@ -270,7 +283,7 @@ void HMM::eStep()
 	for(size_t i = 0; i < number_of_states; ++i)
 		for(size_t t = 0; t < observation_sequence_length; ++t)
 			gamma[i][t] = stateProbability(i,t);
-			
+		
 	if(gaussian == 2)
 		for(size_t i = 0; i < number_of_states; ++i)
 			for(size_t t = 0; t < observation_sequence_length; ++t)
@@ -279,8 +292,19 @@ void HMM::eStep()
 	
 	for(size_t i = 0; i < number_of_states; ++i)
 		for(size_t j = 0; j < number_of_states; ++j)
-			for(size_t t = 0; t < observation_sequence_length-1; ++t)
+			for(size_t t = 0; t < observation_sequence_length; ++t)
 				xi[i][j][t] = stateToStateProbability(i,j,t);
+			
+// 	double sum;
+// 	for(size_t t = 0; t < observation_sequence_length; ++t)
+// 		for(size_t i = 0; i < number_of_states; ++i)
+// 		{
+// 			sum = 0.0;
+// 			for(size_t j = 0; j < number_of_states; ++j)
+// 				sum+=xi[i][j][t];
+// 			cout << "Xi from state " << i << " at time t " << t << ": " << sum << endl;
+// 			cout << "Gamma: " << gamma[i][t] << endl;
+// 		}
 }
 
 //Generally denoted b_j(o_{t}) in the literature
@@ -416,8 +440,8 @@ void HMM::maximiseObservationDistribution()
 			
 			new_covariance = updateGaussianCovariance(i,new_mean);
 			mixture_model[i].setMean(new_mean);
-			cout << "New mean for state " << i << endl;
-			mixture_model[i].printMatrix(new_mean);
+// 			cout << "New mean for state " << i << endl;
+// 			mixture_model[i].printMatrix(new_mean);
 			
 			mixture_model[i].setCovariance(new_covariance);
 			for(size_t m = 0; m < observation_dimension; ++m)
@@ -425,8 +449,8 @@ void HMM::maximiseObservationDistribution()
 					if(m!=n)
 						new_covariance[m][n] = 0.0;
 			
-			cout << "New covariance for state " << i << endl;
-			mixture_model[i].printMatrix(new_covariance);
+// 			cout << "New covariance for state " << i << endl;
+// 			mixture_model[i].printMatrix(new_covariance);
 		}	
 	}
 	else if(gaussian == 2)//if we use a Gaussian mixture model

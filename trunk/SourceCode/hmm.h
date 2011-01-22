@@ -14,14 +14,17 @@
 
 using namespace std;
 
+double** readTestFile(int,int,const char*);
+double* processLine(string,int);
+
 class HMM {
 	public:
 		//Constructor functions
 		HMM(int number_of_states, int number_of_observations, int observation_dimension);//Tested
 		HMM(int number_of_states, int number_of_observations, int observation_dimension, int topology);
 		HMM(int,int,int,double *prior_probabilities, map<int,map<int,double> > transition_probabilities, map<int,map<int,map<int,double> > > observation_probabilities);
-		HMM(int,vector<GMM>);
-		HMM(int,vector<GMM>,int topology);
+		HMM(int,vector<GMM>,double**,int,int);
+		HMM(int,vector<GMM>,int topology,double**,int,int);
 		//End constructor functions
 		
 		//Getters and setters
@@ -41,9 +44,6 @@ class HMM {
 		void printTransitionProbabilities();						//Tested
 		void printObservationProbabilities();						//Tested
 		//Print functions
-		
-		double** readTestFile(int,int,int);
-		double* processLine(string,int);
 		
 	private:
 		//HMM variables

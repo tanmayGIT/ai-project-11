@@ -66,6 +66,48 @@ void GMM::initialiseParameters()
 		covariances.push_back(unit_covariance);
 	}
 }
+
+//Assume the covariance and priors have already been initialised
+void GMM::initialiseRandomMean(double **data, int number_of_datapoints, int data_dimension)
+{
+	means.clear();
+	vector<double> mean;
+	double *data_minimum = new double[data_dimension];
+	double *data_maximum = new double[data_dimension];
+	for(size_t d = 0; d < data_dimension; ++d)
+	{
+		data_minimum[d] = getDataMinimum(data,number_of_datapoints,d);
+		data_maximum[d] = getDataMaximum(data,number_of_datapoints,d);
+	}
+	
+	for(size_t i = 0; i < mixture_components; ++i)
+	{	
+		mean.clear();
+		for(size_t d = 0; d < data_dimension; ++d)
+			mean.push_back((drand48()*(data_maximum[d]-data_minimum[d]))+data_minimum[d]);
+		
+		means.push_back(mean);
+	}
+}
+
+double GMM::getDataMaximum(double **data, int number_of_datapoints, int dimension)
+{
+	double min = 0.0;
+	for(size_t n = 0; n < number_of_datapoints; ++n)
+		if(data[n][dimension] < min)
+			min = data[n][dimension];
+	return min;
+}
+
+double GMM::getDataMinimum(double **data, int number_of_datapoints, int dimension)
+{
+	double max = 0.0;
+	for(size_t n = 0; n < number_of_datapoints; ++n)
+		if(data[n][dimension] > max)
+			max = data[n][dimension];
+	return max;
+}
+
 //end constructors and initialisation functions
 
 // void GMM::EM(vector<vector<double> > data)
