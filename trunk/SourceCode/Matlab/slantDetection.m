@@ -6,7 +6,7 @@ function angle = slantDetection(im)
     box = bwTrans;
     Cbox = bwboundaries(box);
  
-    min_stroke_length = 20;
+    min_stroke_length = 50;
     step_size = 25;
     
     degrees = [];

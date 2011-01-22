@@ -1,17 +1,18 @@
-function features = slidingWindow(image, width, interval)
+function features = slidingWindow(skeleton_im, width, interval, word_str, word_features)
 
 feature_dimension = width;
-features = zeros(size(image,2)-width,feature_dimension);
+features = zeros(size(skeleton_im,2)-width, 15);
 
-    for i=1:interval:size(image,2)-width
-        frame = image(:,i:i+width-1);
-        features(i,:) = extractFeatures(frame);
+    for i=1:interval:size(skeleton_im,2)-width
+        current_window = skeleton_im(:,i:i+width-1);
+        features(i,:) = extractFeatures(current_window, i, skeleton_im, word_str, word_features)';
     end
 
 end
 
-function feature_vector = extractFeatures(frame)
-    imshow(frame);
+function feature_vector = extractFeatures(current_window, pos, skeleton_im, word_str, word_features)
+    imshow(current_window);
     drawnow;
-    feature_vector = sum(frame,1) / size(frame,1);
+    window_pos = pos:pos+size(current_window,2)-1;
+    feature_vector = featuresInWindow(window_pos, skeleton_im, word_str, word_features);
 end

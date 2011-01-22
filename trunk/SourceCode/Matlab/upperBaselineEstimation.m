@@ -16,11 +16,11 @@ function [baseline] = upperBaselineEstimation(line)
     baseline = f(ceil(size(f,2) / 2)) - 3;
     
     
-    figure(5), imshow(line);
-    hold on;
-    plot(x_axis, baseline, 'r');
-    scatter(x, y, 'x');
-    title('Linear regression (red line) of the upper pixels (blue points)');
+%     figure(5), imshow(line);
+%     hold on;
+%     plot(x_axis, baseline, 'r');
+%     scatter(x, y, 'x');
+%     title('Linear regression (red line) of the upper pixels (blue points)');
 
     
 

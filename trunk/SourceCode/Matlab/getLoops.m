@@ -21,18 +21,20 @@ function [loops, pixels] = getLoops(im)
     
     % Number of loops
     loops = length(B) - N;
-    pixels = [];
+    pixels = {};
+    count = 1;
     
     % Display loops in green and the rest in red
-    figure; imshow(im); hold on;
+%     figure; imshow(im); hold on;
     for k = 1:length(B),
         boundary = B{k};
         if(k > N)
-            plot(boundary(:,2), boundary(:,1), 'g','LineWidth',2);
-            pixels = [pixels; B{k}];
+%             plot(boundary(:,2), boundary(:,1), 'g','LineWidth',2);
+            pixels{count} = B{k};
+            count = count + 1;
             
         else
-            plot(boundary(:,2), boundary(:,1),'r','LineWidth',2);
+%             plot(boundary(:,2), boundary(:,1),'r','LineWidth',2);
         end
     end
 

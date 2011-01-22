@@ -4,15 +4,19 @@ function [lines] = lineSegmentation(im)
 % horizontal cuts. This will not work if the lines have a large skew
 
     % CONSTANT DECLARATIONS:
-    PEAK_DELTA_FACTOR = 2;
+    PEAK_DELTA_FACTOR = 3;
     THRESHOLD = 1;
 
     % Transform the image in black and white
-    bw = im2bw(im, 0.9);
+    bw = im2bw(im);
     
     % Generate a histogram
-    bw_trans = (bw(:,2:end) - bw(:,1:end-1)) ~= 0 ;
-    im_hist = sum(bw_trans,2) ;
+    bw_trans = (bw(:,2:end) - bw(:,1:end-1)) ~= 0;
+    im_hist = sum(bw_trans,2);
+    
+    % Smooth the histogram with a 1-D median filter
+    im_hist = medfilt1(im_hist);
+    
 
     % Find minima in histogram
     [max_peaks, min_peaks] = peakdet(im_hist, floor(max(im_hist)/PEAK_DELTA_FACTOR)); %#ok<ASGLU>

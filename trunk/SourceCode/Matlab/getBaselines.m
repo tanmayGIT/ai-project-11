@@ -1,4 +1,4 @@
-function [upper_baseline, ascender_baseline, descender_baseline] = getBaselines(word)
+function [upper_baseline, ascender_baseline, descender_baseline] = getBaselines(word, baseline)
 
       % Compute upper Baseline
       upper_baseline = upperBaselineEstimation(word);
@@ -12,4 +12,8 @@ function [upper_baseline, ascender_baseline, descender_baseline] = getBaselines(
       
       ascender_baseline = temp(1) - 1;
       descender_baseline = temp(end) + 1;
+      
+      if descender_baseline < baseline
+          descender_baseline = baseline;
+      end
 end
