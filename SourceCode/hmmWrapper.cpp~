@@ -7,10 +7,8 @@
 #include "mex.h"
 // #include "hmm.h"
 
-// map<string, int> dictionary;
-// vector<HMM> word_models;
+// map<char*, HMM> dictionary;
 double** convertObservations(double*,int,int);
-int findWord(char* word);
 
 using namespace std;
 
@@ -47,17 +45,23 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 	//If we are training
 	if(nrhs == 2)
 	{
+		mexPrintf("Training markov model on word: \n");
 		//Convert the input string to a c string
 		train_word = mxArrayToString(prhs[0]);
 		
 		//Convert observations to multidimensional array
 		double** observations = convertObservations(input_observations,number_of_observations,observation_dimension);
 		
-		//Look for the word in the dictionary, if it doesn't exist, add it and create an HMM at the appropriate place in the dictionary, else give the entry
-		//int entry_number = findWord(train_word);
-		
-		//Train the Markov model for the given observation
-		//word_models[entry_number].trainModel(train_word);
+		//If the word is not in the dictionary
+		if(!dictionary[train_word])
+		{
+			int number_of_states = 4;//check the literature, to do
+			HMM new_model(number_of_states,number_of_observations);
+			new_model.trainModel(observations,observation_dimension);
+			dictionary[train_word] = new_model;
+		}
+		else
+			dictionary[train_word].trainModel(observations,number_of_observations);
 	}
 // 	else
 // 	{

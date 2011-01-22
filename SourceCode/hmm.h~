@@ -14,6 +14,9 @@
 
 using namespace std;
 
+double** readTestFile(int,int,const char*);
+double* processLine(string,int);
+
 class HMM {
 	public:
 		//Constructor functions
@@ -41,9 +44,6 @@ class HMM {
 		void printTransitionProbabilities();						//Tested
 		void printObservationProbabilities();						//Tested
 		//Print functions
-		
-		double** readTestFile(int,int);
-		double* processLine(string,int);
 		
 	private:
 		//HMM variables
