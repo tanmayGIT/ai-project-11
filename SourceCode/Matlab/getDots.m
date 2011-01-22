@@ -19,7 +19,7 @@ function [dots, pixels] = getDots(im)
         sz = size(unique(stroke,'rows'),1);
         if sz <= STROKE_MAX_LEN && sz >= STROKE_MIN_LEN
             dots = dots + 1;
-            pixels = [pixel; connected_components{i}];
+            pixels = [pixels; connected_components{i}];
             continue 
         end
     end

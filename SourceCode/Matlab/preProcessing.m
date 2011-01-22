@@ -33,7 +33,6 @@
 % im = imread('a01-000u.png');
 % im = medfilt2(im);
 im = imread('sentence.png');
-% im_bw = im2bw(im, 0.9);
 lines = lineSegmentation(im);
 
 for i = 1:size(lines,2)
@@ -63,21 +62,21 @@ for i = 1:size(lines,2)
         [corrected_word, slope, baseline] = skewCorrection(lines(i).words(j).originalImage);
         lines(i).words(j).skewImage = corrected_word;
         lines(i).words(j).angleSlope = slope;
-        lines(i).words(j).lowerBaseline = baseline;
+        lines(i).words(j).lowerBaseline = floor(baseline);
 
         % Correct slant
-        lines(i).words(j).angleSlant = slantDetection(lines(i).words(j).skewImage);
-        if lines(i).words(j).angleSlant ~= 0
-            lines(i).words(j).slantImage = slantCorrection(lines(i).words(j).skewImage, lines(i).words(j).angleSlant);
-        else 
+%         lines(i).words(j).angleSlant = slantDetection(lines(i).words(j).skewImage);
+%         if lines(i).words(j).angleSlant ~= 0
+%             lines(i).words(j).slantImage = slantCorrection(lines(i).words(j).skewImage, lines(i).words(j).angleSlant);
+%         else 
             lines(i).words(j).slantImage = lines(i).words(j).skewImage;
-        end
+%         end
         
         % Compute upper, ascender and descender baselines
-        [upp, asc, desc] = getBaselines(lines(i).words(j).slantImage);
-        lines(i).words(j).upperBaseline = upp;
-        lines(i).words(j).ascenderBaseline = asc;
-        lines(i).words(j).descenderBaseline = desc;
+        [upp, asc, desc] = getBaselines(lines(i).words(j).slantImage, lines(i).words(j).lowerBaseline);
+        lines(i).words(j).upperBaseline = ceil(upp);
+        lines(i).words(j).ascenderBaseline = ceil(asc);
+        lines(i).words(j).descenderBaseline = floor(desc);
         
         % Display word and baselines
         imshow(lines(i).words(j).slantImage);
