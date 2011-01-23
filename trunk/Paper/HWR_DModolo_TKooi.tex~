@@ -2,6 +2,7 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{graphicx}
+\usepackage{subfigure}
 \usepackage{float}
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -124,19 +125,20 @@ Where $w_{k}$ denotes the prior probability of mixture component $k$, or weight 
 Training the model is done by {\it Baum-Welch reestimation}, a special instance of the EM-algorithm.
 \subsection{Baum-Welch reestimation}
 
-To train the model, we need to maximise the likelihood of the parameters $\mathcal{L}(\lambda|{\bf O})$, by taking the derivative of every variable and setting it to zero.
+To train the model, we need to maximise the likelihood of the parameters $\mathcal{L}(\lambda|{\bf O})$, by taking partial derivatives of every variable and setting it to zero.
 
-To make the update steps more comprehensible, a set of intermediate variables defined.
-\[
- P(q_{t} = s_{i} | {\bf O}, \lambda ) = 
-\]
+To estimate $\pi_{i}$, the probability that a sequence is starting in state $i$, we divide the number of sequences starting in the state, by the total number $M$ of sequences used to train the model:
+\begin{equation}
+ \hat{\pi_{i}} = \frac{ \displaystyle \sum_{m = 1}^{M} \delta(q_{1}^{m} = s_{i}) }{M}
+\end{equation}
+Where $\delta(\cdot)$ denotes the Kronecker delta function. For the left-to-right model, the probability of entering state 1, is initialised to 1 and therefore $\pi_{i}$ will remain fixed during the whole reestimation procedure. To make the rest of the update steps more comprehensible, a set of intermediate variables is defined. First, the probability of begin in a state $i$ at timestep $t$, $P(q_{t} = s_{i} | {\bf O}, \lambda )$, which by Bayes' theorem can be written as:
 \[
  (P({\bf O}|\lambda))^{-1} P({\bf O}|\lambda )P(q_{t} = s_{i}|\lambda) = 
 \]
 \begin{equation}
  \gamma_{t}(i) \equiv (P({\bf O}|\lambda))^{-1} \alpha_{t}(i)\beta_{t}(i) 
 \end{equation}
-Where normalisation constant $(P({\bf O}|\lambda))^{-1} = \sum_{j=1}^{N} \alpha_{t}(i)\beta_{t}(i) = \sum_{j=1}^{N} \alpha_{T}(j)$.
+Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\beta_{t}(i) = \sum_{j=1}^{N} \alpha_{T}(j)$.
 
 
 \[
@@ -152,19 +154,30 @@ With these variables defined, we can assign the derivative of the likelihood fun
  \hat{a}_{ij} = \frac{\displaystyle \sum_{t=1}^{T-1} \xi_{t}(i,j) } {\displaystyle \sum_{t=1}^{T-1} \gamma_{t}(i) }
 \end{equation}
 
-
-
-
-Mixture of Gaussian updates
+A disadvantage about using a single Gaussian, is that for different writing styles of the same class, the Gaussian model will be trained to give the highest probability for a letter in between two instances, as illustrated by figure 3. 
+\begin{figure}[ht]
+  \centering
+  \subfigure[Fit for single Gaussian]{
+    \includegraphics[scale=0.4]{single.jpg}
+    \label{fig:subfig1}
+  }
+  \subfigure[Fit for mixture of Gaussians]{
+    \includegraphics[scale=0.4]{gmm.jpg}
+    \label{fig:subfig2}
+  }
+  \label{fig:subfigureExample}
+  \caption[Optional caption for list of figures]{Intuition behind the Gaussian mixture model}
+\end{figure}
+In the case of a GMM, and aditional latent variable, the weight of each mixture component, is introduced to the system. 
 
 \[
   P(q_{t} = s_{i}, C = k | {\bf O}, \lambda) = 
 \]
 \[
- P(q_{t} = s_{i}| {\bf O}, \lambda ) \frac{P(o_{t},q_{t}=s_{i},C=k|\lambda )}{ P(o_{t}, q_{t} = s_{i}| \lambda) } = 
+ P(q_{t} = s_{i}| {\bf O}, \lambda ) \frac{P({\bf o}_{t},q_{t}=s_{i},C=k|\lambda )}{ P({\bf o}_{t}, q_{t} = s_{i}| \lambda) } = 
 \]
 \begin{equation}
- \gamma_{t}(i,k) \equiv \gamma_{t}(i) \frac{ b_{i,k}(o_{t}) } { b_{i}(o_{t}) }
+ \gamma_{t}(i,k) \equiv \gamma_{t}(i) \frac{ b_{i,k}({\bf o}_{t}) } { b_{i}({\bf o}_{t}) }
 \end{equation}
 
 
@@ -180,7 +193,7 @@ Mixture of Gaussian updates
 
 \begin{equation}
  \label{updateCovarianceGMM}
- \hat{\Sigma}_{i,k} = \displaystyle \frac{ \sum_{t=1}^{T} \gamma_{t}(i,k) ({\bf x} - {\bf \mu}_{i,k})( {\bf x} - {\bf \mu}_{i,k} )^{t} }{ \sum_{t=1}^{T} \gamma_{t}(i,k) }
+ \hat{\Sigma}_{i,k} = \displaystyle \frac{ \sum_{t=1}^{T} \gamma_{t}(i,k) ({\bf o}_{t} - {\bf \mu}_{i,k})( {\bf o}_{t} - {\bf \mu}_{i,k} )^{t} }{ \sum_{t=1}^{T} \gamma_{t}(i,k) }
 \end{equation}
 
 When using a continuous observation distribution in the form of a single Gaussian or Gaussian mixture model, we have to decide upon the shape of the covariance matrix. This can either be full, diagonal or spherical/isotropic. 
