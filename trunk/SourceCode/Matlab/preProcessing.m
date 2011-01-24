@@ -32,7 +32,7 @@
 
 % im = imread('a01-000u.png');
 % im = medfilt2(im);
-im = imread('sentence.png');
+im = imread('test_ppt.png');
 lines = lineSegmentation(im);
 
 for i = 1:size(lines,2)
@@ -85,11 +85,18 @@ for i = 1:size(lines,2)
         hold on, plot(x, lines(i).words(j).upperBaseline, 'r');
         hold on, plot(x, lines(i).words(j).ascenderBaseline, 'm');
         hold on, plot(x, lines(i).words(j).descenderBaseline, 'g');
+         
+        % Cut the image at ascender and descender baselines
+        lines(i).words(j).cut = lines(i).words(j).slantImage(lines(i).words(j).ascenderBaseline:lines(i).words(j).descenderBaseline, :);
+        lines(i).words(j).newUpperBaseline = lines(i).words(j).upperBaseline - lines(i).words(j).ascenderBaseline;
+        lines(i).words(j).newLowerBaseline = lines(i).words(j).lowerBaseline - lines(i).words(j).ascenderBaseline;
         
-%         baselines=[asc lines(i).words(j).upperBaseline  lines(i).words(j).lowerBaseline  desc];
-%                   
+        % Vertical Scaling
+        h = 100;
+        lines(i).words(j).scaling = vertical_scaling(lines(i).words(j).cut, lines(i).words(j).newUpperBaseline, lines(i).words(j).newLowerBaseline, h);
+        
         % Skeleton 
-        lines(i).words(j).skeleton = skeleton(lines(i).words(j).slantImage);
+        lines(i).words(j).skeleton = skeleton(lines(i).words(j).scaling);
     end
     
 end

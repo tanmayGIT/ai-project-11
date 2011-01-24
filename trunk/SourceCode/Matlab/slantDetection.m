@@ -1,12 +1,13 @@
 function angle = slantDetection(im)
 
-    bwTrans = (im(:,2:end) - im(:,1:end-1)) ~= 0;
-    bwTrans = bwmorph(bwTrans,'clean');
+    bw = im2bw(im);
+    bwTrans = (bw(:,2:end) - bw(:,1:end-1)) ~= 0;
+%     bwTrans = bwmorph(bwTrans,'clean');
     bwTrans = bwmorph(bwTrans,'hbreak');
     box = bwTrans;
     Cbox = bwboundaries(box);
  
-    min_stroke_length = 50;
+    min_stroke_length = 8;
     step_size = 25;
     
     degrees = [];
@@ -14,6 +15,7 @@ function angle = slantDetection(im)
     boxX = size(box,1)-boxX;
     imshow(im)
     hold on;
+    title('Relevant Lines');
     
     for i = 1 : size(Cbox,1)
         
