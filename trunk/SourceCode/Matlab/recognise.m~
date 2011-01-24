@@ -1,0 +1,14 @@
+function recognise(training_directory,test_directory)
+
+  training_files = dir(DIR);
+  NUM = size(FILES,1)-2;
+  CNT = [];                     % initialise the variable
+  
+
+  for n = 3:size(FILES,1)
+    image = imread([DIR '/' FILES(n).name], '%s', 'whitespace', ' \b\t"()[]-/\\,^.;:!?');
+    imshow(image);
+    drawnow;
+  end
+
+end
