@@ -1,5 +1,11 @@
 #summary Davide's research log
 
+== 24/01/2011==
+     * Downloaded the dataset from http://www.iam.unibe.ch/~fkiwww/iamDB/data/
+     * Though about how to use it
+          * Decided to do word recognition without character segmentation. In this way instead of training one HMM for every character we train an HMM for every word.
+     * Wrote a script in python to extract useful annotation for the dataset
+     * Worked on dividing the dataset in training and test test
 
 == 22/01/2011==
      * Continued working on the implementation of feature extraction part
