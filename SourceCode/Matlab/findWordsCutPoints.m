@@ -4,7 +4,7 @@ function [cut_points] = findWordsCutPoints(hist_line, line)
 % really close to the border
 
     % Maximum length accepted
-    MAX_WS = 0.05 * size(line,2); 
+    MAX_WS = 0.07 * size(line,2); 
     THRESHOLD = 10;
 
     % Find white spaces
@@ -57,7 +57,7 @@ function [cut_points] = findWordsCutPoints(hist_line, line)
     temporary_rejected = accepted_ws(clusters ~= num_cluster(1), :);
     
     % Add some miss-clustered
-    if (max(temporary_rejected(:,3)) - min(temporary_rejected(:,3))) > THRESHOLD
+    if (max(temporary_rejected(:,3)) - mean(temporary_rejected(:,3))) > THRESHOLD
         new_clusters = kmeans(temporary_rejected(:,3), 2, 'emptyaction', 'drop');
         if sum(new_clusters) > length(new_clusters)
             maxim = max(temporary_rejected(:,3));

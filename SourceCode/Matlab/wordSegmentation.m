@@ -23,8 +23,8 @@ function [words] = wordSegmentation(line)
     % Display the segmented words
     close all 
     figure;
-    for i = 1:9
-        subplot(3, 3, i), imshow(words(i).originalImage); 
+    for i = 1:6
+        subplot(2, 3, i), imshow(words(i).originalImage); 
     end 
 
 end

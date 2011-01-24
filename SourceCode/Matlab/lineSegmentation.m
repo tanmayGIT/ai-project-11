@@ -4,7 +4,7 @@ function [lines] = lineSegmentation(im)
 % horizontal cuts. This will not work if the lines have a large skew
 
     % CONSTANT DECLARATIONS:
-    PEAK_DELTA_FACTOR = 3;
+    PEAK_DELTA_FACTOR = 6;
     THRESHOLD = 1;
 
     % Transform the image in black and white
@@ -24,8 +24,9 @@ function [lines] = lineSegmentation(im)
     % Plot the histogram
     figure, plot(im_hist);
     hold on; 
-    plot(min_peaks(:,1), min_peaks(:,2), 'g*');
+    plot(min_peaks(:,1), min_peaks(:,2), 'r*');
     h = legend('Histogram of lines', 'Significant Minima');
+    title('Vertical Histogram');
 
     % Plot the file with horizontal cuts
     x = 1:1:size(im,2);
