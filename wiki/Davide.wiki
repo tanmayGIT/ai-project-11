@@ -1,5 +1,18 @@
 #summary Davide's research log
 
+
+== 22/01/2011==
+     * Continued working on the implementation of feature extraction part
+          * Now instead of retrieving the number of loops, dots, junctions and endpoints, we retrieve also their position. 
+          * Intensity pixels
+          * Ascender, centre and descender high
+     * Tested the entire pipeline. It works, and the HMM seems to work. The more features we add the more reliable its decision is. 
+
+== 21/01/2011==
+       * Attended the meeting with Albert
+       * Though about how to use the sliding window 
+       * Optimized skew and slant correction. The optimization is needed to clean the images after the transformations applied.
+
 == 20/01/2011==
      * Read again  "Morphological Image Processing" chapter from _"*Digital Image Processing Using MATLAB*"_ 
      * Started working on the implementation of feature extraction part
