@@ -12,9 +12,10 @@
 %  \beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
 %  with this the elements which were coming soon were only hinted
 \documentclass{beamer}
+%\usetheme{bars}
 \usepackage{beamerthemeshadow}
 \begin{document}
-\title{Handritting Word Recognition}  
+\title{Offline Handritting Word Recognition}  
 \author{Thijs Kooi, Davide Modolo}
 \date{\today} 
 
@@ -22,28 +23,98 @@
 
 \frame{\frametitle{Table of contents}\tableofcontents} 
 
+% SECTION: OVERVIEW OF THE PROJECT
+\section{Overview of the Project}
 
+\frame{
+\begin{beamerboxesrounded}{}
+\centering Overview of the Project
+\end{beamerboxesrounded}
+}
 
-\section{Overview of the project and Motivations}
-\frame{\frametitle{AI Project}  
-Our project focused on explorative research on the analysis of hwr.\\The research touched different fields:
+\frame{\frametitle{Off-line handwriting recognition}  
 \begin{itemize}
-\item Data Collection\item Image Processing\item Features extraction \item Recognition using HMM 
+\item It involves the automatic conversion of text in an image into letter codes which are usable within computer and text-processing applications
+\item Off-line handwriting recognition is comparatively difficult, as different people have different handwriting styles
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.5 \textwidth]{Images/studs.png}
+   \caption{'Students' written by different authors}
+   \label{fig:student}
+\end{figure}
 \end{itemize}
 }
 
+\frame{\frametitle{Our AI Project}
+A lot of research has been done over the past years.\vspace{\baselineskip}
 
-\section{Implementation}
+We explored the topic and implemented a full pipeline for the task.
+The research touched different fields:
+\begin{itemize}
+\item Data Collection
+\item Image Processing
+\item Features extraction 
+\item Machine Learning techniques
+\item Word Recognition using Hidden Markov Models
+\end{itemize}
+}
+
+\frame{\frametitle{Dataset}
+The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-handwriting-database}
+\begin{itemize}
+\item It contains forms of handwritten English text which can be used to train and test handwritten text recognizers and to perform writer identification and verification experiments.
+\item It contains forms of unconstrained handwritten text, which were scanned at a resolution of 300dpi and saved as PNG images with 256 gray levels. 
+\item 1'539 pages of scanned text of 657 writers
+\end{itemize}
+}
+
+\frame{\frametitle{Dataset}  
+\begin{figure}
+  \centering
+    \includegraphics[width=0.5\textwidth]{Images/database.png}
+   \caption{Example of page of scanned text}
+   \label{fig:dataset}
+\end{figure}
+}
+
+
+%SECTION: IMPLEMENTATION DETAILS
+\section{Implementation Details}
+\frame{
+\begin{beamerboxesrounded}{}
+\centering Implementation Details
+\end{beamerboxesrounded}
+}
 
 \subsection{Pre-Process}
 \frame{\frametitle{Pipeline}  
-image
+\begin{figure}
+  \centering
+    \includegraphics[width=1.02 \textwidth]{Images/pipeline.png}
+   \caption{Pipeline of a word recognition system}
+   \label{fig:pipeline}
+\end{figure}
 }
+
+
 \frame{\frametitle{Line Segmentation}  
-blabla
+\begin{figure}
+  \centering
+    \includegraphics[width=0.96 \textwidth]{Images/line_segmentation.png}
+   \caption{Example of line segmentation}
+   \label{fig:lineSegm}
+\end{figure}
 }
+
+
 \frame{\frametitle{Skew and Slope Correction}  
-blabla
+\begin{figure}
+  \centering
+    \includegraphics[width=1.0 \textwidth]{Images/skew.png}
+   \caption{Skew detection and correction}
+   \label{fig:skew}
+\end{figure}
 }
 
 
