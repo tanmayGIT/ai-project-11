@@ -1,3 +1,5 @@
+
+
 function recognise(training_directory,test_directory)
 
   training_files = dir(training_directory);
@@ -33,5 +35,4 @@ function recognise(training_directory,test_directory)
   [most_likely_words, likelihoods] = evaluateObservations(test_features,models,words);
   
   
-
 end

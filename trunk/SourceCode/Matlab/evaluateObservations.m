@@ -1,21 +1,22 @@
 %Assumes a set of observations and the trained word models and corresponding words and 
 %will return for every observation the most likely word.
 
-function [most_likely_words, ll] = evaluateObservations(observations,word_models,corresponding_words)
+function [ordered_words, ll] = evaluateObservations(observations,word_models,corresponding_words)
 
     likelihood = size(word_models,1);
-    most_likely_words = size(observations,1);
+    ordered_words = [];
     ll = size(observations,1);
 
     for obs=1:size(observations,1)
         for word_model=1:size(word_models,1)
             likelihood(word_model) = evaluateObservation(word_models(word_model),observations(obs));
         end
-        [y,index] = max(likelihood);
-        most_likely_words(obs) = corresponding_words(index);
-        ll(obs) = y;
+        ordered_words(obs,:) = corresponding_words;
+        ll(obs,:) = likelihood;
     end
 
+    [ll, idx] = sort(ll,2);
+    ordered_words = ordered_words(idx);
 
 end
 

@@ -9,7 +9,8 @@
 #include "hmm.h"
 
 // To do:
-//- Optimise GMM class
+//- Optimise model
+//- Optimise GMM class!!
 //- check for singularities
 //- work on log probabilities
 
@@ -641,7 +642,7 @@ double HMM::observationSequenceProbability(double **observation_sequence,int len
 	
 	for(size_t i = 0; i < number_of_states; ++i)
 	{
-		probability+=forwardProbability(i,observation_sequence_length-1);
+		probability+=alpha[i][observation_sequence_length-1];
 // 		cout << prior_probabilities[i] << endl;
 // 		probability+=(prior_probabilities[i]*backwardProbability(i,0));
 	}
