@@ -25,7 +25,7 @@ function final_line = slantCorrection(line, angle)
 %     stepX = floor(0.1 * w);
 %     final_line = corrected_line(:, floor(w/2) - stepX : 3*floor(w/2)-1 + stepX, :);
      
-    figure, imshow(final_line,[]);
-    title('After Slant Correction');
+%     figure, imshow(final_line,[]);
+%     title('After Slant Correction');
 
 end

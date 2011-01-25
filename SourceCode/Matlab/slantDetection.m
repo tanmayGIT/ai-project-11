@@ -7,15 +7,15 @@ function angle = slantDetection(im)
     box = bwTrans;
     Cbox = bwboundaries(box);
  
-    min_stroke_length = 8;
+    min_stroke_length = 20;
     step_size = 25;
     
     degrees = [];
     [boxX,boxY] = find(box == 1);
     boxX = size(box,1)-boxX;
-    imshow(im)
-    hold on;
-    title('Relevant Lines');
+%     imshow(im)
+%     hold on;
+%     title('Relevant Lines');
     
     for i = 1 : size(Cbox,1)
         
@@ -43,11 +43,11 @@ function angle = slantDetection(im)
             degree = radian * 180 / pi;
             degree = 90 + degree;
             degrees = [degrees,degree];
-            plot([size(box,2)-ob,size(box,2)-(oa*size(box,1)+ob)],[size(box,1),0],'b');
+%             plot([size(box,2)-ob,size(box,2)-(oa*size(box,1)+ob)],[size(box,1),0],'b');
 %             degree
-            hold on;
-            plot(VX,size(box,1)-VY,'r');
-            hold on;
+%             hold on;
+%             plot(VX,size(box,1)-VY,'r');
+%             hold on;
         end
         
     end

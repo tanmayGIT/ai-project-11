@@ -15,12 +15,12 @@ function [final_line, slope, baseline] = skewCorrection(line)
 
     % Show the image and baseline
     x_axis = (1:1:width);
-    f = polyval(p, x_axis);
-    figure(5), imshow(line);
-    hold on;
-    plot(x_axis, f, 'r');
-    scatter(x, y, 'x');
-    title('Linear regression (red line) of the lower pixels (blue points)');
+%     f = polyval(p, x_axis);
+%     figure(5), imshow(line);
+%     hold on;
+%     plot(x_axis, f, 'r');
+%     scatter(x, y, 'x');
+%     title('Linear regression (red line) of the lower pixels (blue points)');
 
     % Compute angle
     slope = atan(p(1))*180/pi;
@@ -39,11 +39,11 @@ function [final_line, slope, baseline] = skewCorrection(line)
     
     baseline = f(ceil(size(f,2) / 2)) + 3;
          
-    % Show the image and baseline
-    x_axis = (1:1:size(final_line,2));
-    figure(6), imshow(final_line);
-    hold on, plot(x_axis, baseline, 'r');
-    title('Line with skew corrected'); 
+%     % Show the image and baseline
+%     x_axis = (1:1:size(final_line,2));
+%     figure(6), imshow(final_line);
+%     hold on, plot(x_axis, baseline, 'r');
+%     title('Line with skew corrected'); 
 %     scatter(x,y,'x');
 
 end
