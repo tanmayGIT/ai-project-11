@@ -3,10 +3,11 @@ function [final_line, slope, baseline] = skewCorrection(line)
 % SKEWCORRECT. This function takes a line as input and it returnes a new 
 % line with corrected skew and the baseline.
 
-    [x, y] = getLowerPixels(line);
+    bw_line = im2bw(line, 0.8);
+    [x, y] = getLowerPixels(bw_line);
       
     % Filter irrelevant pixels (those could create noise)
-    [x, y] = filterPixels(x, y, line);
+    [x, y] = filterPixels(x, y, bw_line);
 
     % Linear regression
     p = polyfit(x, y, 1);
@@ -31,9 +32,10 @@ function [final_line, slope, baseline] = skewCorrection(line)
     % Remove black pixels created by imrotate
     final_line = removeBlackCorners(corrected_line);
     
+    bw_line = im2bw(final_line);
     % Compute the new baseline
-    [x,y] = getLowerPixels(final_line);
-    [x, y] = filterPixels(x, y, final_line);
+    [x,y] = getLowerPixels(bw_line);
+    [x, y] = filterPixels(x, y, bw_line);
     p = polyfit(x, y, 1);
     f = polyval(p, x_axis);
     

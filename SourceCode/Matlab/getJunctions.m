@@ -1,4 +1,4 @@
-function [junctions, pixels] = getJunctions(I)
+function [junctions, pixels] = getJunctions(im)
  
 % GETJUNCTIONS returns the number of junctions present in the image
 
@@ -6,7 +6,7 @@ function [junctions, pixels] = getJunctions(I)
     THRESHOLD = 3 ;  
     
     % Removes spur (isolated) pixels
-    im = bwmorph(I,'spur');
+    im = bwmorph(im,'spur');
     
     im = [zeros(1,size(im,2)); im; zeros(1,size(im,2))];
     im = [zeros(size(im,1),1), im, zeros(size(im,1),1)];
@@ -31,7 +31,7 @@ function [junctions, pixels] = getJunctions(I)
                 junctions = junctions + 1;
                 last = [r,c];
                 pixels(count, :) = last;
-                count = count + 1;getJunctions
+                count = count + 1;
             end
         end
     end
