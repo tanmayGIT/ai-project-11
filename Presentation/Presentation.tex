@@ -170,19 +170,78 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \subsection{Hidden-Markov Model}
 \frame{\frametitle{HMM}  
 
-\begin{figure}
-\includegraphics{hmm.jpg} 
-\caption{Left-to-right HMM with N states}
-\end{figure}
+  \begin{figure}
+  \includegraphics{hmm.jpg} 
+  \caption{Left-to-right HMM with N states}
+  \end{figure}
 
 }
 
-\frame{\frametitle{Forward probability}
+\frame{\frametitle{Main problems in an HMM}
+  \begin{enumerate}
+ \item The probability of an observation sequence, given the model, $P({\bf O}|\lambda)$.
+ \item The most likely state sequence, underlying a given observation sequence and the model, $Q^* = \max P(Q|{\bf O},\lambda)$.
+ \item The most likely parameters of the model $\lambda^* = \max P(X|\lambda)$, given a training set of $M$ observation sequences $X = ({\bf O}_{1}, {\bf O}_{2}, \ldots, {\bf O}_{M} )$.
+\end{enumerate}
+}
 
-\begin{figure}
- \includegraphics[width=0.4\textwidth]{forward2.jpg}
- \caption{Illustration of the computation of forward probability}
-\end{figure}
+\frame{\frametitle{Forward probability}
+  Solution to the first problem, use {\it forward-backward} algorithm, a special instance of the sum-product algorithm
+  \begin{figure}
+  \includegraphics[width=0.4\textwidth]{forward2.jpg}
+  \caption{Illustration of the computation of forward probability}
+  \end{figure}
+}
+
+\frame{\frametitle{Updating the parameters}
+
+  Use EM-algorithm
+
+}
+
+\frame{\frametitle{Updating parameters}
+
+\begin{columns}
+
+% \column{1.5in}
+% Model:\\
+% Model parameters:\\
+% Observed variables:\\
+% Latent variables:\\
+% E-step:\\
+% M-step:\\
+% 
+% \column{1.5in}
+% {\bf GMM}\\
+% $\lambda = \pi, \mu, \Sigma$\\
+% Data points\\
+% Priors of a component\\
+% Estimate the probability of a component, given the data and current parameters.\\
+% Maximise $\pi$, $\mu$ and $\Sigma$.
+% 
+% \column{1.5in}
+% {\bf HMM}\\
+% $\lambda = \pi, {\bf A}, {\bf B}$\\
+% Observation sequence\\
+% State sequence\\
+% Estimate the probability of being in a state at a timestep and the probability of transfering from a state to another state.\\
+% Maximise $\pi$, ${\bf A}$ and ${\bf B}$.
+
+% \begin{table}
+%  \begin{tabular}{|l|c|r|}\hline
+%   Model:		&	{\bf GMM}		&	{\bf HMM}\\\hline
+%   Model parameters:	& $\lambda = \pi, \mu, \Sigma$	&	$\lambda = \pi, {\bf A}, {\bf B}$\\
+%   Observed variables:	&	Data points		&	Observations\\
+%   Latent variables:	&	Priors of a component	&	State sequence\\
+%   E-step:		&	Estimate the probability of a component, given the data and current parameters. 
+% 	& Estimate the probability of being in a state at a timestep and the probability of transfering from a state to another state.\\
+%   M-step:		& Maximise $\pi$, $\mu$ and $\Sigma$.	&	Maximise $\pi$, ${\bf A}$ and ${\bf B}$\\
+%  \end{tabular}
+% 
+% \end{table}
+
+
+\end{columns}
 
 
 }
@@ -211,6 +270,35 @@ Using features such as loops, this will give quite different feature vector.
 \end{figure}
 \caption{Fitting a mixture of 2 Gaussians}
 
+}
+
+\frame{\frametitle{Problems we ran into}
+
+  \[
+   X = \begin{pmatrix}
+        -1 & 0\\
+	2 & 0\\
+	1 & 0\\
+	-2 & 0\\
+       \end{pmatrix}
+  \]
+}
+
+\frame{\frametitle{Problems we ran into}
+  \[
+   X = \begin{pmatrix}
+        -1 & 0\\
+	2 & 0\\
+	1 & 0\\
+	-2 & 0\\
+       \end{pmatrix}
+  \]
+  \[
+   \Sigma = \begin{pmatrix}
+        1 & 0\\
+	0 & 0\\
+       \end{pmatrix}
+  \]
 }
 
 
