@@ -9,7 +9,7 @@ function models = pipeline(annotations, words)
   test_set = 15;
   
   %For every word in the training set
-  for w_indx = 1:295
+  for w_indx = 66:295
     fprintf('\nCURRENT WORD: %s \nImage: ', words{w_indx});
     for i = 1 : train_set
         
