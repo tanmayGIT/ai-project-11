@@ -24,14 +24,14 @@
 \frame{\frametitle{Table of contents}\tableofcontents} 
 
 % SECTION: OVERVIEW OF THE PROJECT
-\section{Overview of the Project}
+\section{Overview}
 
 \frame{
 \begin{beamerboxesrounded}{}
 \centering Overview of the Project
 \end{beamerboxesrounded}
 }
-
+\subsection{General}
 \frame{\frametitle{Off-line handwriting recognition}  
 \begin{itemize}
 \item It involves the automatic conversion of text in an image into letter codes which are usable within computer and text-processing applications
@@ -60,16 +60,18 @@ The research touched different fields:
 \end{itemize}
 }
 
+\subsection{Dataset}
 \frame{\frametitle{Dataset}
 The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-handwriting-database}
 \begin{itemize}
-\item It contains forms of handwritten English text which can be used to train and test handwritten text recognizers and to perform writer identification and verification experiments.
-\item It contains forms of unconstrained handwritten text, which were scanned at a resolution of 300dpi and saved as PNG images with 256 gray levels. 
-\item 1'539 pages of scanned text of 657 writers
+%\item It contains forms of handwritten English text which can be used to train and test handwritten text recognizers and to perform writer identification and verification experiments.
+\item Unconstrained handwritten text (scanned at a resolution of 300dpi and saved as PNG images with 256 gray levels) 
+\item 1'539 pages of scanned text of 657 writers\vspace{\baselineskip}
+\item We extracted 35 instances of the 300 most frequent words (20 as training set and 15 as test set)
 \end{itemize}
 }
 
-\frame{\frametitle{Dataset}  
+\frame{\frametitle{Example of a page of scanned text}  
 \begin{figure}
   \centering
     \includegraphics[width=0.5\textwidth]{Images/database.png}
@@ -87,7 +89,7 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \end{beamerboxesrounded}
 }
 
-\subsection{Pre-Process}
+\subsection{Pipeline}
 \frame{\frametitle{Pipeline}  
 \begin{figure}
   \centering
@@ -96,6 +98,23 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
    \label{fig:pipeline}
 \end{figure}
 }
+
+\subsection{Pre-Processing}
+\frame{
+\begin{beamerboxesrounded}{Implementation Details}
+\centering Pre-Processing
+\end{beamerboxesrounded}
+}
+
+\frame{\frametitle{Pipeline}  
+\begin{figure}
+  \centering
+    \includegraphics[width=1.02 \textwidth]{Images/pipeline.png}
+   \caption{Pipeline of a word recognition system}
+   \label{fig:pipeline}
+\end{figure}
+}
+
 
 
 \frame{\frametitle{Line Segmentation}  
@@ -112,13 +131,36 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \begin{figure}
   \centering
     \includegraphics[width=1.0 \textwidth]{Images/skew.png}
-   \caption{Skew detection and correction}
+   \caption{Skew detection and correction pipeline}
    \label{fig:skew}
 \end{figure}
 }
 
 
+\frame{\frametitle{Slant detection and Correction}  
+\begin{figure}
+  \centering
+    \includegraphics[width=1.0 \textwidth]{Images/slant.png}
+   \caption{Slant detection and correction pipeline}
+   \label{fig:skew}
+\end{figure}
+}
+
+\frame{\frametitle{Word segmentation}
+}  
+
+
+\frame{\frametitle{Vertical Scaling}
+}  
+
+
 \subsection{Feature Extraction}
+\frame{
+\begin{beamerboxesrounded}{Implementation Details}
+\centering Feature Extraction
+\end{beamerboxesrounded}
+}
+
 \frame{\frametitle{Features}  
 list
 }
@@ -215,22 +257,22 @@ blabla
 %\end{tabular} }
 %
 %
-%\section{Section no. 4}
-%\subsection{blocs}
-%\frame{\frametitle{blocs}
-%
-%\begin{block}{title of the bloc}
-%bloc text
-%\end{block}
-%
-%\begin{exampleblock}{title of the bloc}
-%bloc text
-%\end{exampleblock}
-%
-%
-%\begin{alertblock}{title of the bloc}
-%bloc text
-%\end{alertblock}
-%}
+\section{Section no. 4}
+\subsection{blocs}
+\frame{\frametitle{blocs}
+
+\begin{block}{title of the bloc}
+bloc text
+\end{block}
+
+\begin{exampleblock}{title of the bloc}
+bloc text
+\end{exampleblock}
+
+
+\begin{alertblock}{title of the bloc}
+bloc text
+\end{alertblock}
+}
 \end{document}
 
