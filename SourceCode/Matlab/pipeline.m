@@ -1,43 +1,62 @@
-function pipeline(annotation,words)
+function pipeline(annotations, words)
 
   %Read training files
-  disp('Splitting data in training and test set...');
-  [training_set, test_set] = splitData(annotation,words);
-  disp('Done!');
+%   disp('Splitting data in training and test set...');
+%   [training_set, test_set] = splitData(annotation, words);
+  train_set = 20;
+  test_set = 15;
   
   %For every word in the training set
-  for word=1:295
-    for i=1:size(training_set,1)
-      %Do Preprocessing
+  for w_indx = 1:295
+    
+    for i = 1 : train_set
+        % Read Image
+        im = readImageFromDatabase(annotations{w_indx, i});
+          
+        % Preprocessing
+        word_structure(i) = preProcessing(im);
+          
+        % Feature extraction
+        [statistics, word_features] = featureExtractionInWord(word_structure(i).skeleton); %#ok<ASGLU>
+        % Parameters
+        width = 3;
+        interval = 1;
+        features(i) = slidingWindow(width, interval, word_structure(i), word_features)';
       
-      %Do feature extraction
-      
-      %Add all instances of the word to a structure
     end
     
-    %feed the structure of all instances to an HMM
-    %trainWordHMM(word,features,number_of_states,number_of_mixture_componen
-    %ts)
-    models(word) = trainWordHMM(words{1},features,size(words{1},2),1);
+    % Train an HMM model for every word
+    num_mixture_components = 1;                % Currently 1 
+    number_of_states = length(words{w_indx});  % Equal to the length of the word
+    models(w_indx) = trainWordHMM(words{w_indx}, features, number_of_states, num_mixture_components);
   end
    
   
   for word=1:295
-      for i=1:size(test_set,1)
-          %Do preprocessing
+      for i = train_set + 1 : (train_set + test_set)
+        % Read Image
+        im = readImageFromDatabase(annotations{w_indx, i});
           
-          %Do feature extraction
+        % Preprocessing
+        word_structure(i) = preProcessing(im);
+          
+        % Feature extraction
+        [statistics, word_features] = featureExtractionInWord(word_structure(i).skeleton); %#ok<ASGLU>
+        % Parameters
+        width = 3;
+        interval = 1;
+        test_features = slidingWindow(width, interval, word_structure(i), word_features)';
             
-          %Evaluate the image againts every model, return a vector of words
-          %ordered by likelihood and another of corresponding likelihoods
-          [most_likely_words, likelihoods] = evaluateObservations(test_features,models,words);
+        %Evaluate the image againts every model, return a vector of words
+        %ordered by likelihood and another of corresponding likelihoods
+        [most_likely_words, likelihoods] = evaluateObservations(test_features, models, words);
           
-          ranked_words{word,i} = most_likely_words;
-          ranked_likelihood{word,i} = likelihoods;
+        ranked_words{word, i - train_set} = most_likely_words;
+        ranked_likelihoods{word, i - train_set} = likelihoods;
       end
   end
  
-  evaluateResults(ranked_words,ranked_likelihoods);
+  evaluateResults(ranked_words, ranked_likelihoods);
   
   
 end
