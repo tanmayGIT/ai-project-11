@@ -19,13 +19,17 @@ function word = preProcessing(im)
     % Compute upper, ascender and descender baselines
     [upp, asc, desc] = getBaselines(word.slantImage, word.lowerBaseline);
     word.upperBaseline = ceil(upp);
-    if ceil(asc) ~= 0
+    if ceil(asc) > 0
         word.ascenderBaseline = ceil(asc);
     else 
         word.ascenderBaseline = 1;
     end
 
-    word.descenderBaseline = floor(desc);
+    if floor(desc) < size(word.slantImage,1)
+        word.descenderBaseline = floor(desc);
+    else
+        word.descenderBaseline = size(word.slantImage,1);
+    end
          
     % Cut the image at ascender and descender baselines
     word.cut = word.slantImage(word.ascenderBaseline : word.descenderBaseline, :);

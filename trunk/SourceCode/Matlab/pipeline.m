@@ -1,6 +1,6 @@
 function models = pipeline(annotations, words)
 
-% s = warning('off');
+  s = warning('off');
 
   %Read training files
 %   disp('Splitting data in training and test set...');

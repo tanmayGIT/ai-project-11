@@ -4,7 +4,7 @@ function [upper_baseline, ascender_baseline, descender_baseline] = getBaselines(
       upper_baseline = upperBaselineEstimation(word);
       
       % Compute Ascender and Descender Baselines
-      bw = im2bw(word);
+      bw = im2bw(word, 0.8);
       bw_trans = (bw(2:end,:) - bw(1:end-1,:)) ~= 0 ;
       im_hist = sum(bw_trans,2);
 

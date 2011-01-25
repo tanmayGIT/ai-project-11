@@ -12,7 +12,11 @@ function [filtered_x, filtered_y] = filterPixels(x, y, line)
 
     
     % Clustering
-    clusters = kmeans(y, 3, 'emptyaction', 'drop');
+    if length(y) < 3
+        return
+    else
+        clusters = kmeans(y, 3, 'emptyaction', 'drop');
+    end
     
     threshold = 0.3 * length(y);
     filtered_x = [];
