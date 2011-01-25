@@ -162,12 +162,55 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 }
 
 \frame{\frametitle{Features}  
-list
+  We want to find features that minimise the within-class variability and maximise the between class variability. On top of this, the features should be robust againts distortions caused by different handwriting styles. Moreover, we want to find low dimensional featur vectors and would therefore like features to be highly descriptive.
+  The selection of features depends both on the pre-processing and the classifier to use. If all characters are assumed to have the same oriention, we need rotation variant features to distinguish between for instance a 6 and a 9 and a b and an p, etc.
+  
 }
 
 \subsection{Hidden-Markov Model}
 \frame{\frametitle{HMM}  
-blabla
+
+\begin{figure}
+\includegraphics{hmm.jpg} 
+\caption{Left-to-right HMM with N states}
+\end{figure}
+
+}
+
+\frame{\frametitle{Forward probability}
+
+\begin{figure}
+ \includegraphics[width=0.4\textwidth]{forward2.jpg}
+ \caption{Illustration of the computation of forward probability}
+\end{figure}
+
+
+}
+
+\frame{\frametitle{Within class variations}
+
+\begin{figure}
+ \includegraphics[width=0.4\textwidth]{gmm1.jpg}
+\end{figure}
+Using features such as loops, this will give quite different feature vector.
+
+}
+\frame{\frametitle{Within class variations}
+
+\begin{figure}
+ \includegraphics[width=0.4\textwidth]{gmm2.jpg}
+\caption{Fitting a single Gaussian}
+\end{figure}
+
+
+}
+\frame{\frametitle{Within class variations}
+
+\begin{figure}
+ \includegraphics[width=0.4\textwidth]{gmm3.jpg}
+\end{figure}
+\caption{Fitting a mixture of 2 Gaussians}
+
 }
 
 
