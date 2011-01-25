@@ -75,5 +75,9 @@ function [borders] = extractBoundingBox(in_line, param)
     if borders(2) >  size(in_line,2)
         borders(2) = size(in_line,2);
     end
+    
+    if borders(3) == 0
+        borders(3) = 1;
+    end
         
 end
