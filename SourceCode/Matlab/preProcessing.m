@@ -33,6 +33,7 @@
 % im = imread('a01-000u.png');
 % im = medfilt2(im);
 im = imread('test_ppt.png');
+% im = imread('hello.png');
 lines = lineSegmentation(im);
 
 for i = 1:size(lines,2)
