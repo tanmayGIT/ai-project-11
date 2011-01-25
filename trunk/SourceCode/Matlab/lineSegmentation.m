@@ -22,7 +22,7 @@ function [lines] = lineSegmentation(im)
     [max_peaks, min_peaks] = peakdet(im_hist, floor(max(im_hist)/PEAK_DELTA_FACTOR)); %#ok<ASGLU>
 
     % Plot the histogram
-    figure, plot(im_hist);
+    figure, area(im_hist);
     hold on; 
     plot(min_peaks(:,1), min_peaks(:,2), 'r*');
     h = legend('Histogram of lines', 'Significant Minima');
@@ -34,6 +34,7 @@ function [lines] = lineSegmentation(im)
     imshow(im,[]);
     hold on
     plot(x, repmat(min_peaks(:,1), [1, size(im,2)]), '-r');
+    title('Original text segmented in lines');
 
     cut_points = [min_peaks(:,1); size(im,1)];
     
