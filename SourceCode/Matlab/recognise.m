@@ -1,6 +1,6 @@
 
 
-function recognise(training_directory,test_directory)
+function recognise(training_directory,train_words,test_directory,test_words)
 
   training_files = dir(training_directory);
   test_files = dir(test_directory);
@@ -17,7 +17,7 @@ function recognise(training_directory,test_directory)
   
   
   disp('Training models...');
-  models = trainAllModels(training_features,words);
+  models = trainAllModels(training_features,train_words);
   disp('Done!');
    
   
@@ -33,6 +33,8 @@ function recognise(training_directory,test_directory)
   disp('Done!');
   
   [most_likely_words, likelihoods] = evaluateObservations(test_features,models,words);
+  
+  evaluateResutls(most_likely_words,test_words);
   
   
 end

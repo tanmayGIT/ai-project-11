@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.9.4)  23 JAN 2011 20:49
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.9.4)  24 JAN 2011 15:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -379,7 +379,7 @@ Underfull \hbox (badness 7433) in paragraph at lines 52--53
 
 
  <./hmm.jpg>]
-<forward2.jpg, id=21, 178.9887pt x 236.5638pt>
+<forward2.jpg, id=21, 178.9887pt x 236.082pt>
 File: forward2.jpg Graphic file (type jpg)
  <use forward2.jpg>
 Underfull \hbox (badness 10000) in paragraph at lines 140--142
@@ -430,7 +430,7 @@ are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-te
 xlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/ur
 w/times/utmbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
 </usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on HWR_DModolo_TKooi.pdf (3 pages, 498120 bytes).
+Output written on HWR_DModolo_TKooi.pdf (3 pages, 497401 bytes).
 PDF statistics:
  77 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
