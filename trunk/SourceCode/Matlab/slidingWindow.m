@@ -13,9 +13,9 @@ end
 
 
 function feature_vector = extractFeatures(current_window, pos, word_structure, word_features)
-    
-    imshow(current_window);
-    drawnow;
+%     
+%     imshow(current_window);
+%     drawnow;
     window_pos = pos:pos+size(current_window,2)-1;
     feature_vector = featuresInWindow(window_pos, word_structure, word_features);
     
