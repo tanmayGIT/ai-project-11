@@ -1,4 +1,4 @@
-function [words] = extractAnnotation()
+function [words, accepted_words] = extractAnnotation()
 
     % Read the file
     [filenames, gt] = textread('Annotation.txt', '%s %s');

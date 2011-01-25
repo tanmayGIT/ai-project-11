@@ -6,7 +6,7 @@ function models = trainAllModels(all_features,corresponding_words)
     %take al observations of every word in the dictionary
     for i=word:size(all_features,1)
         for m=1:size(all_features(word);
-            models(word) = trainwordHMM(all_features(word,m,:),corresponding_words(word));
+            models(word) = trainWordHMM(all_features(word,m,:),corresponding_words(word));
         end
     end
     

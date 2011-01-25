@@ -1,6 +1,6 @@
 
 
-function recognise(training_directory,train_words,test_directory,test_words)
+function pipeline(annotation)
 
   training_files = dir(training_directory);
   test_files = dir(test_directory);
@@ -8,11 +8,9 @@ function recognise(training_directory,train_words,test_directory,test_words)
   %Read training files
   %skip the first things and the svn file
   disp('Reading training files and preprocessing images...');
-  for n = 4:size(training_files,1)
-    image = imread([training_directory '/' training_files(n).name]);
-    pre_processed_image = preProcessing(image);
-    training_features(n) = extractFeatures(pre_processed_image);
-  end
+
+  
+  
   disp('Done!');
   
   
