@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.9.4)  26 JAN 2011 20:25
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.9.4)  26 JAN 2011 20:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -648,6 +648,9 @@ LaTeX Warning: Label `fig:pipeline' multiply defined.
 
 LaTeX Warning: Label `fig:pipeline' multiply defined.
 
+
+LaTeX Warning: Label `forwardProbability' multiply defined.
+
 )
 \openout1 = `Presentation.aux'.
 
@@ -1029,7 +1032,7 @@ Overfull \hbox (21.90005pt too wide) in paragraph at lines 246--246
 [24
 
 ]
-Overfull \hbox (25.04037pt too wide) detected at line 272
+Overfull \hbox (25.04037pt too wide) detected at line 270
 \OT1/cmss/m/it/10.95 P\OT1/cmss/m/n/10.95 (\OT1/cmss/m/it/10.95 o[]\OML/cmm/m/i
 t/10.95 ; \OT1/cmss/m/it/10.95 o[]\OML/cmm/m/it/10.95 ; [] ; \OT1/cmss/m/it/10.
 95 o[]\OMS/cmsy/m/n/10.95 j\OT1/cmss/m/it/10.95 q[] \OT1/cmss/m/n/10.95 = \OT1/
@@ -1039,87 +1042,110 @@ cmss/m/it/10.95 s[]\OML/cmm/m/it/10.95 ; ^^U\OT1/cmss/m/n/10.95 ) =
 <forward2.jpg, id=956, 178.9887pt x 236.082pt>
 File: forward2.jpg Graphic file (type jpg)
  <use forward2.jpg>
-Overfull \vbox (8.83167pt too high) detected at line 272
+Overfull \vbox (8.83167pt too high) detected at line 270
  []
 
 [25
 
  <./forward2.jpg>]
-Underfull \hbox (badness 4156) in paragraph at lines 287--287
-[]\OT1/cmss/m/n/10.95 Number of com-po-
+Overfull \hbox (25.04037pt too wide) detected at line 298
+\OT1/cmss/m/it/10.95 P\OT1/cmss/m/n/10.95 (\OT1/cmss/m/it/10.95 o[]\OML/cmm/m/i
+t/10.95 ; \OT1/cmss/m/it/10.95 o[]\OML/cmm/m/it/10.95 ; [] ; \OT1/cmss/m/it/10.
+95 o[]\OMS/cmsy/m/n/10.95 j\OT1/cmss/m/it/10.95 q[] \OT1/cmss/m/n/10.95 = \OT1/
+cmss/m/it/10.95 s[]\OML/cmm/m/it/10.95 ; ^^U\OT1/cmss/m/n/10.95 ) =
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 287--287
-[]\OT1/cmss/m/n/10.95 Topology (states,
- []
-
-
-Overfull \hbox (15.63164pt too wide) in paragraph at lines 287--287
- [] 
+pdfTeX warning (ext4): destination with the same identifier (name{forwardProbab
+ility}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.298 }
+       
+File: forward2.jpg Graphic file (type jpg)
+ <use forward2.jpg>
+Overfull \vbox (8.83167pt too high) detected at line 298
  []
 
 [26
 
+] [27
+
 ]
-Underfull \hbox (badness 4156) in paragraph at lines 332--332
+Underfull \hbox (badness 4156) in paragraph at lines 327--327
 []\OT1/cmss/m/n/10.95 Number of com-po-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--332
+Underfull \hbox (badness 10000) in paragraph at lines 327--327
 []\OT1/cmss/m/n/10.95 Topology (states,
  []
 
 
-Underfull \hbox (badness 1590) in paragraph at lines 332--332
+Overfull \hbox (15.63164pt too wide) in paragraph at lines 327--327
+ [] 
+ []
+
+[28
+
+]
+Underfull \hbox (badness 4156) in paragraph at lines 372--372
+[]\OT1/cmss/m/n/10.95 Number of com-po-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--372
+[]\OT1/cmss/m/n/10.95 Topology (states,
+ []
+
+
+Underfull \hbox (badness 1590) in paragraph at lines 372--372
 \OT1/cmss/m/n/10.95 given the data and
  []
 
 
-Underfull \hbox (badness 1655) in paragraph at lines 332--332
+Underfull \hbox (badness 1655) in paragraph at lines 372--372
 \OT1/cmss/m/n/10.95 prob-a-bil-ity of trans-
  []
 
 
-Overfull \hbox (15.63164pt too wide) in paragraph at lines 332--332
+Overfull \hbox (15.63164pt too wide) in paragraph at lines 372--372
  [] 
  []
 
 
-Overfull \vbox (6.96872pt too high) detected at line 332
+Overfull \vbox (6.96872pt too high) detected at line 372
  []
 
-[27
-
-] [28
-
-] [29
+[29
 
 ] [30
 
 ] [31
 
-] <gmm1.jpg, id=1206, 218.2554pt x 214.401pt>
+] [32
+
+] [33
+
+] <gmm1.jpg, id=1277, 218.2554pt x 214.401pt>
 File: gmm1.jpg Graphic file (type jpg)
 
-<use gmm1.jpg> [32
+<use gmm1.jpg> [34
 
- <./gmm1.jpg>] <gmm2.jpg, id=1242, 218.2554pt x 214.401pt>
+ <./gmm1.jpg>] <gmm2.jpg, id=1312, 218.2554pt x 214.401pt>
 File: gmm2.jpg Graphic file (type jpg)
 
-<use gmm2.jpg> [33
+<use gmm2.jpg> [35
 
- <./gmm2.jpg>] <gmm3.jpg, id=1277, 218.2554pt x 214.401pt>
+ <./gmm2.jpg>] <gmm3.jpg, id=1347, 218.2554pt x 214.401pt>
 File: gmm3.jpg Graphic file (type jpg)
 
-<use gmm3.jpg> [34
+<use gmm3.jpg> [36
 
- <./gmm3.jpg>] [35
+ <./gmm3.jpg>] [37
 
-] [36
+] [38
 
-] [37
+] [39
 
 ]
 \tf@nav=\write5
@@ -1141,27 +1167,30 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13115 strings out of 495061
- 233678 string characters out of 1182622
+ 13124 strings out of 495061
+ 233789 string characters out of 1182622
  317488 words of memory out of 3000000
- 15825 multiletter control sequences out of 15000+50000
+ 15828 multiletter control sequences out of 15000+50000
  14812 words of font info for 55 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  45i,19n,63p,355b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmss8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmss9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/
-share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf
--texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fo
-nts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/amsfonts/cm/cmtt10.pfb>
-Output written on Presentation.pdf (37 pages, 1286068 bytes).
+pdfTeX warning (dest): name{Outline0.5.1.38} has been referenced but does not
+ exist, replaced by a fixed one
+
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/t
+ype1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmss8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
+/cmss9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmtt10.pfb>
+Output written on Presentation.pdf (39 pages, 1303201 bytes).
 PDF statistics:
- 1470 PDF objects out of 1728 (max. 8388607)
- 96 named destinations out of 1000 (max. 500000)
+ 1543 PDF objects out of 1728 (max. 8388607)
+ 102 named destinations out of 1000 (max. 500000)
  244 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -265,9 +265,50 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
   \caption{Computation of forward probability}
   \end{figure}
 
+\end{columns}
 
+}
+
+\frame{\frametitle{Forward probability}
+\begin{columns}
+ 
+\column{1.5in}
+\[
+ \alpha_{t}(i) \equiv
+\]
+\[
+  P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
+\]
+\begin{equation}
+ \label{forwardProbability}
+\displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
+\end{equation}
+\begin{equation}
+ P({\bf O| \lambda}) = \displaystyle \sum_{i=1}^{N} \alpha_{T}(i)
+\end{equation}
+Problem 1 solved.
+\column{2in}
+  \begin{figure}
+  \includegraphics[width=0.8\textwidth]{forward2.jpg}
+  \caption{Computation of forward probability}
+  \end{figure}
 
 \end{columns}
+
+}
+
+\frame{\frametitle{Updating the parameters}
+  \begin{itemize}
+  The forward-backward algorithm also commes with a backward probability:\\
+ \[
+  \beta_{t}(j) \equiv P(o_{t+1},o_{t+2},\ldots, o_{T}| q_{t} = s_{j}, \lambda) = 
+\]
+\begin{equation}
+ \label{backwardProbability}
+\displaystyle \sum_{i=1}^{N} a_{ij} b_{i}(o_{t+1}) \beta_{i}(o_{t+1})
+\end{equation}
+  \end{itemize}
+
 
 }
 
@@ -324,7 +365,7 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
   Latent variables:	&	Priors of a component	&	State sequence\\
   E-step:		&	Estimate the probability of a component, given the data and current parameters. 
 	& Estimate the probability of being in a state at a timestep and the probability of transfering from a state to another state.\\
-  M-step:		& Maximise $\pi$, $\mu$ and $\Sigma$.	&	Maximise $\pi$, ${\bf A}$ and ${\bf B}$\\
+  M-step:		& Maximise $\pi$, $\mu$ and $\Sigma$.	&	Maximise $\pi$, ${\bf A}$ and ${\bf B}$\\\hline
  \end{tabular}
 \end{table}
 
