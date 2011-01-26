@@ -11,6 +11,6 @@ cummulative_rank(1) = size(find(ranks == 1),2);
 
     cummulative_rank = cummulative_rank./size(ranks,2);
     
-    plot(cummulative_rank);
+%     plot(cummulative_rank);
     
 end
