@@ -208,6 +208,16 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 }
 
 \subsection{Hidden-Markov Model}
+\frame{\frametitle{HMM}
+  \begin{itemize}
+  \item A set of $N$ states $S = (s_{1}, s_{2}, \ldots, s_{N})$, where the state of the system at time $t$ is denoted $q_{t}$
+  \item A set of priors ${\bf \pi} = (\pi_{1}, \pi_{2}, \ldots, \pi_{N})$, providing the probability $P(q_{1} = s_{i})$.
+  \item A transition function ${\bf A}$, where $a_{ij} = P(q_{t+1} = s_{j} | q_{t} = s_{i})$. 
+  \item An observation function ${\bf B}$, mapping each observation at every state to a probability $b_{i}({\bf o}_{t}) = P({\bf o}_{t} | q_{t} = s_{i}, \lambda)$, where $\lambda$ denotes the model parameters.
+  \end{itemize}
+  The model is trained to estimate the posterior probability $P({\bf O}|\lambda)$ of an observation sequence ${\bf O}$, with $D$-dimensional observation vectors ${\bf o}_{t} = (o_{1},o_{2},\ldots,o_{D})$.
+}
+
 \frame{\frametitle{HMM}  
 
   \begin{figure}
