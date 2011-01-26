@@ -1,7 +1,7 @@
-function features = slidingWindow(width, interval, word_structure, word_features)
+function features = slidingWindow(width, interval, word_structure, word_features, num_features)
 
 
-    features = zeros(size(word_structure.skeleton, 2) - width, 15);
+    features = zeros(size(word_structure.skeleton, 2) - width, num_features);
 
     for i = 1:interval:size(word_structure.skeleton,2) - width
         current_window = word_structure.skeleton(:, i : (i + width - 1));

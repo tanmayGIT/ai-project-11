@@ -24,7 +24,8 @@ function [models] = pipeline()
         % Parameters
         width = 3;
         interval = 1;
-        features{i} = slidingWindow(width, interval, word_structure(i), word_features)';
+        num_features = 12;
+        features{i} = slidingWindow(width, interval, word_structure(i), word_features, num_features)';
       
         noise_percentage = 20;
         features{i} = addRandomNoise(features{i},noise_percentage);
