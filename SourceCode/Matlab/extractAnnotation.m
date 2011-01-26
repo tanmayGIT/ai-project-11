@@ -26,7 +26,7 @@ function [words, accepted_words] = extractAnnotation()
 
 
     % Filter words based on frequency
-    MIN_FREQUENCY = 35;
+    MIN_FREQUENCY = 50;
     accepted_words_indx = find(frequencies > MIN_FREQUENCY);
     accepted_words = vocabulary(accepted_words_indx);
 
@@ -39,7 +39,7 @@ function [words, accepted_words] = extractAnnotation()
                    words{i, next} = filenames(IX(j));
                    next = next + 1;
                    found = true;
-                   if next == MIN_FREQUENCY + 1
+                   if next == 30 + 1
                        break
                    end
              else

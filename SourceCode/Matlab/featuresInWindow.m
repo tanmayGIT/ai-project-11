@@ -12,7 +12,7 @@ function [features_vector] = featuresInWindow(window_pos, word, word_features)
     tot_intensity = sum(sum(skeleton_im(:, window_pos(1):window_pos(ws)),1)) / (h * ws);
     asc_intensity = sum(sum(skeleton_im(1:word.newUpperBaseline, window_pos(1):window_pos(ws)),1)) / (h * ws);
     med_intensity = sum(sum(skeleton_im(word.newUpperBaseline:word.newLowerBaseline, window_pos(1):window_pos(ws)), 1)) / (h * ws); 
-    desc_intensity = sum(sum(skeleton_im(word.lowerBaseline:h, window_pos(1):window_pos(ws)),1)) / (h * ws); 
+    desc_intensity = sum(sum(skeleton_im(word.newLowerBaseline:h, window_pos(1):window_pos(ws)),1)) / (h * ws); 
     
     features_vector = [features_vector, asc_intensity, med_intensity, desc_intensity];
     
