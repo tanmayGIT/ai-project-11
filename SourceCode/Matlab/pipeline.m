@@ -2,7 +2,7 @@ function [ranked_words,ranked_likelihoods] = pipeline()
 
   s = warning('off');
 %   load markov_models.mat;
-    load markov_models_no_noise.mat;
+    load models_with_noise.mat;
     load newANNOTATION.mat;
 
   train_set = 20;
@@ -39,7 +39,7 @@ function [ranked_words,ranked_likelihoods] = pipeline()
 %   end
    
     disp('Evaluating results');
-  for w_indx=1:5
+  for w_indx=101:105
       fprintf('\nCURRENT WORD: %s \nImage: ', words{w_indx});
       for i = train_set + 1 : (train_set + test_set)
         fprintf(' %d ', i);
@@ -60,14 +60,14 @@ function [ranked_words,ranked_likelihoods] = pipeline()
         num_features = 12;
         test_features = slidingWindow(width, interval, word_structure(i), word_features, num_features)';
         
-        [most_likely_words, likelihoods] = evaluateObservations(test_features, markov_models_no_noise, words);
+        [most_likely_words, likelihoods] = evaluateObservations(test_features, model_with_noise, words);
         
         ranked_words{w_indx, i - train_set} = most_likely_words;
         ranked_likelihoods{w_indx, i - train_set} = likelihoods;
       end
   end
  
-%   evaluateResults(ranked_words, ranked_likelihoods);
+  evaluateResults(ranked_words, ranked_likelihoods);
   
   
 end
