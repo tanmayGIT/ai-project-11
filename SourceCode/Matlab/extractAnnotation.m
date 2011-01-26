@@ -39,7 +39,7 @@ function [words, accepted_words] = extractAnnotation()
                    words{i, next} = filenames(IX(j));
                    next = next + 1;
                    found = true;
-                   if next == 30 + 1
+                   if next == MIN_FREQUENCY + 1
                        break
                    end
              else
