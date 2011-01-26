@@ -298,7 +298,6 @@ Problem 1 solved.
 }
 
 \frame{\frametitle{Updating the parameters}
-  \begin{itemize}
   The forward-backward algorithm also commes with a backward probability:\\
  \[
   \beta_{t}(j) \equiv P(o_{t+1},o_{t+2},\ldots, o_{T}| q_{t} = s_{j}, \lambda) = 
@@ -307,8 +306,10 @@ Problem 1 solved.
  \label{backwardProbability}
 \displaystyle \sum_{i=1}^{N} a_{ij} b_{i}(o_{t+1}) \beta_{i}(o_{t+1})
 \end{equation}
-  \end{itemize}
-
+With this we can define the probability of being in a state at a timestep as:
+ \begin{equation}
+\gamma_{t}(i,k) \equiv \gamma_{t}(i) \frac{ b_{i,k}({\bf o}_{t}) } { b_{i}({\bf o}_{t}) }  
+ \end{equation}
 
 }
 
@@ -359,10 +360,6 @@ Problem 1 solved.
 \begin{table}
  \begin{tabular}{|l| p{3.5cm} | p{3.5cm} |}\hline
   Model:		&	{\bf GMM}		&	{\bf HMM}\\\hline
-  Model parameters:	& $\lambda = \pi, \mu, \Sigma$	&	$\lambda = \pi, {\bf A}, {\bf B}$\\
-  Hyper parameters:	&	Number of components	&	Topology (states, transitions)\\
-  Observed variables:	&	Data points		&	Observations\\
-  Latent variables:	&	Priors of a component	&	State sequence\\
   E-step:		&	Estimate the probability of a component, given the data and current parameters. 
 	& Estimate the probability of being in a state at a timestep and the probability of transfering from a state to another state.\\
   M-step:		& Maximise $\pi$, $\mu$ and $\Sigma$.	&	Maximise $\pi$, ${\bf A}$ and ${\bf B}$\\\hline
@@ -375,7 +372,7 @@ Problem 1 solved.
 
 
 \frame{\frametitle{Problems we ran into}
-  Singularities. Consider the following observation:
+Consider the following observation:
   \[
    {\bf O} = \begin{pmatrix}
         -1 & 0\\
@@ -386,6 +383,22 @@ Problem 1 solved.
   \]
 }
 
+\frame{\frametitle{Problems we ran into}
+  \[
+   {\bf O} = \begin{pmatrix}
+        -1 & 0\\
+	2 & 0\\
+	1 & 0\\
+	-2 & 0\\
+       \end{pmatrix}
+  \]
+  \[
+   \Sigma = \begin{pmatrix}
+        3\frac{1}{3} & 0\\
+	0 & 0\\
+       \end{pmatrix}
+  \]
+}
 \frame{\frametitle{Problems we ran into}
  Singularities
   \[
@@ -402,32 +415,13 @@ Problem 1 solved.
 	0 & 0\\
        \end{pmatrix}
   \]
-}
-\frame{\frametitle{Problems we ran into}
- Singularities
-  \[
-   {\bf O} = \begin{pmatrix}
-        -1 & 0\\
-	2 & 0\\
-	1 & 0\\
-	-2 & 0\\
-       \end{pmatrix}
-  \]
-  \[
-   \Sigma = \begin{pmatrix}
-        3\frac{1}{3} & 0\\
-	0 & 0\\
-       \end{pmatrix}
-  \]
-  -> Add some random noise, also to prevent variance from collapsing.
+  Possible solution: Add some random noise.
 }
 
 \frame{\frametitle{Problems we ran into}
 
-Short words have less likelihood.\\
-Harder to recognise, more subject to writer variations.
+Short words/long words
 
-tried to solve this by using MOG.
 
 }
 

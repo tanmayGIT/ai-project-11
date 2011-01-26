@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.9.4)  26 JAN 2011 20:32
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.9.4)  26 JAN 2011 20:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1071,49 +1071,30 @@ Overfull \vbox (8.83167pt too high) detected at line 298
 ] [27
 
 ]
-Underfull \hbox (badness 4156) in paragraph at lines 327--327
+Underfull \hbox (badness 4156) in paragraph at lines 329--329
 []\OT1/cmss/m/n/10.95 Number of com-po-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 327--327
+Underfull \hbox (badness 10000) in paragraph at lines 329--329
 []\OT1/cmss/m/n/10.95 Topology (states,
  []
 
 
-Overfull \hbox (15.63164pt too wide) in paragraph at lines 327--327
+Overfull \hbox (15.63164pt too wide) in paragraph at lines 329--329
  [] 
  []
 
 [28
 
 ]
-Underfull \hbox (badness 4156) in paragraph at lines 372--372
-[]\OT1/cmss/m/n/10.95 Number of com-po-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 372--372
-[]\OT1/cmss/m/n/10.95 Topology (states,
- []
-
-
-Underfull \hbox (badness 1590) in paragraph at lines 372--372
+Underfull \hbox (badness 1590) in paragraph at lines 370--370
 \OT1/cmss/m/n/10.95 given the data and
  []
 
 
-Underfull \hbox (badness 1655) in paragraph at lines 372--372
+Underfull \hbox (badness 1655) in paragraph at lines 370--370
 \OT1/cmss/m/n/10.95 prob-a-bil-ity of trans-
- []
-
-
-Overfull \hbox (15.63164pt too wide) in paragraph at lines 372--372
- [] 
- []
-
-
-Overfull \vbox (6.96872pt too high) detected at line 372
  []
 
 [29
@@ -1126,17 +1107,17 @@ Overfull \vbox (6.96872pt too high) detected at line 372
 
 ] [33
 
-] <gmm1.jpg, id=1277, 218.2554pt x 214.401pt>
+] <gmm1.jpg, id=1278, 218.2554pt x 214.401pt>
 File: gmm1.jpg Graphic file (type jpg)
 
 <use gmm1.jpg> [34
 
- <./gmm1.jpg>] <gmm2.jpg, id=1312, 218.2554pt x 214.401pt>
+ <./gmm1.jpg>] <gmm2.jpg, id=1314, 218.2554pt x 214.401pt>
 File: gmm2.jpg Graphic file (type jpg)
 
 <use gmm2.jpg> [35
 
- <./gmm2.jpg>] <gmm3.jpg, id=1347, 218.2554pt x 214.401pt>
+ <./gmm2.jpg>] <gmm3.jpg, id=1349, 218.2554pt x 214.401pt>
 File: gmm3.jpg Graphic file (type jpg)
 
 <use gmm3.jpg> [36
@@ -1167,30 +1148,28 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13124 strings out of 495061
- 233789 string characters out of 1182622
+ 13125 strings out of 495061
+ 233792 string characters out of 1182622
  317488 words of memory out of 3000000
- 15828 multiletter control sequences out of 15000+50000
+ 15830 multiletter control sequences out of 15000+50000
  14812 words of font info for 55 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  45i,19n,63p,355b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Outline0.5.1.38} has been referenced but does not
- exist, replaced by a fixed one
-
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/t
-ype1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public
-/amsfonts/cm/cmss8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
-/cmss9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/sh
-are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf-t
-exlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmtt10.pfb>
-Output written on Presentation.pdf (39 pages, 1303201 bytes).
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmss8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss9.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texmf-
+texlive/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf-texlive/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmtt10.pfb>
+Output written on Presentation.pdf (39 pages, 1310551 bytes).
 PDF statistics:
- 1543 PDF objects out of 1728 (max. 8388607)
- 102 named destinations out of 1000 (max. 500000)
+ 1546 PDF objects out of 1728 (max. 8388607)
+ 101 named destinations out of 1000 (max. 500000)
  244 words of extra memory for PDF output out of 10000 (max. 10000000)
 
