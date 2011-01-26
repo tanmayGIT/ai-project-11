@@ -3,20 +3,15 @@
 
 function [ordered_words, ll] = evaluateObservations(observations,word_models,corresponding_words)
 
-    likelihood = size(word_models,1);
-    ordered_words = [];
-    ll = size(observations,1);
+    likelihood = size(word_models,2);
 
-    for obs=1:size(observations,1)
-        for word_model=1:size(word_models,1)
-            likelihood(word_model) = evaluateObservation(word_models(word_model),observations(obs));
-        end
-        ordered_words(obs,:) = corresponding_words;
-        ll(obs,:) = likelihood;
+    for word_model=1:size(word_models,2)
+        likelihood(word_model) = evaluateObservation(word_models(word_model),observations);
     end
-
-    [ll, idx] = sort(ll,2);
-    ordered_words = ordered_words(idx);
+    
+    ll = likelihood;
+    [ll, idx] = sort(ll,2,'descend');
+    ordered_words = corresponding_words(idx);
 
 end
 
