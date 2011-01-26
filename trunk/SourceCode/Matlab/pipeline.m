@@ -32,7 +32,7 @@ function [models] = pipeline()
         features{i} = addRandomNoise(features{i}, noise_percentage);
     end
     % Train an HMM model for every word
-    num_mixture_components = 1;                % Currently 1 
+    num_mixture_components = 5;                % Currently 1 
     number_of_states = length(words{w_indx});  % Equal to the length of the word
     models(w_indx) = trainWordHMM(words{w_indx}, features, number_of_states, num_mixture_components);
   end
