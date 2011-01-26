@@ -54,15 +54,17 @@ function [ranked_words,ranked_likelihoods] = pipeline()
         % Parameters
         width = 3;
         interval = 1;
-        test_features = slidingWindow(width, interval, word_structure(i), word_features)';
-            
-        %Evaluate the image againts every model, return a vector of words
-        %ordered by likelihood and another of corresponding likelihoods
-        [most_likely_words, likelihoods] = evaluateObservations(test_features, models, words);
-          
-        ranked_words{w_indx, i - train_set} = most_likely_words;
-        ranked_likelihoods{w_indx, i - train_set} = likelihoods;
-      end
+        num_features = 12;
+        features{i} = slidingWindow(width, interval, word_structure(i), word_features, num_features)';
+      
+        noise_percentage = 20;
+        features{i} = addRandomNoise(features{i},noise_percentage);
+    end
+    
+    % Train an HMM model for every word
+    num_mixture_components = 1;                % Currently 1 
+    number_of_states = length(words{w_indx});  % Equal to the length of the word
+    models(w_indx) = trainWordHMM(words{w_indx}, features, number_of_states, num_mixture_components);
   end
  
 %   evaluateResults(ranked_words, ranked_likelihoods);
