@@ -317,9 +317,13 @@ Problem 1 solved.
 \displaystyle \sum_{i=1}^{N} a_{ij} b_{i}(o_{t+1}) \beta_{i}(o_{t+1})
 \end{equation}
 With this we can define the probability of being in a state at a timestep as:
- \begin{equation}
-\gamma_{t}(i,k) \equiv \gamma_{t}(i) \frac{ b_{i,k}({\bf o}_{t}) } { b_{i}({\bf o}_{t}) }  
- \end{equation}
+\[
+ (P({\bf O}|\lambda))^{-1} P({\bf O}|\lambda )P(q_{t} = s_{i}|\lambda) = 
+\]
+\begin{equation}
+ \gamma_{t}(i) \equiv (P({\bf O}|\lambda))^{-1} \alpha_{t}(i)\beta_{t}(i) 
+\end{equation}
+Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\beta_{t}(i) = \sum_{j=1}^{N} \alpha_{T}(j)$.
 
 }
 
@@ -425,6 +429,10 @@ Consider the following observation:
 	0 & 0\\
        \end{pmatrix}
   \]
+\[
+ |\Sigma| = 0
+\]
+
   Possible solution: Add some random noise.
 }
 
