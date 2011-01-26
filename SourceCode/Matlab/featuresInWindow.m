@@ -126,7 +126,7 @@ function [features_vector] = featuresInWindow(window_pos, word, word_features)
 
         end
     end
-    features_vector = [features_vector, asc_dots, med_dots, desc_dots];
+    features_vector = [features_vector, asc_dots];%, med_dots, desc_dots];
     
     
     
@@ -200,6 +200,6 @@ function [features_vector] = featuresInWindow(window_pos, word, word_features)
 
         end
     end
-    features_vector = [features_vector, asc_junctions, med_junctions, desc_junctions];
+    features_vector = [features_vector, asc_junctions, med_junctions];%, desc_junctions];
     
 end
