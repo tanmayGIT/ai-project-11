@@ -16,36 +16,22 @@ function word = preProcessing(im)
         word.slantImage = word.skewImage;
     end
         
-    % Compute upper, ascender and descender baselines
-    [upp, asc, desc] = getBaselines(word.slantImage, word.lowerBaseline);
+    % Compute upper, ascender and descender baselines (and eventually
+    % update the lower one)
+    [upp, asc, desc, low] = getBaselines(word.slantImage, word.lowerBaseline);
     word.upperBaseline = ceil(upp);
-    if ceil(asc) > 0
-        word.ascenderBaseline = ceil(asc);
-    else 
-        word.ascenderBaseline = 1;
-    end
-
-    if floor(desc) < size(word.slantImage,1)
-        word.descenderBaseline = floor(desc);
-    else
-        word.descenderBaseline = size(word.slantImage,1);
-    end
+    word.ascenderBaseline = asc;
+    word.descenderBaseline = desc;
+    word.lowerBaseline = low;
          
     % Cut the image at ascender and descender baselines
     word.cut = word.slantImage(word.ascenderBaseline : word.descenderBaseline, :);
     word.newUpperBaseline = word.upperBaseline - word.ascenderBaseline;
     word.newLowerBaseline = word.lowerBaseline - word.ascenderBaseline;
-        
-    % Vertical Scaling
-%     h = 100;
-%     word.scaling = vertical_scaling(word.cut, word.newUpperBaseline, word.newLowerBaseline, h);
-%     word.newUpperBaseline = floor(h/3);
-%     word.newLowerBaseline = 2 * floor(h/3);
+    
+    % Cut the left and right borders of the image (eliminate lateral white parts)
+    word.cut = eliminateWhiteVerticalBorders(word.cut);
 
-    % Extract the image (eliminate white pixels)
-%     param = 2;
-%     [borders] = extractBoundingBox(word.scaling, param);
-%     word.extract = word.scaling(borders(3):borders(4),borders(1):borders(2));
     % Skeleton 
     word.skeleton = skeleton(word.cut);
     
