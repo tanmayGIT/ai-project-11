@@ -1,14 +1,14 @@
-function [ranked_words,ranked_likelihoods] = pipeline()
+function [models] = pipeline()
 
   s = warning('off');
-  load markov_models.mat;
-  load Annotation.mat;
+%   load markov_models.mat;
+%   load Annotation.mat;
 
   train_set = 20;
   test_set = 15;
   
 %   For every word in the training set
-  for w_indx = 1:65
+  for w_indx = 101:195
     fprintf('\nCURRENT WORD: %s \nImage: ', words{w_indx});
     for i = 1 : train_set
         
