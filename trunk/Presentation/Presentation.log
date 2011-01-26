@@ -1,32 +1,25 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  26 JAN 2011 16:55
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.9.4)  26 JAN 2011 20:25
 entering extended mode
- \write18 enabled.
- file:line:error style messages enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
 **Presentation.tex
 (./Presentation.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, german-x-2009-06-19, ngerman-x-2009-06-19, ancientgreek, ibycus, ar
-abic, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danish, dutc
-h, esperanto, estonian, farsi, finnish, french, galician, german, ngerman, mono
-greek, greek, hungarian, icelandic, indonesian, interlingua, irish, italian, ku
-rmanji, latin, latvian, lithuanian, mongolian, mongolian2a, bokmal, nynorsk, po
-lish, portuguese, romanian, russian, sanskrit, serbian, slovak, slovenian, span
-ish, swedish, turkish, ukenglish, ukrainian, uppersorbian, welsh, loaded.
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamer.cls
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasercs.sty
+yphenation, loaded.
+(/usr/share/texmf/tex/latex/beamer/base/beamer.cls
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasercs.sty
 Package: beamerbasercs 2007/01/28 (rcs-revision 1.4)
 )
 Document Class: beamer 2007/03/11 cvs version 3.07 A class for typesetting pres
 entations (rcs-revision 1.70)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasemodes.sty
 Package: beamerbasemodes 2007/01/28 (rcs-revision 1.22)
 \beamer@tempbox=\box26
 \beamer@tempcount=\count79
 \c@beamerpauses=\count80
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasedecode.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasedecode.sty
 Package: beamerbasedecode 2007/01/28 (rcs-revision 1.20)
 \beamer@slideinframe=\count81
 \beamer@minimum=\count82
@@ -77,48 +70,48 @@ Package: beamerbasedecode 2007/01/28 (rcs-revision 1.20)
 \beamer@sectionadjust=\count100
 \beamer@tocsectionnumber=\count101
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbaseoptions.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseoptions.sty
 Package: beamerbaseoptions 2007/01/28 (rcs-revision 1.8)
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 ))
-(/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/graphics.cfg
+(/etc/texmf/tex/latex/config/graphics.cfg
 File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
 \Gread@gobject=\count102
 ))
 \Gin@req@height=\dimen119
 \Gin@req@width=\dimen120
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
-x
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks15
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-) (/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def)
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfrcs.code.tex
 Package: pgfrcs 2008/02/20 v2.00 (rcs-revision 1.21)
 ))
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2008/02/07 v2.00 (rcs-revision 1.31)
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks16
 \pgfkeys@temptoks=\toks17
 )
@@ -134,32 +127,30 @@ Package: pgfsys 2008/02/07 v2.00 (rcs-revision 1.31)
 \c@pgf@countb=\count104
 \c@pgf@countc=\count105
 \c@pgf@countd=\count106
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/01/13  (rcs-revision 1.6)
 )
 Package pgfsys Info: Driver file for pgf: pgfsys-pdftex.def on input line 885.
 
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
-ef
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 File: pgfsys-pdftex.def 2007/12/20  (rcs-revision 1.20)
 
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
-df.def
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2007/12/17  (rcs-revision 1.8)
 )))
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
-code.tex
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2008/01/23  (rcs-revision 1.6)
 \pgfsyssoftpath@smallbuffer@items=\count107
 \pgfsyssoftpath@bigbuffer@items=\count108
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
-code.tex
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
-)) (/usr/local/texlive/2009/texmf-dist/tex/latex/xcolor/xcolor.sty
+))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/color.cfg
+(/etc/texmf/tex/latex/config/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -173,28 +164,26 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2008/01/15 v2.00 (rcs-revision 1.6)
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathutil.code.tex
 \pgfmath@box=\box34
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@stack=\toks18
 \c@pgfmath@parsecounta=\count109
 \c@pgfmath@parsecountb=\count110
 \c@pgfmath@parsecountc=\count111
 \pgfmath@parsex=\dimen129
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathoperations.code
-.tex
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathtrig.code.tex)
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathrnd.code.tex))
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathbase.code.tex))
-)
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
-de.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathoperations.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathtrig.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathrnd.code.tex))
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathbase.code.tex)))
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2008/02/03  (rcs-revision 1.13)
 \pgf@picminx=\dimen130
 \pgf@picmaxx=\dimen131
@@ -211,91 +200,77 @@ File: pgfcorepoints.code.tex 2008/02/03  (rcs-revision 1.13)
 \pgf@zx=\dimen142
 \pgf@zy=\dimen143
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
-ruct.code.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2008/02/13  (rcs-revision 1.14)
 \pgf@path@lastx=\dimen144
 \pgf@path@lasty=\dimen145
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
-.code.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2008/01/23  (rcs-revision 1.11)
 \pgf@shorten@end@additional=\dimen146
 \pgf@shorten@start@additional=\dimen147
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
-de.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2008/01/15  (rcs-revision 1.26)
 \pgfpic=\box35
 \pgf@hbox=\box36
 \pgf@layerbox@main=\box37
 \pgf@picture@serial@count=\count112
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
-ate.code.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2007/12/12  (rcs-revision 1.8)
 \pgflinewidth=\dimen148
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
-ations.code.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2008/02/04  (rcs-revision 1.10)
 \pgf@pt@x=\dimen149
 \pgf@pt@y=\dimen150
 \pgf@pt@temp=\dimen151
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
-e.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2006/10/11  (rcs-revision 1.2)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
-ode.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
 File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
-ssing.code.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
 File: pgfcorepathprocessing.code.tex 2008/01/23  (rcs-revision 1.7)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
-de.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2007/06/07  (rcs-revision 1.8)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
-e.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2007/12/10  (rcs-revision 1.9)
 \pgf@max=\dimen152
 \pgf@sys@shading@range@num=\count113
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
-e.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2008/01/15  (rcs-revision 1.1)
 \pgfexternal@startupbox=\box38
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
-de.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2008/01/15  (rcs-revision 1.1)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
-ncy.code.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
 File: pgfcoretransparency.code.tex 2008/01/17  (rcs-revision 1.2)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
-code.tex
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
 File: pgfcorepatterns.code.tex 2008/01/15  (rcs-revision 1.1)
 )))
-(/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/basiclayer/pgfbaseimage.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfbaseimage.sty
 
 Package pgf Warning: This package is obsolete and no longer needed on input lin
 e 13.
 
-) (/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/utilities/xxcolor.sty
+) (/usr/share/texmf/tex/latex/pgf/utilities/xxcolor.sty
 Package: xxcolor 2003/10/24 ver 0.1
 \XC@nummixins=\count114
 \XC@countmixins=\count115
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2009/06/22 v3.00
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \@emptytoks=\toks19
 \symAMSa=\mathgroup4
@@ -303,14 +278,14 @@ Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
-(/usr/local/texlive/2009/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
 Package: geometry 2008/12/21 v4.2 Page Geometry
 
-(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in pdf mode detected.
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
 Package ifvtex Info: VTeX not detected.
 )
@@ -323,31 +298,31 @@ Package ifvtex Info: VTeX not detected.
 \Gm@even@mp=\dimen156
 \Gm@dimlist=\toks20
 
-(/usr/local/texlive/2009/texmf-dist/tex/xelatex/xetexconfig/geometry.cfg))
-(/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf-texlive/tex/xelatex/xetexconfig/geometry.cfg))
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
 
-(/usr/local/texlive/2009/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/oberdiek/hycolor.sty
+(/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
 Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
 O)
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/oberdiek/xcolor-patch.sty
+(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
 Package: xcolor-patch 2009/10/02 xcolor patch
 ))
 \@linkdim=\dimen157
 \Hy@linkcounter=\count119
 \Hy@pagecounter=\count120
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/pd1enc.def
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
 
-(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
 )
 Package etexcmds Info: Could not find \expanded.
@@ -355,13 +330,13 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
 
-(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
 t (HO)
 ))
@@ -376,30 +351,30 @@ Package hyperref Info: Backreferencing OFF on input line 2995.
 
 Implicit mode OFF; no redefinition of LaTeX internals
 Package hyperref Info: Bookmarks ON on input line 3191.
-(/usr/local/texlive/2009/texmf-dist/tex/latex/ltxmisc/url.sty
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 3428.
 
-(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/bitset.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
 Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
 
-(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/intcalc.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty
 Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/bigintcalc.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
 Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
 
-(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
  (HO)
 
-(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
 )
 )
@@ -419,7 +394,7 @@ Package hyperref Info: Link coloring OFF on input line 4397.
 Package hyperref Info: Link coloring with OCG OFF on input line 4402.
 Package hyperref Info: PDF/A mode OFF on input line 4407.
 
-(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 )
 
@@ -429,35 +404,35 @@ Package hyperref Warning: Option `pdfpagelabels' is turned off
 Hyperref stopped early
 )
 *hyperref using default driver hpdftex*
-(/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
 \Fld@listcount=\count122
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/size11.clo
+(/usr/share/texmf-texlive/tex/latex/base/size11.clo
 File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasecompatibility.st
-y
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasecompatibility.sty
 Package: beamerbasecompatibility 2007/01/28  (rcs-revision 1.63)
-) (/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasefont.sty
+)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasefont.sty
 Package: beamerbasefont 2007/01/28  (rcs-revision 1.16)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasemisc.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasemisc.sty
 Package: beamerbasemisc 2007/01/28  (rcs-revision 1.24)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasetwoscreens.sty
-Package: beamerbasetwoscreens 2009/06/14  (rcs-revision 1.71)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetwoscreens.sty
+Package: beamerbasetwoscreens 2007/01/28  (rcs-revision 1.7)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbaseoverlay.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseoverlay.sty
 Package: beamerbaseoverlay 2007/01/28  (rcs-revision 1.50)
 \beamer@argscount=\count123
 \beamer@lastskipcover=\skip42
 \beamer@trivlistdepth=\count124
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasetitle.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetitle.sty
 Package: beamerbasetitle 2007/01/28  (rcs-revision 1.25)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasesection.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasesection.sty
 Package: beamerbasesection 2007/01/28  (rcs-revision 1.21)
 \c@lecture=\count125
 \c@part=\count126
@@ -465,7 +440,7 @@ Package: beamerbasesection 2007/01/28  (rcs-revision 1.21)
 \c@subsection=\count128
 \c@subsubsection=\count129
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbaseframe.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseframe.sty
 Package: beamerbaseframe 2007/01/28  (rcs-revision 1.60)
 \beamer@framebox=\box39
 \beamer@frametitlebox=\box40
@@ -481,11 +456,11 @@ Package: beamerbaseframe 2007/01/28  (rcs-revision 1.60)
 \beamer@envbody=\toks22
 \c@framenumber=\count133
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbaseverbatim.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseverbatim.sty
 Package: beamerbaseverbatim 2007/01/28  (rcs-revision 1.8)
 \beamer@verbatimfileout=\write3
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbaseframesize.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseframesize.sty
 Package: beamerbaseframesize 2007/01/28  (rcs-revision 1.18)
 \beamer@splitbox=\box42
 \beamer@autobreakcount=\count134
@@ -493,27 +468,28 @@ Package: beamerbaseframesize 2007/01/28  (rcs-revision 1.18)
 \beamer@frametitletoks=\toks23
 \beamer@framesubtitletoks=\toks24
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbaseframecomponents.
-sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseframecomponents.sty
 Package: beamerbaseframecomponents 2007/01/28  (rcs-revision 1.41)
 \beamer@footins=\box43
-) (/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasecolor.sty
+)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasecolor.sty
 Package: beamerbasecolor 2007/01/28  (rcs-revision 1.42)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasenotes.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasenotes.sty
 Package: beamerbasenotes 2007/01/28  (rcs-revision 1.23)
 \beamer@frameboxcopy=\box44
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasetoc.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetoc.sty
 Package: beamerbasetoc 2007/01/28  (rcs-revision 1.21)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasetemplates.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetemplates.sty
 Package: beamerbasetemplates 2007/01/28  (rcs-revision 1.51)
 \beamer@sbttoks=\toks25
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbaseauxtemplates.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseauxtemplates.sty
 Package: beamerbaseauxtemplates 2007/01/28  (rcs-revision 1.28)
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbaseboxes.sty
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseboxes.sty
 Package: beamerbaseboxes 2007/03/11  (rcs-revision 1.32)
 \bmb@box=\box45
 \bmb@colorbox=\box46
@@ -527,10 +503,10 @@ Package: beamerbaseboxes 2007/03/11  (rcs-revision 1.32)
 )
 \beamer@blockheadheight=\dimen166
 ))
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbaselocalstructure.s
-ty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaselocalstructure.sty
 Package: beamerbaselocalstructure 2007/01/28  (rcs-revision 1.53)
- (/usr/local/texlive/2009/texmf-dist/tex/latex/tools/enumerate.sty
+
+(/usr/share/texmf-texlive/tex/latex/tools/enumerate.sty
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \@enLab=\toks26
 )
@@ -539,34 +515,34 @@ Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasenavigation.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasenavigation.sty
 Package: beamerbasenavigation 2007/01/28  (rcs-revision 1.36)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasetheorems.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetheorems.sty
 Package: beamerbasetheorems 2007/01/28  (rcs-revision 1.10)
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/translator/translator.sty
+(/usr/share/texmf-texlive/tex/latex/translator/translator.sty
 Package: translator 2007/03/11 ver 1.00
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/translator/translator-language-ma
-ppings.tex)) (/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsmath.sty
+(/usr/share/texmf-texlive/tex/latex/translator/translator-language-mappings.tex
+)) (/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip49
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks27
 \ex@=\dimen167
 ))
-(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen168
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsopn.sty
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count137
@@ -607,7 +583,7 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/amscls/amsthm.sty
+(/usr/share/texmf-texlive/tex/latex/amscls/amsthm.sty
 Package: amsthm 2004/08/06 v2.20
 \thm@style=\toks32
 \thm@bodyfont=\toks33
@@ -621,57 +597,46 @@ Package: amsthm 2004/08/06 v2.20
 )
 \c@theorem=\count149
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/beamerbasethemes.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasethemes.sty
 Package: beamerbasethemes 2007/01/28  (rcs-revision 1.10)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/theme/beamerthemede
-fault.sty
+(/usr/share/texmf/tex/latex/beamer/themes/theme/beamerthemedefault.sty
 Package: beamerthemedefault 2007/01/28  (rcs-revision 1.7)
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/font/beamerfontthem
-edefault.sty
+(/usr/share/texmf/tex/latex/beamer/themes/font/beamerfontthemedefault.sty
 Package: beamerfontthemedefault 2007/01/28  (rcs-revision 1.13)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/color/beamercolorth
-emedefault.sty
+(/usr/share/texmf/tex/latex/beamer/themes/color/beamercolorthemedefault.sty
 Package: beamercolorthemedefault 2007/01/28  (rcs-revision 1.28)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/inner/beamerinnerth
-emedefault.sty
+(/usr/share/texmf/tex/latex/beamer/themes/inner/beamerinnerthemedefault.sty
 Package: beamerinnerthemedefault 2007/01/28  (rcs-revision 1.20)
 \beamer@dima=\dimen176
 \beamer@dimb=\dimen177
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/outer/beamerouterth
-emedefault.sty
+(/usr/share/texmf/tex/latex/beamer/themes/outer/beamerouterthemedefault.sty
 Package: beamerouterthemedefault 2007/01/28  (rcs-revision 1.14)
 )))
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/theme/compatibility
-/beamerthemeshadow.sty
+(/usr/share/texmf/tex/latex/beamer/themes/theme/compatibility/beamerthemeshadow
+.sty
 Package: beamerthemeshadow 2007/01/28  (rcs-revision 1.12)
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/inner/beamerinnerth
-emerounded.sty
+(/usr/share/texmf/tex/latex/beamer/themes/inner/beamerinnerthemerounded.sty
 Package: beamerinnerthemerounded 2007/01/28  (rcs-revision 1.5)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/color/beamercolorth
-emeorchid.sty
+(/usr/share/texmf/tex/latex/beamer/themes/color/beamercolorthemeorchid.sty
 Package: beamercolorthemeorchid 2007/01/28  (rcs-revision 1.3)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/color/beamercolorth
-emewhale.sty
+(/usr/share/texmf/tex/latex/beamer/themes/color/beamercolorthemewhale.sty
 Package: beamercolorthemewhale 2007/01/28  (rcs-revision 1.4)
 )
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/outer/beamerouterth
-emeshadow.sty
+(/usr/share/texmf/tex/latex/beamer/themes/outer/beamerouterthemeshadow.sty
 Package: beamerouterthemeshadow 2007/01/28  (rcs-revision 1.9)
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/outer/beamerouterth
-emesplit.sty
+(/usr/share/texmf/tex/latex/beamer/themes/outer/beamerouterthemesplit.sty
 Package: beamerouterthemesplit 2007/01/28  (rcs-revision 1.5)
 ))
-(/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/font/beamerfontthem
-estructurebold.sty
+(/usr/share/texmf/tex/latex/beamer/themes/font/beamerfontthemestructurebold.sty
 Package: beamerfontthemestructurebold 2007/01/28  (rcs-revision 1.3)
 )) (./Presentation.aux
 
@@ -700,7 +665,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
- (/usr/local/texlive/2009/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/share/texmf/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count150
 \scratchdimen=\dimen178
@@ -755,18 +720,17 @@ driver: pdftex
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
 Package hyperref Info: Link coloring OFF on input line 17.
-(/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/oberdiek/refcount.sty
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count155
 )
 LaTeX Info: Redefining \ref on input line 17.
 LaTeX Info: Redefining \pageref on input line 17.
-
-(./Presentation.out) (./Presentation.out)
+ (./Presentation.out) (./Presentation.out)
 \@outlinefile=\write4
 \openout4 = `Presentation.out'.
 
@@ -814,8 +778,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 17.
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/translator/translator-theorem-dic
-tionary-English.dict
+(/usr/share/texmf-texlive/tex/latex/translator/translator-theorem-dictionary-En
+glish.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 ) (./Presentation.nav)
 
@@ -830,30 +794,29 @@ LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <4> not available
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 (Font)              size <5> substituted on input line 22.
 
-[1{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-]
-(./Presentation.toc) [2
+] (./Presentation.toc)
+[2
 
 ] [3
 
-]
-<Images/studs.png, id=200, 517.935pt x 213.79875pt>
+] <Images/studs.png, id=200, 517.935pt x 213.79875pt>
 File: Images/studs.png Graphic file (type png)
- <use Images/studs.png>
-[4
+
+<use Images/studs.png> [4
 
  <./Images/studs.png>] [5
 
 ]
 LaTeX Font Info:    Try loading font information for U+msa on input line 72.
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 72.
 
-(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [6
 
@@ -886,22 +849,34 @@ Overfull \vbox (12.1797pt too high) detected at line 100
  <./Images/pipeline.png>] [10
 
 ]
-<Images/pipelinePP.png, id=449, 755.82375pt x 407.5225pt>
-File: Images/pipelinePP.png Graphic file (type png)
 
-<use Images/pipelinePP.png>pdfTeX warning (ext4): destination with the same ide
-ntifier (name{fig:pipeline}) has been already used, duplicate ignored
+LaTeX Warning: File `Images/pipelinePP.png' not found on input line 116.
+
+
+! Package pdftex.def Error: File `Images/pipelinePP.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.116 }
+       
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fig:pipeline}
+) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.116 }
        
-Overfull \vbox (11.14873pt too high) detected at line 116
+Overfull \vbox (152.84338pt too high) detected at line 116
  []
 
 [11
 
- <./Images/pipelinePP.png>]
-<Images/line_segmentation.png, id=486, 973.6375pt x 582.175pt>
+] <Images/line_segmentation.png, id=485, 973.6375pt x 582.175pt>
 File: Images/line_segmentation.png Graphic file (type png)
 
 <use Images/line_segmentation.png>
@@ -911,63 +886,128 @@ Overfull \vbox (15.79167pt too high) detected at line 127
 [12
 
  <./Images/line_segmentation.png>]
-<Images/skew.png, id=524, 1038.88126pt x 485.815pt>
+<Images/skew.png, id=523, 1038.88126pt x 485.815pt>
 File: Images/skew.png Graphic file (type png)
  <use Images/skew.png>
 [13
 
  <./Images/skew.png>]
-<Images/slant.png, id=563, 1060.96375pt x 528.97626pt>
+<Images/slant.png, id=562, 1060.96375pt x 528.97626pt>
 File: Images/slant.png Graphic file (type png)
  <use Images/slant.png>
 [14
 
  <./Images/slant.png>]
-<Images/words_segm_wp.png, id=601, 1127.21124pt x 81.30376pt>
-File: Images/words_segm_wp.png Graphic file (type png)
 
-<use Images/words_segm_wp.png>
+LaTeX Warning: File `Images/words_segm_wp.png' not found on input line 165.
+
+
+! Package pdftex.def Error: File `Images/words_segm_wp.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.165 }
+       
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
 Overfull \hbox (21.90005pt too wide) in paragraph at lines 165--165
  [][][][] 
  []
 
-<Images/words_segm_res.png, id=602, 451.6875pt x 260.975pt>
-File: Images/words_segm_res.png Graphic file (type png)
 
-<use Images/words_segm_res.png> [15
+LaTeX Warning: File `Images/words_segm_res.png' not found on input line 165.
 
- <./Images/words_segm_wp.png> <./Images/words_segm_res.png>] [16
+
+! Package pdftex.def Error: File `Images/words_segm_res.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.165 }
+       
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \vbox (330.89308pt too high) detected at line 165
+ []
+
+[15
+
+] [16
 
 ] [17
 
 ]
-<Images/pipelinePPex.png, id=712, 753.81625pt x 402.50375pt>
-File: Images/pipelinePPex.png Graphic file (type png)
 
-<use Images/pipelinePPex.png>pdfTeX warning (ext4): destination with the same i
-dentifier (name{fig:pipeline}) has been already used, duplicate ignored
+LaTeX Warning: File `Images/pipelinePPex.png' not found on input line 182.
+
+
+! Package pdftex.def Error: File `Images/pipelinePPex.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.182 }
+       
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fig:pipeline}
+) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.182 }
-        [18
+       
+Overfull \vbox (142.49919pt too high) detected at line 182
+ []
 
- <./Images/pipelinePPex.png>]
-File: Images/pipelinePPex.png Graphic file (type png)
- <use Images/pipelinePPex.png>pdfTeX warning (ext4): destination with the same 
-identifier (name{fig:pipeline}) has been already used, duplicate ignored
+[18
+
+]
+
+LaTeX Warning: File `Images/pipelinePPex.png' not found on input line 191.
+
+
+! Package pdftex.def Error: File `Images/pipelinePPex.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.191 }
+       
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fig:pipeline}
+) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.191 }
-        [19
+       
+Overfull \vbox (122.74338pt too high) detected at line 191
+ []
+
+[19
 
 ] [20
 
 ] [21
 
-] <hmm.jpg, id=852, 282.3348pt x 87.2058pt>
+] <hmm.jpg, id=845, 282.3348pt x 87.2058pt>
 File: hmm.jpg Graphic file (type jpg)
- <use hmm.jpg>
-[22
+ <use hmm.jpg> [22
 
  <./hmm.jpg>] [23
 
@@ -988,84 +1028,98 @@ Overfull \hbox (21.90005pt too wide) in paragraph at lines 246--246
 
 [24
 
-] <forward2.jpg, id=963, 178.9887pt x 236.082pt>
+]
+Overfull \hbox (25.04037pt too wide) detected at line 272
+\OT1/cmss/m/it/10.95 P\OT1/cmss/m/n/10.95 (\OT1/cmss/m/it/10.95 o[]\OML/cmm/m/i
+t/10.95 ; \OT1/cmss/m/it/10.95 o[]\OML/cmm/m/it/10.95 ; [] ; \OT1/cmss/m/it/10.
+95 o[]\OMS/cmsy/m/n/10.95 j\OT1/cmss/m/it/10.95 q[] \OT1/cmss/m/n/10.95 = \OT1/
+cmss/m/it/10.95 s[]\OML/cmm/m/it/10.95 ; ^^U\OT1/cmss/m/n/10.95 ) =
+ []
+
+<forward2.jpg, id=956, 178.9887pt x 236.082pt>
 File: forward2.jpg Graphic file (type jpg)
  <use forward2.jpg>
-Overfull \vbox (36.36462pt too high) detected at line 254
+Overfull \vbox (8.83167pt too high) detected at line 272
  []
 
 [25
 
  <./forward2.jpg>]
-Underfull \hbox (badness 4156) in paragraph at lines 269--269
+Underfull \hbox (badness 4156) in paragraph at lines 287--287
 []\OT1/cmss/m/n/10.95 Number of com-po-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
+Underfull \hbox (badness 10000) in paragraph at lines 287--287
 []\OT1/cmss/m/n/10.95 Topology (states,
  []
 
 
-Overfull \hbox (15.63164pt too wide) in paragraph at lines 269--269
+Overfull \hbox (15.63164pt too wide) in paragraph at lines 287--287
  [] 
  []
 
 [26
 
 ]
-Underfull \hbox (badness 4156) in paragraph at lines 314--314
+Underfull \hbox (badness 4156) in paragraph at lines 332--332
 []\OT1/cmss/m/n/10.95 Number of com-po-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--314
+Underfull \hbox (badness 10000) in paragraph at lines 332--332
 []\OT1/cmss/m/n/10.95 Topology (states,
  []
 
 
-Underfull \hbox (badness 1590) in paragraph at lines 314--314
+Underfull \hbox (badness 1590) in paragraph at lines 332--332
 \OT1/cmss/m/n/10.95 given the data and
  []
 
 
-Underfull \hbox (badness 1655) in paragraph at lines 314--314
+Underfull \hbox (badness 1655) in paragraph at lines 332--332
 \OT1/cmss/m/n/10.95 prob-a-bil-ity of trans-
  []
 
 
-Overfull \hbox (15.63164pt too wide) in paragraph at lines 314--314
+Overfull \hbox (15.63164pt too wide) in paragraph at lines 332--332
  [] 
  []
 
 
-Overfull \vbox (6.56873pt too high) detected at line 314
+Overfull \vbox (6.96872pt too high) detected at line 332
  []
 
 [27
 
-] <gmm1.jpg, id=1070, 218.2554pt x 214.401pt>
+] [28
+
+] [29
+
+] [30
+
+] [31
+
+] <gmm1.jpg, id=1206, 218.2554pt x 214.401pt>
 File: gmm1.jpg Graphic file (type jpg)
- <use gmm1.jpg> [28
 
- <./gmm1.jpg>] <gmm2.jpg, id=1106, 218.2554pt x 214.401pt>
+<use gmm1.jpg> [32
+
+ <./gmm1.jpg>] <gmm2.jpg, id=1242, 218.2554pt x 214.401pt>
 File: gmm2.jpg Graphic file (type jpg)
- <use gmm2.jpg> [29
 
- <./gmm2.jpg>] <gmm3.jpg, id=1142, 218.2554pt x 214.401pt>
+<use gmm2.jpg> [33
+
+ <./gmm2.jpg>] <gmm3.jpg, id=1277, 218.2554pt x 214.401pt>
 File: gmm3.jpg Graphic file (type jpg)
- <use gmm3.jpg> [30
 
- <./gmm3.jpg>]
-[31
+<use gmm3.jpg> [34
 
-] [32
+ <./gmm3.jpg>] [35
 
-] [33
+] [36
 
-] [34
-
-] [35
+] [37
 
 ]
 \tf@nav=\write5
@@ -1087,27 +1141,27 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13117 strings out of 493848
- 237963 string characters out of 3149207
- 318996 words of memory out of 3000000
- 15933 multiletter control sequences out of 15000+200000
- 14644 words of font info for 54 fonts, out of 3000000 for 9000
- 714 hyphenation exceptions out of 8191
- 45i,19n,63p,355b,587s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
-></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><
-/usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></
-usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></us
-r/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/
-local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr
-/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr
-/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/
-local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
-ocal/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Presentation.pdf (35 pages, 1414847 bytes).
+ 13115 strings out of 495061
+ 233678 string characters out of 1182622
+ 317488 words of memory out of 3000000
+ 15825 multiletter control sequences out of 15000+50000
+ 14812 words of font info for 55 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 45i,19n,63p,355b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmss8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmss9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/
+share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf
+-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmtt10.pfb>
+Output written on Presentation.pdf (37 pages, 1286068 bytes).
 PDF statistics:
- 1400 PDF objects out of 1440 (max. 8388607)
- 91 named destinations out of 1000 (max. 500000)
- 264 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1470 PDF objects out of 1728 (max. 8388607)
+ 96 named destinations out of 1000 (max. 500000)
+ 244 words of extra memory for PDF output out of 10000 (max. 10000000)
 

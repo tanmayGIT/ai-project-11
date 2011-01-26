@@ -106,11 +106,11 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \end{beamerboxesrounded}
 }
 
-\frame{\frametitle{Pipeline}  
+\frame{\frametitle{Pre-processing}  
 \begin{figure}
   \centering
-    \includegraphics[width=1.02 \textwidth]{Images/pipeline.png}
-   \caption{Pipeline of a word recognition system}
+    \includegraphics[width=1\textwidth]{Images/pipelinePP.png}
+   \caption{Pipeline for the pre-processing/normalization step}
    \label{fig:pipeline}
 \end{figure}
 }
@@ -120,7 +120,7 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \frame{\frametitle{Line Segmentation}  
 \begin{figure}
   \centering
-    \includegraphics[width=0.96 \textwidth]{Images/line_segmentation.png}
+    \includegraphics[width=0.93 \textwidth]{Images/line_segmentation.png}
    \caption{Example of line segmentation}
    \label{fig:lineSegm}
 \end{figure}
@@ -142,16 +142,56 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
   \centering
     \includegraphics[width=1.0 \textwidth]{Images/slant.png}
    \caption{Slant detection and correction pipeline}
-   \label{fig:skew}
+   \label{fig:slant}
 \end{figure}
 }
 
 \frame{\frametitle{Word segmentation}
+\begin{itemize}
+\item We first detect white spaces:
+\begin{figure}
+  \centering
+    \includegraphics[width=1.0 \textwidth]{Images/words_segm_wp.png}
+   \label{fig:words_wp}
+\end{figure}
+\item We cluster them into 2 clusters: 'letters separator' and 'words separator'
+\item We segment the line using the white spaces clustered as 'words separator':
+\begin{figure}
+  \centering
+    \includegraphics[width=0.4\textwidth]{Images/words_segm_res.png}
+   \label{fig:words_res}
+\end{figure}
+\end{itemize}
 }  
-
 
 \frame{\frametitle{Vertical Scaling}
 }  
+
+\frame{\frametitle{Skeletonization}
+}  
+
+\frame{\frametitle{Remembering the entire pipeline....}
+ \begin{beamerboxesrounded}{}
+\centering \bf{Why do we repeat skew and slant corraction twice?}
+\end{beamerboxesrounded}
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{Images/pipelinePPex.png}
+   \label{fig:pipeline}
+\end{figure}
+}  
+
+\frame{\frametitle{Because....}
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{Images/pipelinePPex.png}
+   \label{fig:pipeline}
+\end{figure}
+
+}  
+
+
+
 
 
 \subsection{Feature Extraction}
@@ -180,69 +220,173 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \frame{\frametitle{Main problems in an HMM}
   \begin{enumerate}
  \item The probability of an observation sequence, given the model, $P({\bf O}|\lambda)$.
- \item The most likely state sequence, underlying a given observation sequence and the model, $Q^* = \max P(Q|{\bf O},\lambda)$.
  \item The most likely parameters of the model $\lambda^* = \max P(X|\lambda)$, given a training set of $M$ observation sequences $X = ({\bf O}_{1}, {\bf O}_{2}, \ldots, {\bf O}_{M} )$.
+  \item The most likely state sequence, underlying a given observation sequence and the model, $Q^* = \max P(Q|{\bf O},\lambda)$.
+\end{enumerate}
+}
+
+\frame{\frametitle{Main problems in an HMM}
+  \begin{enumerate}
+ \item The probability of an observation sequence, given the model, $P({\bf O}|\lambda)$.
+ \begin{beamerboxesrounded}{}
+   Sum-product algorithm: forward-backward algorithm
+\end{beamerboxesrounded}
+	
+ \item The most likely parameters of the model $\lambda^* = \max P(X|\lambda)$, given a training set of $M$ observation sequences $X = ({\bf O}_{1}, {\bf O}_{2}, \ldots, {\bf O}_{M} )$.
+  \begin{beamerboxesrounded}{}
+  EM-algorithm: Baum-Welch reestimation
+\end{beamerboxesrounded}
+      
+\item The most likely state sequence, underlying a given observation sequence and the model, $Q^* = \max P(Q|{\bf O},\lambda)$.
+  \begin{beamerboxesrounded}{}
+  Dynamic programming: Viterbi algorithm
+\end{beamerboxesrounded}
+
 \end{enumerate}
 }
 
 \frame{\frametitle{Forward probability}
-  Solution to the first problem, use {\it forward-backward} algorithm, a special instance of the sum-product algorithm
+\begin{columns}
+ 
+\column{1.5in}
+\[
+ \alpha_{t}(i) \equiv
+\]
+\[
+  P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
+\]
+\begin{equation}
+ \label{forwardProbability}
+\displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
+\end{equation}
+\column{2in}
   \begin{figure}
-  \includegraphics[width=0.4\textwidth]{forward2.jpg}
-  \caption{Illustration of the computation of forward probability}
+  \includegraphics[width=0.8\textwidth]{forward2.jpg}
+  \caption{Computation of forward probability}
   \end{figure}
+
+
+
+\end{columns}
+
 }
 
 \frame{\frametitle{Updating the parameters}
 
-  Use EM-algorithm
+  Comparison with GMM:
+\begin{table}
+ \begin{tabular}{|l| p{3.5cm} | p{3.5cm} |}\hline
+  Model:		&	{\bf GMM}		&	{\bf HMM}\\\hline
+  Model parameters:	& $\lambda = \pi, \mu, \Sigma$	&	$\lambda = \pi, {\bf A}, {\bf B}$\\
+  Hyper parameters:	&	Number of components	&	Topology (states, transitions)\\
+  Observed variables:	&	Data points		&	Observations\\
+  Latent variables:	&	Priors of a component	&	State sequence\\\hline
+ \end{tabular}
+\end{table}
 
 }
 
 \frame{\frametitle{Updating parameters}
 
-\begin{columns}
+% \begin{columns}
 
-\column{1.5in}
-Model:\\
-Model parameters:\\
-Observed variables:\\
-Latent variables:\\
-E-step:\\
-M-step:\\
-
-\column{1.5in}
-{\bf GMM}\\
-$\lambda = \pi, \mu, \Sigma$\\
-Data points\\
-Priors of a component\\
-Estimate the probability of a component, given the data and current parameters.\\
-Maximise $\pi$, $\mu$ and $\Sigma$.
-
-\column{1.5in}
-{\bf HMM}\\
-$\lambda = \pi, {\bf A}, {\bf B}$\\
-Observation sequence\\
-State sequence\\
-Estimate the probability of being in a state at a timestep and the probability of transfering from a state to another state.\\
-Maximise $\pi$, ${\bf A}$ and ${\bf B}$.
-
-% \begin{table}
-%  \begin{tabular}{|l|c|r|}\hline
-%   Model:		&	{\bf GMM}		&	{\bf HMM}\\\hline
-%   Model parameters:	& $\lambda = \pi, \mu, \Sigma$	&	$\lambda = \pi, {\bf A}, {\bf B}$\\
-%   Observed variables:	&	Data points		&	Observations\\
-%   Latent variables:	&	Priors of a component	&	State sequence\\
-%   E-step:		&	Estimate the probability of a component, given the data and current parameters. 
-% 	& Estimate the probability of being in a state at a timestep and the probability of transfering from a state to another state.\\
-%   M-step:		& Maximise $\pi$, $\mu$ and $\Sigma$.	&	Maximise $\pi$, ${\bf A}$ and ${\bf B}$\\
-%  \end{tabular}
+% \column{1.5in}
+% Model:\\
+% Model parameters:\\
+% Observed variables:\\
+% Latent variables:\\
+% E-step:\\
+% M-step:\\
 % 
-% \end{table}
+% \column{1.5in}
+% {\bf GMM}\\
+% $\lambda = \pi, \mu, \Sigma$\\
+% Data points\\
+% Priors of a component\\
+% Estimate the probability of a component, given the data and current parameters.\\
+% Maximise $\pi$, $\mu$ and $\Sigma$.
+% 
+% \column{1.5in}
+% {\bf HMM}\\
+% $\lambda = \pi, {\bf A}, {\bf B}$\\
+% Observation sequence\\
+% State sequence\\
+% Estimate the probability of being in a state at a timestep and the probability of transfering from a state to another state.\\
+% Maximise $\pi$, ${\bf A}$ and ${\bf B}$.
+% \end{columns}
+
+\begin{table}
+ \begin{tabular}{|l| p{3.5cm} | p{3.5cm} |}\hline
+  Model:		&	{\bf GMM}		&	{\bf HMM}\\\hline
+  Model parameters:	& $\lambda = \pi, \mu, \Sigma$	&	$\lambda = \pi, {\bf A}, {\bf B}$\\
+  Hyper parameters:	&	Number of components	&	Topology (states, transitions)\\
+  Observed variables:	&	Data points		&	Observations\\
+  Latent variables:	&	Priors of a component	&	State sequence\\
+  E-step:		&	Estimate the probability of a component, given the data and current parameters. 
+	& Estimate the probability of being in a state at a timestep and the probability of transfering from a state to another state.\\
+  M-step:		& Maximise $\pi$, $\mu$ and $\Sigma$.	&	Maximise $\pi$, ${\bf A}$ and ${\bf B}$\\
+ \end{tabular}
+\end{table}
 
 
-\end{columns}
+}
 
+
+
+\frame{\frametitle{Problems we ran into}
+  Singularities. Consider the following observation:
+  \[
+   {\bf O} = \begin{pmatrix}
+        -1 & 0\\
+	2 & 0\\
+	1 & 0\\
+	-2 & 0\\
+       \end{pmatrix}
+  \]
+}
+
+\frame{\frametitle{Problems we ran into}
+ Singularities
+  \[
+   {\bf O} = \begin{pmatrix}
+        -1 & 0\\
+	2 & 0\\
+	1 & 0\\
+	-2 & 0\\
+       \end{pmatrix}
+  \]
+  \[
+   \Sigma = \begin{pmatrix}
+        3\frac{1}{3} & 0\\
+	0 & 0\\
+       \end{pmatrix}
+  \]
+}
+\frame{\frametitle{Problems we ran into}
+ Singularities
+  \[
+   {\bf O} = \begin{pmatrix}
+        -1 & 0\\
+	2 & 0\\
+	1 & 0\\
+	-2 & 0\\
+       \end{pmatrix}
+  \]
+  \[
+   \Sigma = \begin{pmatrix}
+        3\frac{1}{3} & 0\\
+	0 & 0\\
+       \end{pmatrix}
+  \]
+  -> Add some random noise, also to prevent variance from collapsing.
+}
+
+\frame{\frametitle{Problems we ran into}
+
+Short words have less likelihood.\\
+Harder to recognise, more subject to writer variations.
+
+tried to solve this by using MOG.
 
 }
 
@@ -267,41 +411,11 @@ Using features such as loops, this will give quite different feature vector.
 
 \begin{figure}
  \includegraphics[width=0.4\textwidth]{gmm3.jpg}
-\end{figure}
 \caption{Fitting a mixture of 2 Gaussians}
+\end{figure}
+
 
 }
-
-\frame{\frametitle{Problems we ran into}
-
-  \[
-   X = \begin{pmatrix}
-        -1 & 0\\
-	2 & 0\\
-	1 & 0\\
-	-2 & 0\\
-       \end{pmatrix}
-  \]
-}
-
-\frame{\frametitle{Problems we ran into}
-  \[
-   X = \begin{pmatrix}
-        -1 & 0\\
-	2 & 0\\
-	1 & 0\\
-	-2 & 0\\
-       \end{pmatrix}
-  \]
-  \[
-   \Sigma = \begin{pmatrix}
-        1 & 0\\
-	0 & 0\\
-       \end{pmatrix}
-  \]
-}
-
-
 \section{Results}
 \frame{\frametitle{Results}  
 blabla

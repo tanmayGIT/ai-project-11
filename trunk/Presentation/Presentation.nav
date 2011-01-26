@@ -75,24 +75,28 @@
 \headcommand {\beamer@framepages {31}{31}}
 \headcommand {\slideentry {2}{4}{11}{32/32}{Hidden-Markov Model}{0}}
 \headcommand {\beamer@framepages {32}{32}}
-\headcommand {\sectionentry {3}{Results}{33}{Results}{0}}
-\headcommand {\beamer@sectionpages {8}{32}}
-\headcommand {\beamer@subsectionpages {22}{32}}
-\headcommand {\slideentry {3}{0}{12}{33/33}{}{0}}
+\headcommand {\slideentry {2}{4}{12}{33/33}{Hidden-Markov Model}{0}}
 \headcommand {\beamer@framepages {33}{33}}
-\headcommand {\sectionentry {4}{Conclusions}{34}{Conclusions}{0}}
-\headcommand {\beamer@sectionpages {33}{33}}
-\headcommand {\beamer@subsectionpages {33}{33}}
-\headcommand {\slideentry {4}{0}{13}{34/34}{}{0}}
+\headcommand {\slideentry {2}{4}{13}{34/34}{Hidden-Markov Model}{0}}
 \headcommand {\beamer@framepages {34}{34}}
-\headcommand {\sectionentry {5}{Section no. 4}{35}{Section no. 4}{0}}
-\headcommand {\beamer@sectionpages {34}{34}}
-\headcommand {\beamer@subsectionpages {34}{34}}
-\headcommand {\beamer@subsectionentry {0}{5}{1}{35}{blocs}}\headcommand {\beamer@subsectionpages {35}{34}}
-\headcommand {\slideentry {5}{1}{1}{35/35}{blocs}{0}}
+\headcommand {\sectionentry {3}{Results}{35}{Results}{0}}
+\headcommand {\beamer@sectionpages {8}{34}}
+\headcommand {\beamer@subsectionpages {22}{34}}
+\headcommand {\slideentry {3}{0}{14}{35/35}{}{0}}
 \headcommand {\beamer@framepages {35}{35}}
-\headcommand {\beamer@partpages {1}{35}}
-\headcommand {\beamer@subsectionpages {35}{35}}
+\headcommand {\sectionentry {4}{Conclusions}{36}{Conclusions}{0}}
 \headcommand {\beamer@sectionpages {35}{35}}
-\headcommand {\beamer@documentpages {35}}
-\headcommand {\def \inserttotalframenumber {35}}
+\headcommand {\beamer@subsectionpages {35}{35}}
+\headcommand {\slideentry {4}{0}{15}{36/36}{}{0}}
+\headcommand {\beamer@framepages {36}{36}}
+\headcommand {\sectionentry {5}{Section no. 4}{37}{Section no. 4}{0}}
+\headcommand {\beamer@sectionpages {36}{36}}
+\headcommand {\beamer@subsectionpages {36}{36}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{37}{blocs}}\headcommand {\beamer@subsectionpages {37}{36}}
+\headcommand {\slideentry {5}{1}{1}{37/37}{blocs}{0}}
+\headcommand {\beamer@framepages {37}{37}}
+\headcommand {\beamer@partpages {1}{37}}
+\headcommand {\beamer@subsectionpages {37}{37}}
+\headcommand {\beamer@sectionpages {37}{37}}
+\headcommand {\beamer@documentpages {37}}
+\headcommand {\def \inserttotalframenumber {37}}
