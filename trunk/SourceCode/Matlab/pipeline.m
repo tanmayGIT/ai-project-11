@@ -2,7 +2,7 @@ function [models] = pipeline()
 
   s = warning('off');
 %   load markov_models.mat;
-    load models_with_noise.mat;
+%     load models_with_noise.mat;
     load newANNOTATION.mat;
 
   train_set = 30;
@@ -29,7 +29,7 @@ function [models] = pipeline()
         features{i} = slidingWindow(width, interval, word_structure(i), word_features, num_features)';
       
         noise_percentage = 20;
-        features{i} = addRandomNoise(features{i},noise_percentage);
+        features{i} = addRandomNoise(features{i}, noise_percentage);
     end
     % Train an HMM model for every word
     num_mixture_components = 1;                % Currently 1 
