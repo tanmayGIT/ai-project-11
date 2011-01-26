@@ -8,7 +8,7 @@ function [models] = pipeline()
   test_set = 5;
   
 %   For every word in the training set
-  for w_indx = 1:100
+  for w_indx = 1:195
     fprintf('\nCURRENT WORD: %s \nImage: ', words{w_indx});
     for i = 1 : train_set
         
