@@ -5,10 +5,10 @@ function [models] = pipeline()
   load newANNOTATION.mat;
 
   train_set = 20;
-  test_set = 15;
+  test_set = 5;
   
 %   For every word in the training set
-  for w_indx = 101:195
+  for w_indx = 1:100
     fprintf('\nCURRENT WORD: %s \nImage: ', words{w_indx});
     for i = 1 : train_set
         
@@ -27,8 +27,8 @@ function [models] = pipeline()
         num_features = 12;
         features{i} = slidingWindow(width, interval, word_structure(i), word_features, num_features)';
       
-        noise_percentage = 20;
-        features{i} = addRandomNoise(features{i},noise_percentage);
+%         noise_percentage = 20;
+%         features{i} = addRandomNoise(features{i},noise_percentage);
     end
     
     % Train an HMM model for every word
