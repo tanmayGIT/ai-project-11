@@ -2,7 +2,7 @@ function [models] = pipeline()
 
   s = warning('off');
 %   load markov_models.mat;
-%   load Annotation.mat;
+  load newANNOTATION.mat;
 
   train_set = 20;
   test_set = 15;
