@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.9.4)  26 JAN 2011 20:41
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.9.4)  26 JAN 2011 20:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1008,47 +1008,50 @@ Overfull \vbox (122.74338pt too high) detected at line 191
 
 ] [21
 
-] <hmm.jpg, id=845, 282.3348pt x 87.2058pt>
+] [22
+
+] <hmm.jpg, id=884, 282.3348pt x 87.2058pt>
 File: hmm.jpg Graphic file (type jpg)
- <use hmm.jpg> [22
+ <use hmm.jpg>
+[23
 
- <./hmm.jpg>] [23
-
-]
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 246--246
-[]  
- []
-
-
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 246--246
-[]  
- []
-
-
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 246--246
-[]  
- []
-
-[24
+ <./hmm.jpg>] [24
 
 ]
-Overfull \hbox (25.04037pt too wide) detected at line 270
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 256--256
+[]  
+ []
+
+
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 256--256
+[]  
+ []
+
+
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 256--256
+[]  
+ []
+
+[25
+
+]
+Overfull \hbox (25.04037pt too wide) detected at line 280
 \OT1/cmss/m/it/10.95 P\OT1/cmss/m/n/10.95 (\OT1/cmss/m/it/10.95 o[]\OML/cmm/m/i
 t/10.95 ; \OT1/cmss/m/it/10.95 o[]\OML/cmm/m/it/10.95 ; [] ; \OT1/cmss/m/it/10.
 95 o[]\OMS/cmsy/m/n/10.95 j\OT1/cmss/m/it/10.95 q[] \OT1/cmss/m/n/10.95 = \OT1/
 cmss/m/it/10.95 s[]\OML/cmm/m/it/10.95 ; ^^U\OT1/cmss/m/n/10.95 ) =
  []
 
-<forward2.jpg, id=956, 178.9887pt x 236.082pt>
+<forward2.jpg, id=992, 178.9887pt x 236.082pt>
 File: forward2.jpg Graphic file (type jpg)
  <use forward2.jpg>
-Overfull \vbox (8.83167pt too high) detected at line 270
+Overfull \vbox (8.83167pt too high) detected at line 280
  []
 
-[25
+[26
 
  <./forward2.jpg>]
-Overfull \hbox (25.04037pt too wide) detected at line 298
+Overfull \hbox (25.04037pt too wide) detected at line 308
 \OT1/cmss/m/it/10.95 P\OT1/cmss/m/n/10.95 (\OT1/cmss/m/it/10.95 o[]\OML/cmm/m/i
 t/10.95 ; \OT1/cmss/m/it/10.95 o[]\OML/cmm/m/it/10.95 ; [] ; \OT1/cmss/m/it/10.
 95 o[]\OMS/cmsy/m/n/10.95 j\OT1/cmss/m/it/10.95 q[] \OT1/cmss/m/n/10.95 = \OT1/
@@ -1059,47 +1062,45 @@ pdfTeX warning (ext4): destination with the same identifier (name{forwardProbab
 ility}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.298 }
+l.308 }
        
 File: forward2.jpg Graphic file (type jpg)
  <use forward2.jpg>
-Overfull \vbox (8.83167pt too high) detected at line 298
+Overfull \vbox (8.83167pt too high) detected at line 308
  []
 
-[26
+[27
 
-] [27
+] [28
 
 ]
-Underfull \hbox (badness 4156) in paragraph at lines 329--329
+Underfull \hbox (badness 4156) in paragraph at lines 339--339
 []\OT1/cmss/m/n/10.95 Number of com-po-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--329
+Underfull \hbox (badness 10000) in paragraph at lines 339--339
 []\OT1/cmss/m/n/10.95 Topology (states,
  []
 
 
-Overfull \hbox (15.63164pt too wide) in paragraph at lines 329--329
+Overfull \hbox (15.63164pt too wide) in paragraph at lines 339--339
  [] 
- []
-
-[28
-
-]
-Underfull \hbox (badness 1590) in paragraph at lines 370--370
-\OT1/cmss/m/n/10.95 given the data and
- []
-
-
-Underfull \hbox (badness 1655) in paragraph at lines 370--370
-\OT1/cmss/m/n/10.95 prob-a-bil-ity of trans-
  []
 
 [29
 
-] [30
+]
+Underfull \hbox (badness 1590) in paragraph at lines 380--380
+\OT1/cmss/m/n/10.95 given the data and
+ []
+
+
+Underfull \hbox (badness 1655) in paragraph at lines 380--380
+\OT1/cmss/m/n/10.95 prob-a-bil-ity of trans-
+ []
+
+[30
 
 ] [31
 
@@ -1107,26 +1108,28 @@ Underfull \hbox (badness 1655) in paragraph at lines 370--370
 
 ] [33
 
-] <gmm1.jpg, id=1278, 218.2554pt x 214.401pt>
+] [34
+
+] <gmm1.jpg, id=1313, 218.2554pt x 214.401pt>
 File: gmm1.jpg Graphic file (type jpg)
 
-<use gmm1.jpg> [34
+<use gmm1.jpg> [35
 
- <./gmm1.jpg>] <gmm2.jpg, id=1314, 218.2554pt x 214.401pt>
+ <./gmm1.jpg>] <gmm2.jpg, id=1349, 218.2554pt x 214.401pt>
 File: gmm2.jpg Graphic file (type jpg)
 
-<use gmm2.jpg> [35
+<use gmm2.jpg> [36
 
- <./gmm2.jpg>] <gmm3.jpg, id=1349, 218.2554pt x 214.401pt>
+ <./gmm2.jpg>] <gmm3.jpg, id=1384, 218.2554pt x 214.401pt>
 File: gmm3.jpg Graphic file (type jpg)
 
-<use gmm3.jpg> [36
+<use gmm3.jpg> [37
 
- <./gmm3.jpg>] [37
-
-] [38
+ <./gmm3.jpg>] [38
 
 ] [39
+
+] [40
 
 ]
 \tf@nav=\write5
@@ -1148,10 +1151,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13125 strings out of 495061
- 233792 string characters out of 1182622
+ 13129 strings out of 495061
+ 233829 string characters out of 1182622
  317488 words of memory out of 3000000
- 15830 multiletter control sequences out of 15000+50000
+ 15832 multiletter control sequences out of 15000+50000
  14812 words of font info for 55 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  45i,19n,63p,355b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1167,9 +1170,9 @@ texlive/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf-texlive/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/pu
 blic/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
 s/cm/cmtt10.pfb>
-Output written on Presentation.pdf (39 pages, 1310551 bytes).
+Output written on Presentation.pdf (40 pages, 1319844 bytes).
 PDF statistics:
- 1546 PDF objects out of 1728 (max. 8388607)
- 101 named destinations out of 1000 (max. 500000)
+ 1582 PDF objects out of 1728 (max. 8388607)
+ 103 named destinations out of 1000 (max. 500000)
  244 words of extra memory for PDF output out of 10000 (max. 10000000)
 
