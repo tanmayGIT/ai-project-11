@@ -106,11 +106,11 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \end{beamerboxesrounded}
 }
 
-\frame{\frametitle{Pipeline}  
+\frame{\frametitle{Pre-processing}  
 \begin{figure}
   \centering
-    \includegraphics[width=1.02 \textwidth]{Images/pipeline.png}
-   \caption{Pipeline of a word recognition system}
+    \includegraphics[width=1\textwidth]{Images/pipelinePP.png}
+   \caption{Pipeline for the pre-processing/normalization step}
    \label{fig:pipeline}
 \end{figure}
 }
@@ -120,7 +120,7 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \frame{\frametitle{Line Segmentation}  
 \begin{figure}
   \centering
-    \includegraphics[width=0.96 \textwidth]{Images/line_segmentation.png}
+    \includegraphics[width=0.93 \textwidth]{Images/line_segmentation.png}
    \caption{Example of line segmentation}
    \label{fig:lineSegm}
 \end{figure}
@@ -142,16 +142,56 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
   \centering
     \includegraphics[width=1.0 \textwidth]{Images/slant.png}
    \caption{Slant detection and correction pipeline}
-   \label{fig:skew}
+   \label{fig:slant}
 \end{figure}
 }
 
 \frame{\frametitle{Word segmentation}
+\begin{itemize}
+\item We first detect white spaces:
+\begin{figure}
+  \centering
+    \includegraphics[width=1.0 \textwidth]{Images/words_segm_wp.png}
+   \label{fig:words_wp}
+\end{figure}
+\item We cluster them into 2 clusters: 'letters separator' and 'words separator'
+\item We segment the line using the white spaces clustered as 'words separator':
+\begin{figure}
+  \centering
+    \includegraphics[width=0.4\textwidth]{Images/words_segm_res.png}
+   \label{fig:words_res}
+\end{figure}
+\end{itemize}
 }  
-
 
 \frame{\frametitle{Vertical Scaling}
 }  
+
+\frame{\frametitle{Skeletonization}
+}  
+
+\frame{\frametitle{Remembering the entire pipeline....}
+ \begin{beamerboxesrounded}{}
+\centering \bf{Why do we repeat skew and slant corraction twice?}
+\end{beamerboxesrounded}
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{Images/pipelinePPex.png}
+   \label{fig:pipeline}
+\end{figure}
+}  
+
+\frame{\frametitle{Because....}
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{Images/pipelinePPex.png}
+   \label{fig:pipeline}
+\end{figure}
+
+}  
+
+
+
 
 
 \subsection{Feature Extraction}
@@ -171,7 +211,7 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \frame{\frametitle{HMM}  
 
   \begin{figure}
-  \includegraphics{Images/hmm.jpg} 
+  \includegraphics{hmm.jpg} 
   \caption{Left-to-right HMM with N states}
   \end{figure}
 
@@ -180,28 +220,57 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \frame{\frametitle{Main problems in an HMM}
   \begin{enumerate}
  \item The probability of an observation sequence, given the model, $P({\bf O}|\lambda)$.
- \item The most likely state sequence, underlying a given observation sequence and the model, $Q^* = \max P(Q|{\bf O},\lambda)$.
  \item The most likely parameters of the model $\lambda^* = \max P(X|\lambda)$, given a training set of $M$ observation sequences $X = ({\bf O}_{1}, {\bf O}_{2}, \ldots, {\bf O}_{M} )$.
+  \item The most likely state sequence, underlying a given observation sequence and the model, $Q^* = \max P(Q|{\bf O},\lambda)$.
+\end{enumerate}
+}
+
+\frame{\frametitle{Main problems in an HMM}
+  \begin{enumerate}
+ \item The probability of an observation sequence, given the model, $P({\bf O}|\lambda)$.
+ \begin{beamerboxesrounded}{}
+   Sum-product algorithm: forward-backward algorithm
+\end{beamerboxesrounded}
+	
+ \item The most likely parameters of the model $\lambda^* = \max P(X|\lambda)$, given a training set of $M$ observation sequences $X = ({\bf O}_{1}, {\bf O}_{2}, \ldots, {\bf O}_{M} )$.
+  \begin{beamerboxesrounded}{}
+  EM-algorithm: Baum-Welch reestimation
+\end{beamerboxesrounded}
+      
+\item The most likely state sequence, underlying a given observation sequence and the model, $Q^* = \max P(Q|{\bf O},\lambda)$.
+  \begin{beamerboxesrounded}{}
+  Dynamic programming: Viterbi algorithm
+\end{beamerboxesrounded}
+
 \end{enumerate}
 }
 
 \frame{\frametitle{Forward probability}
   Solution to the first problem, use {\it forward-backward} algorithm, a special instance of the sum-product algorithm
   \begin{figure}
-  \includegraphics[width=0.4\textwidth]{Images/forward2.jpg}
+  \includegraphics[width=0.4\textwidth]{forward2.jpg}
   \caption{Illustration of the computation of forward probability}
   \end{figure}
 }
 
 \frame{\frametitle{Updating the parameters}
 
-  Use EM-algorithm
+  Comparison with GMM:
+\begin{table}
+ \begin{tabular}{|l| p{3.5cm} | p{3.5cm} |}\hline
+  Model:		&	{\bf GMM}		&	{\bf HMM}\\\hline
+  Model parameters:	& $\lambda = \pi, \mu, \Sigma$	&	$\lambda = \pi, {\bf A}, {\bf B}$\\
+  Hyper parameters:	&	Number of components	&	Topology (states, transitions)\\
+  Observed variables:	&	Data points		&	Observations\\
+  Latent variables:	&	Priors of a component	&	State sequence\\
+ \end{tabular}
+\end{table}
 
 }
 
 \frame{\frametitle{Updating parameters}
 
-\begin{columns}
+% \begin{columns}
 
 % \column{1.5in}
 % Model:\\
@@ -226,22 +295,20 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 % State sequence\\
 % Estimate the probability of being in a state at a timestep and the probability of transfering from a state to another state.\\
 % Maximise $\pi$, ${\bf A}$ and ${\bf B}$.
+% \end{columns}
 
-% \begin{table}
-%  \begin{tabular}{|l|c|r|}\hline
-%   Model:		&	{\bf GMM}		&	{\bf HMM}\\\hline
-%   Model parameters:	& $\lambda = \pi, \mu, \Sigma$	&	$\lambda = \pi, {\bf A}, {\bf B}$\\
-%   Observed variables:	&	Data points		&	Observations\\
-%   Latent variables:	&	Priors of a component	&	State sequence\\
-%   E-step:		&	Estimate the probability of a component, given the data and current parameters. 
-% 	& Estimate the probability of being in a state at a timestep and the probability of transfering from a state to another state.\\
-%   M-step:		& Maximise $\pi$, $\mu$ and $\Sigma$.	&	Maximise $\pi$, ${\bf A}$ and ${\bf B}$\\
-%  \end{tabular}
-% 
-% \end{table}
-
-
-\end{columns}
+\begin{table}
+ \begin{tabular}{|l| p{3.5cm} | p{3.5cm} |}\hline
+  Model:		&	{\bf GMM}		&	{\bf HMM}\\\hline
+  Model parameters:	& $\lambda = \pi, \mu, \Sigma$	&	$\lambda = \pi, {\bf A}, {\bf B}$\\
+  Hyper parameters:	&	Number of components	&	Topology (states, transitions)\\
+  Observed variables:	&	Data points		&	Observations\\
+  Latent variables:	&	Priors of a component	&	State sequence\\
+  E-step:		&	Estimate the probability of a component, given the data and current parameters. 
+	& Estimate the probability of being in a state at a timestep and the probability of transfering from a state to another state.\\
+  M-step:		& Maximise $\pi$, $\mu$ and $\Sigma$.	&	Maximise $\pi$, ${\bf A}$ and ${\bf B}$\\
+ \end{tabular}
+\end{table}
 
 
 }
@@ -249,7 +316,7 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \frame{\frametitle{Within class variations}
 
 \begin{figure}
- \includegraphics[width=0.4\textwidth]{Images/gmm1.jpg}
+ \includegraphics[width=0.4\textwidth]{gmm1.jpg}
 \end{figure}
 Using features such as loops, this will give quite different feature vector.
 
@@ -257,7 +324,7 @@ Using features such as loops, this will give quite different feature vector.
 \frame{\frametitle{Within class variations}
 
 \begin{figure}
- \includegraphics[width=0.4\textwidth]{Images/gmm2.jpg}
+ \includegraphics[width=0.4\textwidth]{gmm2.jpg}
 \caption{Fitting a single Gaussian}
 \end{figure}
 
@@ -266,7 +333,7 @@ Using features such as loops, this will give quite different feature vector.
 \frame{\frametitle{Within class variations}
 
 \begin{figure}
- \includegraphics[width=0.4\textwidth]{Images/gmm3.jpg}
+ \includegraphics[width=0.4\textwidth]{gmm3.jpg}
 \caption{Fitting a mixture of 2 Gaussians}
 \end{figure}
 
