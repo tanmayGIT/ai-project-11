@@ -55,19 +55,21 @@ The research touched different fields:
 \item Data Collection
 \item Image Processing
 \item Features extraction 
-\item Machine Learning techniques
-\item Word Recognition using Hidden Markov Models
+\item Machine Learning 
+\item Word Recognition
 \end{itemize}
 }
 
 \subsection{Dataset}
 \frame{\frametitle{Dataset}
-The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-handwriting-database}
+The IAM Handwriting Database 3.0\footnote{http://www.iam.unibe.ch/fki/databases/iam-handwriting-database}  \vspace{\baselineskip}
+
 \begin{itemize}
 %\item It contains forms of handwritten English text which can be used to train and test handwritten text recognizers and to perform writer identification and verification experiments.
 \item Unconstrained handwritten text (scanned at a resolution of 300dpi and saved as PNG images with 256 gray levels) 
-\item 1'539 pages of scanned text of 657 writers\vspace{\baselineskip}
-\item We extracted 35 instances of the 300 most frequent words (20 as training set and 15 as test set)
+\item 1'539 pages of scanned text of 657 writers
+\item 13'353 isolated and labeled text lines
+\item 115'320 isolated and labeled words
 \end{itemize}
 }
 
@@ -137,56 +139,87 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 }
 
 
-\frame{\frametitle{Slant detection and Correction}  
+\frame{\frametitle{Slant Correction}  
 \begin{figure}
   \centering
-    \includegraphics[width=1.0 \textwidth]{Images/slant.png}
+    \includegraphics[width=1 \textwidth]{Images/slant.png}
    \caption{Slant detection and correction pipeline}
    \label{fig:slant}
 \end{figure}
 }
 
 \frame{\frametitle{Word segmentation}
-\begin{itemize}
-\item We first detect white spaces:
 \begin{figure}
   \centering
-    \includegraphics[width=1.0 \textwidth]{Images/words_segm_wp.png}
-   \label{fig:words_wp}
-\end{figure}
-\item We cluster them into 2 clusters: 'letters separator' and 'words separator'
-\item We segment the line using the white spaces clustered as 'words separator':
-\begin{figure}
-  \centering
-    \includegraphics[width=0.4\textwidth]{Images/words_segm_res.png}
+    \includegraphics[width=1.0 \textwidth]{Images/word_segmentation.png}
    \label{fig:words_res}
 \end{figure}
-\end{itemize}
+}  
+
+\frame{\frametitle{Baseline Estimation}
+\begin{figure}
+  \centering
+    \includegraphics[width=0.95 \textwidth]{Images/baseline.png}
+   \label{fig:baselines}
+\end{figure}
 }  
 
 \frame{\frametitle{Vertical Scaling}
+\begin{figure}
+  \centering
+    \includegraphics[width=0.90 \textwidth]{Images/vertical_scaling.png}
+   \label{fig:scal}
+   \caption{Examples of vertical scaling process}
+\end{figure}
 }  
 
 \frame{\frametitle{Skeletonization}
+\begin{figure}
+  \centering
+    \includegraphics[width=0.90 \textwidth]{Images/skeleton.png}
+   \label{fig:skel}
+   \caption{Skeletonization process}
+\end{figure}
+
 }  
 
 \frame{\frametitle{Remembering the entire pipeline....}
  \begin{beamerboxesrounded}{}
-\centering \bf{Why do we repeat skew and slant corraction twice?}
+\centering \bf{Why repeating skew and slant correction twice?}
 \end{beamerboxesrounded}
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{Images/pipelinePPex.png}
-   \label{fig:pipeline}
+   \label{fig:pipelineEx}
 \end{figure}
 }  
 
-\frame{\frametitle{Because....}
+\frame{\frametitle{The normalizations are necessary for:}
+ \begin{beamerboxesrounded}{First}
+%  \begin{itemize}
+%\item 
+Words segmentation 
+ %\end{itemize}
 \begin{figure}
   \centering
-    \includegraphics[width=1\textwidth]{Images/pipelinePPex.png}
-   \label{fig:pipeline}
+    \includegraphics[width=0.9\textwidth]{Images/problem1.png}
+   \label{fig:problem1}
 \end{figure}
+\end{beamerboxesrounded}
+
+ \begin{beamerboxesrounded}{Second}
+ %\begin{itemize}
+%\item 
+Not all the words have the same slope, slant and lower baseline
+ %\end{itemize}
+\begin{figure}
+  \centering
+    \includegraphics[width=0.9\textwidth]{Images/problem2.png}
+   \label{fig:problem2}
+\end{figure}
+
+\end{beamerboxesrounded}
+
 
 }  
 
@@ -202,9 +235,52 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 }
 
 \frame{\frametitle{Features}  
-  We want to find features that minimise the within-class variability and maximise the between class variability. On top of this, the features should be robust againts distortions caused by different handwriting styles. Moreover, we want to find low dimensional featur vectors and would therefore like features to be highly descriptive.
-  The selection of features depends both on the pre-processing and the classifier to use. If all characters are assumed to have the same oriention, we need rotation variant features to distinguish between for instance a 6 and a 9 and a b and an p, etc.
+
+Extracted from the skeleton of the words. \vspace{\baselineskip}
+
+Mainly 2 types:
+\begin{itemize}
+\item Statistical
+\item Morphological
+\end{itemize}
+}
+
+%  We want to find features that minimize the within-class variability and maximize the between class variability. On top of this, the features should be robust against distortions caused by different handwriting styles. Moreover, we want to find low dimensional feature vectors and would therefore like features to be highly descriptive.
+%  The selection of features depends both on the pre-processing and the classifier to use. If all characters are assumed to have the same orientation, we need rotation variant features to distinguish between for instance a 6 and a 9 and a b and an p, etc.
   
+
+\frame{\frametitle{Statistical Features}  
+Percentage of white pixels in the 3 zones of the word:
+\begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{Images/statisticalFeatures.png}
+   \label{fig:statFeatures}
+   \caption{Example}
+\end{figure}
+}
+
+\frame{\frametitle{Morphological Features}  
+Obtained by {\bf connected component analysis}.
+
+\begin{itemize}
+\item A connected component it is a subgraph in which any two vertices are connected to each other by paths, and which is connected to no additional vertices.
+\end{itemize}
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.9\textwidth]{Images/components.png}
+   \label{fig:comp}
+   \caption{Example of words divided in different components (colors)}
+\end{figure}
+}
+
+\frame{\frametitle{Morphological Features}  
+We extract:
+\begin{figure}
+  \centering
+    \includegraphics[width=1 \textwidth]{Images/morpho_features.png}
+   \label{fig:morphFeatures}
+\end{figure}
 }
 
 \subsection{Hidden-Markov Model}
@@ -255,78 +331,84 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \end{enumerate}
 }
 
-\frame{\frametitle{Forward probability}
-\begin{columns}
- 
-\column{1.5in}
-\[
- \alpha_{t}(i) \equiv
-\]
-\[
-  P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
-\]
-\begin{equation}
- \label{forwardProbability}
-\displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
-\end{equation}
-\column{2in}
-  \begin{figure}
-  \includegraphics[width=0.8\textwidth]{forward2.jpg}
-  \caption{Computation of forward probability}
-  \end{figure}
-
-\end{columns}
-
-}
-
-\frame{\frametitle{Forward probability}
-\begin{columns}
- 
-\column{1.5in}
-\[
- \alpha_{t}(i) \equiv
-\]
-\[
-  P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
-\]
-\begin{equation}
- \label{forwardProbability}
-\displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
-\end{equation}
-\begin{equation}
- P({\bf O| \lambda}) = \displaystyle \sum_{i=1}^{N} \alpha_{T}(i)
-\end{equation}
-Problem 1 solved.
-\column{2in}
-  \begin{figure}
-  \includegraphics[width=0.8\textwidth]{forward2.jpg}
-  \caption{Computation of forward probability}
-  \end{figure}
-
-\end{columns}
-
-}
-
-\frame{\frametitle{Updating the parameters}
-  The forward-backward algorithm also commes with a backward probability:\\
- \[
-  \beta_{t}(j) \equiv P(o_{t+1},o_{t+2},\ldots, o_{T}| q_{t} = s_{j}, \lambda) = 
-\]
-\begin{equation}
- \label{backwardProbability}
-\displaystyle \sum_{i=1}^{N} a_{ij} b_{i}(o_{t+1}) \beta_{i}(o_{t+1})
-\end{equation}
-With this we can define the probability of being in a state at a timestep as:
-\[
- (P({\bf O}|\lambda))^{-1} P({\bf O}|\lambda )P(q_{t} = s_{i}|\lambda) = 
-\]
-\begin{equation}
- \gamma_{t}(i) \equiv (P({\bf O}|\lambda))^{-1} \alpha_{t}(i)\beta_{t}(i) 
-\end{equation}
-Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\beta_{t}(i) = \sum_{j=1}^{N} \alpha_{T}(j)$.
-
-}
-
+% \frame{\frametitle{Forward probability}
+% \begin{columns}
+%  
+% \column{1.5in}
+% \[
+%  \alpha_{t}(i) \equiv
+% \]
+% \[
+%   P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
+% \]
+% \begin{equation}
+%  \label{forwardProbability}
+% \displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
+% \end{equation}
+% \column{2in}
+%   \begin{figure}
+%   \includegraphics[width=0.8\textwidth]{forward2.jpg}
+%   \caption{Computation of forward probability}
+%   \end{figure}
+% 
+% \end{columns}
+% 
+% }
+% 
+% \frame{\frametitle{Forward probability}
+% \begin{columns}
+%  
+% \column{1.5in}
+% \[
+%  \alpha_{t}(i) \equiv
+% \]
+% \[
+%   P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
+% \]
+% \begin{equation}
+%  \label{forwardProbability}
+% \displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
+% \end{equation}
+% \begin{equation}
+%  P({\bf O| \lambda}) = \displaystyle \sum_{i=1}^{N} \alpha_{T}(i)
+% \end{equation}
+% Problem 1 solved.
+% \column{2in}
+%   \begin{figure}
+%   \includegraphics[width=0.8\textwidth]{forward2.jpg}
+%   \caption{Computation of forward probability}
+%   \end{figure}
+% 
+% \end{columns}
+% 
+% }
+% 
+% \frame{\frametitle{Learning the parameters}
+%   The forward-backward algorithm also commes with a backward probability:\\
+%  \[
+%   \beta_{t}(j) \equiv P(o_{t+1},o_{t+2},\ldots, o_{T}| q_{t} = s_{j}, \lambda) = 
+% \]
+% \begin{equation}
+%  \label{backwardProbability}
+% \displaystyle \sum_{i=1}^{N} a_{ij} b_{i}(o_{t+1}) \beta_{i}(o_{t+1})
+% \end{equation}
+% With this we can define the probability of being in a state at a timestep as:
+% \begin{equation}
+%  \gamma_{t}(i) \equiv (P({\bf O}|\lambda))^{-1} \alpha_{t}(i)\beta_{t}(i) 
+% \end{equation}
+% Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\beta_{t}(i) = \sum_{j=1}^{N} \alpha_{T}(j)$.
+% 
+% }
+% 
+% \frame{\frametitle{Learning the parameters}
+% \[ 
+% \hat{a}_{ij} = frac{\text{Prob. of being in i and transfering to j}}{\text{Prob. of begin in i}} =
+% \]
+% \begin{equation}
+%  \hat{a}_{ij} = \frac{\displaystyle \sum_{t=1}^{T-1} \xi_{t}(i,j) } {\displaystyle \sum_{t=1}^{T-1} \gamma_{t}(i) }
+% \end{equation}
+% The priors remain fixed, for the left-to-right model.
+% }
 \frame{\frametitle{Updating the parameters}
 
   Comparison with GMM:
@@ -334,7 +416,7 @@ Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\
  \begin{tabular}{|l| p{3.5cm} | p{3.5cm} |}\hline
   Model:		&	{\bf GMM}		&	{\bf HMM}\\\hline
   Model parameters:	& $\lambda = \pi, \mu, \Sigma$	&	$\lambda = \pi, {\bf A}, {\bf B}$\\
-  Hyper parameters:	&	Number of components	&	Topology (states, transitions)\\
+  Hyper parameters:	&	Number of components	&	Topology (states, transitions), observation function\\
   Observed variables:	&	Data points		&	Observations\\
   Latent variables:	&	Priors of a component	&	State sequence\\\hline
  \end{tabular}
@@ -379,11 +461,7 @@ Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\
   M-step:		& Maximise $\pi$, $\mu$ and $\Sigma$.	&	Maximise $\pi$, ${\bf A}$ and ${\bf B}$\\\hline
  \end{tabular}
 \end{table}
-
-
 }
-
-
 
 \frame{\frametitle{Problems we ran into}
 Consider the following observation:
@@ -398,6 +476,7 @@ Consider the following observation:
 }
 
 \frame{\frametitle{Problems we ran into}
+  Singularities. Consider the following observation:
   \[
    {\bf O} = \begin{pmatrix}
         -1 & 0\\
@@ -433,48 +512,58 @@ Consider the following observation:
  |\Sigma| = 0
 \]
 
-  Possible solution: Add some random noise.
+\begin{beamerboxesrounded}{}
+\centering   Possible solution: Add some random noise.
+\end{beamerboxesrounded}
+
 }
+
 
 \frame{\frametitle{Problems we ran into}
 
-Short words/long words.
+Length of the word. Short words seem to be harder to find. Possible causes:
+\begin{itemize}
+ \item 
+\end{itemize}
 
 
-
-}
-
-\frame{\frametitle{Within class variations}
-
-\begin{figure}
- \includegraphics[width=0.4\textwidth]{gmm1.jpg}
-\end{figure}
-Using features such as loops, this will give quite different feature vector.
-
-}
-\frame{\frametitle{Within class variations}
-
-\begin{figure}
- \includegraphics[width=0.4\textwidth]{gmm2.jpg}
-\caption{Fitting a single Gaussian}
-\end{figure}
-
-
-}
-\frame{\frametitle{Within class variations}
-
-\begin{figure}
- \includegraphics[width=0.4\textwidth]{gmm3.jpg}
-\caption{Fitting a mixture of 2 Gaussians}
-\end{figure}
 
 
 }
 \section{Results}
-\frame{\frametitle{Results}  
-blabla
+\frame{\frametitle{Results on simple task}  
+
+Simple experiment, train the model on intensity features and run it on typewritten words. Feed features from letter to both models.
+\begin{table}
+\caption{Results for simple typewritten words, avg over 40 runs}
+ \begin{tabular}{|l|c|c|r|}\hline
+    {\bf Word}   			& Letter & Number & Difference \\\hline
+    LL Intensity N=6	K=1 10EM 	& 121.68 & 106.36 & 	15.32	\\
+    LL All features N=6 K=1 10EM	& 795.45 & 14.08  &	781.37	\\
+    LL All features N=1	K=1 10EM	& 602.22 & -90.02 &	692.22	\\
+    LL All features N=6 K=3 10EM	& -186.45  &-330.14 &	143.69	\\
+    LL All features N=6 K=3 30EM	& 226.96 & -820.30 &	$1.04e^{3}$\\
+    LL ALL , N=6, K=1, 10EM, diagonal cov & 871.16 & 531.27 & 	487.75\\
+    LL ALL , N=6, K=1, 10EM, isotropc cov & -179.00 & -272.23 &	197.35\\
+    ... & ... & ...& ... \\
+ \end{tabular}
+\end{table}
+...many many more parameters. (Interval sliding window, width of sliding window, amount of noise, ... etc.)
 }
 
+\frame{\frametitle{Results on simple task}
+Step 2, take cursive words of the same length.
+\begin{table}
+\caption{Results for simple handwritten words, avg over 40 runs}
+ \begin{tabular}{|l|c|c|r|}\hline
+    {\bf Word}   			& Before & People & Difference \\\hline
+    LL All features N=6 K=1 		&  $1.17e+03$ & $1.19e+03$ & 	$ 480.16$	\\
+    LL All features N=1	K=1 		& $699.56$ & $1.0124e+03$ &	$422.78$	\\
+    LL All features N=6 K=3 		& 226.96 & -820.30 &	1.04e\^{3}\\
+ \end{tabular}
+\end{table}
+
+}
 
 
 \section{Conclusions}
@@ -482,96 +571,6 @@ blabla
 blabla
 }
 
-
-
-%\section{Pre-Processing} 
-%\frame{\frametitle{Title} 
-%Each frame should have a title.
-%}
-%
-%\frame{ 
-%Without title somethink is missing. 
-%}
-%
-%
-%\section{Feature Extraction} 
-%\subsection{Lists I}
-%\frame{\frametitle{unnumbered lists}
-%\begin{itemize}
-%\item Introduction to  \LaTeX  
-%\item Course 2 
-%\item Termpapers and presentations with \LaTeX 
-%\item Beamer class
-%\end{itemize} 
-%}
-%
-%\frame{\frametitle{lists with pause}
-%\begin{itemize}
-%\item Introduction to  \LaTeX \pause 
-%\item Course 2 \pause 
-%\item Termpapers and presentations with \LaTeX \pause 
-%\item Beamer class
-%\end{itemize} 
-%}
-%
-%\subsection{Lists II}
-%\frame{\frametitle{numbered lists}
-%\begin{enumerate}
-%\item Introduction to  \LaTeX  
-%\item Course 2 
-%\item Termpapers and presentations with \LaTeX 
-%\item Beamer class
-%\end{enumerate}
-%}
-%\frame{\frametitle{numbered lists with pause}
-%\begin{enumerate}
-%\item Introduction to  \LaTeX \pause 
-%\item Course 2 \pause 
-%\item Termpapers and presentations with \LaTeX \pause 
-%\item Beamer class
-%\end{enumerate}
-%}
-%
-%\section{Section no.3} 
-%\subsection{Tables}
-%\frame{\frametitle{Tables}
-%\begin{tabular}{|c|c|c|}
-%\hline
-%\textbf{Date} & \textbf{Instructor} & \textbf{Title} \\
-%\hline
-%WS 04/05 & Sascha Frank & First steps with  \LaTeX  \\
-%\hline
-%SS 05 & Sascha Frank & \LaTeX \ Course serial \\
-%\hline
-%\end{tabular}}
-%
-%
-%\frame{\frametitle{Tables with pause}
-%\begin{tabular}{c c c}
-%A & B & C \\ 
-%\pause 
-%1 & 2 & 3 \\  
-%\pause 
-%A & B & C \\ 
-%\end{tabular} }
-%
-%
-\section{Section no. 4}
-\subsection{blocs}
-\frame{\frametitle{blocs}
-
-\begin{block}{title of the bloc}
-bloc text
-\end{block}
-
-\begin{exampleblock}{title of the bloc}
-bloc text
-\end{exampleblock}
-
-
-\begin{alertblock}{title of the bloc}
-bloc text
-\end{alertblock}
-}
 \end{document}
+
 

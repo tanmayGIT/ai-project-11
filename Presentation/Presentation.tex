@@ -409,6 +409,84 @@ We extract:
 %The priors remain fixed, for the left-to-right model.
 %}
 
+% \frame{\frametitle{Forward probability}
+% \begin{columns}
+%  
+% \column{1.5in}
+% \[
+%  \alpha_{t}(i) \equiv
+% \]
+% \[
+%   P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
+% \]
+% \begin{equation}
+%  \label{forwardProbability}
+% \displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
+% \end{equation}
+% \column{2in}
+%   \begin{figure}
+%   \includegraphics[width=0.8\textwidth]{forward2.jpg}
+%   \caption{Computation of forward probability}
+%   \end{figure}
+% 
+% \end{columns}
+% 
+% }
+% 
+% \frame{\frametitle{Forward probability}
+% \begin{columns}
+%  
+% \column{1.5in}
+% \[
+%  \alpha_{t}(i) \equiv
+% \]
+% \[
+%   P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
+% \]
+% \begin{equation}
+%  \label{forwardProbability}
+% \displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
+% \end{equation}
+% \begin{equation}
+%  P({\bf O| \lambda}) = \displaystyle \sum_{i=1}^{N} \alpha_{T}(i)
+% \end{equation}
+% Problem 1 solved.
+% \column{2in}
+%   \begin{figure}
+%   \includegraphics[width=0.8\textwidth]{forward2.jpg}
+%   \caption{Computation of forward probability}
+%   \end{figure}
+% 
+% \end{columns}
+% 
+% }
+% 
+% \frame{\frametitle{Learning the parameters}
+%   The forward-backward algorithm also commes with a backward probability:\\
+%  \[
+%   \beta_{t}(j) \equiv P(o_{t+1},o_{t+2},\ldots, o_{T}| q_{t} = s_{j}, \lambda) = 
+% \]
+% \begin{equation}
+%  \label{backwardProbability}
+% \displaystyle \sum_{i=1}^{N} a_{ij} b_{i}(o_{t+1}) \beta_{i}(o_{t+1})
+% \end{equation}
+% With this we can define the probability of being in a state at a timestep as:
+% \begin{equation}
+%  \gamma_{t}(i) \equiv (P({\bf O}|\lambda))^{-1} \alpha_{t}(i)\beta_{t}(i) 
+% \end{equation}
+% Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\beta_{t}(i) = \sum_{j=1}^{N} \alpha_{T}(j)$.
+% 
+% }
+% 
+% \frame{\frametitle{Learning the parameters}
+% \[ 
+% \hat{a}_{ij} = frac{\text{Prob. of being in i and transfering to j}}{\text{Prob. of begin in i}} =
+% \]
+% \begin{equation}
+%  \hat{a}_{ij} = \frac{\displaystyle \sum_{t=1}^{T-1} \xi_{t}(i,j) } {\displaystyle \sum_{t=1}^{T-1} \gamma_{t}(i) }
+% \end{equation}
+% The priors remain fixed, for the left-to-right model.
+% }
 \frame{\frametitle{Updating the parameters}
 
   Comparison with GMM:
@@ -517,37 +595,21 @@ Consider the following observation:
 \end{beamerboxesrounded}
 
 }
-\frame{\frametitle{Problems we ran into}
- Singularities
-  \[
-   {\bf O} = \begin{pmatrix}
-        -1 & 0\\
-	2 & 0\\
-	1 & 0\\
-	-2 & 0\\
-       \end{pmatrix}
-  \]
-  \[
-   \Sigma = \begin{pmatrix}
-        3\frac{1}{3} & 0\\
-	0 & 0\\
-       \end{pmatrix}
-  \]
-  -> Add some random noise, also to prevent variance from collapsing.
-}
+
 
 \frame{\frametitle{Problems we ran into}
 
-Short words have less likelihood.\\
-Harder to recognise, more subject to writer variations.
-tried to solve this by using MOG.
+Length of the word. Short words seem to be harder to find. Possible causes:
+\begin{itemize}
+ \item During the testing, the model does not execute a complete sequence, e.g.
+      when looking for 'the' in 'therefore' it might end before 'r'.
+ \items 
+\end{itemize}
 }
 
-\subsection{Feature Extraction}
-\frame{
-\begin{beamerboxesrounded}{}
-\centering Experiments and Results
-\end{beamerboxesrounded}
+
+
+
 }
 
 \section{Experiments and Results}
@@ -604,13 +666,9 @@ For both experiments the model of a word is built using 30 samples from 30 autho
 \caption{Results for simple handwritten words, avg over 40 runs}
  \begin{tabular}{|l|c|c|r|}\hline
     {\bf Word}   			& Before & People & Difference \\\hline
-    LL All features N=6 K=1 10EM	&  $1.17e+03$ & $1.19e+03$ & 	$ 480.16$	\\
-    LL All features N=1	K=1 10EM	& 602.22 & -90.02 &	692.22	\\
-    LL All features N=6 K=3 10EM	& -186.45  &-330.14 &	143.69	\\
-    LL All features N=6 K=3 30EM	& 226.96 & -820.30 &	1.04e\^{3}\\
-    LL ALL , N=6, K=1, 10EM, diagonal cov & 871.16 & 531.27 & 	487.75\\
-    LL ALL , N=6, K=1, 10EM, isotropc cov & -179.00 & -272.23 &	197.35\\
-    ... & ... & ...& \\
+    LL All features N=6 K=1 		&  $1.17e+03$ & $1.19e+03$ & 	$ 480.16$	\\
+    LL All features N=1	K=1 		& $699.56$ & $1.0124e+03$ &	$422.78$	\\
+    LL All features N=6 K=3 		& 226.96 & -820.30 &	1.04e\^{3}\\
  \end{tabular}
 \end{table}
 
