@@ -98,6 +98,8 @@
       end
   end
  
+  save ranked_words2
+  save ranked_likelihood2
 %   evaluateResults(ranked_words, ranked_likelihoods, words);
   
   k = 10;
