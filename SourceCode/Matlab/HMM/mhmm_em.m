@@ -64,7 +64,7 @@ if M == 1
   adj_mix = 0;
 end
 
-while (num_iter <= max_iter) & ~converged
+while (num_iter <= 30) & ~converged
   % E step
   [loglik, exp_num_trans, exp_num_visits1, postmix, m, ip, op] = ...
       ess_mhmm(prior, transmat, mixmat, mu, Sigma, data);
