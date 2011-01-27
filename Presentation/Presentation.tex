@@ -159,15 +159,28 @@ The IAM Handwriting Database 3.0\footnote{http://www.iam.unibe.ch/fki/databases/
 \frame{\frametitle{Baseline Estimation}
 \begin{figure}
   \centering
- %   \includegraphics[width=1.0 \textwidth]{Images/word_segmentation.png}
+    \includegraphics[width=0.95 \textwidth]{Images/baseline.png}
    \label{fig:baselines}
 \end{figure}
 }  
 
 \frame{\frametitle{Vertical Scaling}
+\begin{figure}
+  \centering
+    \includegraphics[width=0.90 \textwidth]{Images/vertical_scaling.png}
+   \label{fig:scal}
+   \caption{Examples of vertical scaling process}
+\end{figure}
 }  
 
 \frame{\frametitle{Skeletonization}
+\begin{figure}
+  \centering
+    \includegraphics[width=0.90 \textwidth]{Images/skeleton.png}
+   \label{fig:skel}
+   \caption{Skeletonization process}
+\end{figure}
+
 }  
 
 \frame{\frametitle{Remembering the entire pipeline....}
@@ -219,6 +232,7 @@ The IAM Handwriting Database 3.0\footnote{http://www.iam.unibe.ch/fki/databases/
   The selection of features depends both on the pre-processing and the classifier to use. If all characters are assumed to have the same oriention, we need rotation variant features to distinguish between for instance a 6 and a 9 and a b and an p, etc.
   
 }
+
 
 \subsection{Hidden-Markov Model}
 \frame{\frametitle{HMM}
@@ -320,7 +334,7 @@ Problem 1 solved.
 
 }
 
-\frame{\frametitle{Updating the parameters}
+\frame{\frametitle{Learning the parameters}
   The forward-backward algorithm also commes with a backward probability:\\
  \[
   \beta_{t}(j) \equiv P(o_{t+1},o_{t+2},\ldots, o_{T}| q_{t} = s_{j}, \lambda) = 
@@ -337,6 +351,16 @@ Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\
 
 }
 
+\frame{\frametitle{Learning the parameters}
+\[ 
+\hat{a}_{ij} = frac{\text{Prob. of being in i and transfering to j}}{\text{Prob. of begin in i}} =
+\]
+\begin{equation}
+ \hat{a}_{ij} = \frac{\displaystyle \sum_{t=1}^{T-1} \xi_{t}(i,j) } {\displaystyle \sum_{t=1}^{T-1} \gamma_{t}(i) }
+\end{equation}
+The priors remain fixed, for the left-to-right model.
+}
+
 \frame{\frametitle{Updating the parameters}
 
   Comparison with GMM:
@@ -344,7 +368,7 @@ Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\
  \begin{tabular}{|l| p{3.5cm} | p{3.5cm} |}\hline
   Model:		&	{\bf GMM}		&	{\bf HMM}\\\hline
   Model parameters:	& $\lambda = \pi, \mu, \Sigma$	&	$\lambda = \pi, {\bf A}, {\bf B}$\\
-  Hyper parameters:	&	Number of components	&	Topology (states, transitions)\\
+  Hyper parameters:	&	Number of components	&	Topology (states, transitions), observation function\\
   Observed variables:	&	Data points		&	Observations\\
   Latent variables:	&	Priors of a component	&	State sequence\\\hline
  \end{tabular}
@@ -389,11 +413,7 @@ Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\
   M-step:		& Maximise $\pi$, $\mu$ and $\Sigma$.	&	Maximise $\pi$, ${\bf A}$ and ${\bf B}$\\\hline
  \end{tabular}
 \end{table}
-
-
 }
-
-
 
 \frame{\frametitle{Problems we ran into}
 Consider the following observation:
