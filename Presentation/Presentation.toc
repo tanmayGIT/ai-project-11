@@ -6,8 +6,8 @@
 \beamer@subsectionintoc {2}{1}{Pipeline}{9}{0}{2}
 \beamer@subsectionintoc {2}{2}{Pre-Processing}{10}{0}{2}
 \beamer@subsectionintoc {2}{3}{Feature Extraction}{21}{0}{2}
-\beamer@subsectionintoc {2}{4}{Hidden-Markov Model}{24}{0}{2}
-\beamer@sectionintoc {3}{Results}{39}{0}{3}
-\beamer@sectionintoc {4}{Conclusions}{40}{0}{4}
-\beamer@sectionintoc {5}{Section no. 4}{41}{0}{5}
-\beamer@subsectionintoc {5}{1}{blocs}{41}{0}{5}
+\beamer@subsectionintoc {2}{4}{Hidden-Markov Model}{26}{0}{2}
+\beamer@sectionintoc {3}{Results}{41}{0}{3}
+\beamer@sectionintoc {4}{Conclusions}{42}{0}{4}
+\beamer@sectionintoc {5}{Section no. 4}{43}{0}{5}
+\beamer@subsectionintoc {5}{1}{blocs}{43}{0}{5}
