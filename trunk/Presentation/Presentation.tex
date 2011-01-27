@@ -228,9 +228,28 @@ The IAM Handwriting Database 3.0\footnote{http://www.iam.unibe.ch/fki/databases/
 }
 
 \frame{\frametitle{Features}  
-  We want to find features that minimise the within-class variability and maximise the between class variability. On top of this, the features should be robust againts distortions caused by different handwriting styles. Moreover, we want to find low dimensional featur vectors and would therefore like features to be highly descriptive.
-  The selection of features depends both on the pre-processing and the classifier to use. If all characters are assumed to have the same oriention, we need rotation variant features to distinguish between for instance a 6 and a 9 and a b and an p, etc.
+
+Extracted from the skeleton of the words. \vspace{\baselineskip}
+
+Mainly 2 types:
+\begin{itemize}
+\item Statistical
+\item Morphological
+\end{itemize}
+}
+
+%  We want to find features that minimize the within-class variability and maximize the between class variability. On top of this, the features should be robust against distortions caused by different handwriting styles. Moreover, we want to find low dimensional feature vectors and would therefore like features to be highly descriptive.
+%  The selection of features depends both on the pre-processing and the classifier to use. If all characters are assumed to have the same orientation, we need rotation variant features to distinguish between for instance a 6 and a 9 and a b and an p, etc.
   
+
+\frame{\frametitle{Statistical Features}  
+Percentage of white pixels in the 3 zones of the word:
+\begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{Images/statisticalFeatures.png}
+   \label{fig:statFeatures}
+   \caption{Example}
+\end{figure}
 }
 
 
