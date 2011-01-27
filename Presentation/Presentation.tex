@@ -541,12 +541,43 @@ Consider the following observation:
 Short words have less likelihood.\\
 Harder to recognise, more subject to writer variations.
 tried to solve this by using MOG.
+}
+
+\subsection{Feature Extraction}
+\frame{
+\begin{beamerboxesrounded}{}
+\centering Experiments and Results
+\end{beamerboxesrounded}
+}
+
+\section{Experiments and Results}
+\frame{\frametitle{Experiments}
+We run 2 type of experiments:
+\begin{itemize}
+\item 1 vs 1 word recognition
+\begin{itemize}
+\item We build models for 2 words and we test both models for new instances of the 2 words from novel authors
+\item GOAL: Test how much the likelihoods of the 2 words differ
+\end{itemize}
+\item all vs all words recognition
+\begin{itemize}
+\item We build models for every word and for every word in the test set we rank all the models by loglikelihood 
+\item GOAL: Compute general accuracy for a small dataset
+\end{itemize}
+\end{itemize}
+
+For both experiments the model of a word is built using 30 samples from 30 authors of the word.
 
 }
-\section{Results}
-\frame{\frametitle{Results on simple task}  
 
-Simple experiment, train the model on intensity features and run it on typewritten words. Feed features from letter to both models.
+\frame{\frametitle{Experiment 1 - Typewritten words}  
+
+\begin{itemize}
+\item Done to check the correctness of the pipeline.
+\item Only used intensity features.
+\item Used words 'Letter' and 'Number'  (same length)
+\end{itemize}
+
 \begin{table}
 \caption{Results for simple typewritten words, avg over 40 runs}
  \begin{tabular}{|l|c|c|r|}\hline
@@ -564,8 +595,11 @@ Simple experiment, train the model on intensity features and run it on typewritt
 ...many many more parameters. (Interval sliding window, width of sliding window, amount of noise, ... etc.)
 }
 
-\frame{\frametitle{Results on simple task}
-Step 2, take cursive words of the same length.
+\frame{\frametitle{Experiment 1 - Handwritten Words}
+\begin{itemize}
+\item Used words 'Before' and 'People'  (same length)
+\end{itemize}
+
 \begin{table}
 \caption{Results for simple handwritten words, avg over 40 runs}
  \begin{tabular}{|l|c|c|r|}\hline
@@ -581,6 +615,26 @@ Step 2, take cursive words of the same length.
 \end{table}
 
 }
+
+\frame{\frametitle{Experiments 2}
+
+\begin{itemize}
+\item Used a small dataset of 100 words
+\item Tested on 200 words of novel authors
+\end{itemize}
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|} \hline
+Num. States  & Num. Gaussian Comp. & Accuracy 1 & Accuracy 2  \\\hline
+lengthWord & 1 &   0.2400 & 0.3400 \\
+1 & 1 &  0.2000 & 0.3600\\
+1 & 5 & 0.0800 & 0.1800\\
+lengthWord & 5 & 
+\end{tabular}
+\end{table}
+
+}
+
 
 
 \section{Conclusions}

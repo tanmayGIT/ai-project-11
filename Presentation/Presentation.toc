@@ -7,5 +7,6 @@
 \beamer@subsectionintoc {2}{2}{Pre-Processing}{10}{0}{2}
 \beamer@subsectionintoc {2}{3}{Feature Extraction}{21}{0}{2}
 \beamer@subsectionintoc {2}{4}{Hidden-Markov Model}{26}{0}{2}
-\beamer@sectionintoc {3}{Results}{41}{0}{3}
-\beamer@sectionintoc {4}{Conclusions}{43}{0}{4}
+\beamer@subsectionintoc {2}{5}{Feature Extraction}{37}{0}{2}
+\beamer@sectionintoc {3}{Experiments and Results}{38}{0}{3}
+\beamer@sectionintoc {4}{Conclusions}{42}{0}{4}
