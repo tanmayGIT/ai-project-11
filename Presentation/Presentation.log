@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  27 JAN 2011 10:17
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  27 JAN 2011 10:47
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -678,12 +678,6 @@ Package: beamerfontthemestructurebold 2007/01/28  (rcs-revision 1.3)
 LaTeX Warning: Label `fig:pipeline' multiply defined.
 
 
-LaTeX Warning: Label `fig:pipeline' multiply defined.
-
-
-LaTeX Warning: Label `fig:pipeline' multiply defined.
-
-
 LaTeX Warning: Label `forwardProbability' multiply defined.
 
 )
@@ -936,73 +930,69 @@ File: Images/word_segmentation.png Graphic file (type png)
 
 ] [17
 
-] <Images/pipelinePPex.png, id=709, 753.81625pt x 402.50375pt>
+] [18
+
+] <Images/pipelinePPex.png, id=745, 753.81625pt x 402.50375pt>
 File: Images/pipelinePPex.png Graphic file (type png)
 
-<use Images/pipelinePPex.png>pdfTeX warning (ext4): destination with the same i
-dentifier (name{fig:pipeline}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.174 }
-        [18
+<use Images/pipelinePPex.png> [19
 
- <./Images/pipelinePPex.png>]
-File: Images/pipelinePPex.png Graphic file (type png)
- <use Images/pipelinePPex.png>pdfTeX warning (ext4): destination with the same 
-identifier (name{fig:pipeline}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.183 }
-        [19
+ <./Images/pipelinePPex.png>] [20
 
-] [20
+pdfTeX warning (ext4): destination with the same identifier (name{fig:pipelineE
+x2}) has been already used, duplicate ignored
 
-] [21
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.204 }
+       ] [21
 
 ] [22
 
-] <hmm.jpg, id=888, 282.3348pt x 87.2058pt>
+] [23
+
+] <hmm.jpg, id=926, 282.3348pt x 87.2058pt>
 File: hmm.jpg Graphic file (type jpg)
 
-<use hmm.jpg> [23
+<use hmm.jpg> [24
 
- <./hmm.jpg>] [24
-
-]
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 248--248
-[]  
- []
-
-
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 248--248
-[]  
- []
-
-
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 248--248
-[]  
- []
-
-[25
+ <./hmm.jpg>] [25
 
 ]
-Overfull \hbox (25.04037pt too wide) detected at line 272
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 269--269
+[]  
+ []
+
+
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 269--269
+[]  
+ []
+
+
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 269--269
+[]  
+ []
+
+[26
+
+]
+Overfull \hbox (25.04037pt too wide) detected at line 293
 \OT1/cmss/m/it/10.95 P\OT1/cmss/m/n/10.95 (\OT1/cmss/m/it/10.95 o[]\OML/cmm/m/i
 t/10.95 ; \OT1/cmss/m/it/10.95 o[]\OML/cmm/m/it/10.95 ; [] ; \OT1/cmss/m/it/10.
 95 o[]\OMS/cmsy/m/n/10.95 j\OT1/cmss/m/it/10.95 q[] \OT1/cmss/m/n/10.95 = \OT1/
 cmss/m/it/10.95 s[]\OML/cmm/m/it/10.95 ; ^^U\OT1/cmss/m/n/10.95 ) =
  []
 
-<forward2.jpg, id=996, 178.9887pt x 236.082pt>
+<forward2.jpg, id=1034, 178.9887pt x 236.082pt>
 File: forward2.jpg Graphic file (type jpg)
  <use forward2.jpg>
-Overfull \vbox (8.83167pt too high) detected at line 272
+Overfull \vbox (8.83167pt too high) detected at line 293
  []
 
-[26
+[27
 
  <./forward2.jpg>]
-Overfull \hbox (25.04037pt too wide) detected at line 300
+Overfull \hbox (25.04037pt too wide) detected at line 321
 \OT1/cmss/m/it/10.95 P\OT1/cmss/m/n/10.95 (\OT1/cmss/m/it/10.95 o[]\OML/cmm/m/i
 t/10.95 ; \OT1/cmss/m/it/10.95 o[]\OML/cmm/m/it/10.95 ; [] ; \OT1/cmss/m/it/10.
 95 o[]\OMS/cmsy/m/n/10.95 j\OT1/cmss/m/it/10.95 q[] \OT1/cmss/m/n/10.95 = \OT1/
@@ -1013,47 +1003,45 @@ pdfTeX warning (ext4): destination with the same identifier (name{forwardProbab
 ility}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.300 }
+l.321 }
        
 File: forward2.jpg Graphic file (type jpg)
  <use forward2.jpg>
-Overfull \vbox (8.83167pt too high) detected at line 300
+Overfull \vbox (8.83167pt too high) detected at line 321
  []
 
-[27
+[28
 
-] [28
+] [29
 
 ]
-Underfull \hbox (badness 4156) in paragraph at lines 332--332
+Underfull \hbox (badness 4156) in paragraph at lines 353--353
 []\OT1/cmss/m/n/10.95 Number of com-po-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--332
+Underfull \hbox (badness 10000) in paragraph at lines 353--353
 []\OT1/cmss/m/n/10.95 Topology (states,
  []
 
 
-Overfull \hbox (15.63164pt too wide) in paragraph at lines 332--332
+Overfull \hbox (15.63164pt too wide) in paragraph at lines 353--353
  [] 
- []
-
-[29
-
-]
-Underfull \hbox (badness 1590) in paragraph at lines 373--373
-\OT1/cmss/m/n/10.95 given the data and
- []
-
-
-Underfull \hbox (badness 1655) in paragraph at lines 373--373
-\OT1/cmss/m/n/10.95 prob-a-bil-ity of trans-
  []
 
 [30
 
-] [31
+]
+Underfull \hbox (badness 1590) in paragraph at lines 394--394
+\OT1/cmss/m/n/10.95 given the data and
+ []
+
+
+Underfull \hbox (badness 1655) in paragraph at lines 394--394
+\OT1/cmss/m/n/10.95 prob-a-bil-ity of trans-
+ []
+
+[31
 
 ] [32
 
@@ -1068,6 +1056,8 @@ Underfull \hbox (badness 1655) in paragraph at lines 373--373
 ] [37
 
 ] [38
+
+] [39
 
 ]
 \tf@nav=\write5
@@ -1089,10 +1079,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13111 strings out of 493848
- 237832 string characters out of 3149207
+ 13121 strings out of 493848
+ 237959 string characters out of 3149207
  318996 words of memory out of 3000000
- 15924 multiletter control sequences out of 15000+200000
+ 15929 multiletter control sequences out of 15000+200000
  14644 words of font info for 54 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  45i,19n,63p,355b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1107,9 +1097,9 @@ local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr
 /local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/
 local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Presentation.pdf (38 pages, 1303560 bytes).
+Output written on Presentation.pdf (39 pages, 1311620 bytes).
 PDF statistics:
- 1505 PDF objects out of 1728 (max. 8388607)
- 98 named destinations out of 1000 (max. 500000)
+ 1544 PDF objects out of 1728 (max. 8388607)
+ 103 named destinations out of 1000 (max. 500000)
  244 words of extra memory for PDF output out of 10000 (max. 10000000)
 
