@@ -283,6 +283,12 @@ We extract:
 }
 
 \subsection{Hidden-Markov Model}
+\frame{
+\begin{beamerboxesrounded}{Implementation Details}
+\centering Hidden-Markov Model for Word Recognition
+\end{beamerboxesrounded}
+}
+
 \frame{\frametitle{HMM}
   \begin{itemize}
   \item A set of $N$ states $S = (s_{1}, s_{2}, \ldots, s_{N})$, where the state of the system at time $t$ is denoted $q_{t}$
@@ -603,20 +609,22 @@ Length of the word. Short words seem to be harder to find. Possible causes:
 \begin{itemize}
  \item During the testing, the model does not execute a complete sequence, e.g.
       when looking for 'the' in 'therefore' it might end before 'r'.
- \items Short words may be more difficult to recognise as they are more sensible to inter-writer variations.
+ \item Short words may be more difficult to recognise as they are more sensible to inter-writer variations.
 \end{itemize}
-Possible solutions:
-\begin{itemize}
+
+ \begin{beamerboxesrounded}{Possible solutions:}
+ \begin{itemize}
   \item Force the model to end the observations sequence in the final state.
   \item Use a more complex observation model. E.g., a MOG.
 \end{itemize}
+\end{beamerboxesrounded}
 
 }
 
 \frame{\frametitle{Mixture of Gaussians}
 
 \begin{figure}
-\includegraphics[width=0.4\textwidth]{gmm1.png}
+\includegraphics[width=0.4\textwidth]{gmm1.jpg}
 \caption{Two letters plotted in a two dimensional feature space} 
 \end{figure}
 
@@ -624,7 +632,7 @@ Possible solutions:
 \frame{\frametitle{Mixture of Gaussians}
 
 \begin{figure}
-\includegraphics[width=0.4\textwidth]{gmm2.png}
+\includegraphics[width=0.4\textwidth]{gmm2.jpg}
 \caption{Two letters plotted in a two dimensional feature space} 
 \end{figure}
 
@@ -632,7 +640,7 @@ Possible solutions:
 \frame{\frametitle{Mixture of Gaussians}
 
 \begin{figure}
-\includegraphics[width=0.4\textwidth]{gmm3.png}
+\includegraphics[width=0.4\textwidth]{gmm3.jpg}
 \caption{Two letters plotted in a two dimensional feature space} 
 \end{figure}
 
@@ -644,11 +652,6 @@ Possible solutions:
 \begin{beamerboxesrounded}{}
 \centering Experiments and Results
 \end{beamerboxesrounded}
-Possible solutions:
-\begin{itemize}
-  \item 
-  \item
-\end{itemize}
 
 }
 
@@ -679,7 +682,8 @@ For both experiments the model of a word is built using 30 samples from 30 autho
 \item Used words 'Letter' and 'Number'  (same length)
 \end{itemize}
 
-\caption{Results for simple typewritten words, avg over 40 runs}
+\begin{table}
+\caption{Results averaged over 40 runs}
  \begin{tabular}{|l|c|c|r|}\hline
     {\bf Word}   		& Letter & Number & Difference \\\hline
     LL Intensity N=6	K=1 	& 121.68 & 106.36 & 	15.32	\\
@@ -734,7 +738,7 @@ lengthWord & 5 &  0.1200 & 0.3000 \\\hline
 
 \frame{\frametitle{Evaluation}
 \begin{itemize}
-\item short vs long .... 
+\item short vs long...
 \item More GMM components seems to decrease the accuracy because of .... 
 \end{itemize}
 }
