@@ -21,4 +21,9 @@ function im = vertical_scaling(im, upper_baseline, lower_baseline, h)
     
     im = cat(1, normAsc(1:end,:), normMid(1:end,:), normDsc(1:end,:)) ;
     
+%     x = 1:1:size(im,2);
+%     imshow(im);
+%     hold on, plot(x, norm_height1, 'b');
+%     hold on, plot(x, norm_height1+norm_height3, 'r');
+    
 end

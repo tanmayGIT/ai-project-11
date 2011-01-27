@@ -39,7 +39,7 @@
 %   end
 %    
     disp('Evaluating results');
-  for w_indx=1:195
+  for w_indx=84:195
       fprintf('\nCURRENT WORD: %s \nImage: ', words{w_indx});
       for i = train_set + 1 : (train_set + test_set)
         fprintf(' %d ', i);
