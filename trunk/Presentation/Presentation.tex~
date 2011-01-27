@@ -56,7 +56,6 @@ The research touched different fields:
 \item Image Processing
 \item Features extraction 
 \item Machine Learning 
-\item Word Recognition
 \end{itemize}
 }
 
@@ -330,6 +329,85 @@ We extract:
 
 \end{enumerate}
 }
+%
+%\frame{\frametitle{Forward probability}
+%\begin{columns}
+% 
+%\column{1.5in}
+%\[
+% \alpha_{t}(i) \equiv
+%\]
+%\[
+%  P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
+%\]
+%\begin{equation}
+% \label{forwardProbability}
+%\displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
+%\end{equation}
+%\column{2in}
+%  \begin{figure}
+%  \includegraphics[width=0.8\textwidth]{forward2.jpg}
+%  \caption{Computation of forward probability}
+%  \end{figure}
+%
+%\end{columns}
+%
+%}
+%
+%\frame{\frametitle{Forward probability}
+%\begin{columns}
+% 
+%\column{1.5in}
+%\[
+% \alpha_{t}(i) \equiv
+%\]
+%\[
+%  P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
+%\]
+%\begin{equation}
+% \label{forwardProbability}
+%\displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
+%\end{equation}
+%\begin{equation}
+% P({\bf O| \lambda}) = \displaystyle \sum_{i=1}^{N} \alpha_{T}(i)
+%\end{equation}
+%Problem 1 solved.
+%\column{2in}
+%  \begin{figure}
+%  \includegraphics[width=0.8\textwidth]{forward2.jpg}
+%  \caption{Computation of forward probability}
+%  \end{figure}
+%
+%\end{columns}
+%
+%}
+%
+%\frame{\frametitle{Learning the parameters}
+%  The forward-backward algorithm also commes with a backward probability:\\
+% \[
+%  \beta_{t}(j) \equiv P(o_{t+1},o_{t+2},\ldots, o_{T}| q_{t} = s_{j}, \lambda) = 
+%\]
+%\begin{equation}
+% \label{backwardProbability}
+%\displaystyle \sum_{i=1}^{N} a_{ij} b_{i}(o_{t+1}) \beta_{i}(o_{t+1})
+%\end{equation}
+%With this we can define the probability of being in a state at a timestep as:
+%\begin{equation}
+% \gamma_{t}(i) \equiv (P({\bf O}|\lambda))^{-1} \alpha_{t}(i)\beta_{t}(i) 
+%\end{equation}
+%Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\beta_{t}(i) = \sum_{j=1}^{N} \alpha_{T}(j)$.
+%
+%}
+%
+%\frame{\frametitle{Learning the parameters}
+%\[ 
+%\hat{a}_{ij} = frac{\text{Prob. of being in i and transfering to j}}{\text{Prob. of begin in i}} =
+%\]
+%\begin{equation}
+% \hat{a}_{ij} = \frac{\displaystyle \sum_{t=1}^{T-1} \xi_{t}(i,j) } {\displaystyle \sum_{t=1}^{T-1} \gamma_{t}(i) }
+%\end{equation}
+%The priors remain fixed, for the left-to-right model.
+%}
 
 % \frame{\frametitle{Forward probability}
 % \begin{columns}
@@ -523,36 +601,104 @@ Consider the following observation:
 
 Length of the word. Short words seem to be harder to find. Possible causes:
 \begin{itemize}
- \item 
+ \item During the testing, the model does not execute a complete sequence, e.g.
+      when looking for 'the' in 'therefore' it might end before 'r'.
+ \items Short words may be more difficult to recognise as they are more sensible to inter-writer variations.
+\end{itemize}
+Possible solutions:
+\begin{itemize}
+  \item Force the model to end the observations sequence in the final state.
+  \item Use a more complex observation model. E.g., a MOG.
 \end{itemize}
 
+}
 
+\frame{\frametitle{Mixture of Gaussians}
 
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{gmm1.png}
+\caption{Two letters plotted in a two dimensional feature space} 
+\end{figure}
 
 }
-\section{Results}
-\frame{\frametitle{Results on simple task}  
+\frame{\frametitle{Mixture of Gaussians}
 
-Simple experiment, train the model on intensity features and run it on typewritten words. Feed features from letter to both models.
-\begin{table}
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{gmm2.png}
+\caption{Two letters plotted in a two dimensional feature space} 
+\end{figure}
+
+}
+\frame{\frametitle{Mixture of Gaussians}
+
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{gmm3.png}
+\caption{Two letters plotted in a two dimensional feature space} 
+\end{figure}
+
+}
+
+
+\section{Experiments and Results}
+\frame{
+\begin{beamerboxesrounded}{}
+\centering Experiments and Results
+\end{beamerboxesrounded}
+Possible solutions:
+\begin{itemize}
+  \item 
+  \item
+\end{itemize}
+
+}
+
+\frame{\frametitle{Experiments}
+We run 2 type of experiments:
+\begin{itemize}
+\item 1 vs 1 word recognition
+\begin{itemize}
+\item We build models for 2 words and we test both models for new instances of the 2 words from novel authors
+\item \textit{GOAL}: Test how much the likelihoods of the 2 words differ
+\end{itemize}
+\item all vs all words recognition
+\begin{itemize}
+\item We build models for every word and for every word in the test set we rank all the models by loglikelihood 
+\item \textit{GOAL}: Compute general accuracy for a small dataset
+\end{itemize}
+\end{itemize}
+
+For both experiments the model of a word is built using 30 samples from 30 authors of the word.
+
+}
+
+\frame{\frametitle{Experiment 1 - Typewritten words}  
+
+\begin{itemize}
+\item Done to check the correctness of the pipeline.
+\item Only used intensity features.
+\item Used words 'Letter' and 'Number'  (same length)
+\end{itemize}
+
 \caption{Results for simple typewritten words, avg over 40 runs}
  \begin{tabular}{|l|c|c|r|}\hline
-    {\bf Word}   			& Letter & Number & Difference \\\hline
-    LL Intensity N=6	K=1 10EM 	& 121.68 & 106.36 & 	15.32	\\
-    LL All features N=6 K=1 10EM	& 795.45 & 14.08  &	781.37	\\
-    LL All features N=1	K=1 10EM	& 602.22 & -90.02 &	692.22	\\
-    LL All features N=6 K=3 10EM	& -186.45  &-330.14 &	143.69	\\
-    LL All features N=6 K=3 30EM	& 226.96 & -820.30 &	$1.04e^{3}$\\
-    LL ALL , N=6, K=1, 10EM, diagonal cov & 871.16 & 531.27 & 	487.75\\
-    LL ALL , N=6, K=1, 10EM, isotropc cov & -179.00 & -272.23 &	197.35\\
+    {\bf Word}   		& Letter & Number & Difference \\\hline
+    LL Intensity N=6	K=1 	& 121.68 & 106.36 & 	15.32	\\
+    LL All features N=6 K=1 	& 795.45 & 14.08  &	781.37	\\
+    LL All features N=1	K=1 	& 602.22 & -90.02 &	692.22	\\
+    LL All features N=6 K=3 	& 226.96 & -820.30 &	$1.04e^{3}$\\
+    LL ALL , N=6, K=1,  diagonal cov & 871.16 & 531.27 & 	487.75\\
+    LL ALL , N=6, K=1,  isotropc cov & -179.00 & -272.23 &	197.35\\
     ... & ... & ...& ... \\
  \end{tabular}
 \end{table}
 ...many many more parameters. (Interval sliding window, width of sliding window, amount of noise, ... etc.)
 }
 
-\frame{\frametitle{Results on simple task}
-Step 2, take cursive words of the same length.
+\frame{\frametitle{Experiment 1 - Handwritten Words (same length)}
+\begin{itemize}
+\item Used words 'Before' and 'People'  (same length)
+\end{itemize}
+
 \begin{table}
 \caption{Results for simple handwritten words, avg over 40 runs}
  \begin{tabular}{|l|c|c|r|}\hline
@@ -562,13 +708,72 @@ Step 2, take cursive words of the same length.
     LL All features N=6 K=3 		& 226.96 & -820.30 &	1.04e\^{3}\\
  \end{tabular}
 \end{table}
+}
+
+\frame{\frametitle{Experiment 1 - Handwritten Words (short vs long)}
+}
+
+\frame{\frametitle{Experiments 2}
+
+\begin{itemize}
+\item Used a small dataset of 100 words
+\item Tested on 200 words of novel authors
+\end{itemize}
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|} \hline
+Num. States  & Num. Gaussian Comp. & Accuracy 1\footnote{Correct if in 1st position of the ranked list} & Accuracy 2\footnote{Correct if in 1st or 2nd position of the ranked list} \\\hline
+lengthWord & 1 &   0.2400 & 0.3400 \\
+1 & 1 &  0.2000 & 0.3600\\
+1 & 5 & 0.0800 & 0.1800\\
+lengthWord & 5 &  0.1200 & 0.3000 \\\hline
+\end{tabular}
+\end{table}
 
 }
 
+\frame{\frametitle{Evaluation}
+\begin{itemize}
+\item short vs long .... 
+\item More GMM components seems to decrease the accuracy because of .... 
+\end{itemize}
+}
 
 \section{Conclusions}
-\frame{\frametitle{Conclusions}  
-blabla
+\frame{
+\begin{beamerboxesrounded}{}
+\centering Conclusions
+\end{beamerboxesrounded}
+}
+
+\frame{\frametitle{Conclusions about the AI project }  
+\begin{itemize}
+\item The full pipeline is working, however a lot of improvements are possible:
+\begin{itemize}
+\item Extract more features
+\item Eventually apply PCA to the feature vector
+\item Optimize the parameters of the HMM (i.e. using a validation set).
+\end{itemize}
+\item Built models for letters instead of models for words (it requires letters segmentation)
+\item Use a language model 
+\end{itemize}
+}
+
+\frame{\frametitle{Personal Evaluation}  
+\begin{itemize}
+\item We built a full working pipeline
+\item We read and learnt a lot about a new topic
+\item We had the chance to apply a lot of techniques that we had only been studied in theory
+\item We improved our skills in programming
+\end{itemize}
+}
+
+
+
+\frame{
+\begin{beamerboxesrounded}{}
+\centering Questions?
+\end{beamerboxesrounded}
 }
 
 \end{document}
