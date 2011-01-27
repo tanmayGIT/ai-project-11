@@ -6,6 +6,6 @@
 \beamer@subsectionintoc {2}{1}{Pipeline}{9}{0}{2}
 \beamer@subsectionintoc {2}{2}{Pre-Processing}{10}{0}{2}
 \beamer@subsectionintoc {2}{3}{Feature Extraction}{21}{0}{2}
-\beamer@subsectionintoc {2}{4}{Hidden-Markov Model}{26}{0}{2}
-\beamer@sectionintoc {3}{Experiments and Results}{40}{0}{3}
-\beamer@sectionintoc {4}{Conclusions}{47}{0}{4}
+\beamer@subsectionintoc {2}{4}{Hidden-Markov Model}{30}{0}{2}
+\beamer@sectionintoc {3}{Experiments and Results}{44}{0}{3}
+\beamer@sectionintoc {4}{Conclusions}{51}{0}{4}
