@@ -10,9 +10,11 @@
 \beamer@slide {fig:scal}{17}
 \beamer@slide {fig:skel}{18}
 \beamer@slide {fig:pipelineEx}{19}
-\beamer@slide {fig:pipelineEx2}{20}
-\beamer@slide {fig:pipelineEx2}{20}
+\beamer@slide {fig:problem1}{20}
+\beamer@slide {fig:problem2}{20}
 \beamer@slide {fig:statFeatures}{23}
-\beamer@slide {forwardProbability}{28}
-\beamer@slide {forwardProbability}{29}
-\beamer@slide {backwardProbability}{30}
+\beamer@slide {fig:comp}{24}
+\beamer@slide {fig:morphFeatures}{25}
+\beamer@slide {forwardProbability}{30}
+\beamer@slide {forwardProbability}{31}
+\beamer@slide {backwardProbability}{32}

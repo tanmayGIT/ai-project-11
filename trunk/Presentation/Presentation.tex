@@ -194,21 +194,28 @@ The IAM Handwriting Database 3.0\footnote{http://www.iam.unibe.ch/fki/databases/
 \end{figure}
 }  
 
-\frame{\frametitle{Because....}
- \begin{beamerboxesrounded}{We need it before}
-
-\end{beamerboxesrounded}
+\frame{\frametitle{The normalizations are necessary for:}
+ \begin{beamerboxesrounded}{First}
+%  \begin{itemize}
+%\item 
+Words segmentation 
+ %\end{itemize}
 \begin{figure}
   \centering
-  %  \includegraphics[width=1\textwidth]{Images/pipelinePPex.png}
-   \label{fig:pipelineEx2}
+    \includegraphics[width=0.9\textwidth]{Images/problem1.png}
+   \label{fig:problem1}
 \end{figure}
+\end{beamerboxesrounded}
 
- \begin{beamerboxesrounded}{and after}
+ \begin{beamerboxesrounded}{Second}
+ %\begin{itemize}
+%\item 
+Not all the words have the same slope, slant and lower baseline
+ %\end{itemize}
 \begin{figure}
   \centering
-%    \includegraphics[width=1\textwidth]{Images/pipelinePPex.png}
-   \label{fig:pipelineEx2}
+    \includegraphics[width=0.9\textwidth]{Images/problem2.png}
+   \label{fig:problem2}
 \end{figure}
 
 \end{beamerboxesrounded}
@@ -252,6 +259,29 @@ Percentage of white pixels in the 3 zones of the word:
 \end{figure}
 }
 
+\frame{\frametitle{Morphological Features}  
+Obtained by {\bf connected component analysis}.
+
+\begin{itemize}
+\item A connected component it is a subgraph in which any two vertices are connected to each other by paths, and which is connected to no additional vertices.
+\end{itemize}
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.9\textwidth]{Images/components.png}
+   \label{fig:comp}
+   \caption{Example of words divided in different components (colors)}
+\end{figure}
+}
+
+\frame{\frametitle{Morphological Features}  
+We extract:
+\begin{figure}
+  \centering
+    \includegraphics[width=1 \textwidth]{Images/morpho_features.png}
+   \label{fig:morphFeatures}
+\end{figure}
+}
 
 \subsection{Hidden-Markov Model}
 \frame{\frametitle{HMM}
@@ -511,15 +541,48 @@ Consider the following observation:
 
 Short words have less likelihood.\\
 Harder to recognise, more subject to writer variations.
-
 tried to solve this by using MOG.
 
 }
 \section{Results}
-\frame{\frametitle{Results}  
-blabla
+\frame{\frametitle{Results on simple task}  
+
+Simple experiment, train the model on intensity features and run it on typewritten words. Feed features from letter to both models.
+\begin{table}
+\caption{Results for simple typewritten words, avg over 40 runs}
+ \begin{tabular}{|l|c|c|r|}\hline
+    {\bf Word}   			& Letter & Number & Difference \\\hline
+    LL Intensity N=6	K=1 10EM 	& 121.68 & 106.36 & 	15.32	\\
+    LL All features N=6 K=1 10EM	& 795.45 & 14.08  &	781.37	\\
+    LL All features N=1	K=1 10EM	& 602.22 & -90.02 &	692.22	\\
+    LL All features N=6 K=3 10EM	& -186.45  &-330.14 &	143.69	\\
+    LL All features N=6 K=3 30EM	& 226.96 & -820.30 &	$1.04e^{3}$\\
+    LL ALL , N=6, K=1, 10EM, diagonal cov & 871.16 & 531.27 & 	487.75\\
+    LL ALL , N=6, K=1, 10EM, isotropc cov & -179.00 & -272.23 &	197.35\\
+    ... & ... & ...& ... \\
+ \end{tabular}
+\end{table}
+...many many more parameters. (Interval sliding window, width of sliding window, amount of noise, ... etc.)
 }
 
+\frame{\frametitle{Results on simple task}
+Step 2, take cursive words of the same length.
+\begin{table}
+\caption{Results for simple handwritten words, avg over 40 runs}
+ \begin{tabular}{|l|c|c|r|}\hline
+    {\bf Word}   			& Before & People & Difference \\\hline
+    LL Intensity N=6	K=1 10EM 	& 121.68 & 106.36 & 	15.32	\\
+    LL All features N=6 K=1 10EM	& 795.45 & 14.08  &	781.37	\\
+    LL All features N=1	K=1 10EM	& 602.22 & -90.02 &	692.22	\\
+    LL All features N=6 K=3 10EM	& -186.45  &-330.14 &	143.69	\\
+    LL All features N=6 K=3 30EM	& 226.96 & -820.30 &	1.04e\^{3}\\
+    LL ALL , N=6, K=1, 10EM, diagonal cov & 871.16 & 531.27 & 	487.75\\
+    LL ALL , N=6, K=1, 10EM, isotropc cov & -179.00 & -272.23 &	197.35\\
+    ... & ... & ...& \\
+ \end{tabular}
+\end{table}
+
+}
 
 
 \section{Conclusions}
@@ -527,97 +590,6 @@ blabla
 blabla
 }
 
-
-
-%\section{Pre-Processing} 
-%\frame{\frametitle{Title} 
-%Each frame should have a title.
-%}
-%
-%\frame{ 
-%Without title somethink is missing. 
-%}
-%
-%
-%\section{Feature Extraction} 
-%\subsection{Lists I}
-%\frame{\frametitle{unnumbered lists}
-%\begin{itemize}
-%\item Introduction to  \LaTeX  
-%\item Course 2 
-%\item Termpapers and presentations with \LaTeX 
-%\item Beamer class
-%\end{itemize} 
-%}
-%
-%\frame{\frametitle{lists with pause}
-%\begin{itemize}
-%\item Introduction to  \LaTeX \pause 
-%\item Course 2 \pause 
-%\item Termpapers and presentations with \LaTeX \pause 
-%\item Beamer class
-%\end{itemize} 
-%}
-%
-%\subsection{Lists II}
-%\frame{\frametitle{numbered lists}
-%\begin{enumerate}
-%\item Introduction to  \LaTeX  
-%\item Course 2 
-%\item Termpapers and presentations with \LaTeX 
-%\item Beamer class
-%\end{enumerate}
-%}
-%\frame{\frametitle{numbered lists with pause}
-%\begin{enumerate}
-%\item Introduction to  \LaTeX \pause 
-%\item Course 2 \pause 
-%\item Termpapers and presentations with \LaTeX \pause 
-%\item Beamer class
-%\end{enumerate}
-%}
-%
-%\section{Section no.3} 
-%\subsection{Tables}
-%\frame{\frametitle{Tables}
-%\begin{tabular}{|c|c|c|}
-%\hline
-%\textbf{Date} & \textbf{Instructor} & \textbf{Title} \\
-%\hline
-%WS 04/05 & Sascha Frank & First steps with  \LaTeX  \\
-%\hline
-%SS 05 & Sascha Frank & \LaTeX \ Course serial \\
-%\hline
-%\end{tabular}}
-%
-%
-%\frame{\frametitle{Tables with pause}
-%\begin{tabular}{c c c}
-%A & B & C \\ 
-%\pause 
-%1 & 2 & 3 \\  
-%\pause 
-%A & B & C \\ 
-%\end{tabular} }
-%
-%
-\section{Section no. 4}
-\subsection{blocs}
-\frame{\frametitle{blocs}
-
-\begin{block}{title of the bloc}
-bloc text
-\end{block}
-
-\begin{exampleblock}{title of the bloc}
-bloc text
-\end{exampleblock}
-
-
-\begin{alertblock}{title of the bloc}
-bloc text
-\end{alertblock}
-}
 \end{document}
 
 
