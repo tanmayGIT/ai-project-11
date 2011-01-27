@@ -55,19 +55,21 @@ The research touched different fields:
 \item Data Collection
 \item Image Processing
 \item Features extraction 
-\item Machine Learning techniques
-\item Word Recognition using Hidden Markov Models
+\item Machine Learning 
+\item Word Recognition
 \end{itemize}
 }
 
 \subsection{Dataset}
 \frame{\frametitle{Dataset}
-The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-handwriting-database}
+The IAM Handwriting Database 3.0\footnote{http://www.iam.unibe.ch/fki/databases/iam-handwriting-database}  \vspace{\baselineskip}
+
 \begin{itemize}
 %\item It contains forms of handwritten English text which can be used to train and test handwritten text recognizers and to perform writer identification and verification experiments.
 \item Unconstrained handwritten text (scanned at a resolution of 300dpi and saved as PNG images with 256 gray levels) 
-\item 1'539 pages of scanned text of 657 writers\vspace{\baselineskip}
-\item We extracted 35 instances of the 300 most frequent words (20 as training set and 15 as test set)
+\item 1'539 pages of scanned text of 657 writers
+\item 13'353 isolated and labeled text lines
+\item 115'320 isolated and labeled words
 \end{itemize}
 }
 
@@ -140,28 +142,18 @@ The IAM Handwriting Database\footnote{http://www.iam.unibe.ch/fki/databases/iam-
 \frame{\frametitle{Slant detection and Correction}  
 \begin{figure}
   \centering
-    \includegraphics[width=1.0 \textwidth]{Images/slant.png}
+    \includegraphics[width=1 \textwidth]{Images/slant.png}
    \caption{Slant detection and correction pipeline}
    \label{fig:slant}
 \end{figure}
 }
 
 \frame{\frametitle{Word segmentation}
-\begin{itemize}
-\item We first detect white spaces:
 \begin{figure}
   \centering
-    \includegraphics[width=1.0 \textwidth]{Images/words_segm_wp.png}
-   \label{fig:words_wp}
-\end{figure}
-\item We cluster them into 2 clusters: 'letters separator' and 'words separator'
-\item We segment the line using the white spaces clustered as 'words separator':
-\begin{figure}
-  \centering
-    \includegraphics[width=0.4\textwidth]{Images/words_segm_res.png}
+    \includegraphics[width=1.0 \textwidth]{Images/word_segmentation.png}
    \label{fig:words_res}
 \end{figure}
-\end{itemize}
 }  
 
 \frame{\frametitle{Vertical Scaling}
@@ -395,6 +387,7 @@ Consider the following observation:
 }
 
 \frame{\frametitle{Problems we ran into}
+  Singularities. Consider the following observation:
   \[
    {\bf O} = \begin{pmatrix}
         -1 & 0\\
@@ -432,39 +425,31 @@ Consider the following observation:
 
   Possible solution: Add some random noise.
 }
+\frame{\frametitle{Problems we ran into}
+ Singularities
+  \[
+   {\bf O} = \begin{pmatrix}
+        -1 & 0\\
+	2 & 0\\
+	1 & 0\\
+	-2 & 0\\
+       \end{pmatrix}
+  \]
+  \[
+   \Sigma = \begin{pmatrix}
+        3\frac{1}{3} & 0\\
+	0 & 0\\
+       \end{pmatrix}
+  \]
+  -> Add some random noise, also to prevent variance from collapsing.
+}
 
 \frame{\frametitle{Problems we ran into}
 
-Short words/long words.
+Short words have less likelihood.\\
+Harder to recognise, more subject to writer variations.
 
-
-
-}
-
-\frame{\frametitle{Within class variations}
-
-\begin{figure}
- \includegraphics[width=0.4\textwidth]{gmm1.jpg}
-\end{figure}
-Using features such as loops, this will give quite different feature vector.
-
-}
-\frame{\frametitle{Within class variations}
-
-\begin{figure}
- \includegraphics[width=0.4\textwidth]{gmm2.jpg}
-\caption{Fitting a single Gaussian}
-\end{figure}
-
-
-}
-\frame{\frametitle{Within class variations}
-
-\begin{figure}
- \includegraphics[width=0.4\textwidth]{gmm3.jpg}
-\caption{Fitting a mixture of 2 Gaussians}
-\end{figure}
-
+tried to solve this by using MOG.
 
 }
 \section{Results}
@@ -571,4 +556,5 @@ bloc text
 \end{alertblock}
 }
 \end{document}
+
 
