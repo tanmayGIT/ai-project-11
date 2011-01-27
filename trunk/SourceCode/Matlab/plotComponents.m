@@ -6,7 +6,8 @@ function  [] = plotComponents(I)
 
     %   SHOW COMPONENTS WITH DIFFERENT COLORS    
     %     colors = ['w', 'b', 'g', 'r', 'k', 'm', y];
-    colors = [[1 1 1]; [0 0 1]; [0 1 0]; [1 0 0]; [0 0 0]; [1 0 1]; [1 1 0]];
+    colors = [[1 1 1]; [0 0 1]; [0 1 0]; [1 0 0]; [0 0 0]; [1 0 1]; [1 1 0]; [1.5 1.5 100]; [150 15 100];...
+            [0 0 1]; [250 100 1]];
 
     [~, label_matrix] = bwboundaries(im);
     
