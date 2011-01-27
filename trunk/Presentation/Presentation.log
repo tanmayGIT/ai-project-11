@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  27 JAN 2011 21:53
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  27 JAN 2011 21:59
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -673,11 +673,8 @@ Package: beamerouterthemesplit 2007/01/28  (rcs-revision 1.5)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/beamer/themes/font/beamerfontthem
 estructurebold.sty
 Package: beamerfontthemestructurebold 2007/01/28  (rcs-revision 1.3)
-)) (./Presentation.aux
-
-LaTeX Warning: Label `fig:pipeline' multiply defined.
-
-)
+))
+No file Presentation.aux.
 \openout1 = `Presentation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -694,7 +691,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
- (/usr/local/texlive/2009/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/local/texlive/2009/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count150
 \scratchdimen=\dimen178
@@ -759,8 +756,6 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 LaTeX Info: Redefining \ref on input line 17.
 LaTeX Info: Redefining \pageref on input line 17.
-
-(./Presentation.out) (./Presentation.out)
 \@outlinefile=\write4
 \openout4 = `Presentation.out'.
 
@@ -827,15 +822,15 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 [1{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-(./Presentation.toc) [2
+No file Presentation.toc.
+[2
 
 ] [3
 
-]
-<Images/studs.png, id=191, 517.935pt x 213.79875pt>
+] <Images/studs.png, id=129, 517.935pt x 213.79875pt>
 File: Images/studs.png Graphic file (type png)
- <use Images/studs.png>
-[4
+
+<use Images/studs.png> [4
 
  <./Images/studs.png>] [5
 
@@ -852,7 +847,7 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [6
 
 ]
-<Images/database.png, id=291, 324.21124pt x 481.8pt>
+<Images/database.png, id=232, 324.21124pt x 481.8pt>
 File: Images/database.png Graphic file (type png)
  <use Images/database.png>
 Overfull \vbox (73.24126pt too high) detected at line 82
@@ -863,7 +858,7 @@ Overfull \vbox (73.24126pt too high) detected at line 82
  <./Images/database.png>] [8
 
 ]
-<Images/pipeline.png, id=360, 825.0825pt x 404.51125pt>
+<Images/pipeline.png, id=307, 825.0825pt x 404.51125pt>
 File: Images/pipeline.png Graphic file (type png)
 
 <use Images/pipeline.png>
@@ -880,7 +875,7 @@ Overfull \vbox (12.1797pt too high) detected at line 101
  <./Images/pipeline.png>] [10
 
 ]
-<Images/pipelinePP.png, id=435, 755.82375pt x 407.5225pt>
+<Images/pipelinePP.png, id=384, 755.82375pt x 407.5225pt>
 File: Images/pipelinePP.png Graphic file (type png)
 
 <use Images/pipelinePP.png>pdfTeX warning (ext4): destination with the same ide
@@ -895,7 +890,7 @@ Overfull \vbox (11.14873pt too high) detected at line 117
 [11
 
  <./Images/pipelinePP.png>]
-<Images/line_segmentation.png, id=472, 973.6375pt x 582.175pt>
+<Images/line_segmentation.png, id=421, 973.6375pt x 582.175pt>
 File: Images/line_segmentation.png Graphic file (type png)
 
 <use Images/line_segmentation.png>
@@ -905,25 +900,25 @@ Overfull \vbox (15.79167pt too high) detected at line 128
 [12
 
  <./Images/line_segmentation.png>]
-<Images/skew.png, id=510, 1038.88126pt x 485.815pt>
+<Images/skew.png, id=459, 1038.88126pt x 485.815pt>
 File: Images/skew.png Graphic file (type png)
  <use Images/skew.png>
 [13
 
  <./Images/skew.png>]
-<Images/slant.png, id=549, 1060.96375pt x 528.97626pt>
+<Images/slant.png, id=498, 1060.96375pt x 528.97626pt>
 File: Images/slant.png Graphic file (type png)
  <use Images/slant.png>
 [14
 
  <./Images/slant.png>]
-<Images/word_segmentation.png, id=587, 1122.1925pt x 633.36626pt>
+<Images/word_segmentation.png, id=536, 1122.1925pt x 633.36626pt>
 File: Images/word_segmentation.png Graphic file (type png)
 
 <use Images/word_segmentation.png> [15
 
  <./Images/word_segmentation.png>]
-<Images/baseline.png, id=625, 1063.975pt x 679.53876pt>
+<Images/baseline.png, id=574, 1063.975pt x 679.53876pt>
 File: Images/baseline.png Graphic file (type png)
 
 <use Images/baseline.png>
@@ -933,7 +928,7 @@ Overfull \vbox (1.81218pt too high) detected at line 164
 [16
 
  <./Images/baseline.png>]
-<Images/vertical_scaling.png, id=663, 778.91pt x 449.68pt>
+<Images/vertical_scaling.png, id=612, 778.91pt x 449.68pt>
 File: Images/vertical_scaling.png Graphic file (type png)
 
 <use Images/vertical_scaling.png>
@@ -943,22 +938,22 @@ Overfull \vbox (4.57474pt too high) detected at line 173
 [17
 
  <./Images/vertical_scaling.png>]
-<Images/skeleton.png, id=701, 740.7675pt x 399.4925pt>
+<Images/skeleton.png, id=650, 740.7675pt x 399.4925pt>
 File: Images/skeleton.png Graphic file (type png)
 
 <use Images/skeleton.png> [18
 
  <./Images/skeleton.png>]
-<Images/pipelinePPex.png, id=739, 753.81625pt x 402.50375pt>
+<Images/pipelinePPex.png, id=688, 753.81625pt x 402.50375pt>
 File: Images/pipelinePPex.png Graphic file (type png)
 
 <use Images/pipelinePPex.png> [19
 
  <./Images/pipelinePPex.png>]
-<Images/problem1.png, id=777, 831.105pt x 129.48375pt>
+<Images/problem1.png, id=726, 831.105pt x 129.48375pt>
 File: Images/problem1.png Graphic file (type png)
 
-<use Images/problem1.png> <Images/problem2.png, id=778, 843.15pt x 95.35625pt>
+<use Images/problem1.png> <Images/problem2.png, id=727, 843.15pt x 95.35625pt>
 File: Images/problem2.png Graphic file (type png)
 
 <use Images/problem2.png> [20
@@ -968,19 +963,19 @@ File: Images/problem2.png Graphic file (type png)
 
 ] [22
 
-] <Images/statisticalFeatures.png, id=888, 486.81876pt x 120.45pt>
+] <Images/statisticalFeatures.png, id=838, 486.81876pt x 120.45pt>
 File: Images/statisticalFeatures.png Graphic file (type png)
 
 <use Images/statisticalFeatures.png> [23
 
  <./Images/statisticalFeatures.png>]
-<Images/components.png, id=926, 883.3pt x 178.6675pt>
+<Images/components.png, id=876, 883.3pt x 178.6675pt>
 File: Images/components.png Graphic file (type png)
 
 <use Images/components.png> [24
 
  <./Images/components.png>]
-<Images/morpho_features.png, id=963, 713.66624pt x 340.27126pt>
+<Images/morpho_features.png, id=913, 713.66624pt x 340.27126pt>
 File: Images/morpho_features.png Graphic file (type png)
 
 <use Images/morpho_features.png> [25
@@ -988,7 +983,7 @@ File: Images/morpho_features.png Graphic file (type png)
  <./Images/morpho_features.png>] [26
 
 ]
-<hmm.jpg, id=1041, 282.3348pt x 87.2058pt>
+<hmm.jpg, id=992, 282.3348pt x 87.2058pt>
 File: hmm.jpg Graphic file (type jpg)
  <use hmm.jpg> [27
 
@@ -1074,7 +1069,7 @@ Overfull \hbox (77.87318pt too wide) in paragraph at lines 617--617
 [40
 
 ]
-Overfull \hbox (4.21017pt too wide) in paragraph at lines 635--635
+Overfull \hbox (13.7103pt too wide) in paragraph at lines 636--636
  [] 
  []
 
@@ -1098,17 +1093,17 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 13158 strings out of 493848
- 238549 string characters out of 3149207
+ 13102 strings out of 493848
+ 237055 string characters out of 3149207
  316996 words of memory out of 3000000
- 15950 multiletter control sequences out of 15000+200000
- 14644 words of font info for 54 fonts, out of 3000000 for 9000
+ 15902 multiletter control sequences out of 15000+200000
+ 14938 words of font info for 55 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 45i,19n,62p,357b,587s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,19n,57p,357b,546s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><
@@ -1120,9 +1115,9 @@ local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr
 /local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/
 local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Presentation.pdf (42 pages, 1516657 bytes).
+Output written on Presentation.pdf (42 pages, 1510980 bytes).
 PDF statistics:
- 1641 PDF objects out of 1728 (max. 8388607)
+ 1594 PDF objects out of 1728 (max. 8388607)
  112 named destinations out of 1000 (max. 500000)
- 265 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 171 words of extra memory for PDF output out of 10000 (max. 10000000)
 
