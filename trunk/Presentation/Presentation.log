@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  27 JAN 2011 19:00
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  27 JAN 2011 20:20
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -843,12 +843,12 @@ File: Images/studs.png Graphic file (type png)
  <./Images/studs.png>] [5
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 74.
+LaTeX Font Info:    Try loading font information for U+msa on input line 73.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 74.
+LaTeX Font Info:    Try loading font information for U+msb on input line 73.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -858,7 +858,7 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 <Images/database.png, id=303, 324.21124pt x 481.8pt>
 File: Images/database.png Graphic file (type png)
  <use Images/database.png>
-Overfull \vbox (73.24126pt too high) detected at line 83
+Overfull \vbox (73.24126pt too high) detected at line 82
  []
 
 [7
@@ -870,12 +870,12 @@ Overfull \vbox (73.24126pt too high) detected at line 83
 File: Images/pipeline.png Graphic file (type png)
 
 <use Images/pipeline.png>
-Overfull \hbox (6.14711pt too wide) in paragraph at lines 102--102
+Overfull \hbox (6.14711pt too wide) in paragraph at lines 101--101
  [] 
  []
 
 
-Overfull \vbox (12.1797pt too high) detected at line 102
+Overfull \vbox (12.1797pt too high) detected at line 101
  []
 
 [9
@@ -890,9 +890,9 @@ File: Images/pipelinePP.png Graphic file (type png)
 ntifier (name{fig:pipeline}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.118 }
+l.117 }
        
-Overfull \vbox (11.14873pt too high) detected at line 118
+Overfull \vbox (11.14873pt too high) detected at line 117
  []
 
 [11
@@ -902,7 +902,7 @@ Overfull \vbox (11.14873pt too high) detected at line 118
 File: Images/line_segmentation.png Graphic file (type png)
 
 <use Images/line_segmentation.png>
-Overfull \vbox (15.79167pt too high) detected at line 129
+Overfull \vbox (15.79167pt too high) detected at line 128
  []
 
 [12
@@ -930,7 +930,7 @@ File: Images/word_segmentation.png Graphic file (type png)
 File: Images/baseline.png Graphic file (type png)
 
 <use Images/baseline.png>
-Overfull \vbox (1.81218pt too high) detected at line 165
+Overfull \vbox (1.81218pt too high) detected at line 164
  []
 
 [16
@@ -940,7 +940,7 @@ Overfull \vbox (1.81218pt too high) detected at line 165
 File: Images/vertical_scaling.png Graphic file (type png)
 
 <use Images/vertical_scaling.png>
-Overfull \vbox (4.57474pt too high) detected at line 174
+Overfull \vbox (4.57474pt too high) detected at line 173
  []
 
 [17
@@ -999,24 +999,24 @@ File: hmm.jpg Graphic file (type jpg)
 [28
 
 ]
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 333--333
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 331--331
 []  
  []
 
 
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 333--333
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 331--331
 []  
  []
 
 
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 333--333
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 331--331
 []  
  []
 
 [29
 
 ]
-Overfull \hbox (25.04037pt too wide) detected at line 357
+Overfull \hbox (25.04037pt too wide) detected at line 355
 \OT1/cmss/m/it/10.95 P\OT1/cmss/m/n/10.95 (\OT1/cmss/m/it/10.95 o[]\OML/cmm/m/i
 t/10.95 ; \OT1/cmss/m/it/10.95 o[]\OML/cmm/m/it/10.95 ; [] ; \OT1/cmss/m/it/10.
 95 o[]\OMS/cmsy/m/n/10.95 j\OT1/cmss/m/it/10.95 q[] \OT1/cmss/m/n/10.95 = \OT1/
@@ -1026,13 +1026,13 @@ cmss/m/it/10.95 s[]\OML/cmm/m/it/10.95 ; ^^U\OT1/cmss/m/n/10.95 ) =
 <forward2.jpg, id=1161, 178.9887pt x 236.082pt>
 File: forward2.jpg Graphic file (type jpg)
  <use forward2.jpg>
-Overfull \vbox (8.83167pt too high) detected at line 357
+Overfull \vbox (8.83167pt too high) detected at line 355
  []
 
 [30
 
  <./forward2.jpg>]
-Overfull \hbox (25.04037pt too wide) detected at line 385
+Overfull \hbox (25.04037pt too wide) detected at line 383
 \OT1/cmss/m/it/10.95 P\OT1/cmss/m/n/10.95 (\OT1/cmss/m/it/10.95 o[]\OML/cmm/m/i
 t/10.95 ; \OT1/cmss/m/it/10.95 o[]\OML/cmm/m/it/10.95 ; [] ; \OT1/cmss/m/it/10.
 95 o[]\OMS/cmsy/m/n/10.95 j\OT1/cmss/m/it/10.95 q[] \OT1/cmss/m/n/10.95 = \OT1/
@@ -1043,11 +1043,11 @@ pdfTeX warning (ext4): destination with the same identifier (name{forwardProbab
 ility}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.385 }
+l.383 }
        
 File: forward2.jpg Graphic file (type jpg)
  <use forward2.jpg>
-Overfull \vbox (8.83167pt too high) detected at line 385
+Overfull \vbox (8.83167pt too high) detected at line 383
  []
 
 [31
@@ -1055,36 +1055,36 @@ Overfull \vbox (8.83167pt too high) detected at line 385
 ] [32
 
 ]
-Overfull \hbox (9.85583pt too wide) detected at line 412
+Overfull \hbox (9.85583pt too wide) detected at line 410
 [] \OT1/cmss/m/n/10.95 = \OT1/cmss/m/it/10.95 frac[][] \OT1/cmss/m/n/10.95 =
  []
 
 [33
 
 ]
-Underfull \hbox (badness 4156) in paragraph at lines 427--427
+Underfull \hbox (badness 4156) in paragraph at lines 425--425
 []\OT1/cmss/m/n/10.95 Number of com-po-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--427
+Underfull \hbox (badness 10000) in paragraph at lines 425--425
 []\OT1/cmss/m/n/10.95 Topology (states,
  []
 
 
-Overfull \hbox (15.63164pt too wide) in paragraph at lines 427--427
+Overfull \hbox (15.63164pt too wide) in paragraph at lines 425--425
  [] 
  []
 
 [34
 
 ]
-Underfull \hbox (badness 1590) in paragraph at lines 466--466
+Underfull \hbox (badness 1590) in paragraph at lines 464--464
 \OT1/cmss/m/n/10.95 given the data and
  []
 
 
-Underfull \hbox (badness 1655) in paragraph at lines 466--466
+Underfull \hbox (badness 1655) in paragraph at lines 464--464
 \OT1/cmss/m/n/10.95 prob-a-bil-ity of trans-
  []
 
@@ -1100,9 +1100,23 @@ Underfull \hbox (badness 1655) in paragraph at lines 466--466
 
 ] [40
 
-] [41
+]
+Overfull \hbox (49.8049pt too wide) in paragraph at lines 565--565
+ [] 
+ []
 
-] [42
+
+Overfull \vbox (32.51868pt too high) detected at line 565
+ []
+
+[41
+
+]
+Overfull \hbox (77.87318pt too wide) in paragraph at lines 583--583
+ [] 
+ []
+
+[42
 
 ] [43
 
@@ -1126,27 +1140,33 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13193 strings out of 493848
- 239402 string characters out of 3149207
- 318996 words of memory out of 3000000
- 15979 multiletter control sequences out of 15000+200000
+ 13151 strings out of 493848
+ 238028 string characters out of 3149207
+ 315996 words of memory out of 3000000
+ 15937 multiletter control sequences out of 15000+200000
  14644 words of font info for 54 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 45i,19n,63p,357b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
-></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><
-/usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></
-usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></us
-r/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/
-local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr
-/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr
-/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/
-local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
-ocal/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Presentation.pdf (43 pages, 1639701 bytes).
+ 45i,19n,62p,357b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{Outline0.5.1.43} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.5} has been referenced but does not exist,
+ replaced by a fixed one
+
+</usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></u
+sr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></us
+r/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/
+local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/lo
+cal/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/l
+ocal/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/l
+ocal/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/lo
+cal/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
+al/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on Presentation.pdf (43 pages, 1639652 bytes).
 PDF statistics:
- 1710 PDF objects out of 1728 (max. 8388607)
+ 1705 PDF objects out of 1728 (max. 8388607)
  117 named destinations out of 1000 (max. 500000)
- 284 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 272 words of extra memory for PDF output out of 10000 (max. 10000000)
 

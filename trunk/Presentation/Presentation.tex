@@ -56,7 +56,6 @@ The research touched different fields:
 \item Image Processing
 \item Features extraction 
 \item Machine Learning 
-\item Word Recognition
 \end{itemize}
 }
 
@@ -330,85 +329,85 @@ We extract:
 
 \end{enumerate}
 }
-
-\frame{\frametitle{Forward probability}
-\begin{columns}
- 
-\column{1.5in}
-\[
- \alpha_{t}(i) \equiv
-\]
-\[
-  P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
-\]
-\begin{equation}
- \label{forwardProbability}
-\displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
-\end{equation}
-\column{2in}
-  \begin{figure}
-  \includegraphics[width=0.8\textwidth]{forward2.jpg}
-  \caption{Computation of forward probability}
-  \end{figure}
-
-\end{columns}
-
-}
-
-\frame{\frametitle{Forward probability}
-\begin{columns}
- 
-\column{1.5in}
-\[
- \alpha_{t}(i) \equiv
-\]
-\[
-  P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
-\]
-\begin{equation}
- \label{forwardProbability}
-\displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
-\end{equation}
-\begin{equation}
- P({\bf O| \lambda}) = \displaystyle \sum_{i=1}^{N} \alpha_{T}(i)
-\end{equation}
-Problem 1 solved.
-\column{2in}
-  \begin{figure}
-  \includegraphics[width=0.8\textwidth]{forward2.jpg}
-  \caption{Computation of forward probability}
-  \end{figure}
-
-\end{columns}
-
-}
-
-\frame{\frametitle{Learning the parameters}
-  The forward-backward algorithm also commes with a backward probability:\\
- \[
-  \beta_{t}(j) \equiv P(o_{t+1},o_{t+2},\ldots, o_{T}| q_{t} = s_{j}, \lambda) = 
-\]
-\begin{equation}
- \label{backwardProbability}
-\displaystyle \sum_{i=1}^{N} a_{ij} b_{i}(o_{t+1}) \beta_{i}(o_{t+1})
-\end{equation}
-With this we can define the probability of being in a state at a timestep as:
-\begin{equation}
- \gamma_{t}(i) \equiv (P({\bf O}|\lambda))^{-1} \alpha_{t}(i)\beta_{t}(i) 
-\end{equation}
-Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\beta_{t}(i) = \sum_{j=1}^{N} \alpha_{T}(j)$.
-
-}
-
-\frame{\frametitle{Learning the parameters}
-\[ 
-\hat{a}_{ij} = frac{\text{Prob. of being in i and transfering to j}}{\text{Prob. of begin in i}} =
-\]
-\begin{equation}
- \hat{a}_{ij} = \frac{\displaystyle \sum_{t=1}^{T-1} \xi_{t}(i,j) } {\displaystyle \sum_{t=1}^{T-1} \gamma_{t}(i) }
-\end{equation}
-The priors remain fixed, for the left-to-right model.
-}
+%
+%\frame{\frametitle{Forward probability}
+%\begin{columns}
+% 
+%\column{1.5in}
+%\[
+% \alpha_{t}(i) \equiv
+%\]
+%\[
+%  P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
+%\]
+%\begin{equation}
+% \label{forwardProbability}
+%\displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
+%\end{equation}
+%\column{2in}
+%  \begin{figure}
+%  \includegraphics[width=0.8\textwidth]{forward2.jpg}
+%  \caption{Computation of forward probability}
+%  \end{figure}
+%
+%\end{columns}
+%
+%}
+%
+%\frame{\frametitle{Forward probability}
+%\begin{columns}
+% 
+%\column{1.5in}
+%\[
+% \alpha_{t}(i) \equiv
+%\]
+%\[
+%  P(o_{1},o_{2},\ldots, o_{t}| q_{t} = s_{i}, \lambda) = 
+%\]
+%\begin{equation}
+% \label{forwardProbability}
+%\displaystyle \Big [ \sum_{j=1}^{N}  \alpha_{t-1}(j) a_{ij} \Big ] b_{j}(o_{t})
+%\end{equation}
+%\begin{equation}
+% P({\bf O| \lambda}) = \displaystyle \sum_{i=1}^{N} \alpha_{T}(i)
+%\end{equation}
+%Problem 1 solved.
+%\column{2in}
+%  \begin{figure}
+%  \includegraphics[width=0.8\textwidth]{forward2.jpg}
+%  \caption{Computation of forward probability}
+%  \end{figure}
+%
+%\end{columns}
+%
+%}
+%
+%\frame{\frametitle{Learning the parameters}
+%  The forward-backward algorithm also commes with a backward probability:\\
+% \[
+%  \beta_{t}(j) \equiv P(o_{t+1},o_{t+2},\ldots, o_{T}| q_{t} = s_{j}, \lambda) = 
+%\]
+%\begin{equation}
+% \label{backwardProbability}
+%\displaystyle \sum_{i=1}^{N} a_{ij} b_{i}(o_{t+1}) \beta_{i}(o_{t+1})
+%\end{equation}
+%With this we can define the probability of being in a state at a timestep as:
+%\begin{equation}
+% \gamma_{t}(i) \equiv (P({\bf O}|\lambda))^{-1} \alpha_{t}(i)\beta_{t}(i) 
+%\end{equation}
+%Where normalisation constant $P({\bf O}|\lambda) = \sum_{j=1}^{N} \alpha_{t}(i)\beta_{t}(i) = \sum_{j=1}^{N} \alpha_{T}(j)$.
+%
+%}
+%
+%\frame{\frametitle{Learning the parameters}
+%\[ 
+%\hat{a}_{ij} = frac{\text{Prob. of being in i and transfering to j}}{\text{Prob. of begin in i}} =
+%\]
+%\begin{equation}
+% \hat{a}_{ij} = \frac{\displaystyle \sum_{t=1}^{T-1} \xi_{t}(i,j) } {\displaystyle \sum_{t=1}^{T-1} \gamma_{t}(i) }
+%\end{equation}
+%The priors remain fixed, for the left-to-right model.
+%}
 
 \frame{\frametitle{Updating the parameters}
 
