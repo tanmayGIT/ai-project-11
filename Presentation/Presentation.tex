@@ -741,12 +741,23 @@ For both experiments the model of a word is built using 30 samples from 30 autho
     {\bf Word}   			& Before & People & Difference \\\hline
     LL All features N=6 K=1 		&  $1.17e+03$ & $1.19e+03$ & 	$ 480.16$	\\
     LL All features N=1	K=1 		& $699.56$ & $1.0124e+03$ &	$422.78$	\\
-    LL All features N=6 K=3 		& 226.96 & -820.30 &	1.04e\^{3}\\
  \end{tabular}
 \end{table}
 }
 
 \frame{\frametitle{Experiment 1 - Handwritten Words (short vs long)}
+\begin{itemize}
+\item Used words 'At' and 'Government'  (different length)
+\end{itemize}
+\begin{table}
+\caption{Results for simple handwritten words, avg over 40 runs}
+ \begin{tabular}{|l|c|c|r|}\hline
+    {\bf Word}   			& Before & People & Difference \\\hline
+    LL All features N=6 K=1 		&  $441.89$ & $2.80e+03$ & 	$ 2.36e^{3}$	\\
+    LL All features N=1	K=1 		& $699.56$ & $1.0124e+03$ &	$422.78$	\\
+    LL All features N=1	K=3 		& $699.56$ & $1.0124e+03$ &	$422.78$	\\
+ \end{tabular}
+\end{table}
 }
 
 \frame{\frametitle{Experiments 2}
