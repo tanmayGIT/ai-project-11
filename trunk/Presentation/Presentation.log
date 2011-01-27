@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  27 JAN 2011 23:14
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  27 JAN 2011 23:23
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1014,46 +1014,46 @@ File: hmm.jpg Graphic file (type jpg)
 [33
 
 ]
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 365--365
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 369--369
 []  
  []
 
 
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 365--365
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 369--369
 []  
  []
 
 
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 365--365
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 369--369
 []  
  []
 
 [34
 
 ]
-Underfull \hbox (badness 4156) in paragraph at lines 537--537
+Underfull \hbox (badness 4156) in paragraph at lines 541--541
 []\OT1/cmss/m/n/10.95 Number of com-po-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 537--537
+Underfull \hbox (badness 10000) in paragraph at lines 541--541
 []\OT1/cmss/m/n/10.95 Topology (states,
  []
 
 
-Overfull \hbox (15.63164pt too wide) in paragraph at lines 537--537
+Overfull \hbox (15.63164pt too wide) in paragraph at lines 541--541
  [] 
  []
 
 [35
 
 ]
-Underfull \hbox (badness 1590) in paragraph at lines 576--576
+Underfull \hbox (badness 1590) in paragraph at lines 580--580
 \OT1/cmss/m/n/10.95 given the data and
  []
 
 
-Underfull \hbox (badness 1655) in paragraph at lines 576--576
+Underfull \hbox (badness 1655) in paragraph at lines 580--580
 \OT1/cmss/m/n/10.95 prob-a-bil-ity of trans-
  []
 
@@ -1087,18 +1087,18 @@ File: gmm3.jpg Graphic file (type jpg)
 ] [45
 
 ]
-Overfull \hbox (16.04233pt too wide) in paragraph at lines 727--727
+Overfull \hbox (16.04233pt too wide) in paragraph at lines 731--731
  [] 
  []
 
 
-Overfull \vbox (30.81561pt too high) detected at line 727
+Overfull \vbox (30.81561pt too high) detected at line 731
  []
 
 [46
 
 ]
-Overfull \hbox (14.48473pt too wide) in paragraph at lines 743--743
+Overfull \hbox (14.48473pt too wide) in paragraph at lines 747--747
  [] 
  []
 
@@ -1107,7 +1107,7 @@ Overfull \hbox (14.48473pt too wide) in paragraph at lines 743--743
 ] [48
 
 ]
-Overfull \hbox (13.7103pt too wide) in paragraph at lines 765--765
+Overfull \hbox (13.7103pt too wide) in paragraph at lines 769--769
  [] 
  []
 
@@ -1161,7 +1161,7 @@ local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr
 /local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/
 local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Presentation.pdf (54 pages, 1851903 bytes).
+Output written on Presentation.pdf (54 pages, 1850905 bytes).
 PDF statistics:
  2005 PDF objects out of 2073 (max. 8388607)
  135 named destinations out of 1000 (max. 500000)
