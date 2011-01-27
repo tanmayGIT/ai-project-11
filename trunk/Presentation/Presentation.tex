@@ -597,22 +597,22 @@ Consider the following observation:
 }
 
 
-\frame{\frametitle{Problems we ran into}
-
-Length of the word. Short words seem to be harder to find. Possible causes:
-\begin{itemize}
- \item During the testing, the model does not execute a complete sequence, e.g.
-      when looking for 'the' in 'therefore' it might end before 'r'.
- \items 
-\end{itemize}
-}
-
-
-
-
-}
+%\frame{\frametitle{Problems we ran into}
+%
+%Length of the word. Short words seem to be harder to find. Possible causes:
+%\begin{itemize}
+% \item During the testing, the model does not execute a complete sequence, e.g.
+%      when looking for 'the' in 'therefore' it might end before 'r'.
+%\end{itemize}
+%}
 
 \section{Experiments and Results}
+\frame{
+\begin{beamerboxesrounded}{}
+\centering Experiments and Results
+\end{beamerboxesrounded}
+}
+
 \frame{\frametitle{Experiments}
 We run 2 type of experiments:
 \begin{itemize}
@@ -657,7 +657,7 @@ For both experiments the model of a word is built using 30 samples from 30 autho
 ...many many more parameters. (Interval sliding window, width of sliding window, amount of noise, ... etc.)
 }
 
-\frame{\frametitle{Experiment 1 - Handwritten Words}
+\frame{\frametitle{Experiment 1 - Handwritten Words (same length)}
 \begin{itemize}
 \item Used words 'Before' and 'People'  (same length)
 \end{itemize}
@@ -671,7 +671,9 @@ For both experiments the model of a word is built using 30 samples from 30 autho
     LL All features N=6 K=3 		& 226.96 & -820.30 &	1.04e\^{3}\\
  \end{tabular}
 \end{table}
+}
 
+\frame{\frametitle{Experiment 1 - Handwritten Words (short vs long)}
 }
 
 \frame{\frametitle{Experiments 2}
@@ -687,17 +689,54 @@ Num. States  & Num. Gaussian Comp. & Accuracy 1\footnote{Correct if in 1st posit
 lengthWord & 1 &   0.2400 & 0.3400 \\
 1 & 1 &  0.2000 & 0.3600\\
 1 & 5 & 0.0800 & 0.1800\\
-lengthWord & 5 & 0 & 0 \\\hline
+lengthWord & 5 &  0.1200 & 0.3000 \\\hline
 \end{tabular}
 \end{table}
 
 }
 
-
+\frame{\frametitle{Evaluation}
+\begin{itemize}
+\item short vs long .... 
+\item More GMM components seems to decrease the accuracy because of .... 
+\end{itemize}
+}
 
 \section{Conclusions}
-\frame{\frametitle{Conclusions}  
-blabla
+\frame{
+\begin{beamerboxesrounded}{}
+\centering Conclusions
+\end{beamerboxesrounded}
+}
+
+\frame{\frametitle{Conclusions about the AI project }  
+\begin{itemize}
+\item The full pipeline is working, however a lot of improvements are possible:
+\begin{itemize}
+\item Extract more features
+\item Eventually apply PCA to the feature vector
+\item Optimize the parameters of the HMM (i.e. using a validation set).
+\end{itemize}
+\item Built models for letters instead of models for words (it requires letters segmentation)
+\item Use a language model 
+\end{itemize}
+}
+
+\frame{\frametitle{Personal Evaluation}  
+\begin{itemize}
+\item We built a full working pipeline
+\item We read and learnt a lot about a new topic
+\item We had the chance to apply a lot of techniques that we had only been studied in theory
+\item We improved our skills in programming
+\end{itemize}
+}
+
+
+
+\frame{
+\begin{beamerboxesrounded}{}
+\centering Questions?
+\end{beamerboxesrounded}
 }
 
 \end{document}
