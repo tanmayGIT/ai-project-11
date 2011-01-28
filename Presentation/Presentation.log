@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  27 JAN 2011 23:23
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  28 JAN 2011 08:58
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1067,17 +1067,17 @@ Underfull \hbox (badness 1655) in paragraph at lines 580--580
 
 ] [40
 
-] <gmm1.jpg, id=1504, 218.2554pt x 214.401pt>
+] <gmm1.jpg, id=1502, 218.2554pt x 214.401pt>
 File: gmm1.jpg Graphic file (type jpg)
 
 <use gmm1.jpg> [41
 
- <./gmm1.jpg>] <gmm2.jpg, id=1539, 218.2554pt x 214.401pt>
+ <./gmm1.jpg>] <gmm2.jpg, id=1537, 218.2554pt x 214.401pt>
 File: gmm2.jpg Graphic file (type jpg)
 
 <use gmm2.jpg> [42
 
- <./gmm2.jpg>] <gmm3.jpg, id=1573, 218.2554pt x 214.401pt>
+ <./gmm2.jpg>] <gmm3.jpg, id=1571, 218.2554pt x 214.401pt>
 File: gmm3.jpg Graphic file (type jpg)
 
 <use gmm3.jpg> [43
@@ -1087,22 +1087,17 @@ File: gmm3.jpg Graphic file (type jpg)
 ] [45
 
 ]
-Overfull \hbox (16.04233pt too wide) in paragraph at lines 731--731
+Overfull \hbox (2.11253pt too wide) in paragraph at lines 719--719
  [] 
  []
 
 
-Overfull \vbox (30.81561pt too high) detected at line 731
+Overfull \vbox (4.01561pt too high) detected at line 719
  []
 
 [46
 
-]
-Overfull \hbox (14.48473pt too wide) in paragraph at lines 747--747
- [] 
- []
-
-[47
+] [47
 
 ] [48
 
@@ -1143,10 +1138,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13240 strings out of 493848
- 239751 string characters out of 3149207
- 315996 words of memory out of 3000000
- 16002 multiletter control sequences out of 15000+200000
+ 13238 strings out of 493848
+ 239691 string characters out of 3149207
+ 316996 words of memory out of 3000000
+ 16000 multiletter control sequences out of 15000+200000
  15294 words of font info for 56 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  45i,19n,62p,357b,587s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1161,9 +1156,9 @@ local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr
 /local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/
 local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Presentation.pdf (54 pages, 1850905 bytes).
+Output written on Presentation.pdf (54 pages, 1850539 bytes).
 PDF statistics:
- 2005 PDF objects out of 2073 (max. 8388607)
+ 2003 PDF objects out of 2073 (max. 8388607)
  135 named destinations out of 1000 (max. 500000)
- 298 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 292 words of extra memory for PDF output out of 10000 (max. 10000000)
 
