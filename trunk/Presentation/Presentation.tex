@@ -579,7 +579,7 @@ We use a sliding window over the words and at every shift of the window we extra
 \end{table}
 }
 
-\frame{\frametitle{Problems we ran into}
+\frame{\frametitle{Problems we ran into - 1}
 Consider the following observation:
   \[
    {\bf O} = \begin{pmatrix}
@@ -591,7 +591,7 @@ Consider the following observation:
   \]
 }
 
-\frame{\frametitle{Problems we ran into}
+\frame{\frametitle{Problems we ran into - 1}
   Singularities. Consider the following observation:
   \[
    {\bf O} = \begin{pmatrix}
@@ -608,7 +608,7 @@ Consider the following observation:
        \end{pmatrix}
   \]
 }
-\frame{\frametitle{Problems we ran into}
+\frame{\frametitle{Problems we ran into - 1}
  Singularities
   \[
    {\bf O} = \begin{pmatrix}
@@ -634,24 +634,14 @@ Consider the following observation:
 
 }
 
-
-\frame{\frametitle{Problems we ran into}
-
-Length of the word. Short words seem to be harder to find. Possible causes:
-\begin{itemize}
- \item During the testing, the model does not execute a complete sequence, e.g.
-      when looking for 'the' in 'therefore' it might end before 'r'.
- \item Short words may be more difficult to recognise as they are more sensible to inter-writer variations.
-\end{itemize}
-
- \begin{beamerboxesrounded}{Possible solutions:}
- \begin{itemize}
-  \item Force the model to end the observations sequence in the final state.
-  \item Use a more complex observation model. E.g., a MOG.
-\end{itemize}
+\frame{\frametitle{Problems we ran into - 2}
+ Short words may be more difficult to recognise as they are more sensible to inter-writer variations.\vspace{\baselineskip}
+ 
+  \begin{beamerboxesrounded}{}
+\centering Possible solution: Use Mixture of Gaussians
 \end{beamerboxesrounded}
-
 }
+
 
 \frame{\frametitle{Mixture of Gaussians}
 
@@ -710,21 +700,19 @@ For both experiments the model of a word is built using 30 samples from 30 autho
 
 \begin{itemize}
 \item Done to check the correctness of the pipeline.
-\item Only used intensity features.
 \item Used words 'Letter' and 'Number'  (same length)
 \end{itemize}
 
 \begin{table}
-\caption{Results averaged over 40 runs}
- \begin{tabular}{|l|c|c|r|}\hline
-    {\bf Word}   		& Letter & Number & Difference \\\hline
-    LL Intensity N=6	K=1 	& 121.68 & 106.36 & 	15.32	\\
-    LL All features N=6 K=1 	& 795.45 & 14.08  &	781.37	\\
-    LL All features N=1	K=1 	& 602.22 & -90.02 &	692.22	\\
-    LL All features N=6 K=3 	& 226.96 & -820.30 &	$1.04e^{3}$\\
-    LL ALL , N=6, K=1,  diagonal cov & 871.16 & 531.27 & 	487.75\\
-    LL ALL , N=6, K=1,  isotropc cov & -179.00 & -272.23 &	197.35\\
-    ... & ... & ...& ... \\
+\caption{Values of likelihoods averaged over 40 runs}
+ \begin{tabular}{|c|c|c|c|c|c|}\hline
+    Features & States & G.Comp. & Letter & Number & Diff. \\\hline
+    Intensity & 6	& 1 	& 121.68 & 106.36 & 	15.32	\\
+    All& 6  & 1 	& 795.45 & 14.08  &	781.37	\\
+    All & 1&	 1 	& 602.22 & -90.02 &	692.22	\\
+    All & 6 & 3 	& 226.96 & -820.30 &	$1.04e^{3}$\\
+    All & 6 & 1,  diagonal cov & 871.16 & 531.27 & 	487.75\\
+    All & 6 &1,  isotropc cov & -179.00 & -272.23 &	197.35\\\hline
  \end{tabular}
 \end{table}
 ...many many more parameters. (Interval sliding window, width of sliding window, amount of noise, ... etc.)
@@ -732,30 +720,31 @@ For both experiments the model of a word is built using 30 samples from 30 autho
 
 \frame{\frametitle{Experiment 1 - Handwritten Words (same length)}
 \begin{itemize}
-\item Used words 'Before' and 'People'  (same length)
+\item Built models for 'Before' and 'People'
+\item Tested the models on new instances of 'Before' 
 \end{itemize}
 
 \begin{table}
-\caption{Results for simple handwritten words, avg over 40 runs}
- \begin{tabular}{|l|c|c|r|}\hline
-    {\bf Word}   			& Before & People & Difference \\\hline
-    LL All features N=6 K=1 		&  $1.17e+03$ & $1.19e+03$ & 	$ 480.16$	\\
-    LL All features N=1	K=1 		& $699.56$ & $1.0124e+03$ &	$422.78$	\\
+\caption{Values of likelihoods averaged over 40 runs}
+ \begin{tabular}{|c|c|c|c|c|}\hline
+States  & G. Comp.  & 'Before' & 'People' & Difference \\\hline
+6 & 1 		&  $1.17e+03$ & $1.19e+03$ & 	$ 480.16$	\\
+1 & 1 		& $699.56$ & $1.0124e+03$ &	$422.78$	\\\hline
  \end{tabular}
 \end{table}
 }
 
 \frame{\frametitle{Experiment 1 - Handwritten Words (short vs long)}
 \begin{itemize}
-\item Used words 'At' and 'Government'  (different length)
+\item Built models for 'At' and 'Government'
+\item Tested the models on new instances of 'At'
 \end{itemize}
 \begin{table}
-\caption{Results for simple handwritten words, avg over 40 runs}
- \begin{tabular}{|l|c|c|r|}\hline
-    {\bf Word}   			& Before & People & Difference \\\hline
-    LL All features N=6 K=1 		&  $441.89$ & $2.80e+03$ & 	$ 2.36e^{3}$	\\
-    LL All features N=1	K=1 		& $699.56$ & $1.0124e+03$ &	$422.78$	\\
-    LL All features N=1	K=3 		& $699.56$ & $1.0124e+03$ &	$422.78$	\\
+\caption{Values of likelihoods averaged over 40 runs}
+ \begin{tabular}{|c|c|c|c|c|}\hline
+States  & G. Comp.  & 'At' & 'Government' & Difference \\\hline
+6 & 1 	&  $441.89$ & $2.80e+03$ & 	$ 2.36e^{3}$	\\
+1 & 1 	& $216.47$ & $1.65e+03$ &	$1.44e^{3}$	\\\hline
  \end{tabular}
 \end{table}
 }
@@ -779,12 +768,20 @@ lengthWord & 5 &  0.1200 & 0.3000 \\\hline
 
 }
 
-\frame{\frametitle{Evaluation}
+\frame{\frametitle{Issue with recognition}
+Short words seem to be harder to find. \\
+Possible causes:
 \begin{itemize}
-\item short vs long...
-\item More GMM components seems to decrease the accuracy because of .... 
+ \item During the testing, the model does not execute a complete sequence, e.g.
+      when looking for 'the' in 'therefore' it might end before 'r'.
 \end{itemize}
+
+ \begin{beamerboxesrounded}{}
+ Possible solutions: Force the model to end the observations sequence in the final state.
+\end{beamerboxesrounded}
+
 }
+
 
 \section{Conclusions}
 \frame{
