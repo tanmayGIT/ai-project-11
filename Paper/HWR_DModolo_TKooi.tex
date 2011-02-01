@@ -49,7 +49,7 @@ This paper is divided into 5 sections, with each section covering a different as
 
 \section{Preprocessing}
 Several general preprocessing steps are done on the composite raw image before word recognition starts. These steps attempt to normalize the image as much as possible. It is assumed that the image has been binarized from gray scale. 
-A pipeline of the preprocessing is shown in Fig. \ref{fig:pipelinePP}, and in the next subsections we will briefly describe all the steps involved.
+A pipeline of the preprocessing is shown in Fig. \ref{fig:pipelinePP}, and in the next subsections we will briefly describe all the steps involved. It is worth to note that in the presented pipeline skew and slant correction steps are applied both to lines and individual words. The repetition is useful to first obtain a good word segmentation, and to then obtain a good estimation of the baselines on single words.
 
 \begin{figure}[H]
  \centering
