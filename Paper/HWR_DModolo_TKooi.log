@@ -1,12 +1,19 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.9.4)  24 JAN 2011 15:37
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  1 FEB 2011 21:20
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **HWR_DModolo_TKooi.tex
 (./HWR_DModolo_TKooi.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, loaded.
+yphenation, german-x-2009-06-19, ngerman-x-2009-06-19, ancientgreek, ibycus, ar
+abic, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danish, dutc
+h, esperanto, estonian, farsi, finnish, french, galician, german, ngerman, mono
+greek, greek, hungarian, icelandic, indonesian, interlingua, irish, italian, ku
+rmanji, latin, latvian, lithuanian, mongolian, mongolian2a, bokmal, nynorsk, po
+lish, portuguese, romanian, russian, sanskrit, serbian, slovak, slovenian, span
+ish, swedish, turkish, ukenglish, ukrainian, uppersorbian, welsh, loaded.
 (./IEEEtran.cls
 Document Class: IEEEtran 2002/08/13 revision V1.6 by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
@@ -18,7 +25,7 @@ Document Class: IEEEtran 2002/08/13 revision V1.6 by Michael Shell
 \@IEEEtrantmptoksA=\toks14
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 692.
 
-(/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
+(/usr/local/texlive/2009/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 -- This is a 10 point document.
@@ -87,11 +94,11 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \@IEEEtmpitemindent=\dimen112
 \c@biography=\count90
 \@IEEEtranrubishbin=\box26
-) (/usr/share/texmf-texlive/tex/latex/algorithms/algorithm.sty
+) (/usr/local/texlive/2009/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
-(/usr/share/texmf-texlive/tex/latex/float/float.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count91
 \float@exts=\toks15
@@ -99,16 +106,16 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks16
 \@floatcapt=\box28
 )
-(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks17
 \c@algorithm=\count92
 )
-(/usr/share/texmf-texlive/tex/latex/algorithms/algorithmic.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 
-(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks18
 )
@@ -119,28 +126,28 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \ALC@tlm=\skip46
 \algorithmicindent=\skip47
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/etc/texmf/tex/latex/config/graphics.cfg
+(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2009/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
 \Gread@gobject=\count97
 ))
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
 )
-(/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
 
 
@@ -178,14 +185,14 @@ Package subfigure Warning: Your document class has a bad definition
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
-(/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.cfg)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/subfigure/subfigure.cfg)
 \subfig@top=\skip52
 \subfig@bottom=\skip53
 )
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2009/06/22 v3.00
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \@emptytoks=\toks19
 \symAMSa=\mathgroup4
@@ -193,24 +200,24 @@ Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip54
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks20
 \ex@=\dimen117
 ))
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen118
 )
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count102
@@ -251,7 +258,7 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
 )
-(/usr/share/texmf-texlive/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
@@ -266,7 +273,7 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
 
-(/usr/share/texmf-texlive/tex/latex/base/ts1enc.def
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 )
 LaTeX Info: Redefining \oldstylenums on input line 266.
@@ -319,29 +326,41 @@ Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
 )
 ** ATTENTION: Overriding command lockouts (line 11).
-(./HWR_DModolo_TKooi.aux)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+(./HWR_DModolo_TKooi.aux
+
+LaTeX Warning: Label `fig:pipeline' multiply defined.
+
+)
 \openout1 = `HWR_DModolo_TKooi.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 19.
- (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 23.
+ (/usr/local/texlive/2009/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    ... okay on input line 23.
 
-(/usr/share/texmf/tex/context/base/supp-pdf.mkii
+(/usr/local/texlive/2009/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count114
 \scratchdimen=\dimen126
@@ -354,46 +373,134 @@ LaTeX Font Info:    ... okay on input line 19.
 \MPnumerator=\count118
 \everyMPtoPDFconversion=\toks26
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 38.
- (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2009/06/22 v3.00 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 38.
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-)
-<hmm.jpg, id=1, 282.3348pt x 87.2058pt>
-File: hmm.jpg Graphic file (type jpg)
- <use hmm.jpg>
-Underfull \hbox (badness 10000) in paragraph at lines 43--48
+LaTeX Warning: Citation `journals/ijprai/MartiB01' on page 1 undefined on input
+ line 35.
 
+
+LaTeX Warning: Citation `journals/pr/BunkeRS95' on page 1 undefined on input li
+ne 35.
+
+
+LaTeX Warning: Citation `journals/pami/GravesLFBBS09' on page 1 undefined on in
+put line 35.
+
+
+LaTeX Warning: Citation `bb105728' on page 1 undefined on input line 35.
+
+
+LaTeX Warning: Citation `bb105468' on page 1 undefined on input line 35.
+
+
+LaTeX Warning: Citation `CVPR00_VOLII*290' on page 1 undefined on input line 35
+.
+
+
+LaTeX Warning: Citation `bb106176' on page 1 undefined on input line 37.
+
+
+LaTeX Warning: Citation `oai:oai.columbia.edu:epic/nsdl/1/145780' on page 1 und
+efined on input line 37.
+
+<pipeline.png, id=1, 663.47874pt x 147.55125pt>
+File: pipeline.png Graphic file (type png)
+ <use pipeline.png>
+Overfull \hbox (32.43768pt too wide) in paragraph at lines 43--44
+ [][] 
  []
 
 
-Underfull \hbox (badness 7433) in paragraph at lines 52--53
+Underfull \vbox (badness 3333) has occurred while \output is active []
+
+ [1{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+ <./pipeline.png>] <preprocessing_pipeline.png, id=11, 386.44376pt x 763.85374p
+t>
+File: preprocessing_pipeline.png Graphic file (type png)
+
+<use preprocessing_pipeline.png>
+LaTeX Font Info:    Try loading font information for U+msa on input line 69.
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 69.
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+
+LaTeX Warning: Citation `springerlink:10.1007/s100320050035' on page 2 undefine
+d on input line 85.
+
+[2 <./preprocessing_pipeline.png>]
+Missing character: There is no Ô in font ptmr7t!
+Missing character: There is no Õ in font ptmr7t!
+Missing character: There is no Ô in font ptmr7t!
+Missing character: There is no Õ in font ptmr7t!
+Missing character: There is no Ô in font ptmr7t!
+Missing character: There is no Õ in font ptmr7t!
+Missing character: There is no Ô in font ptmr7t!
+Missing character: There is no Õ in font ptmr7t!
+
+
+LaTeX Warning: Citation `10.1109/34.667887' on page 3 undefined on input line 1
+10.
+
+<features2.png, id=21, 583.17876pt x 280.04625pt>
+File: features2.png Graphic file (type png)
+ <use features2.png>
+Overfull \hbox (7.11319pt too wide) in paragraph at lines 120--121
+ [][] 
+ []
+
+
+LaTeX Warning: Citation `rabiner-89' on page 3 undefined on input line 133.
+
+
+LaTeX Warning: Citation `Rabiner86Z27' on page 3 undefined on input line 133.
+
+<hmm.jpg, id=22, 282.3348pt x 87.2058pt>
+File: hmm.jpg Graphic file (type jpg)
+ <use hmm.jpg>
+Underfull \hbox (badness 10000) in paragraph at lines 141--146
+\OT1/ptm/m/n/10 The model is trained to es-ti-mate the pos-te-rior
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--146
+\OT1/ptm/m/n/10 prob-a-bil-ity $\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OT1/cmr/bx/
+n/10 O\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 ^^U\OT1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 
+of an ob-ser-va-tion se-quence
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--146
+
+ []
+
+[3 <./features2.png>]
+Underfull \hbox (badness 7433) in paragraph at lines 150--151
 []\OT1/ptm/m/n/10 The most likely state se-quence, un-der-ly-ing a
  []
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
-
-
- <./hmm.jpg>]
-<forward2.jpg, id=21, 178.9887pt x 236.082pt>
+<forward2.jpg, id=30, 178.9887pt x 236.082pt>
 File: forward2.jpg Graphic file (type jpg)
  <use forward2.jpg>
-Underfull \hbox (badness 10000) in paragraph at lines 140--142
-\OT1/ptm/m/n/10 Where nor-mal-i-sa-tion con-stant $\OML/cmm/m/it/10 P\OT1/cmr/m
-/n/10 (\OT1/cmr/bx/n/10 O\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 ^^U\OT1/cmr/m/n/10 
-) =
+Underfull \hbox (badness 10000) in paragraph at lines 180--182
+\OT1/ptm/m/n/10 Where nor-mal-iza-tion con-stant $\OML/cmm/m/it/10 P\OT1/cmr/m/
+n/10 (\OT1/cmr/bx/n/10 O\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 ^^U\OT1/cmr/m/n/10 )
+ =
  []
 
-<single.jpg, id=22, 218.2554pt x 214.401pt>
+[4 <./hmm.jpg> <./forward2.jpg>] <single.jpg, id=35, 218.2554pt x 214.401pt>
 File: single.jpg Graphic file (type jpg)
- <use single.jpg>
-<gmm.jpg, id=23, 218.2554pt x 214.401pt>
+
+<use single.jpg> <gmm.jpg, id=36, 218.2554pt x 214.401pt>
 File: gmm.jpg Graphic file (type jpg)
- <use gmm.jpg> [2 <./forward2.jpg>]
+ <use gmm.jpg>
+No file HWR_DModolo_TKooi.bbl.
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -405,34 +512,38 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-[3
+[5 <./single.jpg> <./gmm.jpg>] (./HWR_DModolo_TKooi.aux)
 
- <./single.jpg> <./gmm.jpg>] (./HWR_DModolo_TKooi.aux) ) 
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3215 strings out of 495061
- 43950 string characters out of 1182622
- 98838 words of memory out of 3000000
- 6366 multiletter control sequences out of 15000+50000
- 36769 words of font info for 74 fonts, out of 3000000 for 9000
- 28 hyphenation exceptions out of 8191
- 27i,8n,24p,682b,299s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texli
-ve/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/ams
-fonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
-ex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/
-fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/
-public/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
-ts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/sh
-are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-te
-xlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/ur
-w/times/utmbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
-</usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on HWR_DModolo_TKooi.pdf (3 pages, 497401 bytes).
+ 3291 strings out of 493848
+ 45901 string characters out of 3149207
+ 101898 words of memory out of 3000000
+ 6531 multiletter control sequences out of 15000+200000
+ 37876 words of font info for 75 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 27i,9n,24p,1323b,307s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2009/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
+xlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/tex
+live/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texl
+ive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texliv
+e/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/
+2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/200
+9/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2009
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2009/t
+exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2009/texmf-dist/
+fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/typ
+e1/urw/times/utmr8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/tim
+es/utmri8a.pfb>
+Output written on HWR_DModolo_TKooi.pdf (5 pages, 565628 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
+ 78 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
