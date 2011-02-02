@@ -77,7 +77,6 @@ Once $P$ has been populated, a least-squares linear regression is computed to fi
 
 \subsection{Slant Correction}
 The goal of slant correction is to bring the handwriting into an upright position. Depending on the writing style, the handwriting (especially its long vertical strokes) is more or less slanted to the right or to the left. Similar to the skew correction, two steps are applied to remove the slant. First, the slant angle is estimated from the image. Second, an affine transformation with the estimated slant angle brings the handwriting into an upright position.
-
 The slant is estimated by finding the average angle of near-vertical strokes.  First, the contour of the thresholded image is found, and a chain of connected pixels representing the edges of stroke is obtained. Second, the mode orientation of those edges close to the vertical is used as overall slant estimate.  
 
 
@@ -90,7 +89,6 @@ Word segmentation is not always straight-forward. Gaps between words are general
 Four horizontal lines (ascender, upper, lower and descender - ordered from the top to the bottom) must be fit to the line of text for proper scaling and, later, recognition. 
 Determining the upper and lower baselines is rather trivial, and can be done using linear regression as explained in skew subsection. Upper black pixels of each column are used to determine the upper baseline, and lower black pixels are used to determine the lower baselines. 
 Ascender and descender baselines can be estimated respectively as the first $y$ non-zero value and the last $y$ non-zero value on the vertical histogram of the line. 
-
 Once the baselines are estimated the input line can be horizontally divided into three parts, the descender part, the middle part, where the body of the text is located, and the ascender part.  The rest of the image (above the ascender baseline and below the descender baseline) is discarded. 
 
 \subsection{Vertical Scaling}
