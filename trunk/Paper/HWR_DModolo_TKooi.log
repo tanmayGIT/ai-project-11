@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  1 FEB 2011 21:26
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  2 FEB 2011 17:07
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -375,44 +375,41 @@ LaTeX Font Info:    ... okay on input line 23.
 )
 
 LaTeX Warning: Citation `journals/ijprai/MartiB01' on page 1 undefined on input
- line 35.
+ line 38.
 
 
 LaTeX Warning: Citation `journals/pr/BunkeRS95' on page 1 undefined on input li
-ne 35.
+ne 38.
 
 
 LaTeX Warning: Citation `journals/pami/GravesLFBBS09' on page 1 undefined on in
-put line 35.
+put line 38.
 
 
-LaTeX Warning: Citation `bb105728' on page 1 undefined on input line 35.
+LaTeX Warning: Citation `bb105728' on page 1 undefined on input line 38.
 
 
-LaTeX Warning: Citation `bb105468' on page 1 undefined on input line 35.
+LaTeX Warning: Citation `bb105468' on page 1 undefined on input line 38.
 
 
-LaTeX Warning: Citation `CVPR00_VOLII*290' on page 1 undefined on input line 35
+LaTeX Warning: Citation `CVPR00_VOLII*290' on page 1 undefined on input line 38
 .
 
 
-LaTeX Warning: Citation `bb106176' on page 1 undefined on input line 37.
+LaTeX Warning: Citation `bb106176' on page 1 undefined on input line 40.
 
 
 LaTeX Warning: Citation `oai:oai.columbia.edu:epic/nsdl/1/145780' on page 1 und
-efined on input line 37.
+efined on input line 40.
 
 <pipeline.png, id=1, 663.47874pt x 147.55125pt>
 File: pipeline.png Graphic file (type png)
  <use pipeline.png>
-Overfull \hbox (32.43768pt too wide) in paragraph at lines 43--44
+Overfull \hbox (32.43768pt too wide) in paragraph at lines 46--47
  [][] 
  []
 
-
-Underfull \vbox (badness 3333) has occurred while \output is active []
-
- [1{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+[1{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./pipeline.png>] <preprocessing_pipeline.png, id=11, 386.44376pt x 763.85374p
@@ -420,19 +417,19 @@ t>
 File: preprocessing_pipeline.png Graphic file (type png)
 
 <use preprocessing_pipeline.png>
-LaTeX Font Info:    Try loading font information for U+msa on input line 69.
+LaTeX Font Info:    Try loading font information for U+msa on input line 71.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 69.
+LaTeX Font Info:    Try loading font information for U+msb on input line 71.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 
 LaTeX Warning: Citation `springerlink:10.1007/s100320050035' on page 2 undefine
-d on input line 85.
+d on input line 86.
 
 [2 <./preprocessing_pipeline.png>]
 Missing character: There is no Ô in font ptmr7t!
@@ -446,58 +443,63 @@ Missing character: There is no Õ in font ptmr7t!
 
 
 LaTeX Warning: Citation `10.1109/34.667887' on page 3 undefined on input line 1
-10.
+09.
 
 <features2.png, id=21, 583.17876pt x 280.04625pt>
 File: features2.png Graphic file (type png)
  <use features2.png>
-Overfull \hbox (7.11319pt too wide) in paragraph at lines 120--121
- [][] 
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
+
  []
 
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 128.
 
-LaTeX Warning: Citation `rabiner-89' on page 3 undefined on input line 133.
+(/usr/local/texlive/2009/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+
+LaTeX Warning: Citation `rabiner-89' on page 3 undefined on input line 129.
 
 
-LaTeX Warning: Citation `Rabiner86Z27' on page 3 undefined on input line 133.
+LaTeX Warning: Citation `Rabiner86Z27' on page 3 undefined on input line 129.
 
 <hmm.jpg, id=22, 282.3348pt x 87.2058pt>
 File: hmm.jpg Graphic file (type jpg)
  <use hmm.jpg>
-Underfull \hbox (badness 10000) in paragraph at lines 141--146
+Underfull \hbox (badness 10000) in paragraph at lines 140--145
 \OT1/ptm/m/n/10 The model is trained to es-ti-mate the pos-te-rior
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--146
+Underfull \hbox (badness 10000) in paragraph at lines 140--145
 \OT1/ptm/m/n/10 prob-a-bil-ity $\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OT1/cmr/bx/
 n/10 O\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 ^^U\OT1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 
 of an ob-ser-va-tion se-quence
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--146
+Underfull \hbox (badness 10000) in paragraph at lines 140--145
 
  []
 
 [3 <./features2.png>]
-Underfull \hbox (badness 7433) in paragraph at lines 150--151
+Underfull \hbox (badness 7433) in paragraph at lines 149--150
 []\OT1/ptm/m/n/10 The most likely state se-quence, un-der-ly-ing a
  []
 
-<forward2.jpg, id=30, 178.9887pt x 236.082pt>
+<forward2.jpg, id=31, 178.9887pt x 236.082pt>
 File: forward2.jpg Graphic file (type jpg)
  <use forward2.jpg>
-Underfull \hbox (badness 10000) in paragraph at lines 180--182
+Underfull \hbox (badness 10000) in paragraph at lines 179--181
 \OT1/ptm/m/n/10 Where nor-mal-iza-tion con-stant $\OML/cmm/m/it/10 P\OT1/cmr/m/
 n/10 (\OT1/cmr/bx/n/10 O\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 ^^U\OT1/cmr/m/n/10 )
  =
  []
 
-[4 <./hmm.jpg> <./forward2.jpg>] <single.jpg, id=35, 218.2554pt x 214.401pt>
+[4 <./hmm.jpg> <./forward2.jpg>] <single.jpg, id=36, 218.2554pt x 214.401pt>
 File: single.jpg Graphic file (type jpg)
 
-<use single.jpg> <gmm.jpg, id=36, 218.2554pt x 214.401pt>
+<use single.jpg> <gmm.jpg, id=37, 218.2554pt x 214.401pt>
 File: gmm.jpg Graphic file (type jpg)
  <use gmm.jpg>
 No file HWR_DModolo_TKooi.bbl.
@@ -521,11 +523,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3291 strings out of 493848
- 45901 string characters out of 3149207
- 101898 words of memory out of 3000000
- 6531 multiletter control sequences out of 15000+200000
- 37876 words of font info for 75 fonts, out of 3000000 for 9000
+ 3327 strings out of 493848
+ 46417 string characters out of 3149207
+ 101907 words of memory out of 3000000
+ 6562 multiletter control sequences out of 15000+200000
+ 38391 words of font info for 77 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  27i,9n,24p,1323b,307s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2009/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -537,13 +539,14 @@ e/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/
 2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/200
 9/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2009
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2009/t
-exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2009/texmf-dist/
-fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/typ
-e1/urw/times/utmr8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/tim
-es/utmri8a.pfb>
-Output written on HWR_DModolo_TKooi.pdf (5 pages, 565800 bytes).
+exmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2009/texmf-dis
+t/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/ty
+pe1/urw/times/utmbi8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/t
+imes/utmr8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/times/utmri
+8a.pfb>
+Output written on HWR_DModolo_TKooi.pdf (5 pages, 574092 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
+ 82 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
