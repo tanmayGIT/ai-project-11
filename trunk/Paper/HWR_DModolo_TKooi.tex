@@ -224,8 +224,13 @@ And the covariance is updated as:
  \hat{\Sigma}_{i,k} = \displaystyle \frac{ \sum_{t=1}^{T} \gamma_{t}(i,k) ({\bf o}_{t} - {\bf \mu}_{i,k})( {\bf o}_{t} - {\bf \mu}_{i,k} )^{T} }{ \sum_{t=1}^{T} \gamma_{t}(i,k) }
 \end{equation}
 Please note that the update rules for a single Gaussian can easily be derived by setting $K$ to 1. The GMM introduces a scala of additional hyper parameters, such as the number of mixture components and the shape of the covariance matrix. The next section will cover the experimental setup and results acquired with different parameter settings.
+
+
 \section{Experiments}
-The implementation is written in MATLAB due to the flexibility of its Image Processing Toolbox. 
+The implementation is written in MATLAB due to the flexibility of its Image Processing Toolbox.\\ 
+\todo{mention the database}
+
+
 \section{Discussion}
 The assumption that a character is stationary over a number of observations may be false. Even though some features like loops output 1, whenever a loop is present in the window, other features do output continuous values and violate this assumption.
 
