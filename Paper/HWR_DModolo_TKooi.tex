@@ -28,7 +28,8 @@
 Over the past decades, much research has been performed in the field of optical character recognition and where the research in recognizing typewritten words and handwritten isolated characters has given rise to a variety of robust methods, the recognition of cursive handwritten words remains a challenge.
 %This paper describes a complete system for the recognition of off-line handwriting. Preprocessing techniques are described, including segmentation and normalization of word images to give invariance to scale, slant, slope, and stroke thickness. Representation of the image is discussed and the skeleton and stroke features used are described.
 
- In this paper we explore different aspects of off-line handwriting recognition, a task that does not furnish temporal information, and apply a hidden Markov model to estimate probabilities. We apply the method to some simple word recognition tasks and subsequently use a larger dictionary to see how the system performs in a more realistic setting. Results show...
+ In this paper we explore different aspects of off-line handwriting recognition, a task that does not furnish temporal information, and apply a hidden Markov model to estimate probabilities. We apply the method to some simple word recognition tasks and subsequently use a larger dictionary to see how the system performs in a more realistic setting. Results show...\\
+\todo{modify abstract}
 \end{abstract}
 \section{Introduction}
 Even though contemporary communication seems to emphasize on electronic information exchange rather than pen and paper, we still encounter cursive reading and writing on a daily basis. In the pursuit of making our lives easier, computers may serve a purpose by mitigating laborious document transcription. For applications one can think of tasks such as automatically processing bank checks, various application forms and address lines on an envelope.
@@ -124,8 +125,9 @@ For a word, each of the features above could be encoded as a single number, the 
 
 
 \todo{new paragraph ? }
-In order to exploit the sequential nature of the observations, we need a model that does not treat the data as i.i.d. This is provided by the {\it hidden Markov model} (HMM) \cite{rabiner-89,Rabiner86Z27}, a generative classifier, widely applied in areas such as speech and gesture recognition and computational linguistics.
+In order to exploit the sequential nature of the observations, we need a model that does not treat the data as i.i.d. This is provided by the {\it hidden Markov model} (HMM) \cite{rabiner-89,Rabiner86Z27}, a generative classifier, widely applied in areas such as speech and gesture recognition and computational linguistics.\\
 
+\todo{SLIDING WINDOW}
 
 \section{Hidden Markov models}
 The HMM can be understood from different perspectives. It bears strong resemblance to the finite state automaton and can essentially be seen as a specific type of graphical model. Moreover, researcher acquainted with the POMDP formalism will see familiar aspects. An HMM can be formally described by:
@@ -227,16 +229,45 @@ Please note that the update rules for a single Gaussian can easily be derived by
 
 
 \section{Experiments}
-The implementation is written in MATLAB due to the flexibility of its Image Processing Toolbox.\\ 
-\todo{mention the database}
+The pipeline described in the previous sections have been entirely implemented in MATLAB due to the flexibility of its Image Processing Toolbox, and its power in matrices operations.\\
+In the next subsections we will present the experiments done. The first experiment (Subsec. \ref{SubS:SS}) is aimed to show the performance of the skew and slant steps of the preprocessing pipelines. They are two fundamental steps, and their correctness is vital for the rest of the recognition system. The second experiment (Subsec. \ref{SubS:1vs1}) will show \todo{write something}. Finally, the first experiment  (Subsec. \ref{SubS:ALLvsALL})  will show \todo{wtite something}.
+
+For the first experiment we personally collected a small data set of words with different level of  variation in skew and slant. 
+For the rest of the experiments we used a small portion of the \textit{IAM Handwriting Database}\footnote{http://www.iam.unibe.ch/fki/databases/iam-handwriting-database/iam-handwriting-database}. The IAM Handwriting Database contains forms of handwritten English text which can be used to train and test handwritten text recognizers and to perform writer identification and verification experiments. The database was first published in \cite{FullEnglish} at the ICDAR 1999, and a new version (the one used in these experiments) was released in 2004 \cite{marti02iam}. 
+The database contains forms of unconstrained handwritten text, which were scanned at a resolution of 300dpi and saved as PNG images with 256 gray levels. 
+
+\subsection{Skew and Slant experiments} \label{SubS:SS}
+In Fig. \ref{fig:skew} and Fig. \ref{fig:slant} we show some example of skew and slant correction, respectively. To prove the flexibility of our approaches we tested them on words that differ in level of skew/slant, as well as in stroke, size and source (author). Despite all these variations, the approaches show to perform properly and to be general to different input.
+
+\begin{figure}
+ \centering
+\includegraphics[width=0.4\textwidth]{skew_images.png}
+\caption{Experiments on the skew correction approach used in the preprocessing pipeline.}
+\label{fig:skew}
+\end{figure}
+
+\begin{figure}
+ \centering
+\includegraphics[width=0.4\textwidth]{slant_images.png}
+\caption{Experiments on the slant correction approach used in the preprocessing pipeline.}
+\label{fig:slant}
+\end{figure}
+ 
+
+
+\subsection{1 vs 1 word recognition} \label{SubS:1vs1}
+\todo{...}
+
+\subsection{All vs all words recognition} \label{SubS:ALLvsALL}
+\todo{...}
 
 
 \section{Discussion}
 The assumption that a character is stationary over a number of observations may be false. Even though some features like loops output 1, whenever a loop is present in the window, other features do output continuous values and violate this assumption.
 
--problem of short v long words
+\todo{problem of short v long words}
 
 \bibliographystyle{plain}
-\bibliography{projectAI.bib}
+\bibliography{HWR_DModolo_TKooi.bib}
 
 \end{document}
