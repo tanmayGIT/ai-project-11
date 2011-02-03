@@ -37,7 +37,7 @@ The field of optical character recognition (OCR) is a sub field of pattern recog
 
 Over the past decades, researchers have performed in-depth studies of different fields of the recognition pipeline, however, no consensus has been reached as to what is the most effective method at each stage. The overall routine however, seems to follow the same pattern. In the first stage, the image of the word or document is pre-processed and typically normalized. The second stage generally involves feature extraction, followed by the use of some pattern recognition technique. Although many methods make us of a hidden Markov model (HMM) \cite{journals/ijprai/MartiB01,journals/pr/BunkeRS95} to parametrize the character or word distributions, alternatives have been researched. Artificial neural networks (ANN) are commonly combined with the HMM \cite{journals/pami/GravesLFBBS09} to model, for example, the probability of a character, given a certain observation. Schomaker \cite{bb105728}, applies an ANN in the form of a Kohonen self-organizing map to model cursive script. An extended mean shift clustering method has proved to be successful in clustering Japanese characters in a high-dimensional space \cite{bb105468}. Rather than statistical modelling, a form of edit distance was used by Park and Govindaraju \cite{CVPR00_VOLII*290} to characterize words.
 
-Instead of character and word classification, an OCR system can also focus on writer identification \cite{bb106176, oai:oai.columbia.edu:epic/nsdl/1/145780}, which has applications in forensic science and to identify users of a system. The normalisation of observations we would perform in the recognition task is omitted and the key idea is now to focus on salient writer-specific traits.
+Instead of character and word classification, an OCR system can also focus on writer identification \cite{bb106176, oai:oai.columbia.edu:epic/nsdl/1/145780}, which has applications in forensic science and to identify users of a system. The normalization of observations we would perform in the recognition task is omitted and the key idea is now to focus on salient writer-specific traits.
 
 In this paper we will take a bird eye view of the whole OCR pipeline, without overly scrutinizing specific stages. We will apply different pre-processing methods to segment sentences and words and normalize the characters. Rudimentary features will subsequently be extracted from the acquired images and we will use a sliding window to obtain observation sequences. To classify the words, we will make use of the HMM and will experiment with different parameters and observation distributions in the attempt to optimize recognition performance. The methods will first be tested on simple recognition tasks and subsequently in a more realistic setting with a larger dictionary.
 
@@ -95,9 +95,9 @@ After pre-processing, a feature extraction method is applied to capture the most
 All the features are extracted from the skeleton of the image obtained after the pre-processing step of the pipeline. In our implementation we mainly focused on two types of features: statistical and morphological. The former only represent low-level information about the word, and they are based on the percentage of black pixels in the three regions of the word: ascender, middle and descender, respectively. The latter represent salient information about the word. They are often more discriminative, and have been found to reduce the error rate significantly \cite{10.1109/34.667887}. Those features are:
 \begin{itemize}
 \item {\bf Dots}: Dots above the letters 'i' and 'j' can be identified as short, isolated strokes occurring in the ascender part of the word.
-\item {\bf Junctions}: Junctions occur where two stroked meet or cross and are easily found in the skeleton as points with more than two neighbours.
-\item {\bf Endpoints}: Endpoints are points in the skeleton with only one neighbour and they mark the ends of strokes. 
-\item {\bf Loops}: Loops are found from connected-component analysis on the skeleton, to find areas of background colour not connected to the region surrounding the word. 
+\item {\bf Junctions}: Junctions occur where two stroked meet or cross and are easily found in the skeleton as points with more than two neighbors.
+\item {\bf Endpoints}: Endpoints are points in the skeleton with only one neighbor and they mark the ends of strokes. 
+\item {\bf Loops}: Loops are found from connected-component analysis on the skeleton, to find areas of background color not connected to the region surrounding the word. 
 \end{itemize}
 
 \begin{figure}
@@ -129,7 +129,7 @@ The three main problems to be solved for this model architecture are:
  \item The most likely state sequence, underlying a given observation sequence and the model, $Q^* = \max P(Q|{\bf O},\lambda)$.
  \item The most likely parameters of the model $\lambda^* = \max P(X|\lambda)$, given a training set of $M$ observation sequences $X = ({\bf O}_{1}, {\bf O}_{2}, \ldots, {\bf O}_{M} )$.
 \end{enumerate}
-The third problem is solved by the Viterbi algorithm, but will not be needed for out particular task. A naive way to address the first problem of estimating the posterior probability of an observation sequence, would be to simply marginalise over all possible state sequences ${\bf Q}$ and evaluate their probability. Unfortunately, the cardinality of ${\bf Q}$ increases exponentially with the number of observations, rendering the method $\mathcal{O}(N^{T})$ and thereby infeasible for all but the smallest models. Luckily, an alternative exists in the form of the {\it forward-backward} algorithm, a special instance of the {\it sum-product} algorithm.
+The third problem is solved by the Viterbi algorithm, but will not be needed for out particular task. A naive way to address the first problem of estimating the posterior probability of an observation sequence, would be to simply marginalize over all possible state sequences ${\bf Q}$ and evaluate their probability. Unfortunately, the cardinality of ${\bf Q}$ increases exponentially with the number of observations, rendering the method $\mathcal{O}(N^{T})$ and thereby infeasible for all but the smallest models. Luckily, an alternative exists in the form of the {\it forward-backward} algorithm, a special instance of the {\it sum-product} algorithm.
 \subsection{Forward-backward algorithm}
 The forward-backward algorithm is an efficient way of computing the probability of an observation sequence, given the model. The forward probability, is defined as the probability of a partial observation sequence ${\bf o}_1, {\bf o}_2, \ldots, {\bf o}_t$ ending in state $i$ at time $t$, $P({\bf o}_{1},{\bf o}_{2},\ldots, {\bf o}_{t}| q_{t} = s_{i}, \lambda)$ and can recursively be computed as:
 \begin{equation}
@@ -166,7 +166,7 @@ Where $\sum_{j=1}^{N} \xi_{t}(i,j) = \gamma_{t}(i)$. With these variables define
  \hat{a}_{ij} = \frac{ \sum_{t=1}^{T-1} \xi_{t}(i,j) } { \sum_{t=1}^{T-1} \gamma_{t}(i) }
 \end{equation}
 The update rules for the observation function depend on the distribution used.
-\subsection{Observation modelling}
+\subsection{Observation modeling}
 A common choice for an observation function is the Gaussian distribution. However, if we assume one state for every letter, a disadvantage in using a single Gaussian, is that for different writing styles of the same class, the Gaussian model might be trained to give the highest probability for a letter in between two instances. The intuition is illustrated in figure 3, where two different writing styles of an {\it f} are plotted in a two dimensional feature space.
 \begin{figure}[ht]
   \centering
@@ -207,11 +207,12 @@ And the covariance is updated as:
 \end{equation}
 Please note that the update rules for a single Gaussian can easily be derived by setting $K$ to 1. 
 
-The GMM introduces a scala of additional hyper parameters, such as the number of mixture components and the shape of the covariance matrix, resulting in extra difficulties optimising the system. Another issue of concern is the possibility of singular covariances, or extremly dense masses of probability, centered around a specific feature. This can in part be circumvented by implementation tricks, such as random reinitialisation if the matrix is near singalur, but feature dimensions that plainly convey no variance should be filled with some random noise in order to make the HMM do its job properly. Since we are working with features such as dots and loops, this is a highly likely scenario, considering not all words contain these characteristics and for the same reason, we do want to keep these features, as they are typically distinctive. The next section will cover experiments with these trade-offs and different parameters settings. We will return on the some of these issues in the discussion.
-\section{Experiments} \label{experiments}
-The pipeline described in the previous sections has been entirely implemented in MATLAB due to the flexibility of its Image Processing Toolbox, and its power in matrix operations. In the next subsections we will present the experiments done. The first experiment (Subsec. \ref{SubS:SS}) is aimed to show the performance of the skew and slant steps of the preprocessing pipelines. They are two fundamental steps, and their correctness is vital for the rest of the recognition system. The second experiment (Subsec. \ref{SubS:1vs1}) will show \todo{write something}. Finally, the first experiment  (Subsec. \ref{SubS:ALLvsALL})  will show \todo{write something}.
+The GMM introduces a number of additional hyper parameters, such as the number of mixture components and the shape of the covariance matrix, resulting in extra difficulties optimizing the system. Another issue of concern is the possibility of singular covariances, or extremely dense masses of probability, centered around a specific feature. This can in part be circumvented by implementation tricks, such as random reinitialization if the matrix is near singular, but feature dimensions that plainly convey no variance should be filled with some random noise in order to make the HMM do its job properly. Since we are working with features such as dots and loops, this is a highly likely scenario, considering not all words contain these characteristics and for the same reason, we do want to keep these features, as they are typically distinctive. The next section will cover experiments with these trade-offs and different parameters settings. We will return on the some of these issues in the discussion.
 
-For the first experiment we personally collected a small data set of words with different level of  variation in skew and slant. In the experiments, a small portion of the \textit{IAM Handwriting Database}\footnote{http://www.iam.unibe.ch/fki/databases/iam-handwriting-database/iam-handwriting-database} was used. The IAM Handwriting Database contains forms of handwritten English text which can be used to train and test handwritten text recognizers and to perform writer identification and verification experiments. The database was first published in \cite{FullEnglish} at the ICDAR 1999, and a new version (the one used in these experiments) was released in 2004 \cite{marti02iam}. The database contains forms of unconstrained handwritten text, which were scanned at a resolution of 300dpi and saved as PNG images with 256 grey levels. 
+\section{Experiments} \label{experiments}
+The pipeline described has been entirely implemented in MATLAB due to the flexibility of its Image Processing Toolbox, and its power in matrix operations. In the next subsections we will present some experiments with it. The first experiment (Subsec. \ref{SubS:SS}) aims at showing the performance of the skew and slant steps of the preprocessing pipelines. They are two fundamental steps, and their correctness is vital for the rest of the recognition system. The second experiment (Subsec. \ref{SubS:1vs1}) was done to test the correctness of the pipeline and to analyze the variation of the log likelihood between words. To keep the recognition system as easy as possible, in the experiment we used two words at a time and we performed \textit{one vs one} recognition. Finally, the third experiment  (Subsec. \ref{SubS:ALLvsALL}) will show some results obtained using the pipeline on a bigger dataset.
+
+For the first experiment we personally collected a small data set of words with different level of  variation in skew and slant. In the other two experiments, a small portion of the \textit{IAM Handwriting Database}\footnote{http://www.iam.unibe.ch/fki/databases/iam-handwriting-database/iam-handwriting-database} was used. The IAM Handwriting Database contains forms of handwritten English text which can be used to train and test handwritten text recognizers and to perform writer identification and verification experiments. The database was first published in \cite{FullEnglish} at the ICDAR 1999, and a new version - the one used in these experiments - was released in 2004 \cite{marti02iam}. The database contains forms of unconstrained handwritten text, which were scanned at a resolution of 300dpi and saved as PNG images with 256 grey levels. 
 
 \subsection{Skew and Slant experiments} \label{SubS:SS}
 In Fig. \ref{fig:skew} and Fig. \ref{fig:slant} we show some example of skew and slant correction, respectively. To prove the flexibility of our approaches we tested them on words that differ in level of skew/slant, as well as in stroke, size and source (author). Despite all these variations, the approaches show to perform properly and to be general to different input.
@@ -231,17 +232,19 @@ In Fig. \ref{fig:skew} and Fig. \ref{fig:slant} we show some example of skew and
 \end{figure}
 
 \subsection{One vs one word recognition} \label{SubS:1vs1}
-To test whether the system was working, we first tried two simple typewritten words, {\it letter} and {\it number } and only intensity features. The width of the sliding window was set to 40 and the interval to ... . The images are first pre-processed according to the methods described and an HMM with N states and K component GMM is trained for every word. Random noise of 20\% is added to possibly empty feature dimensions. A sample from a test set of the first word is subsequently fed to each model, to get the likelihood. To test the full set of features, we used the same images. Again test samples from {\it letter} are fed to both models to estimate observation likelihood. We both trained and tested the model 40 different times. Averages of the log-likelihood over all 40 runs are given in table 1.
+As previously described, to test whether the system was working or not, we performed one vs one word recognition. We initially tried two simple typewritten words, {\it letter} and {\it number } described by only intensity features. The width of the sliding window was set to 3 and the interval to 1, so that consecutive windows overlap. The images were first pre-processed according to the methods described and an HMM with {\it N} states and {\it K} component GMM is trained for every word. Random noise of 20\% is added to possibly empty feature dimensions. A sample from a test set of the first word is subsequently fed to each model, to get the log-likelihood. Results are shown in the first line of Table \ref{Table:1vs1-1}. As we can see, the system gives an higher log-likelihood of $121.68$  to the correct word. However, the second word also get a pretty high log-likelihood value of $106.36$, and it happens because intensity features are not discriminative enough. The other rows of the table shows results of experiments on the same data using different parameters and all the features described in Sec. \ref{featureExtraction}. As we can see, the log-likelihood is now really high for the correct word, and relatively small for the wrong one, confirming the discriminative power of the morphological features.
+For all the experiments we both trained and tested the model 40 different times and averaged the log-likelihood values.
 \begin{table}[H]
  \caption{Typewritten words}
+ \label{Table:1vs1-1}
   \begin{tabular}{|l|c|c|c|c|r|}\hline
-    Features 	& N 	& K 			& {\it Letter}	& {\it Number} 	& Diff. 	\\\hline
+    Features 	& {\it N} 	& {\it K} 			& {\it Letter}	& {\it Number} 	& Diff. 	\\\hline
     Intensity 	& 6	& 1 			& $121.68$ 	& $106.36$ 	& $15.32$	\\
     All		& 6  	& 1 			& $795.45$ 	& $14.08$  	& $781.37$	\\
     All 	& 1	& 1 			& $602.22$ 	& $-90.02$ 	& $692.22$	\\
     All 	& 6 	& 3 			& $226.96$ 	& $-820.30$ 	& $1.04e^{3}$	\\
-    All 	& 6 	& 1,  diagonal cov. 	& $871.16$ 	& $531.27$ 	& $487.75$	\\
-    All 	& 6 	& 1,  isotropc cov. 	& $-179.00$ 	& $-272.23$ 	& $197.35$	\\\hline
+    All 	& 6 	& 1,  diag. cov. 	& $871.16$ 	& $531.27$ 	& $487.75$	\\
+    All 	& 6 	& 1,  isotr. cov. 	& $-179.00$ 	& $-272.23$ 	& $197.35$	\\\hline
 \end{tabular}
 \end{table}
 To see how the system performs on actual handwritten data, we again take two words of the same length, namely {\it before} and {\it people}, from the IAM database. The models are trained on 25 instances and tested on 5. Again this process is repeated 40 times and log-likelihoods are averaged over these runs. Results for different parameter settings are provided in table 2.
@@ -249,34 +252,40 @@ To see how the system performs on actual handwritten data, we again take two wor
 \centering
 \caption{Handwritten words}
  \begin{tabular}{|l|c|c|c|c|r|}\hline
-  N 	& K 	& {\it before} 		& {\it Number} 	& 	Diff. 		\\\hline
-  6 	& 1 	&  $1.17e^3$ 		& $1.19e^3$ 	& 	$480.16$	\\
-  1 	& 1 	&  $699.56$ 		& $1.01e^3$ 	&	$422.78$	\\\hline
+  N 	& K 		& {\it before} 		& {\it People} 	& 	Diff. 		\\\hline
+  6 	& 1 		&  $1.17e^3$ 		& $1.19e^3$ 	& 	$480.16$	\\
+  1 	& 1 		&  $699.56$ 		& $1.01e^3$ 	&	$422.78$	\\
+  12	& 1		&  $1.44e^3$		& $1.60e^3$ 	&	$661.02$	\\
+  6	& 1, diag. cov. & $1.21e^3$		& $1.41e^{3}$	&	$521.20$	\\\hline
  \end{tabular}
 \end{table}
-During testing of the model we experienced difficulty recognising words of different length, i.e., long words are typically classified correctly, but short words are often wrongly classified as longer words. In the attempt to find optimal parameters and circumvent this problem, we did one-versus-one testing of long and short words. Similar to previous experiments we assume one state for every letter and feed observations from the first word to both HMMs. Since we are dealing with words of different length, the number of states per letter is denoted, rather than the actual number.
+During testing of the model we experienced difficulty recognizing words of different length, i.e., long words are typically classified correctly, but short words are often wrongly classified as longer words. In the attempt to find optimal parameters and circumvent this problem, we did one-versus-one testing of long and short words. Similar to previous experiments we feed observations from the first word to both HMMs and test different parameters. Since we are dealing with words of different length, the number of states per letter is denoted, rather than the actual number.
 \begin{table}[H]
 \centering
 \caption{Long versus short words}
  \begin{tabular}{|l|c|c|c|c|r|}\hline
-  N/letter 	& K 			& LL {\it at} 	& Number 	& Diff. 	\\\hline
-  1		& 1			& $2.79e^3$	&  $2.42e^3$ 	& $368.77$	\\
-  2		& 1			& $421.61$	& $3.31e^{3}$	& $2.89e^{3}$	\\
-  1		& 1, diagonal cov.	& $373.88$	& $3.04e^3$	& $2.67e^{3}$	\\
+  N/letter 	& K 			& {\it At} 	& {\it Government} 	& Diff. 	\\\hline
+  1		& 1			& $2.79e^3$	&  $2.42e^3$ 		& $368.77$	\\
+  2		& 1			& $421.61$	& $3.31e^{3}$		& $2.89e^{3}$	\\
+  1		& 1, diag. cov.		& $373.88$	& $3.04e^3$		& $2.67e^{3}$	\\\hline
  \end{tabular}
 \end{table}
+For both of the previous previous two experiments other parameter settings where attempted, but resulted in singularity problems.
 
 \subsection{All vs all words recognition} \label{SubS:ALLvsALL}
 
 
 \section{Discussion} \label{discussion}
-The assumption that a character is stationary over a number of observations may be false. Even though some features like loops output 1, whenever a loop is present in the window, other features do output continuous values and violate this assumption.
+From the experiments we can conclude that every aspect of the pipeline works. The experiments with slant, slope and skew correction clearly show improvement, albeit lack of quantification. The experiments performed on the typewritten words show that the feature extraction is performing well, clearly outperforming basic intensity features. Moreover, we have proven the HMM to work correctly, since all instances of the typewritten words yield a higher likelihood for the first than for the second. There is room for improvement however.
 
--problem with to high likelihood/singularities
+One of the biggest problems we encountered in working with the HMMs where singularity related. As can be seen from the tables in the previous section, the log-likelihood is extremely high, which is presumably caused by probability mass centered around a specific location in the feature space. A careful inspection of the trained HMMs confirms this hypothesis. Our attempted solutions where adding noise to the dataset and adjusting the shape of the covariance matrix, to decrease the ability to fit the data. This, however, was to no avail and in some cases even worsened results.
 
-As can be seen from the tables of results, the log-likelihood is extremely high. 
+Another hurdle we faced was the apparent inability of the system correctly classify short words. We suspect this to have different causes: (1) short words are more likely to be subject to writing variations, as described in Sec. \ref{GMM} and (2) when computing the posterior probability of an observation sequence, the most likely path might end halfway in the state sequence, since longer words generally contain shorter words within them. We tried to prevent the first problem by using the Gaussian mixture model, described earlier. This, however, did not improve results and caused a lot of singularity problems. A different solution may lay in the explicit modeling of duration in the HMMs \cite{conf/tsd/TothK05}\cite{journals/tsp/YuK06}. In this approach, the forward-backward algorithm is enhanced by a probability distribution over the duration of a given state, i.e., the number of times the model returns to the current state. This way, we can place a lower and upper bound on the number of permitted re-entries by setting the rest to zero, thereby ensuring an observation sequence is spread out over the complete state space. This method, however, does convey extra parameter fitting during the learning phase and additional hyper parameters to tweak, but it is definitely worth to try.
 
-\todo{problem of short v long words}
+The assumption that a character is stationary over a number of observations may be false. Even though some features like loops output 1, whenever a loop is present in the window, other features do output continuous values and violate this assumption. In the experiments, we have tried to model more states per character, but this does not seem to improve results. Literature appears inconclusive about the number of states to use per letter; some researcher prefer to use a single letter for every state and some model 3 or more for each character. This will most likely depend on the feature set used, but some clear research into this topic might reveal regularities.
+
+The system contains many parameters and the properly optimizing of a considerable part of these has been omitted, due to time limitations. The results show a large difference between parameter settings, however, and therefore we suspect that the system can drastically be improved, given the right amount of time to optimize all of them. We suspect the feature extraction stage to be another bottleneck, mainly the lack in quantity. More and different features might prevent some of the over fitting and singularity problems we had.
+
 
 \bibliographystyle{plain}
 \bibliography{HWR_DModolo_TKooi.bib}

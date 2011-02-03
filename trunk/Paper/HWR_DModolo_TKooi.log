@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  3 FEB 2011 09:58
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  3 FEB 2011 17:21
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -373,12 +373,15 @@ LaTeX Font Info:    ... okay on input line 23.
 \MPnumerator=\count118
 \everyMPtoPDFconversion=\toks26
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 32.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 31.
  (/usr/local/texlive/2009/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <9> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 32.
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 31.
+
+
+LaTeX Warning: Reference `secP' on page 1 undefined on input line 44.
 
 <pipeline.png, id=1, 593.21625pt x 132.495pt>
 File: pipeline.png Graphic file (type png)
@@ -386,99 +389,97 @@ File: pipeline.png Graphic file (type png)
 p/pdftex.map}
 
 
- <./pipeline.png>]
-<preprocessing_pipeline.png, id=12, 386.44376pt x 763.85374pt>
+]
+<preprocessing_pipeline.png, id=11, 386.44376pt x 763.85374pt>
 File: preprocessing_pipeline.png Graphic file (type png)
 
 <use preprocessing_pipeline.png>
-LaTeX Font Info:    Try loading font information for U+msa on input line 72.
+LaTeX Font Info:    Try loading font information for U+msa on input line 69.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 72.
+LaTeX Font Info:    Try loading font information for U+msb on input line 69.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-) [2 <./preprocessing_pipeline.png>]
-Missing character: There is no Ô in font ptmr7t!
-Missing character: There is no Õ in font ptmr7t!
-Missing character: There is no Ô in font ptmr7t!
-Missing character: There is no Õ in font ptmr7t!
-Missing character: There is no Ô in font ptmr7t!
-Missing character: There is no Õ in font ptmr7t!
-Missing character: There is no Ô in font ptmr7t!
-Missing character: There is no Õ in font ptmr7t!
- <features2.png, id=22, 583.17876pt x 280.04625pt>
+) [2 <./pipeline.png> <./preprocessing_pipeline.png>]
+<features2.png, id=22, 583.17876pt x 280.04625pt>
 File: features2.png Graphic file (type png)
-
-<use features2.png>
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
-
- []
-
-
-Underfull \hbox (badness 1629) in paragraph at lines 127--129
-\OT1/ptm/m/it/10 model \OT1/ptm/m/n/10 (HMM) [[]], [[]], a gen-er-a-tive clas-s
-i-fier, widely
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 127--129
+ <use features2.png>
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
  []
 
-<hmm.jpg, id=23, 282.3348pt x 87.2058pt>
+[3 <./features2.png>] <hmm.jpg, id=28, 282.3348pt x 87.2058pt>
 File: hmm.jpg Graphic file (type jpg)
  <use hmm.jpg>
-Underfull \hbox (badness 10000) in paragraph at lines 140--145
+Underfull \hbox (badness 10000) in paragraph at lines 120--125
 \OT1/ptm/m/n/10 The model is trained to es-ti-mate the pos-te-rior
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--145
+Underfull \hbox (badness 10000) in paragraph at lines 120--125
 \OT1/ptm/m/n/10 prob-a-bil-ity $\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OT1/cmr/bx/
 n/10 O\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 ^^U\OT1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 
 of an ob-ser-va-tion se-quence
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--145
+Underfull \hbox (badness 10000) in paragraph at lines 120--125
 
  []
 
-[3 <./features2.png>]
-Underfull \hbox (badness 7433) in paragraph at lines 149--150
+
+Underfull \hbox (badness 7433) in paragraph at lines 129--130
 []\OT1/ptm/m/n/10 The most likely state se-quence, un-der-ly-ing a
  []
 
-<forward2.jpg, id=32, 178.9887pt x 236.082pt>
+<forward2.jpg, id=29, 178.9887pt x 236.082pt>
 File: forward2.jpg Graphic file (type jpg)
- <use forward2.jpg>
-Underfull \hbox (badness 10000) in paragraph at lines 179--181
+ <use forward2.jpg> [4 <./hmm.jpg> <./forward2.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 159--161
 \OT1/ptm/m/n/10 Where nor-mal-iza-tion con-stant $\OML/cmm/m/it/10 P\OT1/cmr/m/
 n/10 (\OT1/cmr/bx/n/10 O\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 ^^U\OT1/cmr/m/n/10 )
  =
  []
 
-[4 <./hmm.jpg> <./forward2.jpg>] <single.jpg, id=37, 218.2554pt x 214.401pt>
+<single.jpg, id=36, 218.2554pt x 214.401pt>
 File: single.jpg Graphic file (type jpg)
-
-<use single.jpg> <gmm.jpg, id=38, 218.2554pt x 214.401pt>
+ <use single.jpg>
+<gmm.jpg, id=37, 218.2554pt x 214.401pt>
 File: gmm.jpg Graphic file (type jpg)
  <use gmm.jpg>
-Underfull \hbox (badness 10000) in paragraph at lines 236--236
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
 [][][]\OT1/ptm/m/n/8 http://www.iam.unibe.ch/fki/databases/iam-handwriting-data
 base/iam-
  []
 
-<skew_images.png, id=39, 503.8825pt x 694.595pt>
+[5 <./single.jpg> <./gmm.jpg>]
+<skew_images.png, id=41, 503.8825pt x 694.595pt>
 File: skew_images.png Graphic file (type png)
  <use skew_images.png>
-<slant_images.png, id=40, 501.875pt x 794.97pt>
+<slant_images.png, id=42, 501.875pt x 794.97pt>
 File: slant_images.png Graphic file (type png)
- <use slant_images.png> [5 <./single.jpg> <./gmm.jpg>] (./HWR_DModolo_TKooi.bbl
-)
+ <use slant_images.png>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./skew_images.png> <./slant_images.png>]
+
+LaTeX Warning: Reference `GMM' on page 7 undefined on input line 283.
+
+
+LaTeX Warning: Citation `conf/tsd/TothK05' on page 7 undefined on input line 28
+3.
+
+
+LaTeX Warning: Citation `journals/tsp/YuK06' on page 7 undefined on input line 
+283.
+
+(./HWR_DModolo_TKooi.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -490,36 +491,44 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-[6 <./skew_images.png> <./slant_images.png>] (./HWR_DModolo_TKooi.aux)
+[8
+
+] (./HWR_DModolo_TKooi.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3378 strings out of 493848
- 47039 string characters out of 3149207
- 102000 words of memory out of 3000000
- 6595 multiletter control sequences out of 15000+200000
- 46426 words of font info for 97 fonts, out of 3000000 for 9000
+ 3388 strings out of 493848
+ 47167 string characters out of 3149207
+ 107055 words of memory out of 3000000
+ 6607 multiletter control sequences out of 15000+200000
+ 45911 words of font info for 95 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 27i,9n,24p,1323b,307s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,11n,24p,1366b,307s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2009/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/tex
 live/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texl
 ive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texliv
-e/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/
-2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/200
-9/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2009
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2009/t
-exmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/2009/texmf-dis
-t/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/
-type1/urw/times/utmb8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/
-times/utmbi8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/times/utm
-r8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on HWR_DModolo_TKooi.pdf (6 pages, 841291 bytes).
+e/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/
+2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/20
+09/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2009/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2009/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2009/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2009/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2009/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2009/texmf-dist/
+fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/ty
+pe1/urw/times/utmb8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/ti
+mes/utmbi8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/times/utmr8
+a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on HWR_DModolo_TKooi.pdf (8 pages, 872703 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
+ 113 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
