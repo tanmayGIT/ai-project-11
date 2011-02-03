@@ -152,6 +152,7 @@ This holds a complexity of only $\mathcal{O}(N^{2}T)$, which is considerably les
 \beta_{t}(i) = \displaystyle \sum_{i=j}^{N} a_{ij} b_{j}({\bf o}_{t+1}) \beta_{j}({\bf o}_{t+1})
 \end{equation}
 Although we do not need $\beta$ for the computation of $P({\bf O}|\lambda)$, it is provides a comprehensible variable for the training of the model parameters, which  is done by {\it Baum-Welch re-estimation}, a special instance of the EM-algorithm.
+
 \subsection{Baum-Welch re-estimation}
 To train the model, we need to maximize the likelihood of the parameters $\mathcal{L}(\lambda|{\bf O})$, by taking partial derivatives of every variable and setting it to zero. If we knew the probability of being in a state at a time step, we could analytically optimize the model parameters and if we knew the model parameters we could estimate the probability of being in a state at a time step. Therefore, we are presented with a chicken-or-egg problem and are left to the mercy of the EM algorithm, which iteratively computes and optimizes these values. For the left-to-right model, the probability of entering state 1, is initialized to 1 and therefore parameter $\pi_{i}$ will remain fixed during the whole re-estimation procedure. To make the rest of the update steps more comprehensible, a set of intermediate variables is defined. First, the probability of begin in a state $i$ at time step $t$, $P(q_{t} = s_{i} | {\bf O}, \lambda )$, which by Bayes' theorem and the before defined forward and backward probabilities can be written as:
 \begin{equation}
@@ -166,7 +167,8 @@ Where $\sum_{j=1}^{N} \xi_{t}(i,j) = \gamma_{t}(i)$. With these variables define
  \hat{a}_{ij} = \frac{ \sum_{t=1}^{T-1} \xi_{t}(i,j) } { \sum_{t=1}^{T-1} \gamma_{t}(i) }
 \end{equation}
 The update rules for the observation function depend on the distribution used.
-\subsection{Observation modeling}
+
+\subsection{Observation modeling}\label{GMM}
 A common choice for an observation function is the Gaussian distribution. However, if we assume one state for every letter, a disadvantage in using a single Gaussian, is that for different writing styles of the same class, the Gaussian model might be trained to give the highest probability for a letter in between two instances. The intuition is illustrated in figure 3, where two different writing styles of an {\it f} are plotted in a two dimensional feature space.
 \begin{figure}[ht]
   \centering
@@ -232,10 +234,12 @@ In Fig. \ref{fig:skew} and Fig. \ref{fig:slant} we show some example of skew and
 \end{figure}
 
 \subsection{One vs one word recognition} \label{SubS:1vs1}
-As previously described, to test whether the system was working or not, we performed one vs one word recognition. We initially tried two simple typewritten words, {\it letter} and {\it number } described by only intensity features. The width of the sliding window was set to 3 and the interval to 1, so that consecutive windows overlap. The images were first pre-processed according to the methods described and an HMM with {\it N} states and {\it K} component GMM is trained for every word. Random noise of 20\% is added to possibly empty feature dimensions. A sample from a test set of the first word is subsequently fed to each model, to get the log-likelihood. Results are shown in the first line of Table \ref{Table:1vs1-1}. As we can see, the system gives an higher log-likelihood of $121.68$  to the correct word. However, the second word also get a pretty high log-likelihood value of $106.36$, and it happens because intensity features are not discriminative enough. The other rows of the table shows results of experiments on the same data using different parameters and all the features described in Sec. \ref{featureExtraction}. As we can see, the log-likelihood is now really high for the correct word, and relatively small for the wrong one, confirming the discriminative power of the morphological features.
+As previously described, to test whether the system was working or not, we performed one vs one word recognition. 
+
+We initially tried two simple typewritten words, {\it letter} and {\it number } described by only intensity features. The width of the sliding window was set to 3 and the interval to 1, so that consecutive windows overlap. The images were first pre-processed according to the methods described and an HMM with {\it N} states and {\it K} component GMM is trained for every word. Random noise of 20\% is added to possibly empty feature dimensions. A sample from a test set of the word {\it letter} is subsequently fed to each model, to get the log-likelihood. Results are shown in the first line of Table \ref{Table:1vs1-1}. As we can see, the system gives an higher log-likelihood of $121.68$  to the correct word. However, the second word also get a pretty high log-likelihood value of $106.36$, and it happens because intensity features are not discriminative enough. The other rows of the table shows results of experiments on the same data using different parameters and all the features described in Sec. \ref{featureExtraction}. As we can see, the log-likelihood is now really high for the correct word, and relatively small for the wrong one, confirming the discriminative power of the morphological features.
 For all the experiments we both trained and tested the model 40 different times and averaged the log-likelihood values.
 \begin{table}[H]
- \caption{Typewritten words}
+ \caption{Log-likelihood - Typewritten words}
  \label{Table:1vs1-1}
   \begin{tabular}{|l|c|c|c|c|r|}\hline
     Features 	& {\it N} 	& {\it K} 			& {\it Letter}	& {\it Number} 	& Diff. 	\\\hline
@@ -247,44 +251,77 @@ For all the experiments we both trained and tested the model 40 different times 
     All 	& 6 	& 1,  isotr. cov. 	& $-179.00$ 	& $-272.23$ 	& $197.35$	\\\hline
 \end{tabular}
 \end{table}
-To see how the system performs on actual handwritten data, we again take two words of the same length, namely {\it before} and {\it people}, from the IAM database. The models are trained on 25 instances and tested on 5. Again this process is repeated 40 times and log-likelihoods are averaged over these runs. Results for different parameter settings are provided in table 2.
+
+Next, to see how the system performs on actual handwritten data, we again took two words of the same length, namely {\it before} and {\it people}, from the IAM database. The models were trained on 25 instances and tested on 5. Again this process is repeated 40 times and log-likelihoods are averaged over these runs. Results for different parameter settings are provided in Table \ref{Table:hand}. Against our expectations, the system fails in recognizing the correct word, even though log-likelihood values are pretty high for both models. This is probably happening because the words  {\it before} and  {\it people} shares several letter, and they have loops more or less at the same positions. We expect to avoid this misclassification increasing the number of features.
+
 \begin{table}[H]
 \centering
-\caption{Handwritten words}
+\caption{Log-likelihood - Handwritten words}
+\label{Table:hand}
  \begin{tabular}{|l|c|c|c|c|r|}\hline
-  N 	& K 		& {\it before} 		& {\it People} 	& 	Diff. 		\\\hline
+ {\it N} 	& {\it K} 		& {\it before} 		& {\it people} 	& 	Diff. 		\\\hline
   6 	& 1 		&  $1.17e^3$ 		& $1.19e^3$ 	& 	$480.16$	\\
   1 	& 1 		&  $699.56$ 		& $1.01e^3$ 	&	$422.78$	\\
   12	& 1		&  $1.44e^3$		& $1.60e^3$ 	&	$661.02$	\\
   6	& 1, diag. cov. & $1.21e^3$		& $1.41e^{3}$	&	$521.20$	\\\hline
  \end{tabular}
 \end{table}
-During testing of the model we experienced difficulty recognizing words of different length, i.e., long words are typically classified correctly, but short words are often wrongly classified as longer words. In the attempt to find optimal parameters and circumvent this problem, we did one-versus-one testing of long and short words. Similar to previous experiments we feed observations from the first word to both HMMs and test different parameters. Since we are dealing with words of different length, the number of states per letter is denoted, rather than the actual number.
+
+During testing we experienced difficulty recognizing words of different length: long words are typically classified correctly, but short words are often wrongly classified as longer words. In the attempt to find optimal parameters and circumvent this problem, we performed the one-vs-one recognition on the short word {\it At}  and the long word {\it Government}. Similar to previous experiments we feed observations from the first word to both HMMs and test different parameters. Since we are dealing with words of different length, the number of states per letter is denoted, rather than the actual number. Results are shown in Table \ref{Table:shortVSlong}. As expected, the long word {\it Government} obtained, in general, much higher log-likelihood values than the short word {\it At}. However, it is worth to note that using an HMM with 1 state and a GMM with 1 component the short word {\it At} achieved a slightly higher log-likelihood then the long word {\it Government}. The difference is so small that could be considered almost insignificant, however, it confirms our assumption that optimizing the parameters could solve the difficulty in recognizing words with short length.
+
 \begin{table}[H]
 \centering
-\caption{Long versus short words}
+\caption{Log-likelihood - Short versus long words}
+\label{Table:shortVSlong}
  \begin{tabular}{|l|c|c|c|c|r|}\hline
-  N/letter 	& K 			& {\it At} 	& {\it Government} 	& Diff. 	\\\hline
+  {\it N} 	& {\it K} 			& {\it At} 	& {\it Government} 	& Diff. 	\\\hline
   1		& 1			& $2.79e^3$	&  $2.42e^3$ 		& $368.77$	\\
   2		& 1			& $421.61$	& $3.31e^{3}$		& $2.89e^{3}$	\\
   1		& 1, diag. cov.		& $373.88$	& $3.04e^3$		& $2.67e^{3}$	\\\hline
  \end{tabular}
 \end{table}
-For both of the previous previous two experiments other parameter settings where attempted, but resulted in singularity problems.
+
+For both of the previous previous two experiments other parameter settings where attempted, but resulted in singularity problems.\\
 
 \subsection{All vs all words recognition} \label{SubS:ALLvsALL}
+To finally observe the performance of the system on a real dataset, we extracted the most frequent 200 words from the IAM Handwriting Database. Given the long time taken by training and testing the HMMs, the reduction of the dataset was needful. Different experiments with different values for number of states \textit{N} and number of gaussian components \textit{K} have been performed. Results are shown in Table \ref{Table:allvsall}. The last 3 columns of the table show the accuracy achieved on retrieving the correct words in the first one, three and five positions in rank, respectively. As we can see, the accuracy of the system when considering correct the words retrieved as first in the rank list is pretty low, but it increases pretty fast as soon as we consider a word correct if it appears in the top 5 of the ranked list. Again, we expect to considerably increase the accuracy extracting more features that will help in better discriminate between words. 
+A cumulative match curve (CMC) is show in Fig. \ref{fig:cmc}
 
+\begin{table}[H]
+\centering
+\caption{Log-likelihood - Small dataset of 200 words}
+\label{Table:allvsall}
+\begin{tabular}{|c|c|c|c|c|} \hline
+ {\it N} & {\it K}  & Acc. 1 & Acc. 2 & Acc. 5 \\\hline
+lengthWord & 1 &   0.2400 & 0.3400 & 0.51\\
+1 & 1 &  0.2000 & 0.3600 & 0.52\\
+1 & 5 & 0.0800 & 0.1800 & 0.34\\
+lengthWord & 5 &  0.1200 & 0.3000 & 0.45 \\\hline
+\end{tabular}
+\end{table}
+
+
+
+\begin{figure}
+ \centering
+\includegraphics[width=0.5\textwidth]{CMC.png}
+\caption{Cumulative match curve (CMC) for the dataset. On the \textit{x} axis we have the 200 words and on the \textit{y} axis the percentage of retrieved data.}
+\label{fig:cmc}
+\end{figure}
 
 \section{Discussion} \label{discussion}
-From the experiments we can conclude that every aspect of the pipeline works. The experiments with slant, slope and skew correction clearly show improvement, albeit lack of quantification. The experiments performed on the typewritten words show that the feature extraction is performing well, clearly outperforming basic intensity features. Moreover, we have proven the HMM to work correctly, since all instances of the typewritten words yield a higher likelihood for the first than for the second. There is room for improvement however.
+From the experiments we can conclude that every aspect of the pipeline works. The experiments with slant, slope and skew correction clearly show improvement, albeit lack of quantification. The experiments performed on the typewritten words show that the feature extraction is performing well, clearly outperforming basic intensity features. Moreover, we have proven the HMM to work correctly, since all instances of the typewritten words yield a higher log-likelihood for the correct word then the wrong one. There is room for improvement however.
 
 One of the biggest problems we encountered in working with the HMMs where singularity related. As can be seen from the tables in the previous section, the log-likelihood is extremely high, which is presumably caused by probability mass centered around a specific location in the feature space. A careful inspection of the trained HMMs confirms this hypothesis. Our attempted solutions where adding noise to the dataset and adjusting the shape of the covariance matrix, to decrease the ability to fit the data. This, however, was to no avail and in some cases even worsened results.
 
-Another hurdle we faced was the apparent inability of the system correctly classify short words. We suspect this to have different causes: (1) short words are more likely to be subject to writing variations, as described in Sec. \ref{GMM} and (2) when computing the posterior probability of an observation sequence, the most likely path might end halfway in the state sequence, since longer words generally contain shorter words within them. We tried to prevent the first problem by using the Gaussian mixture model, described earlier. This, however, did not improve results and caused a lot of singularity problems. A different solution may lay in the explicit modeling of duration in the HMMs \cite{conf/tsd/TothK05}\cite{journals/tsp/YuK06}. In this approach, the forward-backward algorithm is enhanced by a probability distribution over the duration of a given state, i.e., the number of times the model returns to the current state. This way, we can place a lower and upper bound on the number of permitted re-entries by setting the rest to zero, thereby ensuring an observation sequence is spread out over the complete state space. This method, however, does convey extra parameter fitting during the learning phase and additional hyper parameters to tweak, but it is definitely worth to try.
+Another hurdle we faced was the apparent inability of the system to correctly classify short words. We suspect this to have different causes: (1) short words are more likely to be subject to writing variations, as described in Sec. \ref{GMM} and (2) when computing the posterior probability of an observation sequence, the most likely path might end halfway in the state sequence, since longer words generally contain shorter words within them. We tried to prevent the first problem by using the Gaussian mixture model, described earlier. This, however, did not improve results and caused a lot of singularity problems. A different solution may lay in the explicit modeling of duration in the HMMs \cite{conf/tsd/TothK05}\cite{journals/tsp/YuK06}. In this approach, the forward-backward algorithm is enhanced by a probability distribution over the duration of a given state, i.e., the number of times the model returns to the current state. This way, we can place a lower and upper bound on the number of permitted re-entries by setting the rest to zero, thereby ensuring an observation sequence is spread out over the complete state space. This method, however, does convey extra parameter fitting during the learning phase and additional hyper parameters to tweak, but it is definitely worth to try.
 
 The assumption that a character is stationary over a number of observations may be false. Even though some features like loops output 1, whenever a loop is present in the window, other features do output continuous values and violate this assumption. In the experiments, we have tried to model more states per character, but this does not seem to improve results. Literature appears inconclusive about the number of states to use per letter; some researcher prefer to use a single letter for every state and some model 3 or more for each character. This will most likely depend on the feature set used, but some clear research into this topic might reveal regularities.
 
-The system contains many parameters and the properly optimizing of a considerable part of these has been omitted, due to time limitations. The results show a large difference between parameter settings, however, and therefore we suspect that the system can drastically be improved, given the right amount of time to optimize all of them. We suspect the feature extraction stage to be another bottleneck, mainly the lack in quantity. More and different features might prevent some of the over fitting and singularity problems we had.
+The system contains many parameters and the properly optimizing of a considerable part of these has been omitted, due to time limitations. The results show a large difference between parameter settings, however, and therefore we suspect that the system can drastically be improved, given the right amount of time to optimize all of them. We suspect the feature extraction stage to be another bottleneck, mainly the lack in quantity. More and different features might prevent some of the overfitting and singularity problems we had.
+
+\section{Conclusion}
+A full working pipeline for an off-line word recognition system as been implemented and described in this paper. Few problems encountered during the implementation of the system were addressed, and some ideas about how to solve them are described.  Different experiments were presented and the results confirmed the correctness of the pipeline. Despite this positive results, the system has shown to have a large margin of increment. Future work should focus on the optimization of the high number of parameters of the HMM, as well as on the extraction of more features. Moreover, it would be interesting to use of a language model as an extra post-processing step. 
 
 
 \bibliographystyle{plain}
