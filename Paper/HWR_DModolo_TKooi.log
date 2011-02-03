@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  2 FEB 2011 20:11
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  3 FEB 2011 09:58
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -380,18 +380,14 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <9> not available
 (Font)              Font shape `OT1/pcr/b/n' tried instead on input line 32.
 
-<pipeline.png, id=1, 663.47874pt x 147.55125pt>
+<pipeline.png, id=1, 593.21625pt x 132.495pt>
 File: pipeline.png Graphic file (type png)
- <use pipeline.png>
-Overfull \hbox (32.43768pt too wide) in paragraph at lines 47--48
- [][] 
- []
-
-[1{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+ <use pipeline.png> [1{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updma
+p/pdftex.map}
 
 
- <./pipeline.png>] <preprocessing_pipeline.png, id=12, 386.44376pt x 763.85374p
-t>
+ <./pipeline.png>]
+<preprocessing_pipeline.png, id=12, 386.44376pt x 763.85374pt>
 File: preprocessing_pipeline.png Graphic file (type png)
 
 <use preprocessing_pipeline.png>
@@ -521,7 +517,7 @@ t/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/
 times/utmbi8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/times/utm
 r8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on HWR_DModolo_TKooi.pdf (6 pages, 841531 bytes).
+Output written on HWR_DModolo_TKooi.pdf (6 pages, 841291 bytes).
 PDF statistics:
  93 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
