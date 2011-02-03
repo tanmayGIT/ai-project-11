@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  3 FEB 2011 19:11
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.6.30)  3 FEB 2011 19:20
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -334,7 +334,11 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-No file HWR_DModolo_TKooi.aux.
+(./HWR_DModolo_TKooi.aux
+
+LaTeX Warning: Label `fig:pipeline' multiply defined.
+
+)
 \openout1 = `HWR_DModolo_TKooi.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
@@ -351,7 +355,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 23.
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/ts1cmr.fd
+ (/usr/local/texlive/2009/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 23.
@@ -369,53 +373,9 @@ LaTeX Font Info:    ... okay on input line 23.
 \MPnumerator=\count118
 \everyMPtoPDFconversion=\toks26
 )
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
-LaTeX Warning: Citation `journals/ijprai/MartiB01' on page 1 undefined on input
- line 37.
-
-
-LaTeX Warning: Citation `journals/pr/BunkeRS95' on page 1 undefined on input li
-ne 37.
-
-
-LaTeX Warning: Citation `journals/pami/GravesLFBBS09' on page 1 undefined on in
-put line 37.
-
-
-LaTeX Warning: Citation `bb105728' on page 1 undefined on input line 37.
-
-
-LaTeX Warning: Citation `bb105468' on page 1 undefined on input line 37.
-
-
-LaTeX Warning: Citation `CVPR00_VOLII*290' on page 1 undefined on input line 37
-.
-
-
-LaTeX Warning: Citation `bb106176' on page 1 undefined on input line 39.
-
-
-LaTeX Warning: Citation `oai:oai.columbia.edu:epic/nsdl/1/145780' on page 1 und
-efined on input line 39.
-
-
-LaTeX Warning: Reference `overview' on page 1 undefined on input line 43.
-
-
-LaTeX Warning: Reference `secP' on page 1 undefined on input line 43.
-
-
-LaTeX Warning: Reference `featureExtraction' on page 1 undefined on input line 
-43.
-
-
-LaTeX Warning: Reference `secHMM' on page 1 undefined on input line 43.
-
-
-LaTeX Warning: Reference `experiments' on page 1 undefined on input line 43.
-
-
-LaTeX Warning: Reference `discussion' on page 1 undefined on input line 43.
+ []
 
 <pipeline.png, id=1, 593.21625pt x 132.495pt>
 File: pipeline.png Graphic file (type png)
@@ -424,74 +384,58 @@ p/pdftex.map}
 
 
 ]
-
-LaTeX Warning: Reference `fig:pipelinePP' on page 2 undefined on input line 56.
-
-
 <preprocessing_pipeline.png, id=10, 386.44376pt x 763.85374pt>
 File: preprocessing_pipeline.png Graphic file (type png)
 
 <use preprocessing_pipeline.png>
-LaTeX Font Info:    Try loading font information for U+msa on input line 68.
+LaTeX Font Info:    Try loading font information for U+msa on input line 69.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 68.
+LaTeX Font Info:    Try loading font information for U+msb on input line 69.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
+Underfull \vbox (badness 3547) has occurred while \output is active []
 
-LaTeX Warning: Citation `springerlink:10.1007/s100320050035' on page 2 undefine
-d on input line 79.
-
-[2 <./pipeline.png> <./preprocessing_pipeline.png>]
-
-LaTeX Warning: Citation `10.1109/34.667887' on page 3 undefined on input line 9
-4.
-
+ [2 <./pipeline.png> <./preprocessing_pipeline.png>]
 <features2.png, id=21, 583.17876pt x 280.04625pt>
 File: features2.png Graphic file (type png)
  <use features2.png>
-Underfull \hbox (badness 10000) in paragraph at lines 108--109
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
  []
-
-
-LaTeX Warning: Citation `rabiner-89' on page 3 undefined on input line 110.
-
-
-LaTeX Warning: Citation `Rabiner86Z27' on page 3 undefined on input line 110.
 
 [3 <./features2.png>] <hmm.jpg, id=27, 282.3348pt x 87.2058pt>
 File: hmm.jpg Graphic file (type jpg)
  <use hmm.jpg>
-Underfull \hbox (badness 10000) in paragraph at lines 119--124
+Underfull \hbox (badness 10000) in paragraph at lines 120--125
 \OT1/ptm/m/n/10 The model is trained to es-ti-mate the pos-te-rior
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--124
+Underfull \hbox (badness 10000) in paragraph at lines 120--125
 \OT1/ptm/m/n/10 prob-a-bil-ity $\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OT1/cmr/bx/
 n/10 O\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 ^^U\OT1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 
 of an ob-ser-va-tion se-quence
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--124
+Underfull \hbox (badness 10000) in paragraph at lines 120--125
 
  []
 
 
-Underfull \hbox (badness 7433) in paragraph at lines 128--129
+Underfull \hbox (badness 7433) in paragraph at lines 129--130
 []\OT1/ptm/m/n/10 The most likely state se-quence, un-der-ly-ing a
  []
 
 <forward2.jpg, id=28, 178.9887pt x 236.082pt>
 File: forward2.jpg Graphic file (type jpg)
  <use forward2.jpg> [4 <./hmm.jpg> <./forward2.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 159--161
+Underfull \hbox (badness 10000) in paragraph at lines 160--162
 \OT1/ptm/m/n/10 Where nor-mal-iza-tion con-stant $\OML/cmm/m/it/10 P\OT1/cmr/m/
 n/10 (\OT1/cmr/bx/n/10 O\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 ^^U\OT1/cmr/m/n/10 )
  =
@@ -502,108 +446,47 @@ File: single.jpg Graphic file (type jpg)
  <use single.jpg>
 <gmm.jpg, id=36, 218.2554pt x 214.401pt>
 File: gmm.jpg Graphic file (type jpg)
- <use gmm.jpg>
-
-LaTeX Warning: Reference `SubS:SS' on page 5 undefined on input line 214.
-
-
-LaTeX Warning: Reference `SubS:1vs1' on page 5 undefined on input line 214.
-
-
-LaTeX Warning: Reference `SubS:ALLvsALL' on page 5 undefined on input line 214.
-
-
-[5 <./single.jpg> <./gmm.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 216--216
+ <use gmm.jpg> [5 <./single.jpg> <./gmm.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 217--217
 [][][]\OT1/ptm/m/n/8 http://www.iam.unibe.ch/fki/databases/iam-handwriting-data
 base/iam-
  []
-
-
-LaTeX Warning: Citation `FullEnglish' on page 6 undefined on input line 216.
-
-
-LaTeX Warning: Citation `marti02iam' on page 6 undefined on input line 216.
-
-
-LaTeX Warning: Reference `fig:skew' on page 6 undefined on input line 219.
-
-
-LaTeX Warning: Reference `fig:slant' on page 6 undefined on input line 219.
 
 <skew_images.png, id=40, 503.8825pt x 694.595pt>
 File: skew_images.png Graphic file (type png)
  <use skew_images.png>
 <slant_images.png, id=41, 501.875pt x 794.97pt>
 File: slant_images.png Graphic file (type png)
- <use slant_images.png>
-
-LaTeX Warning: Reference `Table:1vs1-1' on page 6 undefined on input line 238.
-
-
-LaTeX Warning: Reference `featureExtraction' on page 6 undefined on input line 
-238.
-
-[6 <./skew_images.png> <./slant_images.png>]
-
-LaTeX Warning: Reference `Table:hand' on page 7 undefined on input line 254.
-
-
-LaTeX Warning: Reference `Table:shortVSlong' on page 7 undefined on input line 
-269.
-
-
-Underfull \hbox (badness 1939) in paragraph at lines 269--270
+ <use slant_images.png> [6 <./skew_images.png> <./slant_images.png>]
+Underfull \hbox (badness 1939) in paragraph at lines 270--271
 []\OT1/ptm/m/n/10 During test-ing we ex-pe-ri-enced dif-fi-culty rec-og-niz-ing
 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \hbox (badness 1796) in paragraph at lines 283--284
+Underfull \hbox (badness 1796) in paragraph at lines 284--285
 []\OT1/ptm/m/n/10 For both of the pre-vi-ous pre-vi-ous two ex-per-i-ments
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 283--284
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
 
  []
-
-
-LaTeX Warning: Reference `Table:allvsall' on page 7 undefined on input line 286
-.
-
-
-LaTeX Warning: Reference `fig:cmc' on page 7 undefined on input line 287.
 
 <CMC.png, id=47, 501.875pt x 392.667pt>
 File: CMC.png Graphic file (type png)
  <use CMC.png>
-Overfull \hbox (7.11319pt too wide) in paragraph at lines 306--307
+Overfull \hbox (7.11319pt too wide) in paragraph at lines 307--308
  [][] 
  []
 
 [7]
-
-LaTeX Warning: Reference `GMM' on page 8 undefined on input line 316.
-
-
-LaTeX Warning: Citation `conf/tsd/TothK05' on page 8 undefined on input line 31
-6.
-
-
-LaTeX Warning: Citation `journals/tsp/YuK06' on page 8 undefined on input line 
-316.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 320--321
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--324
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
 
  []
 
@@ -623,16 +506,13 @@ Before submitting the final camera ready copy, remember to:
 
 ] (./HWR_DModolo_TKooi.aux)
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3367 strings out of 493848
- 46872 string characters out of 3149207
- 107738 words of memory out of 3000000
+ 3369 strings out of 493848
+ 46922 string characters out of 3149207
+ 109144 words of memory out of 3000000
  6592 multiletter control sequences out of 15000+200000
  45396 words of font info for 93 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
@@ -654,7 +534,7 @@ fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type
 1/urw/times/utmbi8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/tim
 es/utmr8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/times/utmri8a
 .pfb>
-Output written on HWR_DModolo_TKooi.pdf (9 pages, 875241 bytes).
+Output written on HWR_DModolo_TKooi.pdf (9 pages, 874385 bytes).
 PDF statistics:
  113 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

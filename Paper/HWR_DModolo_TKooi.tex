@@ -40,7 +40,7 @@ Instead of character and word classification, an OCR system can also focus on wr
 
 In this paper we will take a bird eye view of the whole OCR pipeline, without overly scrutinizing specific stages. We will apply different pre-processing methods to segment sentences and words and normalize the characters. Rudimentary features will subsequently be extracted from the acquired images and we will use a sliding window to obtain observation sequences. To classify the words, we will make use of the HMM and will experiment with different parameters and observation distributions in the attempt to optimize recognition performance. The methods will first be tested on simple recognition tasks and subsequently in a more realistic setting with a larger dictionary.
 
-This paper is outlined as follows. In sec. \ref{overview}, we will describe an overview of the typical OCR pipeline, followed by details about the pre-processing in sec. \ref{secP}. Sec. \ref{featureExtraction} will subsequently cover the feature extraction, followed by a brief description of the HMM in sec. \ref{secHMM}. Sec. \ref{experiments} will cover the experimental setup and results acquired and we will finish we a conclusion and discussion in section \ref{discussion}.
+This paper is outlined as follows. In Sec. \ref{overview}, we will have a short overview of a typical OCR pipeline. In Sec.  \ref{sectP},  \ref{featureExtraction}  and \ref{secHMM} we will deeply discuss all its components that are, respectively, pre-processing, feature extraction and word recognition. Sec. \ref{experiments} will then show the experimental setup and results acquired testing our system on a small dataset, and in Sec. \ref{discussion} we will discuss those results and all the problems encountered in the implementation of the system. Finally, we will conclude in Sec. \ref{conclusion}.\\
 
 \section{Overview} \label{overview}
 As mention before, the typical OCR pipeline has different stages: pre-processing, feature extraction and classification, each touching different fields of research and providing its own challenges. The pre-processing stage mainly entails image processing, whereas in the feature extraction and classification stage, machine learning methods are more dominant.
@@ -51,6 +51,7 @@ As mention before, the typical OCR pipeline has different stages: pre-processing
 \label{fig:pipeline}
 \end{figure}
 The pipeline is depicted in figure 1. In the following sections we will elaborate on the different aspect of this system and point out the challenges encountered along with the attempts to solve these.
+
 \section{Pre-processing} \label{sectP}
 Several general pre-processing steps are done on the composite raw image before word recognition starts. These steps attempt to normalize the image as much as possible. It is assumed that the image has been binarized from grey scale. 
 A pipeline of the preprocessing is shown in Fig. \ref{fig:pipelinePP}, and in the next subsections we will briefly describe all the steps involved. It is worth to note that in the presented pipeline skew and slant correction steps are applied both to lines and individual words. The repetition is useful to first obtain a good word segmentation, and to then obtain a good estimation of the baselines on single words.
@@ -319,7 +320,7 @@ The assumption that a character is stationary over a number of observations may 
 
 The system contains many parameters and the properly optimizing of a considerable part of these has been omitted, due to time limitations. The results show a large difference between parameter settings, however, and therefore we suspect that the system can drastically be improved, given the right amount of time to optimize all of them. We suspect the feature extraction stage to be another bottleneck, mainly the lack in quantity. More and different features might prevent some of the overfitting and singularity problems we had.\\
 
-\section{Conclusion}
+\section{Conclusion} \label{conclusion}
 A full working pipeline for an off-line word recognition system as been implemented and described in this paper. Few problems encountered during the implementation of the system were addressed, and some ideas about how to solve them are described.  Different experiments were presented and the results confirmed the correctness of the pipeline. Despite this positive results, the system has shown to have a large margin of increment. Future work should focus on the optimization of the high number of parameters of the HMM, as well as on the extraction of more features. Moreover, it would be interesting to use of a language model as an extra post-processing step. \\
 
 \nocite{*}
