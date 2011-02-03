@@ -1905,7 +1905,7 @@
     \fi%
 \else%
 % if a table, do table caption
-    \begin{center}{\footnotesize #1}\\{\footnotesize\scshape #2}\end{center}%
+    \begin{center}{\footnotesize #1}\\{\footnotesize #2}\end{center}%
     \@IEEEtablecaptionsepspace% V1.6 was a hard coded 8pt
 \fi}
 
